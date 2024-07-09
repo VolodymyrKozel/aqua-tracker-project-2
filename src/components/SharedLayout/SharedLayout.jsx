@@ -1,19 +1,16 @@
 import { Suspense } from 'react';
-import { Toaster } from 'react-hot-toast';
 import Loader from '../Loader/Loader.jsx';
 import css from './SharedLayout.module.css';
+import { Outlet } from 'react-router-dom';
 
-export const SharedLayout = ({ children }) => {
+export const SharedLayout = () => {
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <div className={css.container}>{children}</div>
-        <Toaster
-          position="top-right"
-          reverseOrder={false}
-          toastOptions={{ duration: 5000 }}
-        />
-      </Suspense>
+      <main className={css.container}>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </main>
     </>
   );
 };
