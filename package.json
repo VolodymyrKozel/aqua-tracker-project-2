@@ -1,8 +1,8 @@
 {
-  "name": "react-homework-template",
+  "name": "Aqua-tracker-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/react-homework-template/",
+  "homepage": "https://github.com/VolodymyrKozel/aqua-tracker-project-2",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
