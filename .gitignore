@@ -136,3 +136,5 @@ dist
 .vscode
 .DS_Store
 .idea
+
+.pullrequests-list.txt
