@@ -1,7 +1,8 @@
 {
   "name": "aqua-tracker-project-2",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "homepage": "https://github.com/VolodymyrKozel/aqua-tracker-project-2",
   "type": "module",
   "scripts": {
     "dev": "vite",
