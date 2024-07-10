@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { login } from '../../redux/auth/operations';
+import clsx from 'clsx';
 
 const schema = yup.object().shape({
   email: yup
@@ -59,7 +60,7 @@ const SignInForm = () => {
           <label className={css.fieldLabel}>Email</label>
           <div className={css.inputField}>
             <input
-              className={css.input}
+               className={clsx(css.input, { [css.error]: errors.email })}
               type="email"
               {...register('email')}
               placeholder="Enter your email"
@@ -73,7 +74,7 @@ const SignInForm = () => {
           <label className={css.fieldLabel}>Password</label>
           <div className={css.inputField}>
             <input
-              className={css.input}
+            className={clsx(css.input, { [css.error]: errors.email })}
               type="password"
               {...register('password')}
               placeholder="Enter your password"
