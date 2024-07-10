@@ -13,12 +13,9 @@ function WelcomeSection() {
       <Button variant="outline" onClick={() => navigate('/signin')}>
         Sign in
       </Button>
-      <Button variant="secondary" onClick={() => navigate('/modal')}>
-        Modal Example
+      <Button variant="secondary" onClick={() => navigate('/tracker')}>
+        Tracker
       </Button>
-      <button className={css.btn} onClick={() => navigate('/modal')}>
-        open modal
-      </button>
     </section>
   );
 }
