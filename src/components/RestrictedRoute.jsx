@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+/* import { useSelector } from 'react-redux'; */
+/* import { selectIsLoggedIn } from '../../redux/auth/selectors'; */
 
 /**
  * - If the route is restricted and the user is logged in,

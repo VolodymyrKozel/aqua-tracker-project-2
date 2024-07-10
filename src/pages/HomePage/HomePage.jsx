@@ -1,13 +1,14 @@
-import Button from 'components/Button/Button';
-import Logo from 'components/Logo/Logo';
-import WelcomeSection from 'components/WelcomeSection/WelcomeSection';
+import css from './HomePage.module.css';
+import Logo from '../../components/Logo/Logo';
+import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
+import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 
 const HomePage = () => {
   return (
-    <div className="section">
+    <div className={css.container}>
       <Logo />
       <WelcomeSection />
-      <section className="AdvantagesSection"></section>
+      <AdvantagesSection />
     </div>
   );
 };

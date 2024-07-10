@@ -1,4 +1,4 @@
-import Button from 'components/Button/Button';
+import Button from '../../components/Button/Button';
 import css from './WelcomeSection.module.css';
 import { useNavigate } from 'react-router';
 function WelcomeSection() {
