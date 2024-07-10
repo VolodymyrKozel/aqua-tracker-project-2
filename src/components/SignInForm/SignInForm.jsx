@@ -67,9 +67,9 @@ const SignInForm = () => {
               autoComplete="on"
               onFocus={() => handFocus('email')}
             />
-            <span className={css.errors}>
-              {errors.email ? errors.email.message : ''}
-            </span>
+          {errors.email && ( 
+              <span className={css.errors}>{errors.email.message}</span>
+            )}
           </div>
           <label className={css.fieldLabel}>Password</label>
           <div className={css.inputField}>
@@ -80,7 +80,9 @@ const SignInForm = () => {
               placeholder="Enter your password"
               onFocus={() => handFocus('password')}
             />
-            {errors.password ? <span className={css.errors}>{errors.password.message}</span> : null}
+           {errors.password && ( 
+              <span className={css.errors}>{errors.password.message}</span>
+            )}
           </div>
           <button className={css.button} type="submit">
             Sign In
