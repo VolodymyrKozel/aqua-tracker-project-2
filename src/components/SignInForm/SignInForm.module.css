@@ -116,3 +116,21 @@
     letter-spacing: -.01em;
     color: var(--main-text-rgb);
 }
+
+.errors {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #ef5050;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 100%;
+  }
+  
+  .error {
+    border-color: #ef5050;
+    color: #ef5050;
+  }
