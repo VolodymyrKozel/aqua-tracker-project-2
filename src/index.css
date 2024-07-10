@@ -108,7 +108,7 @@ html {
 body {
   font-family: var(--font-family);
   font-size: var(--normal-font-size);
-  background-color: var(--background-white);
+  background-color: var(--main-white);
   color: var(--main-text);
   line-height: 1.5;
 }
