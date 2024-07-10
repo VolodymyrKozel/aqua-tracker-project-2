@@ -3,6 +3,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import ModalExample from './ModalExample/ModalExample';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -38,6 +39,7 @@ export const App = () => {
             <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
           }
         />
+        <Route path="/modal" element={<ModalExample />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

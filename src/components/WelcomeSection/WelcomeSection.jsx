@@ -1,4 +1,4 @@
-import Button from '../../components/Button/Button';
+import Button from '../shared/Button/Button';
 import css from './WelcomeSection.module.css';
 import { useNavigate } from 'react-router';
 function WelcomeSection() {
@@ -13,6 +13,12 @@ function WelcomeSection() {
       <Button variant="outline" onClick={() => navigate('/signin')}>
         Sign in
       </Button>
+      <Button variant="secondary" onClick={() => navigate('/modal')}>
+        Modal Example
+      </Button>
+      <button className={css.btn} onClick={() => navigate('/modal')}>
+        open modal
+      </button>
     </section>
   );
 }
