@@ -74,7 +74,7 @@ const SignInForm = () => {
           <label className={css.fieldLabel}>Password</label>
           <div className={css.inputField}>
             <input
-            className={clsx(css.input, { [css.error]: errors.email })}
+            className={clsx(css.input, { [css.error]: errors.password })}
               type="password"
               {...register('password')}
               placeholder="Enter your password"
