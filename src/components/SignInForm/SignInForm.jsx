@@ -34,6 +34,7 @@ const SignInForm = () => {
     reset,
   } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onBlur',
     defaultValues: {
       email: '',
       password: '',
