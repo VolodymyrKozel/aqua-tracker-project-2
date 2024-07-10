@@ -1,0 +1,103 @@
+/* SignInForm.module.css */
+.mainLoginContainer {
+    padding: 32px;
+    width: 672px;
+   height: 736px;
+   max-width: 100%;
+   border-radius: 30px;
+   background-color: var(--background-white);
+   position: relative;
+}
+
+.loginFormContainer {
+    padding: 113px 118px 169px;
+    max-width: 100%;
+    position: relative;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -.01em;
+    text-align: left;
+    margin-bottom: 32px;
+    color: var(--main-text-rgb);
+    line-height: 2.375rem;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    justify-content: center;
+}
+
+.fieldLabel {
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: -.01em;
+    font-weight: 700;
+    text-align: left;
+    color: var(--main-text-rgb);
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.input {
+    border: 1px solid rgba(47, 47, 47, 0.2);
+    border-radius: 15px;
+    padding: 16px;
+    outline: none;
+    opacity: 0px;
+    background-color: var(--background-white);
+
+}
+
+.button {
+    font-size: 16px;
+    line-height: 1.5em;
+    height: 60px;
+    border-radius: 30px;
+    color: var(--main-text-rgb);
+    font-weight: 700;
+    background-color: var(--accent-color);
+    margin-top: 16px;
+    cursor: pointer;
+    opacity: 0px;
+    transition-property: background-color;
+    transition-duration: .25s;
+    transition-timing-function: ease;
+    outline: none;
+    border: none;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #87d28d;
+}
+
+.afterDescription {
+    font-size: 16px;
+    line-height: 24px;
+    color: #2f2f2f80;
+    letter-spacing: -.01em;
+    text-align: center;
+}
+
+.link {
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: underline;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -.01em;
+    color: var(--main-text-rgb);
+}

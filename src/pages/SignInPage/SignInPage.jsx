@@ -1,7 +1,13 @@
-import React from 'react';
+import SignInForm from "../../components/SignInForm/SignInForm";
+import css from "./SignInPage.module.css";
 
 const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return <div>
+    <div className={css.generalSignInInfo}>
+    <SignInForm />
+    </div>
+   
+  </div>;
 };
 
 export default SignInPage;
