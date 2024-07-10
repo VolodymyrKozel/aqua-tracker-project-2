@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { login } from '../../redux/auth/operations';
+// import { login } from '../../redux/auth/operations';
 
 const schema = yup.object().shape({
   email: yup

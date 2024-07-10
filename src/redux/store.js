@@ -17,7 +17,7 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-export const srote = configureStore({
+   const store = configureStore({
   reducer: {
     // auth:persistReducer(authPersistConfig, authReducer),
     // water: waterReducer
@@ -32,4 +32,6 @@ export const srote = configureStore({
     }),
 });
 
-export const persistor = persistStore(srote);
+export default store;
+
+export const persistor = persistStore(store);
