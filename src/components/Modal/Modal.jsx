@@ -38,7 +38,7 @@ function ModalReusable() {
         overlayClassName={css['overlay']}
         contentLabel="delete contact"
       >
-        {children}
+        <div>here content</div>
       </Modal>
     </>
   );
