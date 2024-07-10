@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import css from './UserBarPopover.module.css';
 import { useEffect, useState } from 'react';
-import Iconsvg from '../../shared/components/Icon';
+import Icon from '../../shared/components/Icon';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAvatar,
