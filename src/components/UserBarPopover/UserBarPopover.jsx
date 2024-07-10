@@ -38,7 +38,7 @@ const UserSettingsSchema = Yup.object().shape({
   avatarURL: Yup.mixed(),
 });
 
-const API_URL = '##API_URL##';
+const API_URL = 'API_URL';
 
 const UserSettingsForm = ({ closeModal, closePopover }) => {
   const dispatch = useDispatch();
