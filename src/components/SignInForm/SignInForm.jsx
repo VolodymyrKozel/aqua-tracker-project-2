@@ -40,11 +40,13 @@ const SignInForm = () => {
   });
 
   const onSubmit = data => {
+    console.log("Form Data:", data); 
     dispatch(login(data));
     reset();
   };
 
   const handFocus = fieldName => {
+    console.log(`${fieldName} field focused`); 
     clearErrors(fieldName);
   };
 
@@ -78,7 +80,6 @@ const SignInForm = () => {
               onFocus={() => handFocus('password')}
             />
             {errors.password ? <span className={css.errors}>{errors.password.message}</span> : null}
-
           </div>
           <button className={css.button} type="submit">
             Sign In
