@@ -1,6 +1,5 @@
 import css from './SignInForm.module.css';
 import Logo from '../Logo/Logo';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -8,18 +7,9 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { login } from '../../redux/auth/operations';
 import clsx from 'clsx';
+import { LoginUserSchema } from '../../validation/auth';
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: yup
-    .string()
-    .required('Password is required')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .max(16, 'Password should be of maximum 16 characters length'),
-});
+
 
 const SignInForm = () => {
   /*   const dispatch = useDispatch(); */
@@ -33,7 +23,7 @@ const SignInForm = () => {
     clearErrors,
     reset,
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(LoginUserSchema),
     mode: 'onBlur',
     defaultValues: {
       email: '',
