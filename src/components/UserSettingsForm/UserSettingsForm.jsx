@@ -1,42 +1,18 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { selectUser } from '../../redux/auth/selectors';
 import { updateUserInfo } from '../../redux/auth/operations';
 import { closeModal } from '../../redux/modal/slice';
 
-import { errorToast, successToast } from '../../helpers/toast';
-import modalIcons from '.././shared/Icon/Icon';
+/* import { errorToast, successToast } from '../../helpers/toast'; */
+import Icon from '../shared/Icon/Icon';
+import { userSettingsSchema } from '../../validation/form';
 
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../../components/Loader/Loader';
-
-const schema = Yup.object().shape({
-  name: Yup.string()
-    .required('Name is required!')
-    .min(2, 'Name must be at least 2 characters')
-    .max(50, 'Too long characters!'),
-  email: Yup.string()
-    .required('Email is required')
-    .email('Invalid email')
-    .matches(/^[^@]+@[^@]+\.[^@]+$/, 'Email must be valid'),
-  weight: Yup.number()
-    .typeError(' must be a number')
-    .min(0, 'weight must be 0 or more')
-    .max(200, 'Weight must be less than or equal to 200'),
-  activeTimeSport: Yup.number()
-    .typeError('Active sport time must be a number')
-    .min(0, 'Time active sport must be 0 or more')
-    .max(1000, 'Time must be less than or equal to 1000'),
-  dailyWaterRate: Yup.number()
-    .typeError(' must be a number')
-    .positive('Water consumption must be a positive number')
-    .max(10000, 'Water consumption must be less than or equal to 10000'),
-  gender: Yup.string().oneOf(['woman', 'man', '']).nullable(),
-});
 
 export default function UserSettingsForm() {
   const dispatch = useDispatch();
@@ -50,7 +26,7 @@ export default function UserSettingsForm() {
     formState: { errors },
     watch,
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(userSettingsSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -143,7 +119,7 @@ export default function UserSettingsForm() {
             {/* <svg className={css.iconUpload} width="18" height="18">
               <use xlinkHref={`${modalIcons}#icon-upload`}></use>
             </svg> */}
-            <modalIcons
+            <Icon
               className={css.iconUpload}
               width="18"
               height="18"
@@ -170,15 +146,16 @@ export default function UserSettingsForm() {
                   {...register('gender')}
                 />
                 <span className={css.iconWrap}>
-                  <svg className={css.iconRadio} width="20" height="20">
-                    <use
-                      xlinkHref={
-                        watch('gender') === 'woman'
-                          ? `${modalIcons}#icon-radio-active`
-                          : `${modalIcons}#icon-radio`
-                      }
-                    ></use>
-                  </svg>
+                  <Icon
+                    className={css.iconRadio}
+                    width={20}
+                    height={20}
+                    id={
+                      watch('gender') === 'woman'
+                        ? 'icon-radio-active'
+                        : 'icon-radio'
+                    }
+                  />
                 </span>
                 woman
               </label>
@@ -191,15 +168,16 @@ export default function UserSettingsForm() {
                   {...register('gender')}
                 />
                 <span className={css.iconWrap}>
-                  <svg className={css.iconRadio} width="20" height="20">
-                    <use
-                      xlinkHref={
-                        watch('gender') === 'man'
-                          ? `${modalIcons}#icon-radio-active`
-                          : `${modalIcons}#icon-radio`
-                      }
-                    ></use>
-                  </svg>
+                  <Icon
+                    className={css.iconRadio}
+                    width={20}
+                    height={20}
+                    id={
+                      watch('gender') === 'man'
+                        ? 'icon-radio-active'
+                        : 'icon-radio'
+                    }
+                  />
                 </span>
                 man
               </label>
@@ -282,7 +260,7 @@ export default function UserSettingsForm() {
                 {/* <svg className={css.iconExclamation} width="18" height="18">
                   <use xlinkHref={`${modalIcons}#icon-exclamation-mark`}></use>
                 </svg> */}
-                <modalIcons
+                <Icon
                   className={css.iconExclamation}
                   width={18}
                   height={18}
