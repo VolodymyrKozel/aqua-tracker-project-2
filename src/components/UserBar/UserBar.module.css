@@ -1,0 +1,17 @@
+.userBar {
+    display: flex;
+    gap: 8px;
+}
+
+.secondary {
+    width: 137px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* .userBarButton {
+    width: 137px;
+    height: 50px;
+} */

@@ -1,14 +1,16 @@
-import React from 'react';
 import UserPanel from '../UserPanel/UserPanel.jsx';
 import DailyInfo from '../DailyInfo/DailyInfo.jsx';
+import css from './WaterDetailedInfo.module.css';
 
 const WaterDetailedInfo = () => {
   return (
-    <div>
+    <section className={css.sectionWaterDetailInfo}>
       WaterDetailedInfo
-      <UserPanel />
-      <DailyInfo />
-    </div>
+      <div className={css.waterDetailInfoContainer}>
+        <UserPanel />
+        <DailyInfo />
+      </div>
+    </section>
   );
 };
 
