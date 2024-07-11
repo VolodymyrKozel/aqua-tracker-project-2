@@ -34,10 +34,85 @@
   color: rgba(47, 47, 47, 0.6);
 }
 
-.slider {
+.icon {
+  fill: #fff;
+  border-radius: 100%;
+  stroke-width: 1px;
+  stroke: #9be1a0;
+}
+
+.waterProgressBarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.waterProgressBar {
+  position: relative;
+  width: 100%;
   border-radius: 9px;
-  width: 174px;
-  height: 6px;
-  background-color: #f0eff4;
   margin: 8px 0px;
+  background-color: #f0eff4;
+}
+
+.waterProgressBarFiller {
+  height: 6px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #9be1a0;
+  transition: width 0.5s ease-in-out;
+  position: relative;
+}
+
+.waterProgressBarContent {
+  position: absolute;
+  right: 0;
+  transform: translateX(50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.waterProgressBarLabel {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9be1a0;
+  position: absolute;
+  top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 295px;
+    height: 106px;
+    padding: 20px;
+  }
+
+  .container {
+    width: 255px;
+    height: 66px;
+  }
+
+  .day {
+    font-size: 15px;
+    line-height: 1.49;
+  }
+
+  .labelContainer {
+    width: 255px;
+    height: 23px;
+  }
+
+  .waterProgressBarFiller {
+    height: 8px;
+  }
+
+  .waterProgressBarLabel {
+    top: 18px;
+  }
 }
