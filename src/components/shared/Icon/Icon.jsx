@@ -1,4 +1,4 @@
-import sprite from '../../../../public/icons.svg';
+import sprite from '../../../assets/images/icons.svg';
 
 export default function Icon({ className, width, height, id }) {
   return (
