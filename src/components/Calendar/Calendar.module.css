@@ -1,0 +1,6 @@
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
+}

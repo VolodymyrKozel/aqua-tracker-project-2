@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
+.modal {
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  padding: 40px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .formTitle {
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .modal {
+    top: 64px;
+    max-width: 648px;
+    padding: 40px;
+  }
+
+  .button {
+    top: 40px;
+    right: 40px;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    max-width: 920px;
+  }
+}
