@@ -1,0 +1,282 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:regular,700&display=swap);
+.imageWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.avatarImg {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.imgInput {
+  display: none;
+}
+
+.buttonUpload {
+  background-color: transparent;
+  display: flex;
+  margin-top: 10px;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.buttonUpload::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  bottom: 4px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--main-text);
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .buttonUpload:hover::before {
+    opacity: 1;
+  }
+}
+
+.blockWrap {
+  margin-bottom: 40px;
+}
+.iconUpload {
+  stroke: #2f2f2f;
+  fill: transparent;
+}
+
+.activeTime {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.partWrap {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.requiredAmountWrap {
+  margin-bottom: 0;
+}
+
+.inputTitleBold {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  /* color: var(--main); */
+}
+
+.dailyTitle {
+  margin-bottom: 0;
+}
+
+.inputTitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: var(--main-text);
+}
+
+.genderInputWrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.genderInput {
+  display: none;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.iconRadio {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.iconWrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainerGender,
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputContainerGender {
+  gap: 14px;
+}
+
+.inputContainer {
+  gap: 8px;
+}
+
+.inputField,
+.border {
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 14px 16px 14px 16px;
+  width: 100%;
+}
+
+.inputField {
+  color: var(--main-text);
+}
+/* Изменяем рамку при фокусе */
+/* Убираем стандартную обводку */
+.inputField:focus {
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.inputError {
+  border-color: #ef5050;
+  /* color: #ef5050; */
+}
+
+.error {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: #ef5050;
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+}
+
+.borderText {
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.normaFormWoman {
+  margin-bottom: 14px;
+}
+
+.accentText {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.accentLiter {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.submitBtn {
+  border-radius: 30px;
+  padding: 14px 40px;
+  background-color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+  transition: 0.3s ease-in-out;
+  border-color: transparent;
+}
+@media (hover: hover) and (pointer: fine) {
+  .submitBtn:hover {
+    cursor: pointer;
+    background-color: #87d28d;
+  }
+}
+
+.buttonUpload {
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .iconUpload {
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputTitleBold {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .inputTitle {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .error {
+    font-size: 14px;
+    line-height: 129%;
+    bottom: -19px;
+  }
+
+  .dailyTitle {
+    margin-bottom: 0;
+  }
+
+  .normaForm {
+    display: flex;
+    gap: 28px;
+  }
+
+  .requiredAmount {
+    display: flex;
+    align-items: center;
+  }
+
+  .accentLiter {
+    font-size: 15px;
+  }
+
+  .submitBtn {
+    padding: 16px 50px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .accentLiter {
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: 5px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .blockWrap {
+    margin-bottom: 0px;
+  }
+
+  .submitBtn {
+    margin-top: 16px;
+  }
+}
