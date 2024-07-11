@@ -5,14 +5,11 @@ const WaterProgressBar = () => {
     <div className={css.wrapper}>
       <div className={css.container}>
         <h2 className={css.day}>Today</h2>
-        <input
-          type="range"
-          id="water-slider"
-          min="0"
-          max="100"
-          // value="50"
-          className={css.slider}
-        />
+        <div className={css.slider}>
+          <svg width={12} height={12}>
+            <use href="/public/icons.svg/#icon-ellipse"></use>
+          </svg>
+        </div>
         <div className={css.labelContainer}>
           <span className={css.label}>0%</span>
           <span className={css.label}>50%</span>
