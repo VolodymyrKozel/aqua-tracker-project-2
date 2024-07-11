@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: #9be1a0;
+  border-radius: 30px;
+  width: 343px;
+  height: 415px;
+  padding: 50px 40px 30px 41px;
+}
+
+.container {
+  width: 262px;
+  height: 335px;
+}
