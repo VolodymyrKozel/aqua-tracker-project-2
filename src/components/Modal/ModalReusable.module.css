@@ -4,14 +4,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--main-text-alpha);
+  background-color: rgba(var(--main-text-rgb), 0.5);
 }
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 90%;
-  max-width: 400px;
+  max-width: 920px;
+  height: 996px;
+  margin-top: 64px;
+  overflow-y: scroll;
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;

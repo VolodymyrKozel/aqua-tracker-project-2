@@ -8,9 +8,12 @@ import { useForm } from 'react-hook-form';
 import { LoginUserSchema } from '../../validation/auth';
 import Label from '../shared/Label/Label';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
+import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
+import ModalWrap from '../Modal/Modal';
 
 const ModalExample = () => {
   /* modal */
+  const [showModal, setShowModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   function openModal() {
     setModalIsOpen(true);
@@ -55,12 +58,20 @@ const ModalExample = () => {
     <>
       {/* кнопка для відкриття модалки */}
       <button onClick={openModal}>open modal</button>
-      <ModalReusable modalIsOpen={modalIsOpen} openModal={openModal}>
-        <h1>Title</h1>
-        <Label htmlFor="modal">Modal input</Label>
-        <Input type="text" name="modal" placeholder="Enter your name" />
+      <Button variant="primary" onClick={() => setShowModal(!showModal)}>
+        open modal
+      </Button>
+      <ModalWrap isOpen={showModal} handleClose={setShowModal}>
         {/* Тут має бути ваш компонент */}
-        <p>some content</p>
+        <UserSettingsForm />
+      </ModalWrap>
+      <ModalReusable
+        modalIsOpen={modalIsOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+      >
+        {/* Тут має бути ваш компонент */}
+        <UserSettingsForm />
         {/* Кнопка для закриття модалки */}
         <Button variant="primary" onClick={closeModal}>
           close
