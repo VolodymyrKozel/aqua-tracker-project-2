@@ -1,11 +1,30 @@
-.generalSignInInfo {
+.generalSignInForm {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
     justify-content: center;
-    padding: 0 32px;
-    width: 768px;
-    max-width: 100%;
-
-}
+    margin: 0 auto;
+    padding: 0 16px;
+    min-width: 320px;
+    max-width: 375px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .generalSignInForm {
+      padding: 0 32px;
+      width: 768px;
+      max-width: 100%;
+    }
+  }
+  
+  @media only screen and (min-width: 1440px) {
+    .generalSignInForm {
+      display: flex;
+      padding: 0 32px;
+      gap: 32px;
+      flex-direction: row;
+      max-width: 100%;
+    }
+  }
+  
