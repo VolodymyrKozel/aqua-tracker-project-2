@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { LoginUserSchema } from '../../validation/auth';
 import Label from '../shared/Label/Label';
+import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
 
 const ModalExample = () => {
   /* modal */
@@ -105,6 +106,7 @@ const ModalExample = () => {
             Sign In
           </Button>
         </form>
+        <CalendarPagination />
       </div>
     </>
   );
