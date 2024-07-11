@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router';
 import Icon from '../../shared/Icon/Icon';
 import Button from '../../shared/Button/Button';
@@ -11,10 +11,30 @@ const LogOutModal = () => {
     setIsOpen(false);
   };
 
+  const handleBackdropClick = event => {
+    if (event.target === event.currentTarget) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   if (!isOpen) return null;
 
   return (
-    <div className={css.modalBackdrop}>
+    <div className={css.modalBackdrop} onClick={handleBackdropClick}>
       <div className={css.logoutModal}>
         <Icon
           className={css.closeIcon}
