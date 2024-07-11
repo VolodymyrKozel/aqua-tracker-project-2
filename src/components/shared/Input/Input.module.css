@@ -1,0 +1,28 @@
+.input {
+  border: 1px solid rgba(47, 47, 47, 0.2);
+  border-radius: 15px;
+  padding: 16px;
+  outline: none;
+  background-color: var(--background-white);
+  margin-bottom: 14px;
+}
+
+.input::placeholder {
+  text-align: left;
+  letter-spacing: -0.01em;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--main-text-rgb);
+}
+
+.input:focus {
+  border: 1px solid var(--accent-color);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.error {
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
