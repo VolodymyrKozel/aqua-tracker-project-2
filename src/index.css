@@ -10,6 +10,7 @@
   --accent-color-hover: #87d28d;
   --background-white: rgb(240, 239, 244);
   --main-white: #fff;
+  --error-color: #ef5050;
 
   /*========== Font and typography ==========*/
   /* Poppins regular - 400,bold - 700 */

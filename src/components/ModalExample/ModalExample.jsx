@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ModalReusable from '../Modal/ModalReusable';
 import { CopyBlock, nord } from 'react-code-blocks';
+import Input from '../shared/Input/Input';
 
 const ModalExample = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -30,34 +31,7 @@ const ModalExample = () => {
           бібліотеки react-modal з можливістю застосування власних стилів через
           CSS модулі.
         </p>
-        <h2> Використання</h2>
-        <CopyBlock
-          text={`import React, { useState } from 'react';
-import ModalReusable from './ModalReusable';
-
-function App() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-
-  return (
-    <div>
-      <button onClick={openModal}>Відкрити Модальне Вікно</button>
-      <ModalReusable modalIsOpen={modalIsOpen} closeModal={closeModal}>
-        <h2>Це модальне вікно</h2>
-        <button onClick={closeModal}>Закрити</button>
-      </ModalReusable>
-    </div>
-  );
-}
-
-export default App;`}
-          language="jsx"
-          showLineNumbers={true}
-          wrapLines={true}
-          theme={nord}
-        />
+        <Input className="input" type="text" placeholder="Enter your name" />
       </div>
     </>
   );

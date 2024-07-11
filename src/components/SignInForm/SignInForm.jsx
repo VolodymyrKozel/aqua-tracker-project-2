@@ -22,9 +22,9 @@ const schema = yup.object().shape({
 });
 
 const SignInForm = () => {
-  const dispatch = useDispatch();
+  /*   const dispatch = useDispatch(); */
 
-  const [showPassword, setShowPassword] = useState(false);
+  /* const [showPassword, setShowPassword] = useState(false); */
 
   const {
     register,
@@ -42,13 +42,13 @@ const SignInForm = () => {
   });
 
   const onSubmit = data => {
-    console.log("Form Data:", data); 
-    dispatch(login(data));
+    console.log('Form Data:', data);
+    /*  dispatch(login(data)); */
     reset();
   };
 
   const handFocus = fieldName => {
-    console.log(`${fieldName} field focused`); 
+    console.log(`${fieldName} field focused`);
     clearErrors(fieldName);
   };
 
@@ -58,30 +58,33 @@ const SignInForm = () => {
       <div className={css.loginFormContainer}>
         <h1 className={css.title}>Sign in</h1>
         <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
-          <label className={css.fieldLabel}>Email</label>
+          <label className={css.fieldLabel} htmlFor="email">
+            Email
+          </label>
           <div className={css.inputField}>
             <input
-               className={clsx(css.input, { [css.error]: errors.email })}
+              className={clsx(css.input, { [css.error]: errors.email })}
               type="email"
+              id="email"
               {...register('email')}
               placeholder="Enter your email"
               autoComplete="on"
               onFocus={() => handFocus('email')}
             />
-          {errors.email && ( 
+            {errors.email && (
               <span className={css.errors}>{errors.email.message}</span>
             )}
           </div>
           <label className={css.fieldLabel}>Password</label>
           <div className={css.inputField}>
             <input
-            className={clsx(css.input, { [css.error]: errors.password })}
+              className={clsx(css.input, { [css.error]: errors.password })}
               type="password"
               {...register('password')}
               placeholder="Enter your password"
               onFocus={() => handFocus('password')}
             />
-           {errors.password && ( 
+            {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>
             )}
           </div>
