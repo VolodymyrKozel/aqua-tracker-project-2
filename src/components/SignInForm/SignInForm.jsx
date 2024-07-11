@@ -30,11 +30,12 @@ const SignInForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    clearErrors,
+    /* clearErrors, */
     reset,
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur',
+    reValidateMode: 'onSubmit',
     defaultValues: {
       email: '',
       password: '',
@@ -47,10 +48,9 @@ const SignInForm = () => {
     reset();
   };
 
-  const handFocus = fieldName => {
-    console.log(`${fieldName} field focused`);
+  /*  const handFocus = fieldName => {
     clearErrors(fieldName);
-  };
+  }; */
 
   return (
     <div className={css.mainLoginContainer}>
@@ -69,7 +69,6 @@ const SignInForm = () => {
               {...register('email')}
               placeholder="Enter your email"
               autoComplete="on"
-              onFocus={() => handFocus('email')}
             />
             {errors.email && (
               <span className={css.errors}>{errors.email.message}</span>
@@ -82,7 +81,6 @@ const SignInForm = () => {
               type="password"
               {...register('password')}
               placeholder="Enter your password"
-              onFocus={() => handFocus('password')}
             />
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>
