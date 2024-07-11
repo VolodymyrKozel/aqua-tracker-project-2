@@ -24,7 +24,7 @@
       padding: 0 32px;
       gap: 32px;
       flex-direction: row;
-      width: 1440px;
+      max-width: 100%;
     }
   }
   
