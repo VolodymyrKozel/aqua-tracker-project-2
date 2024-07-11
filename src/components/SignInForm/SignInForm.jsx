@@ -3,24 +3,20 @@ import Logo from '../Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 // import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { login } from '../../redux/auth/operations';
 import clsx from 'clsx';
 import { LoginUserSchema } from '../../validation/auth';
 
-
-
 const SignInForm = () => {
   /*   const dispatch = useDispatch(); */
 
-  /* const [showPassword, setShowPassword] = useState(false); */
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    /* clearErrors, */
+   clearErrors, 
     reset,
   } = useForm({
     resolver: yupResolver(LoginUserSchema),
@@ -38,9 +34,9 @@ const SignInForm = () => {
     reset();
   };
 
-  /*  const handFocus = fieldName => {
+     const handFocus = fieldName => {
     clearErrors(fieldName);
-  }; */
+  };
 
   return (
     <div className={css.mainLoginContainer}>
@@ -59,6 +55,7 @@ const SignInForm = () => {
               {...register('email')}
               placeholder="Enter your email"
               autoComplete="on"
+              onFocus={() => handFocus('email')}
             />
             {errors.email && (
               <span className={css.errors}>{errors.email.message}</span>
@@ -71,6 +68,7 @@ const SignInForm = () => {
               type="password"
               {...register('password')}
               placeholder="Enter your password"
+              onFocus={() => handFocus('password')}
             />
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>

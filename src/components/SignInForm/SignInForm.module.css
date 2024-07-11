@@ -49,6 +49,8 @@
 
   font-size: 14px;
   line-height: 1.286em;
+  margin-bottom: 8px;
+    margin-top: 8px;
 
 }
 
@@ -69,6 +71,18 @@
   background-color: var(--background-white);
 
 }
+
+.icon_eye,
+.eyeIconOff {
+  fill: none;
+  stroke: var(--second-text);
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+}
+
 
 .input::placeholder {
   text-align: left;
