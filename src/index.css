@@ -109,11 +109,11 @@ html {
 
 body {
   font-family: var(--font-family); /* Poppins */
-  font-size: var(--normal-font-size); /* 16px */
+  font-size: var(--normal-font-size-14); /* 16px */
   font-weight: var(--font-regular); /* 400 */
   background-color: var(--main-white);
   color: var(--main-text);
-  line-height: 24px;
+  line-height: 1.5;
 }
 
 h1,
