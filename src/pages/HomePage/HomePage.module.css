@@ -1,14 +1,15 @@
-.container {
-  padding: 32px;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 16px;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .wrapper {
     flex-direction: row;
+    padding-top: 32px;
+    gap: 32px;
   }
 }

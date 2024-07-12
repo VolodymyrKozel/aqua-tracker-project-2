@@ -109,7 +109,7 @@ html {
 
 body {
   font-family: var(--font-family); /* Poppins */
-  font-size: var(--normal-font-size-14); /* 16px */
+  font-size: var(--normal-font-size-16); /* 16px */
   font-weight: var(--font-regular); /* 400 */
   background-color: var(--main-white);
   color: var(--main-text);
