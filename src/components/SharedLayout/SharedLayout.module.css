@@ -10,7 +10,7 @@
 /* For small devices */
 @media screen and (min-width: 375px) {
   .container {
-    max-width: 343px;
+    /* max-width: 360px; */
     padding: 0 1rem;
   }
 }
@@ -18,7 +18,7 @@
 /* For medium devices */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 768px;
     padding: 0 2rem;
   }
 }
@@ -26,6 +26,6 @@
 /* For large devices */
 @media screen and (min-width: 1440px) {
   .container {
-    max-width: 1376px;
+    max-width: 1440px;
   }
 }

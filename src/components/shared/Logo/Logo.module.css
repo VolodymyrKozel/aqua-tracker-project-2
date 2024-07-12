@@ -2,8 +2,8 @@
   width: fit-content;
   font-family: var(--font-family);
   font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
+  font-size: 18px;
+  line-height: 20px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   text-align: center;
@@ -12,4 +12,17 @@
 }
 .logo:hover {
   transform: translateY(5px);
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .logo {
+    font-size: 24px;
+  }
 }
