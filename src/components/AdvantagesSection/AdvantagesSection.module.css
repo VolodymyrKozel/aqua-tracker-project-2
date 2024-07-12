@@ -1,3 +1,7 @@
 .container {
   padding: 32px;
 }
+
+.picture {
+  width: 100%;
+}
