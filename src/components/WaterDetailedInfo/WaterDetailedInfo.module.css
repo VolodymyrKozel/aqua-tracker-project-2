@@ -14,5 +14,10 @@
         padding-left: 32px;
         padding-right: 32px;
     }
+}
 
+@media screen and (min-width: 1440px) {
+    .sectionWaterDetailInfo {
+        --h1-font-size: 5rem;
+    }
 }

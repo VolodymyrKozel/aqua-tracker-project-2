@@ -44,3 +44,19 @@
     }
 
 }
+
+@media screen and (min-width: 1440px) {
+    .userPanel {
+        padding-top: 0px 41px 49px 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0px;
+    }
+
+    .userPanelName {
+        font-size: 36px;
+        line-height: 1.05556;
+        letter-spacing: -0.01em;
+    }
+}
