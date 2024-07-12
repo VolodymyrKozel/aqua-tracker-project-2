@@ -1,15 +1,13 @@
 /*==================== VARIABLES CSS ====================*/
 :root {
   /*========== Colors ==========*/
-  --main-color: rgb(50, 63, 71);
-  --main-color-rgb: 50, 63, 71;
-  --main-text: rgb(47, 47, 47);
-  --main-text-rgb: 47, 47, 47;
+  --main-color: #323f47;
+  --main-color-rgb: rgb(50, 63, 71);
+  --main-text: #2f2f2f;
+  --main-text-rgb: rgb(47, 47, 47);
   --accent-color: rgb(157, 226, 161);
-  --accent-color-rgb: 157, 226, 161;
-  --accent-color-hover: #87d28d;
-  --background-white: rgb(240, 239, 244);
-  --background-rgb: 240, 239, 244;
+  --accent-color-hover: #66bb6a;
+  --background-white: #f0eff4;
   --main-white: #fff;
   --error-color: #ef5050;
 
@@ -26,6 +24,8 @@
   --h4-font-size-18: 1.125rem;
   --h5-font-size-16: 1rem;
   --normal-font-size-14: 0.875rem;
+
+  --normal-font-size: 1rem /* 16px */
 
   /*========== Font weight ==========*/
   --font-regular: 400;
@@ -108,8 +108,9 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: var(--normal-font-size);
+  font-family: var(--font-family); /* Poppins */
+  font-size: var(--normal-font-size-14); /* 16px */
+  font-weight: var(--font-regular); /* 400 */
   background-color: var(--main-white);
   color: var(--main-text);
   line-height: 1.5;

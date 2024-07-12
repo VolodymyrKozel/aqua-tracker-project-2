@@ -1,1 +1,18 @@
+.container {
+  border-radius: 30px;
+  width: 672px;
+  height: 736px;
+  background: var(--background-white);
+}
 
+.text {
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 76px;
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--main-color);
+}

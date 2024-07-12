@@ -1,14 +1,14 @@
+import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
+import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
 
 const AddWaterBtn = () => {
   return (
     <div>
-      <button type="button" className={css.btn}>
-        <svg className={css.icon} width={12} height={12}>
-          <use href="/src/assets/images/icons.svg#icon-glass-fill"></use>
-        </svg>
-        Add water
-      </button>
+      <Button variant=".outline" className={css.addWaterButton}>
+        <IconPlusWater className={css.iconPlusWater} />
+        <span className={css.addWaterSpan}>Add water</span>
+      </Button>
     </div>
   );
 };

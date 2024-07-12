@@ -1,20 +1,36 @@
-.btn {
-  border-radius: 30px;
-  padding: 14px 20px;
-  width: 140px;
-  height: 46px;
-  background-color: #323f47;
-  border: none;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.28;
-  letter-spacing: -0.01em;
-  text-align: center;
-  color: #fff;
+.addWaterButton {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
 }
 
-.icon {
-  fill: #fff;
-  stroke-width: 1px;
-  stroke: #fff;
+.iconPlusWater {
+  fill: var(--accent-color);
+  stroke: var(--main-color);
+  border: none;
+  stroke-width: 0;
+}
+
+.addWaterSpan {
+  font-family: var(--font-family);
+  font-weight: var(--font-bold);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-normal);
+  text-align: center;
+  color: var(--main-color);
+}
+
+@media screen and (min-width: 768px) {
+  .addWaterSpan {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #323f47;
+  }
 }
