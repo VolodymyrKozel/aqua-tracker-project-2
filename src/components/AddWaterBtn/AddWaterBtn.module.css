@@ -2,35 +2,44 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 0;
-  background-color: transparent;
+  padding: 14px 20px;
+  background-color: #323f47;
+  width: 140px;
+  height: 46px;
 }
 
 .iconPlusWater {
-  fill: var(--accent-color);
-  stroke: var(--main-color);
+  fill: transparent;
+  stroke: #fff;
   border: none;
   stroke-width: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .addWaterSpan {
-  font-family: var(--font-family);
-  font-weight: var(--font-bold);
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: var(--letter-spacing-normal);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
   text-align: center;
-  color: var(--main-color);
+  color: #fff;
 }
 
 @media screen and (min-width: 768px) {
+  .addWaterButton {
+    padding: 18px 30px;
+    width: 178px;
+    height: 60px;
+  }
+
+  .iconPlusWater {
+    width: 24px;
+    height: 24px;
+  }
+
   .addWaterSpan {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
     font-size: 16px;
     line-height: 1.5;
-    letter-spacing: -0.01em;
-    text-align: center;
-    color: #323f47;
   }
 }

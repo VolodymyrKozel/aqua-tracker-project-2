@@ -4,12 +4,12 @@
   min-width: 320px;
   max-width: 767px;
   min-height: 415px;
-  padding: 50px 40px 30px 41px;
+  padding: 50px 40px 30px;
   margin-bottom: 16px;
 }
 
 .container {
-  max-width: 262px;
+  width: 262px;
   height: 335px;
   background-image: url('/src/assets/images/transparent_bottle_for_water.png');
   background-position: center;
@@ -19,7 +19,8 @@
 
 @media screen and (min-width: 768px) {
   .WaterMainInfo {
-    width: 704px;
+    min-width: 768px;
+    max-width: 1439px;
     height: 578px;
     padding: 69px 165px 32px;
   }
@@ -32,7 +33,7 @@
 
 @media screen and (min-width: 1440px) {
   .WaterMainInfo {
-    width: 672px;
+    min-width: 672px;
     height: 736px;
     margin-right: 32px;
   }
