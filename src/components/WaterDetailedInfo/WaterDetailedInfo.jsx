@@ -5,7 +5,6 @@ import css from './WaterDetailedInfo.module.css';
 const WaterDetailedInfo = () => {
   return (
     <section className={css.sectionWaterDetailInfo}>
-      WaterDetailedInfo
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
         <DailyInfo />
