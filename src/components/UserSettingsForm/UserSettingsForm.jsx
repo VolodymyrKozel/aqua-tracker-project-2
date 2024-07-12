@@ -264,7 +264,7 @@ export default function UserSettingsForm() {
                   className={css.iconExclamation}
                   width={18}
                   height={18}
-                  id="icon-exclamation-mark"
+                  id="icon-clamation"
                 />
                 <p>Active time in hours</p>
               </div>

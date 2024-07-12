@@ -9,7 +9,7 @@
   text-align: center;
   margin: 0 auto;
   height: 780px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   background: var(--main-white);
   color: var(--main-color);
 }
