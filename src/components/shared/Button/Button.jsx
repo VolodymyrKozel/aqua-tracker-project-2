@@ -6,7 +6,7 @@ function Button({
   onClick,
   btnType = 'button',
   variant = 'primary',
-  className = '',
+  className,
   ...props
 }) {
   return (
