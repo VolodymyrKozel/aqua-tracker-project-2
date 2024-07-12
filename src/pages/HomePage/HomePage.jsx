@@ -7,8 +7,10 @@ const HomePage = () => {
   return (
     <div className={css.container}>
       <Logo />
-      <WelcomeSection />
-      <AdvantagesSection />
+      <div className={css.wrapper}>
+        <WelcomeSection />
+        <AdvantagesSection />
+      </div>
     </div>
   );
 };
