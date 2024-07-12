@@ -1,0 +1,8 @@
+.chooseDateTitle {
+    font-family: var(--font-family);
+    font-weight: var(--font-bold);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: var(--letter-spacing-normal);
+    color: var(--main-color);
+}

@@ -1,7 +1,7 @@
-import React from 'react';
+import css from './ChooseDate.module.css';
 
 const ChooseDate = () => {
-  return <div>ChooseDate</div>;
+  return <h3 className={css.chooseDateTitle}>Today</h3>;
 };
 
 export default ChooseDate;
