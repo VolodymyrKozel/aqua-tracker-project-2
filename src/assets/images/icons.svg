@@ -80,6 +80,10 @@
     <symbol id="icon-ellipse" viewBox="0 0 32 32">
       <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"/>
     </symbol>
+
+    <symbol id="icon-only-plus" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M16 6.667v18.667M6.667 16h18.667"/>
+    </symbol>
     
   </defs>
 </svg>
