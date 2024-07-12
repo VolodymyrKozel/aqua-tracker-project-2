@@ -1,0 +1,62 @@
+.userPanel {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.userPanelName {
+    font-family: var(--second-font);
+    font-weight: var(--font-regular);
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-normal);
+    color: var(--main-color);
+}
+
+.userPanelSpan {
+    font-weight: var(--font-bold);
+    font-size: 32px;
+}
+
+@media screen and (min-width: 768px) {
+    .userPanel {
+        padding: 32px 62px 42px 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0px;
+    }
+
+    .userPanelName {
+        font-family: var(--second-font);
+        font-weight: var(--font-regular);
+        font-size: 36px;
+        line-height: 1.05556;;
+        letter-spacing: var(--letter-spacing-normal);
+        color: var(--main-color);
+    }
+
+    .userPanelSpan {
+        font-size: 36px;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .userPanel {
+        padding-top: 0px 41px 49px 0px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0px;
+    }
+
+    .userPanelName {
+        font-size: 36px;
+        line-height: 1.05556;
+        letter-spacing: -0.01em;
+    }
+}
