@@ -31,7 +31,7 @@
   margin-bottom: 32px;
   color: var(--main-text-rgb);
 
-  line-height: 2em;
+  line-height: 2;
 }
 
 .loginForm {
@@ -42,8 +42,10 @@
 }
 
 .fieldLabel {
+  color: var(--main-text-rgb);
+  font-weight: 700;
   font-size: 14px;
-  line-height: 1.286em;
+  line-height: 1.286;
   margin-bottom: 8px;
   margin-top: 8px;
 }
@@ -68,19 +70,20 @@
 .icon_eye,
 .eyeIconOff {
   fill: none;
-  stroke: var(--second-text);
+  stroke: rgb(47, 47, 47);
   position: absolute;
   top: 16px;
   right: 16px;
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .input::placeholder {
   text-align: left;
   letter-spacing: -0.01em;
   font-size: 14px;
-  line-height: 1.286em;
+  line-height: 1.286;
   color: #2f2f2f99;
 }
 
@@ -93,7 +96,7 @@
 
 .button {
   font-size: 16px;
-  line-height: 1.5em;
+  line-height: 1.5;
   height: 60px;
   border-radius: 30px;
   color: var(--main-text-rgb);
@@ -115,17 +118,18 @@
 }
 
 .afterDescription {
-  line-height: 1.286em;
+  line-height: 1.286;
   color: #2f2f2f80;
+  text-align: center;
 }
 
-.link {
+ .link  {
   font-size: 14px;
-  line-height: 1.286em;
+  line-height: 1.286;
   text-decoration: underline;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--main-text-rgb);
+  color: rgb(47, 47, 47);
 }
 
 .errors {
@@ -160,14 +164,14 @@
 
   .title {
     font-size: 36px;
-    line-height: 2.375em;
+    line-height: 2.375;
   }
   .form {
     margin-bottom: 20px;
   }
   .fieldLabel {
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.5;
   }
 
   .input::placeholder {
@@ -177,16 +181,16 @@
 
   .button {
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.5;
   }
   .afterDescription {
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.5;
   }
 
   .link {
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.5;
   }
 }
 

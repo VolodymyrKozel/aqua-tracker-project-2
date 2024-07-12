@@ -1,15 +1,18 @@
 import css from './SignInForm.module.css';
-import Logo from '../shared/Logo/Logo';
+import Logo from '../Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
+import { useState } from 'react';
 import { LoginUserSchema } from '../../validation/auth';
 
+
 const SignInForm = () => {
-  const dispatch = useDispatch();
+   const dispatch = useDispatch(); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -18,7 +21,8 @@ const SignInForm = () => {
     reset,
   } = useForm({
     resolver: yupResolver(LoginUserSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onSubmit',
     defaultValues: {
       email: '',
       password: '',
@@ -27,7 +31,7 @@ const SignInForm = () => {
 
   const onSubmit = data => {
     console.log('Form Data:', data);
-    dispatch(logIn(data));
+     dispatch(logIn(data)); 
     reset();
   };
 
@@ -54,17 +58,30 @@ const SignInForm = () => {
             )}
           </div>
           <label className={css.fieldLabel}>Password</label>
-
           <div className={css.inputField}>
             <input
               className={clsx(css.input, { [css.error]: errors.password })}
-              type="password"
+              type={showPassword ? "text" : "password"}
               {...register('password')}
               placeholder="Enter your password"
             />
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>
             )}
+            <svg
+              className={css.icon_eye}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <use
+                width={20}
+                height={20}
+                xlinkHref={
+                  showPassword
+                    ? '../../../public/icons.svg#icon-eye'
+                    : '../../../public/icons.svg#icon-eye-off'
+                }
+              ></use>
+            </svg>
           </div>
           <button className={css.button} type="submit">
             Sign In

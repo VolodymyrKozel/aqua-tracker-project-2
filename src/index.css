@@ -6,10 +6,8 @@
   --main-text: #2f2f2f;
   --main-text-rgb: rgb(47, 47, 47);
   --accent-color: rgb(157, 226, 161);
-  --accent-color-rgb: rgb(157, 226, 161);
-  --accent-color-hover: #87d28d;
-  --background-white: rgb(240, 239, 244);
-  --background-rgb: rgb(240, 239, 244);
+  --accent-color-hover: #66bb6a;
+  --background-white: #f0eff4;
   --main-white: #fff;
   --error-color: #ef5050;
 
