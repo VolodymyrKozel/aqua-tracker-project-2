@@ -76,6 +76,14 @@
     <symbol id="icon-ellipse" viewBox="0 0 32 32">
       <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"/>
     </symbol>
+
+    <symbol id="icon-ChevronUp" viewBox="0 0 53 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="8" d="M5.333 26.667l21.333-21.333 21.333 21.333"></path>
+    </symbol>
+
+    <symbol id="icon-ChevronDown" viewBox="0 0 53 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="8" d="M5.333 5.333l21.333 21.333 21.333-21.333"></path>
+    </symbol>
     
   </defs>
 </svg>

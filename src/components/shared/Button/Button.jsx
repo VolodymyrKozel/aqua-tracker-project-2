@@ -6,12 +6,13 @@ function Button({
   onClick,
   btnType = 'button',
   variant = 'primary',
+  className,
   ...props
 }) {
   return (
     <button
       type={btnType}
-      className={clsx(css.btn, css[variant])}
+      className={clsx(css.btn, css[variant], className)}
       onClick={onClick}
       disabled={props.disabled}
     >
