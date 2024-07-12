@@ -1,9 +1,9 @@
 /*==================== VARIABLES CSS ====================*/
 :root {
   /*========== Colors ==========*/
-  --main-color: rgb(50, 63, 71);
+  --main-color: #323f47;
   --main-color-rgb: 50, 63, 71;
-  --main-text: rgb(47, 47, 47);
+  --main-text: #2f2f2f;
   --main-text-rgb: 47, 47, 47;
   --accent-color: rgb(157, 226, 161);
   --accent-color-rgb: 157, 226, 161;

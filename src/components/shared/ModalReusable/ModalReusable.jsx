@@ -10,7 +10,6 @@ export default function ModalReusable({
   ...props
 }) {
   //можна передати пропси за допомогою деструктуризації
-  console.log(props);
 
   return (
     <Modal
@@ -18,17 +17,15 @@ export default function ModalReusable({
       closeTimeoutMS={400}
       onRequestClose={closeModal}
       className={{
-        base: css['modal'],
+        base: css['modal'] + ' ' + props.className,
         afterOpen: css['afterOpen'],
         beforeClose: css['beforeClose'],
       }}
-      /* overlayClassName={css['overlay']} */
-      contentLabel="delete contact"
-      ariaHideApp={false}
+      overlayClassName={css['overlay']}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      {children}
+      <div className={css.content}>{children}</div>
     </Modal>
   );
 }

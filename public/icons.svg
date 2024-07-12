@@ -76,6 +76,11 @@
     <symbol id="icon-ellipse" viewBox="0 0 32 32">
       <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"/>
     </symbol>
+
+    <symbol id="icon-eye" viewBox="0 0 32 32">
+<path stroke-width="2.88" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M1.333 16c0 0 5.333-10.667 14.667-10.667s14.667 10.667 14.667 10.667c0 0-5.333 10.667-14.667 10.667s-14.667-10.667-14.667-10.667z"></path>
+<path stroke-width="2.88" stroke-miterlimit="4" stroke-linecap="round" stroke-linejoin="round" d="M16 20c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"></path>
+</symbol>
     
   </defs>
 </svg>

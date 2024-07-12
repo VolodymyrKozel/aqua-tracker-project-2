@@ -1,27 +1,24 @@
 import css from './SignInForm.module.css';
-import Logo from '../Logo/Logo';
+import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { login } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
 import { LoginUserSchema } from '../../validation/auth';
 
 const SignInForm = () => {
-  /*   const dispatch = useDispatch(); */
-
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-   clearErrors, 
     reset,
   } = useForm({
     resolver: yupResolver(LoginUserSchema),
-    mode: 'onBlur',
-    reValidateMode: 'onSubmit',
+    mode: 'onChange',
     defaultValues: {
       email: '',
       password: '',
@@ -30,12 +27,8 @@ const SignInForm = () => {
 
   const onSubmit = data => {
     console.log('Form Data:', data);
-    /*  dispatch(login(data)); */
+    dispatch(logIn(data));
     reset();
-  };
-
-     const handFocus = fieldName => {
-    clearErrors(fieldName);
   };
 
   return (
@@ -55,20 +48,19 @@ const SignInForm = () => {
               {...register('email')}
               placeholder="Enter your email"
               autoComplete="on"
-              onFocus={() => handFocus('email')}
             />
             {errors.email && (
               <span className={css.errors}>{errors.email.message}</span>
             )}
           </div>
           <label className={css.fieldLabel}>Password</label>
+
           <div className={css.inputField}>
             <input
               className={clsx(css.input, { [css.error]: errors.password })}
               type="password"
               {...register('password')}
               placeholder="Enter your password"
-              onFocus={() => handFocus('password')}
             />
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>

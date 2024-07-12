@@ -1,33 +1,6 @@
-// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-
-// const authSlice = createSlice({
-//   name: 'auth',
-//   initialState: {
-//     user: {
-//       id: null,
-//       name: null,
-//       email: null,
-//       gender: null,
-//       weight: 0,
-//       activeParticipationTime: 0,
-//       waterGoal: 1.8,
-//       avatar: null,
-//     },
-//     token: null,
-//     isLoggedIn: false,
-//     isRefreshing: false,
-//     error: null,
-//     isLoading: false,
-//   },
-//   extraReducers: builder => {
-//     builder;
-//   },
-// });
-
-// export const authReducer = authSlice.reducer;
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  register,
+  signUp,
   logIn,
   logOut,
   refreshUser,
@@ -53,16 +26,16 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(register.pending, state => {
+      .addCase(signUp.pending, state => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, { payload }) => {
+      .addCase(signUp.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = payload.data.user;
         state.token = payload.accessToken;
         state.isLoggedIn = true;
       })
-      .addCase(register.rejected, state => {
+      .addCase(signUp.rejected, state => {
         state.isLoading = false;
       })
 
@@ -109,11 +82,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-
-        const updatedFields = payload.user;
-        Object.keys(updatedFields).forEach(key => {
-          state.user[key] = updatedFields[key];
-        });
+        state.user = { ...state.user, ...payload.user };
       })
       .addCase(updateUserInfo.rejected, state => {
         state.isLoading = false;
