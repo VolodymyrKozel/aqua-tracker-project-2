@@ -1,22 +1,45 @@
-<<<<<<< HEAD
-.wrapper {
+.WaterMainInfo {
   background-color: #9be1a0;
   border-radius: 30px;
-  width: 343px;
-  height: 415px;
+  min-width: 320px;
+  max-width: 767px;
+  min-height: 415px;
   padding: 50px 40px 30px 41px;
+  margin-bottom: 16px;
 }
 
 .container {
-  width: 262px;
+  max-width: 262px;
   height: 335px;
   background-image: url('/src/assets/images/transparent_bottle_for_water.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
-=======
-.WaterMainInfo {
-    display: flex;
+
+@media screen and (min-width: 768px) {
+  .WaterMainInfo {
+    width: 704px;
+    height: 578px;
+    padding: 69px 165px 32px;
+  }
+
+  .container {
+    width: 374px;
+    height: 477px;
+  }
 }
->>>>>>> main
+
+@media screen and (min-width: 1440px) {
+  .WaterMainInfo {
+    width: 672px;
+    height: 736px;
+    margin-right: 32px;
+  }
+
+  .container {
+    width: 374px;
+    height: 477px;
+    padding: 92px 100px 40px;
+  }
+}
