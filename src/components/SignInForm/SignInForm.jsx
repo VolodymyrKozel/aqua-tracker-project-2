@@ -1,5 +1,5 @@
 import css from './SignInForm.module.css';
-import Logo from '../Logo/Logo';
+import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,8 @@ import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { LoginUserSchema } from '../../validation/auth';
+import Icon from '../shared/Icon/Icon'
+import ErrorMessage from '../shared/errorMessage/ErrorMessage';
 
 
 const SignInForm = () => {
@@ -54,7 +56,7 @@ const SignInForm = () => {
               autoComplete="on"
             />
             {errors.email && (
-              <span className={css.errors}>{errors.email.message}</span>
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
           </div>
           <label className={css.fieldLabel}>Password</label>
@@ -65,23 +67,16 @@ const SignInForm = () => {
               {...register('password')}
               placeholder="Enter your password"
             />
-            {errors.password && (
-              <span className={css.errors}>{errors.password.message}</span>
+           {errors.password && (
+              <ErrorMessage>{errors.password.message}</ErrorMessage>
             )}
-            <svg
+            <Icon
               className={css.icon_eye}
               onClick={() => setShowPassword(!showPassword)}
-            >
-              <use
-                width={20}
-                height={20}
-                xlinkHref={
-                  showPassword
-                    ? '../../../public/icons.svg#icon-eye'
-                    : '../../../public/icons.svg#icon-eye-off'
-                }
-              ></use>
-            </svg>
+              width={20}
+              height={20}
+              id={showPassword ? 'icon-eye' : 'icon-eye-off'}
+            />
           </div>
           <button className={css.button} type="submit">
             Sign In
