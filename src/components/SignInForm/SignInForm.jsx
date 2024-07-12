@@ -2,16 +2,16 @@ import css from './SignInForm.module.css';
 import Logo from '../Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import { login } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { LoginUserSchema } from '../../validation/auth';
 
 
 const SignInForm = () => {
-  /*   const dispatch = useDispatch(); */
+   const dispatch = useDispatch(); 
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -31,7 +31,7 @@ const SignInForm = () => {
 
   const onSubmit = data => {
     console.log('Form Data:', data);
-    /*  dispatch(login(data)); */
+     dispatch(logIn(data)); 
     reset();
   };
 
