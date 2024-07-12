@@ -1,20 +1,29 @@
+
 import css from './SignInForm.module.css';
 import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useId } from 'react';
 import { LoginUserSchema } from '../../validation/auth';
-import Icon from '../shared/Icon/Icon'
+import Label from '../shared/Label/Label';
+import Input from '../shared/Input/Input';
+import Icon from '../shared/Icon/Icon';
 import ErrorMessage from '../shared/errorMessage/ErrorMessage';
-
+import { useToggle } from '../../hooks/useToggle';
+import Button from '../shared/Button/Button';
+import Loader from '../shared/Loader/Loader';
+import { selectIsLoading } from '../../redux/auth/selectors';
 
 const SignInForm = () => {
-   const dispatch = useDispatch(); 
-  const [showPassword, setShowPassword] = useState(false);
+  const emailId = useId();
+  const passwordId = useId();
+  const { isOpen: showPassword, toggle: togglePassword } = useToggle();
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const {
     register,
@@ -32,25 +41,22 @@ const SignInForm = () => {
   });
 
   const onSubmit = data => {
-    console.log('Form Data:', data);
-     dispatch(logIn(data)); 
+    dispatch(logIn(data));
     reset();
   };
 
   return (
-    <div className={css.mainLoginContainer}>
-      <Logo />
-      <div className={css.loginFormContainer}>
-        <h1 className={css.title}>Sign in</h1>
-        <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
-          <label className={css.fieldLabel} htmlFor="email">
-            Email
-          </label>
-          <div className={css.inputField}>
-            <input
-              className={clsx(css.input, { [css.error]: errors.email })}
+    <div className={css.container}>
+      <Logo className={css.logo} />
+      <div className={css.flexContainer}>
+        <div className={css.formContainer}>
+          <h1 className={css.title}>Sign in</h1>
+          <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+            <Label htmlFor={emailId}>Email</Label>
+            <Input
+              className={clsx(css.input, errors.email && css.error)}
               type="email"
-              id="email"
+              id={emailId}
               {...register('email')}
               placeholder="Enter your email"
               autoComplete="on"
@@ -58,40 +64,59 @@ const SignInForm = () => {
             {errors.email && (
               <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
-          </div>
-          <label className={css.fieldLabel}>Password</label>
-          <div className={css.inputField}>
-            <input
-              className={clsx(css.input, { [css.error]: errors.password })}
-              type={showPassword ? "text" : "password"}
-              {...register('password')}
-              placeholder="Enter your password"
-            />
-           {errors.password && (
+            <Label htmlFor={passwordId}>Password</Label>
+            <div className={css.showPassword}>
+              <Input
+                className={clsx(css.input, errors.password && css.error)}
+                type={showPassword ? 'text' : 'password'}
+                id={passwordId}
+                {...register('password')}
+                placeholder="Enter your password"
+                autoComplete="off"
+              />
+              <span
+                title={
+                  showPassword
+                    ? 'click to hide password'
+                    : 'click to show password'
+                }
+                aria-label={
+                  showPassword
+                    ? 'click to hide password'
+                    : 'click to show password'
+                }
+              >
+                <Icon
+                  onClick={togglePassword}
+                  className={css.icon}
+                  id={showPassword ? 'icon-eye' : 'icon-eye-off'}
+                />
+              </span>
+            </div>
+            {errors.password && (
               <ErrorMessage>{errors.password.message}</ErrorMessage>
             )}
-            <Icon
-              className={css.icon_eye}
-              onClick={() => setShowPassword(!showPassword)}
-              width={20}
-              height={20}
-              id={showPassword ? 'icon-eye' : 'icon-eye-off'}
-            />
-          </div>
-          <button className={css.button} type="submit">
-            Sign In
-          </button>
-        </form>
-        <p className={css.afterDescription}>
-          Don’t have an account?
-          <NavLink className={css.link} to={'/signup'}>
-            {' '}
-            Sign Up
-          </NavLink>
-        </p>
+            <Button
+              className={css.button}
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Sign In
+              {isLoading && <Loader width={24} height={24} color={'#2f2f2f'} />}
+            </Button>
+          </form>
+          <p className={css.afterDescription}>
+            Don't have an account?
+            <NavLink className={css.link} to={'/signup'}>
+              {' '}
+              Sign Up
+            </NavLink>
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
 export default SignInForm;
+
