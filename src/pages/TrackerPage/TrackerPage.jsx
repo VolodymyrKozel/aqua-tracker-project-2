@@ -4,7 +4,6 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo.jsx';
 const TrackerPage = () => {
   return (
     <div>
-      TrackerPage
       <WaterMainInfo />
       <WaterDetailedInfo />
     </div>

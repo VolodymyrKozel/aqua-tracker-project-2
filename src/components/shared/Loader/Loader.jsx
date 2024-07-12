@@ -1,13 +1,14 @@
+import clsx from 'clsx';
 import css from './Loader.module.css';
 import { Puff } from 'react-loader-spinner';
-function Loader() {
+function Loader({ variant, className, height, width, color = '#fff' }) {
   return (
-    <div className={css.container}>
+    <div className={clsx(css.container, css[variant], className)}>
       <Puff
         visible={true}
-        height="80"
-        width="80"
-        color="#4fa94d"
+        height={height}
+        width={width}
+        color={color}
         ariaLabel="puff-loading"
         wrapperStyle={{}}
         wrapperClass=""

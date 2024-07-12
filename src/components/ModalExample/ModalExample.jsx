@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ModalReusable from '../Modal/ModalReusable';
+import ModalReusable from '../shared/ModalReusable/ModalReusable';
 import Input from '../shared/Input/Input';
 import Button from '../shared/Button/Button';
 import ErrorMessage from '../shared/errorMessage/ErrorMessage';
@@ -10,8 +10,10 @@ import Label from '../shared/Label/Label';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
 import ModalWrap from '../Modal/Modal';
+import useModal from '../../hooks/useOpenClose';
 
 const ModalExample = () => {
+  const { isOpen, openModal: open, closeModal: close } = useModal();
   /* modal */
   const [showModal, setShowModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -49,10 +51,6 @@ const ModalExample = () => {
     /*  dispatch(login(data)); */
     reset();
   };
-
-  const handFocus = fieldName => {
-    clearErrors(fieldName);
-  };
   /* form */
   return (
     <>
@@ -61,10 +59,18 @@ const ModalExample = () => {
       <Button variant="primary" onClick={() => setShowModal(!showModal)}>
         open modal
       </Button>
+      <Button variant="primary" onClick={open}>
+        Modal
+      </Button>
       <ModalWrap isOpen={showModal} handleClose={setShowModal}>
         {/* Тут має бути ваш компонент */}
         <UserSettingsForm />
       </ModalWrap>
+
+      <ModalReusable modalIsOpen={isOpen} openModal={open} closeModal={close}>
+        <h1>Modal</h1>
+      </ModalReusable>
+
       <ModalReusable
         modalIsOpen={modalIsOpen}
         openModal={openModal}
@@ -75,15 +81,9 @@ const ModalExample = () => {
         {/* Кнопка для закриття модалки */}
         <Button variant="primary" onClick={closeModal}>
           close
-        </Button>
+        </Button>{' '}
       </ModalReusable>
       <div>
-        <h2> Компонент ModalReusable</h2>
-        <p>
-          ModalReusable - це компонент модального вікна, створений за допомогою
-          бібліотеки react-modal з можливістю застосування власних стилів через
-          CSS модулі.
-        </p>
         <Input className="input" type="text" placeholder="Enter your name" />
         <ErrorMessage>{'some error'}</ErrorMessage>
 

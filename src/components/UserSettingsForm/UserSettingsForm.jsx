@@ -12,7 +12,7 @@ import Icon from '../shared/Icon/Icon';
 import { userSettingsSchema } from '../../validation/form';
 
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../shared/Loader/Loader';
 
 export default function UserSettingsForm() {
   const dispatch = useDispatch();
