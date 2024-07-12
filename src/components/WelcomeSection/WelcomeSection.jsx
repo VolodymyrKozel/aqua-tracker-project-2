@@ -1,6 +1,7 @@
 import Button from '../shared/Button/Button';
 import css from './WelcomeSection.module.css';
 import { useNavigate } from 'react-router';
+import { WaterForm } from '../../components/WaterForm/WaterForm.jsx';
 function WelcomeSection() {
   const navigate = useNavigate();
   return (
@@ -16,6 +17,7 @@ function WelcomeSection() {
       <Button variant="secondary" onClick={() => navigate('/tracker')}>
         Tracker
       </Button>
+      <WaterForm />
     </section>
   );
 }
