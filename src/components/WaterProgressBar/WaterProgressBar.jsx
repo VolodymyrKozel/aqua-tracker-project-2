@@ -1,7 +1,7 @@
-import React from 'react';
+import css from './WaterProgressBar.module.css';
 
 const WaterProgressBar = () => {
-  return <div>WaterProgressBar</div>;
+  return <div></div>;
 };
 
 export default WaterProgressBar;

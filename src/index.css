@@ -2,14 +2,14 @@
 :root {
   /*========== Colors ==========*/
   --main-color: #323f47;
-  --main-color-rgb: 50, 63, 71;
+  --main-color-rgb: rgb(50, 63, 71);
   --main-text: #2f2f2f;
-  --main-text-rgb: 47, 47, 47;
+  --main-text-rgb: rgb(47, 47, 47);
   --accent-color: rgb(157, 226, 161);
-  --accent-color-rgb: 157, 226, 161;
+  --accent-color-rgb: rgb(157, 226, 161);
   --accent-color-hover: #87d28d;
   --background-white: rgb(240, 239, 244);
-  --background-rgb: 240, 239, 244;
+  --background-rgb: rgb(240, 239, 244);
   --main-white: #fff;
   --error-color: #ef5050;
 
