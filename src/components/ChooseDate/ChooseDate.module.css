@@ -6,3 +6,14 @@
     letter-spacing: var(--letter-spacing-normal);
     color: var(--main-color);
 }
+
+@media screen and (min-width: 768px) {
+    .chooseDateTitle {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1.14286;
+        letter-spacing: -0.01em;
+        color: #323f47;
+    }
+}

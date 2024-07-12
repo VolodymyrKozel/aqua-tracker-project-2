@@ -12,10 +12,10 @@ const WaterItem = () => {
         <p className={css.waterItemData}>data</p>
       </div>
       <div className={css.waterItemBtnWrap}>
-        <button className={css.waterItemBtn}>
+        <button type="button" className={css.waterItemBtn}>
           <IconEdit className={css.waterIconBtn} />
         </button>
-        <button className={css.waterItemBtn}>
+        <button type="button" className={css.waterItemBtn}>
           <IconTrash className={css.waterIconBtn} />
         </button>
       </div>

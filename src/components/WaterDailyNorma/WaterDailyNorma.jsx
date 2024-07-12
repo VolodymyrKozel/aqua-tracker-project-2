@@ -1,7 +1,5 @@
-import React from 'react';
-
 const WaterDailyNorma = () => {
-  return <div>WaterDailyNorma</div>;
+  return <div></div>;
 };
 
 export default WaterDailyNorma;
