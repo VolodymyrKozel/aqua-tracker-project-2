@@ -27,6 +27,8 @@
   --h5-font-size-16: 1rem;
   --normal-font-size-14: 0.875rem;
 
+  --normal-font-size: 1rem /* 16px */
+
   /*========== Font weight ==========*/
   --font-regular: 400;
   --font-bold: 700;
@@ -108,11 +110,12 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: var(--normal-font-size);
+  font-family: var(--font-family); /* Poppins */
+  font-size: var(--normal-font-size); /* 16px */
+  font-weight: var(--font-regular); /* 400 */
   background-color: var(--main-white);
   color: var(--main-text);
-  line-height: 1.5;
+  line-height: 24px;
 }
 
 h1,
