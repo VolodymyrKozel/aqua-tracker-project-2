@@ -1,7 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
+import { handleError } from '../../utils/handleError';
 
-axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/';
+/* axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/'; */
+
+const URL_API = 'https://nodejs-hw-mongodb-1-vfnl.onrender.com/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -11,26 +15,21 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const register = createAsyncThunk(
+export const signUp = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('auth/register', credentials);
-      const response = await axios.post('auth/login', {
+      const { data } = await axios.post(`${URL_API}auth/register`, credentials);
+      const response = await axios.post(`${URL_API}auth/login`, {
         email: credentials.email,
         password: credentials.password,
       });
       setAuthHeader(response.data.accessToken);
+      toast.success('User created successfully');
       return { data, accessToken: response.data.accessToken };
     } catch (error) {
-      console.log(error);
-      if (error.response.status == '409') {
-        return thunkAPI.rejectWithValue('User with this email already exist');
-      }
-      if (error.response.status == '400') {
-        return thunkAPI.rejectWithValue('Invalid input');
-      }
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -39,27 +38,24 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('auth/login', credentials);
+      const { data } = await axios.post(`${URL_API}auth/login`, credentials);
       setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
-      if (error.response.status == '401') {
-        return thunkAPI.rejectWithValue('Email or password is wrong');
-      }
-      if (error.response.status == '400') {
-        return thunkAPI.rejectWithValue('Invalid input');
-      }
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('auth/logout');
+    await axios.post(`${URL_API}auth/logout`);
     clearAuthHeader();
+    toast.success('Logout success');
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    const errorMessage = handleError(error);
+    return thunkAPI.rejectWithValue(errorMessage);
   }
 });
 
@@ -70,6 +66,7 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
+      toast.error('You are not logged in');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
@@ -78,7 +75,8 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -92,9 +90,11 @@ export const updateUserInfo = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+      toast.success('User updated successfully');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );

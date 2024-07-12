@@ -16,13 +16,11 @@
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 216px;
-
 }
 
 .loginFormContainer {
   max-width: 100%;
   position: relative;
-
 }
 
 .title {
@@ -34,8 +32,6 @@
   color: var(--main-text-rgb);
 
   line-height: 2em;
-
-
 }
 
 .loginForm {
@@ -46,12 +42,10 @@
 }
 
 .fieldLabel {
-
   font-size: 14px;
   line-height: 1.286em;
   margin-bottom: 8px;
-    margin-top: 8px;
-
+  margin-top: 8px;
 }
 
 .inputField {
@@ -69,7 +63,6 @@
   outline: none;
   opacity: 0px;
   background-color: var(--background-white);
-
 }
 
 .icon_eye,
@@ -82,7 +75,6 @@
   width: 20px;
   height: 20px;
 }
-
 
 .input::placeholder {
   text-align: left;
@@ -123,21 +115,17 @@
 }
 
 .afterDescription {
-
   line-height: 1.286em;
   color: #2f2f2f80;
 }
 
 .link {
-
   font-size: 14px;
   line-height: 1.286em;
   text-decoration: underline;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--main-text-rgb);
-
-  
 }
 
 .errors {
@@ -151,14 +139,12 @@
   bottom: -25px;
   left: 0;
   width: 100%;
-} 
-
+}
 
 .error {
   border-color: #ef5050;
   color: #ef5050;
 }
-
 
 @media screen and (min-width: 768px) {
   .mainLoginContainer {

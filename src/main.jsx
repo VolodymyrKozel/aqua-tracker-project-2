@@ -6,7 +6,7 @@ import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import Loader from './components/Loader/Loader';
+import Loader from './components/shared/Loader/Loader';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,4 +1,4 @@
-import ModalReusable from '../Modal/ModalReusable';
+import ModalReusable from '../shared/ModalReusable/ModalReusable';
 import css from './AdvantagesSection.module.css';
 function AdvantagesSection() {
   return (

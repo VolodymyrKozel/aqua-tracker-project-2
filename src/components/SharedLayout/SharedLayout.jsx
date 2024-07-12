@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loader from '../Loader/Loader.jsx';
+import Loader from '../shared/Loader/Loader.jsx';
 import css from './SharedLayout.module.css';
 import { Outlet } from 'react-router-dom';
 

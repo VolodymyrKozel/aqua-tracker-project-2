@@ -1,5 +1,5 @@
 import css from './HomePage.module.css';
-import Logo from '../../components/Logo/Logo';
+import Logo from '../../components/shared/Logo/Logo';
 import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 
