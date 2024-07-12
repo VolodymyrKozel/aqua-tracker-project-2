@@ -9,4 +9,8 @@
 .container {
   width: 262px;
   height: 335px;
+  background-image: url('/src/assets/images/transparent_bottle_for_water.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
