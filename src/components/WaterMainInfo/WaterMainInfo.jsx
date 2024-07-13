@@ -9,7 +9,14 @@ const WaterMainInfo = () => {
       <div className={css.container}>
         <WaterDailyNorma />
         <WaterProgressBar />
-        <AddWaterBtn />
+        <AddWaterBtn
+          buttonClassName={css.waterMainInfoButton}
+          iconClassName={css.waterMainInfoIcon}
+          spanClassName={css.waterMainInfoSpan}
+          iconId="icon-only-plus"
+          iconWidth={16}
+          iconHeight={16}
+        />
       </div>
     </div>
   );

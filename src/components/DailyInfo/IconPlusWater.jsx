@@ -1,12 +1,12 @@
 import Icon from '../shared/Icon/Icon.jsx';
 
-export const IconPlusWater = ({ className }) => {
+export const IconPlusWater = ({ className, iconId, width, height }) => {
   return (
     <Icon
       className={`${className}`}
-      id="icon-plus-in-circle"
-      width="30"
-      height="30"
+      id={iconId}
+      width={width}
+      height={height}
     />
   );
 };
