@@ -23,7 +23,7 @@ const UserBar = () => {
         />
         <IconChevronDown className={css.iconChevronDown} />
       </Button>
-      <UserBarPopover />
+      {/* <UserBarPopover /> */}
 
       {/* {isPopoverOpen ? (
           <IconChevronUp className={css.iconChevronDown} />
