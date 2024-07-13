@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-/* axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/'; */
+axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/';
 
 const URL_API = 'https://nodejs-hw-mongodb-1-vfnl.onrender.com/';
 
