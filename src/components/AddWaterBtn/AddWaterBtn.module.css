@@ -6,7 +6,8 @@
   padding: 0;
   background-color: transparent;
   height: 46px;
-  padding: 14px 20px;
+  padding: 14px 0px;
+  justify-content: end;
 }
 
 .iconPlusWater {
@@ -31,7 +32,7 @@ font-family: "Poppins", sans-serif;
 
 @media screen and (min-width: 768px) {
   .addWaterButton {
-    padding: 18px 30px;
+    padding: 18px 0px;
     width: 178px;
     height: 60px;
   }
