@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+/* import { createAsyncThunk } from '@reduxjs/toolkit';
 import { requestWaterMonthly } from '../../services/waterApi';
 
 export const fetchMonthlyWater = createAsyncThunk(
@@ -11,4 +11,4 @@ export const fetchMonthlyWater = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-);
+); */
