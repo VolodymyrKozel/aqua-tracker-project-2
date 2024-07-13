@@ -57,6 +57,7 @@
 
 .icon {
     stroke: #2F2F2F;
+    fill: transparent;
     width: 20px;
     height: 20px;
     transition: 0.3s ease-in-out;
