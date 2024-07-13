@@ -72,9 +72,9 @@ function Calendar({ month, currentDate }) {
       water: 700,
     },
   ];
-  useEffect(() => {
-    /* dispatch(getMonthlyWater(month)); */
-  }, [dispatch, month]);
+  /*   useEffect(() => {
+   dispatch(getMonthlyWater(month));
+  }, [dispatch, month]); */
 
   const monthStart = startOfMonth(month);
   const monthEnd = endOfMonth(monthStart);
