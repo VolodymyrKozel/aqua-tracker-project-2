@@ -44,8 +44,7 @@ export const App = () => {
           <Route
             path="/tracker"
             element={
-              <TrackerPage />
-              /*   <PrivateRoute redirectTo="/signin" component={<TrackerPage />} /> */
+              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
             }
           />
           <Route path="/modal" element={<ModalExample />} />
