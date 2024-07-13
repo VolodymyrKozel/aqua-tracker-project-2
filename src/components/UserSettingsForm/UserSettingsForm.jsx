@@ -13,12 +13,21 @@ import { userSettingsSchema } from '../../validation/form';
 
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../shared/Loader/Loader';
+import * as images from './images';
+import avaData from './data/ava.json';
+import Picture from '../shared/Picture/Avatar';
 
 export default function UserSettingsForm() {
+  const data = avaData.map(item => {
+    return {
+      ...item,
+      url: images[item.url],
+      url2x: images[item.url2x],
+    };
+  });
   const dispatch = useDispatch();
-
   const user = useSelector(selectUser);
-  const avatarURL = user.avatarURL;
+
   const {
     register,
     handleSubmit,
@@ -101,13 +110,24 @@ export default function UserSettingsForm() {
         encType="multipart/form-data"
       >
         <div className={css.imageWrap}>
-          <img
+          {/* <img
             src={file ? URL.createObjectURL(file) : avatarURL}
             // динамически отображаем выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
             className={css.avatarImg}
-          />
+          /> */}
+          {data.map(item => (
+            <Picture
+              key={item.id}
+              className={css.avatarImg}
+              url={item.url}
+              url2x={item.url2x}
+              width={item.width}
+              height={item.height}
+              alt={item.alt}
+            />
+          ))}
           <label className={css.buttonUpload}>
             <input
               type="file"
