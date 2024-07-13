@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { requestWaterMonthly } from '../../services/waterApi';
 
 export const fetchMonthlyWater = createAsyncThunk(
-  'water/fetchMonthWater',
+  'aqua/fetchMonthWater',
   async ({ month, year }, thunkAPI) => {
     try {
       const response = await requestWaterMonthly({ month, year });
