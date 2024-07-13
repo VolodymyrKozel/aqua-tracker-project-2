@@ -16,7 +16,6 @@ import css from './SignUpForm.module.css';
 import clsx from 'clsx';
 import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
-import toast from 'react-hot-toast';
 
 const SignUpForm = () => {
   const nameId = useId();
