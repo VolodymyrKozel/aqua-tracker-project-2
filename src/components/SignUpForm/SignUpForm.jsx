@@ -16,10 +16,9 @@ import css from './SignUpForm.module.css';
 import clsx from 'clsx';
 import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
-import toast from 'react-hot-toast';
 
 const SignUpForm = () => {
-  const nameId = useId();
+  // const nameId = useId();
   const emailId = useId();
   const passwordId = useId();
   const repeatPasswordId = useId();
@@ -38,7 +37,7 @@ const SignUpForm = () => {
     resolver: yupResolver(registerUserSchema),
     mode: 'onChange',
     defaultValues: {
-      name: '',
+      // name: '',
       email: '',
       password: '',
       repeatPassword: '',
@@ -58,7 +57,7 @@ const SignUpForm = () => {
         <div className={css.formContainer}>
           <h1 className={css.title}>Sign up</h1>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            <Label htmlFor={nameId}>Name</Label>
+            {/* <Label htmlFor={nameId}>Name</Label>
             <Input
               className={clsx(css.input, errors.name && css.error)}
               type="text"
@@ -67,7 +66,7 @@ const SignUpForm = () => {
               placeholder="Enter your name"
               autoComplete="on"
             />
-            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>} */}
 
             <Label htmlFor={emailId}>Email</Label>
             <Input

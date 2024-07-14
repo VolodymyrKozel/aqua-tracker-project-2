@@ -101,13 +101,17 @@ export default function UserSettingsForm() {
         encType="multipart/form-data"
       >
         <div className={css.imageWrap}>
-          <img
+          {/* <img
             src={file ? URL.createObjectURL(file) : avatarURL}
             // динамически отображаем выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
             className={css.avatarImg}
-          />
+          /> */}
+          <div>
+            <img className={css.avatarImg} src="" alt="" />
+          </div>
+
           <label className={css.buttonUpload}>
             <input
               type="file"
@@ -264,7 +268,7 @@ export default function UserSettingsForm() {
                   className={css.iconExclamation}
                   width={18}
                   height={18}
-                  id="icon-exclamation-mark"
+                  id="icon-clamation"
                 />
                 <p>Active time in hours</p>
               </div>

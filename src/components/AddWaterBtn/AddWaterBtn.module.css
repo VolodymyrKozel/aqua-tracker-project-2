@@ -1,34 +1,38 @@
 .addWaterButton {
   display: flex;
+  border-radius: 30px;
   gap: 10px;
   align-items: center;
-  padding: 14px 20px;
-  background-color: #323f47;
-  width: 140px;
+  padding: 0;
+  background-color: transparent;
   height: 46px;
+  padding: 14px 0px;
+  justify-content: end;
 }
 
 .iconPlusWater {
-  fill: transparent;
-  stroke: #fff;
+  fill: var(--accent-color);
+  stroke: #323f47;
   border: none;
   stroke-width: 0;
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
+
 }
 
 .addWaterSpan {
+font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 1.28;
+  font-size: 16px;
+  line-height: 1.5;
   letter-spacing: -0.01em;
   text-align: center;
-  color: #fff;
+  color: #323f47;
 }
 
 @media screen and (min-width: 768px) {
   .addWaterButton {
-    padding: 18px 30px;
+    padding: 18px 0px;
     width: 178px;
     height: 60px;
   }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-/* axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/'; */
+axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/';
 
 const URL_API = 'https://nodejs-hw-mongodb-1-vfnl.onrender.com/';
 
@@ -39,9 +39,11 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post(`${URL_API}auth/login`, credentials);
-      setAuthHeader(data.accessToken);
+
+      console.log(data.data.accessToken);
+      setAuthHeader(data.data.accessToken);
       toast.success('Login success');
-      return data;
+      return data.data;
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);

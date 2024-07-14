@@ -8,9 +8,10 @@ import { useForm } from 'react-hook-form';
 import { LoginUserSchema } from '../../validation/auth';
 import Label from '../shared/Label/Label';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
-import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
+/* import UserSettingsForm from '../UserSettingsForm/UserSettingsForm'; */
 import ModalWrap from '../Modal/Modal';
 import useModal from '../../hooks/useOpenClose';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 
 const ModalExample = () => {
   const { isOpen, openModal: open, closeModal: close } = useModal();
@@ -35,7 +36,6 @@ const ModalExample = () => {
     register,
     handleSubmit,
     formState: { errors },
-    clearErrors,
     reset,
   } = useForm({
     resolver: yupResolver(schema),
@@ -64,20 +64,16 @@ const ModalExample = () => {
       </Button>
       <ModalWrap isOpen={showModal} handleClose={setShowModal}>
         {/* Тут має бути ваш компонент */}
-        <UserSettingsForm />
       </ModalWrap>
-
       <ModalReusable modalIsOpen={isOpen} openModal={open} closeModal={close}>
-        <h1>Modal</h1>
+        <UserSettingsModal />
       </ModalReusable>
-
       <ModalReusable
         modalIsOpen={modalIsOpen}
         openModal={openModal}
         closeModal={closeModal}
       >
         {/* Тут має бути ваш компонент */}
-        <UserSettingsForm />
         {/* Кнопка для закриття модалки */}
         <Button variant="primary" onClick={closeModal}>
           close

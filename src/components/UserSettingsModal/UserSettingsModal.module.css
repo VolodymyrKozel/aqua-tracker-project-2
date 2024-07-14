@@ -4,6 +4,7 @@
 }
 
 .formTitle {
+  position: relative;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
@@ -36,8 +37,12 @@
   }
 
   .icon {
+    position: absolute;
     width: 28px;
     height: 28px;
+    flex: none;
+    fill: none;
+    stroke: rgb(50, 63, 71);
   }
 }
 
