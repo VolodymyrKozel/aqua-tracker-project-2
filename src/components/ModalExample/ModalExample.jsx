@@ -66,7 +66,7 @@ const ModalExample = () => {
         {/* Тут має бути ваш компонент */}
       </ModalWrap>
       <ModalReusable modalIsOpen={isOpen} openModal={open} closeModal={close}>
-        <UserSettingsModal />
+        <UserSettingsModal closeModal={close} />
       </ModalReusable>
       <ModalReusable
         modalIsOpen={modalIsOpen}

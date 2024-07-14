@@ -31,7 +31,7 @@ export default function ModalWrap({
         className={css.modalCloseButton}
         onClick={handleClose}
       >
-        <Icon className={css.icon} width={24} height={24} id={'icon-close'} />
+        <Icon className={css.icon} width={24} height={24} id={'icon-cross'} />
       </button>
 
       {children}
