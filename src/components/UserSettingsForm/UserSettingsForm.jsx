@@ -7,7 +7,7 @@ import { selectUser } from '../../redux/auth/selectors';
 import { updateUserInfo } from '../../redux/auth/operations';
 import { closeModal } from '../../redux/modal/slice';
 
-/* import { errorToast, successToast } from '../../helpers/toast'; */
+// import { errorToast, successToast } from '../../helpers/toast';
 import Icon from '../shared/Icon/Icon';
 import { userSettingsSchema } from '../../validation/form';
 
@@ -84,10 +84,10 @@ export default function UserSettingsForm() {
     }
     try {
       await dispatch(updateUserInfo(formData)); // отправка данных(formData) на бек
-      successToast('User updated successfuly');
+      // successToast('User updated successfuly');
       dispatch(closeModal());
     } catch (error) {
-      errorToast('Error: Unsuccessful update of user information', error);
+      // errorToast('Error: Unsuccessful update of user information', error);
     } finally {
       setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
     }

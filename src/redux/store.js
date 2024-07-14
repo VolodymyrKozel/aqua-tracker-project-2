@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { authReducer } from './auth/slice';
 import { aquaReducer } from './aqua/slice';
+import { popoverReducer } from './popover/slice';
 import {
   persistStore,
   persistReducer,
@@ -13,7 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { popoverReducer } from './popover/slice.js';
+import { popoverReducer } from './popover/slice';
 
 // Persisting token field from auth slice to localstorage
 const authPersistConfig = {

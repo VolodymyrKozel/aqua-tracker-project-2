@@ -12,7 +12,9 @@ const popoverSlice = createSlice({
       state.isVisible = true;
     },
     hidePopover(state) {
+      console.log('Hiding popover');
       state.isVisible = false;
+      console.log('Hiding popover, new state:', state.isVisible);
     },
     togglePopover(state) {
       state.isVisible = !state.isVisible;

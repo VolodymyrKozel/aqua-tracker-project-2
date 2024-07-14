@@ -1,59 +1,92 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useRef, useEffect, useCallback } from 'react';
-import clsx from 'clsx';
-
-/* import { hidePopover } from '../../redux/popover/slice';
-import { openModal } from '../../redux/modal/slice'; */
-
-import Icon from '../shared/Icon/Icon';
-
 import css from './UserBarPopover.module.css';
 
+import { useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import clsx from 'clsx';
+
+import { hidePopover } from '../../redux/popover/slice.js';
+import { openModal } from '../../redux/modal/slice.js';
+<<<<<<< Updated upstream
+import { selectIsVisible } from '../../redux/popover/selector.js';
+
+// import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+// import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
+
+import Icon from '../shared/Icon/Icon.jsx';
+
+export default function UserBarPopover({ onClose }) {
+  const isVisible = useSelector(selectIsVisible);
+=======
+
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
+
+import Icon from '../shared/Icon/Icon.jsx';
+
 export default function UserBarPopover() {
-  /*   const { isVisible } = useSelector(state => state.popover); */
+  const { isVisible } = useSelector(() => true);
+>>>>>>> Stashed changes
   const dispatch = useDispatch();
   const popoverRef = useRef();
+  const buttonRef = useRef();
 
-  const handleClickOutside = useCallback(
-    event => {
+  useEffect(() => {
+    const handleClickOutside = event => {
+<<<<<<< Updated upstream
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        console.log('Clicked outside popover');
+        dispatch(hidePopover());
+        onClose();
+=======
       if (
         popoverRef.current &&
         !popoverRef.current.contains(event.target) &&
-        !event.target.closest('button')
+        !buttonRef.current.contains(event.target)
       ) {
-        /*  dispatch(hidePopover()); */
+        dispatch(hidePopover());
+>>>>>>> Stashed changes
       }
-    },
-    [dispatch]
-  );
+    };
 
-  /*   useEffect(() => {
     if (isVisible) {
+      console.log('Popover is visible, adding event listener');
       document.addEventListener('mousedown', handleClickOutside);
     } else {
+      console.log('Popover is not visible, removing event listener');
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
+      console.log('Cleaning up event listener');
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isVisible, handleClickOutside]);
-
-  if (!isVisible) {
-    return null;
-  } */
+<<<<<<< Updated upstream
+  }, [isVisible, dispatch, onClose]);
+=======
+  }, [isVisible, dispatch]);
+>>>>>>> Stashed changes
 
   const showModal = modalType => {
     dispatch(openModal({ modalType }));
     dispatch(hidePopover());
+    onClose();
   };
 
+  if (!isVisible) {
+    return null;
+  }
+
+<<<<<<< Updated upstream
+  console.log('Rendering UserBarPopover, isVisible:', isVisible);
+
+=======
+>>>>>>> Stashed changes
   return (
-    <div className={css.container} ref={popoverRef}>
+    <div ref={popoverRef} className={css.userBarPopoverContainer}>
       <button
         type="button"
         className={css.popoverBtn}
-        onClick={() => showModal('UserSettingsModal')}
+        onClick={() => showModal(<UserSettingsModal />)}
       >
         <Icon
           className={css.popoverIcon}
@@ -62,17 +95,13 @@ export default function UserBarPopover() {
           height="16"
           id={'icon-settings'}
         />
-        {/*         <svg className={css.popoverIcon} width="16" height="16">
-          <use href={`${icons}#icon-settings`}></use>
-        </svg> */}
-
         <p className={css.popoverText}>Setting</p>
       </button>
 
       <button
         type="button"
         className={clsx(css.popoverBtn, css.popoverBtnGray)}
-        onClick={() => showModal('LogOutModal')}
+        onClick={() => showModal(<LogOutModal />)}
       >
         <Icon
           className={css.popoverIcon}
@@ -80,10 +109,6 @@ export default function UserBarPopover() {
           height="16"
           id={'icon-log-out'}
         />
-        {/*         <svg className={css.popoverIcon} width="16" height="16">
-          <use href={`${icons}#icon-log-out`}></use>
-        </svg> */}
-
         <p className={css.popoverText}>Log out</p>
       </button>
     </div>
