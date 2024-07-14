@@ -7,6 +7,7 @@ import { signUp } from '../../redux/auth/operations';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { registerUserSchema } from '../../validation/auth';
 import { useId } from 'react';
+import { useState } from 'react';
 import Label from '../shared/Label/Label';
 import Input from '../shared/Input/Input';
 import Button from '../shared/Button/Button';
@@ -16,7 +17,7 @@ import css from './SignUpForm.module.css';
 import clsx from 'clsx';
 import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
-import { toast } from 'react-hot-toast';
+import Notification from '../shared/Notification/Notification';
 
 const SignUpForm = () => {
   // const nameId = useId();
@@ -30,6 +31,7 @@ const SignUpForm = () => {
 
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const [notification, setNotification] = useState({ type: '', message: '' });
   const {
     register,
     handleSubmit,
@@ -51,11 +53,11 @@ const SignUpForm = () => {
       .unwrap()
       .then(() => {
         reset();
-        toast.success('User created successfully'); 
+        setNotification({ type: 'success', message: 'User created successfully' });
         navigate('/tracker');
       })
       .catch(error => {
-        toast.error(error); 
+        setNotification({ type: 'error', message: error });
       });
   };
 
@@ -162,6 +164,7 @@ const SignUpForm = () => {
           </p>
         </div>
       </div>
+      {notification.message && <Notification type={notification.type} message={notification.message} />}
     </div>
   );
 };

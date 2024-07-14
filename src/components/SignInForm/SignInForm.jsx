@@ -16,8 +16,9 @@ import ErrorMessage from '../shared/errorMessage/ErrorMessage';
 import { useToggle } from '../../hooks/useToggle';
 import Button from '../shared/Button/Button';
 import Loader from '../shared/Loader/Loader';
+import { useState } from 'react';
 import { selectIsLoading } from '../../redux/auth/selectors';
-import { toast } from 'react-hot-toast'; 
+import Notification from '../shared/Notification/Notification'; 
 
 const SignInForm = () => {
   const emailId = useId();
@@ -26,6 +27,7 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
+  const [notification, setNotification] = useState({ type: '', message: '' });
 
   const {
     register,
@@ -47,11 +49,11 @@ const SignInForm = () => {
       .unwrap()
       .then(() => {
         reset();
-        toast.success('Login successful');
+        setNotification({ type: 'success', message: 'Login successful' });
         navigate('/tracker'); 
       })
       .catch(error => {
-        toast.error(error); 
+        setNotification({ type: 'error', message: error });
       });
   };
 
@@ -125,6 +127,7 @@ const SignInForm = () => {
           </p>
         </div>
       </div>
+      {notification.message && <Notification type={notification.type} message={notification.message} />}
     </div>
   );
 };
