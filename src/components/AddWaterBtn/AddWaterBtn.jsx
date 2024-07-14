@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
-import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
-import WaterDetailedInfo from '../WaterDetailedInfo/WaterDetailedInfo.jsx';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -49,7 +47,7 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {/* {openModal && < onClose={handleButtonModalClick} />} */}
+      {/* {openModal && <WaterModal onClose={handleButtonModalClick} />} */}
     </div>
   );
 };
