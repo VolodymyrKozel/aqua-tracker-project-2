@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { authReducer } from './auth/slice';
 import { aquaReducer } from './aqua/slice';
-import { popoverReducer } from './popover/slice';
 import {
   persistStore,
   persistReducer,
