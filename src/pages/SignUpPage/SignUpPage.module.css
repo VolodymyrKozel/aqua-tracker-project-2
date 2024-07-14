@@ -18,14 +18,14 @@
 
   @media only screen and (min-width: 768px) {
     .generalSignUpInfo {
-      padding: 0 32px;
+      padding: 32px;
       max-width: 100%;
     }
   }
   
   @media only screen and (min-width: 1440px) {
     .generalSignUpInfo {
-      padding: 0 32px;
+      padding:  32px;
       gap: 32px;
       flex-direction: row;
       max-width: 100%;

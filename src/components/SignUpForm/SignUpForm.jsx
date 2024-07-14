@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/auth/selectors';
 import { signUp } from '../../redux/auth/operations';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { registerUserSchema } from '../../validation/auth';
 import { useId } from 'react';
 import Label from '../shared/Label/Label';
@@ -16,6 +16,7 @@ import css from './SignUpForm.module.css';
 import clsx from 'clsx';
 import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
+import { toast } from 'react-hot-toast';
 
 const SignUpForm = () => {
   // const nameId = useId();
@@ -25,6 +26,7 @@ const SignUpForm = () => {
   const { isOpen: showPassword, toggle: togglePassword } = useToggle();
   const { isOpen: showRepeatPassword, toggle: toggleRepeatPassword } =
     useToggle();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -37,7 +39,6 @@ const SignUpForm = () => {
     resolver: yupResolver(registerUserSchema),
     mode: 'onChange',
     defaultValues: {
-      // name: '',
       email: '',
       password: '',
       repeatPassword: '',
@@ -46,9 +47,18 @@ const SignUpForm = () => {
 
   const onSubmit = data => {
     const { repeatPassword, ...rest } = data;
-    dispatch(signUp(rest));
-    reset();
+    dispatch(signUp(rest))
+      .unwrap()
+      .then(() => {
+        reset();
+        toast.success('User created successfully'); 
+        navigate('/tracker');
+      })
+      .catch(error => {
+        toast.error(error); 
+      });
   };
+
   return (
     <div className={css.container}>
       <Logo className={css.logo} />
@@ -57,17 +67,6 @@ const SignUpForm = () => {
         <div className={css.formContainer}>
           <h1 className={css.title}>Sign up</h1>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            {/* <Label htmlFor={nameId}>Name</Label>
-            <Input
-              className={clsx(css.input, errors.name && css.error)}
-              type="text"
-              id={nameId}
-              {...register('name')}
-              placeholder="Enter your name"
-              autoComplete="on"
-            />
-            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>} */}
-
             <Label htmlFor={emailId}>Email</Label>
             <Input
               className={clsx(css.input, errors.email && css.error)}

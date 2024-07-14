@@ -4,7 +4,7 @@ import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logIn } from '../../redux/auth/operations';
 import clsx from 'clsx';
 import { useId } from 'react';
@@ -17,6 +17,7 @@ import { useToggle } from '../../hooks/useToggle';
 import Button from '../shared/Button/Button';
 import Loader from '../shared/Loader/Loader';
 import { selectIsLoading } from '../../redux/auth/selectors';
+import { toast } from 'react-hot-toast'; 
 
 const SignInForm = () => {
   const emailId = useId();
@@ -24,6 +25,7 @@ const SignInForm = () => {
   const { isOpen: showPassword, toggle: togglePassword } = useToggle();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -41,9 +43,18 @@ const SignInForm = () => {
   });
 
   const onSubmit = data => {
-    dispatch(logIn(data));
-    reset();
+    dispatch(logIn(data))
+      .unwrap()
+      .then(() => {
+        reset();
+        toast.success('Login successful');
+        navigate('/tracker'); 
+      })
+      .catch(error => {
+        toast.error(error); 
+      });
   };
+
 
   return (
     <div className={css.container}>
