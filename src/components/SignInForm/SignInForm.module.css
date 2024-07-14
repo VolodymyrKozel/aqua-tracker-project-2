@@ -3,7 +3,7 @@
   border-radius: 30px;
   padding: 24px 16px;
   width: 343px;
-  height: 100vh;
+  height: 780px;
   min-height: 736px;
   background-color: var(--background-white);
 }
@@ -81,7 +81,8 @@
 @media screen and (min-width: 768px) {
   .container {
     padding: 32px;
-    width: 672px;
+    width: 704px;
+    height: 960px;
   }
   .formContainer {
     width: 436px;
