@@ -11,6 +11,7 @@ import CalendarPagination from '../Calendar/CalendarPagination/CalendarPaginatio
 /* import UserSettingsForm from '../UserSettingsForm/UserSettingsForm'; */
 import ModalWrap from '../Modal/Modal';
 import useModal from '../../hooks/useOpenClose';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 
 const ModalExample = () => {
   const { isOpen, openModal: open, closeModal: close } = useModal();
@@ -65,7 +66,7 @@ const ModalExample = () => {
         {/* Тут має бути ваш компонент */}
       </ModalWrap>
       <ModalReusable modalIsOpen={isOpen} openModal={open} closeModal={close}>
-        <h1>Modal</h1>
+        <UserSettingsModal />
       </ModalReusable>
       <ModalReusable
         modalIsOpen={modalIsOpen}

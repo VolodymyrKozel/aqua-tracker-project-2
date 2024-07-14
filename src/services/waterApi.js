@@ -1,4 +1,4 @@
-/* import instance from './instance';
+import instance from './instance';
 
 export const addWaterDaily = async formData => {
   const response = await instance.post('/water', formData);
@@ -28,4 +28,3 @@ export const requestWaterMonthly = async ({ month, year }) => {
   });
   return data;
 };
- */
