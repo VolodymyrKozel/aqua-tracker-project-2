@@ -1,29 +1,12 @@
-.calendar {
+.list {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 20px;
+  gap: 20px 18px;
 }
 .item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc((100% - 6 * 24px) / 7);
+  width: calc((100% - 6 * 18px) / 7);
   gap: 6px;
-}
-@media screen and (min-width: 768px) {
-  .calendar {
-    gap: 15px 48px;
-  }
-  .item {
-    width: calc((100% - 7 * 48px) / 8);
-  }
-}
-@media screen and (min-width: 1440px) {
-  .calendar {
-    gap: 15px 43px;
-  }
-  .item {
-    width: calc((100% - 7 * 43px) / 8);
-  }
 }
