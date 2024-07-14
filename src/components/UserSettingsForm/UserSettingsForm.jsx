@@ -13,6 +13,7 @@ import { userSettingsSchema } from '../../validation/form';
 
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../shared/Loader/Loader';
+import { ava, ava2x, avatar_photo_default } from './images';
 
 export default function UserSettingsForm() {
   const dispatch = useDispatch();
@@ -101,16 +102,18 @@ export default function UserSettingsForm() {
         encType="multipart/form-data"
       >
         <div className={css.imageWrap}>
-          {/* <img
-            src={file ? URL.createObjectURL(file) : avatarURL}
+          <img
+            // src={file ? URL.createObjectURL(file) : avatarURL}
+            src={avatar_photo_default}
+            srcSet={`
+                  ${ava} 
+                  ${ava2x} 
+              `}
             // динамически отображаем выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
             className={css.avatarImg}
-          /> */}
-          <div>
-            <img className={css.avatarImg} src="" alt="" />
-          </div>
+          />
 
           <label className={css.buttonUpload}>
             <input
