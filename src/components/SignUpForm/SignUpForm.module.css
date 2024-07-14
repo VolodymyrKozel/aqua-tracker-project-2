@@ -2,7 +2,7 @@
   border-radius: 30px;
   padding: 24px 16px;
   width: 343px;
-  height: 100vh;
+  height: 780px;
   min-height: 736px;
   background-color: var(--background-white);
 }
@@ -15,6 +15,8 @@
 }
 .formContainer {
   width: 311px;
+  padding: 16px;
+  
 }
 .logo {
   display: flex;
@@ -41,6 +43,9 @@
 }
 .input {
   margin-bottom: 16px;
+}
+.error {
+  border: 1px solid #ef5050;
 }
 
 .icon {
@@ -79,10 +84,12 @@
 @media screen and (min-width: 768px) {
   .container {
     padding: 32px;
-    width: 672px;
+    width: 704px;
+    height: 960px;
   }
   .formContainer {
     width: 436px;
+  
   }
   .title {
     font-size: 36px;
@@ -98,5 +105,10 @@
   .link {
     font-size: 16px;
     line-height: 1.5;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    height: 736px;
   }
 }
