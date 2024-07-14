@@ -1,6 +1,9 @@
+import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
+import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
+import WaterDetailedInfo from '../WaterDetailedInfo/WaterDetailedInfo.jsx';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -10,9 +13,29 @@ const AddWaterBtn = ({
   iconWidth,
   iconHeight,
 }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const openModalRef = useRef(null);
+
+  const handleOutsideClick = e => {
+    if (openModalRef.current && !openModalRef.current.contains(e.target)) {
+      setOpenModal(false);
+    }
+  };
+
+  const handleButtonModalClick = () => {
+    setOpenModal(!openModal);
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  });
   return (
     <div>
       <Button
+        onClick={handleButtonModalClick}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
       >
@@ -26,6 +49,7 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
+      {/* {openModal && < onClose={handleButtonModalClick} />} */}
     </div>
   );
 };
