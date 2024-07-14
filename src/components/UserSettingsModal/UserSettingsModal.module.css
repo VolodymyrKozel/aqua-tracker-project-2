@@ -1,10 +1,29 @@
+.container {
+  position: relative;
+  margin-top: 92px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  padding: 40px 40px 20px 40px;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
 .form {
   display: flex;
   flex-direction: column;
 }
 
 .formTitle {
-  position: relative;
+  left: 40px;
+  top: 40px;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
@@ -43,6 +62,9 @@
     flex: none;
     fill: none;
     stroke: rgb(50, 63, 71);
+    top: 40px;
+    right: 40px;
+    z-index: 10;
   }
 }
 
