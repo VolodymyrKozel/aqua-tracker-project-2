@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com';
+const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
 
 axios.defaults.crossWithCredentials = true;
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
