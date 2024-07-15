@@ -1,7 +1,7 @@
 // import Button from '../shared/Button/Button';
 // import css from './WelcomeSection.module.css';
 // import { useNavigate } from 'react-router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import WaterFormModal from '../../components/WaterFormModal/WaterFormModal.jsx';
 // function WelcomeSection() {

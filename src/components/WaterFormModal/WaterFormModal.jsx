@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Modal from 'react-modal';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -91,7 +91,7 @@ const WaterFormModal = ({
           </div>
         </div>
         <div className={css.inputWrap}>
-          <label className={errors.time ? css.labelError : css.label}>
+          <label className={errors.time ? css.labelError : css.text - 2}>
             Recording time:
             <input
               className={errors.time ? css.inputError : css.input}
@@ -100,7 +100,7 @@ const WaterFormModal = ({
             />
             {errors.time && <p className={css.error}>{errors.time.message}</p>}
           </label>
-          <label className={errors.amount ? css.labelError : css.label}>
+          <label className={errors.amount ? css.labelError : css.text}>
             Enter the value of the water used:
             <input
               className={errors.amount ? css.inputError : css.input}
