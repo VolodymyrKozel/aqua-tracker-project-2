@@ -4,7 +4,7 @@ export const IconChevronUp = ({ className }) => {
   return (
     <Icon
       className={`${className}`}
-      id="icon-ChevronUp"
+      id="icon-chevron-up"
       width="16"
       height="16"
     />
