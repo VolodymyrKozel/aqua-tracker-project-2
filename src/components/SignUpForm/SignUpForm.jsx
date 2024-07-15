@@ -2,8 +2,8 @@ import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading } from '../../redux/auth/selectors';
-import { signUp } from '../../redux/auth/operations';
+import { selectIsLoading } from '../../redux/users/selectors';
+import { signUp } from '../../redux/users/operations';
 import { NavLink } from 'react-router-dom';
 import { registerUserSchema } from '../../validation/auth';
 import { useId } from 'react';
@@ -18,7 +18,6 @@ import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
 
 const SignUpForm = () => {
-  // const nameId = useId();
   const emailId = useId();
   const passwordId = useId();
   const repeatPasswordId = useId();
@@ -37,7 +36,6 @@ const SignUpForm = () => {
     resolver: yupResolver(registerUserSchema),
     mode: 'onChange',
     defaultValues: {
-      // name: '',
       email: '',
       password: '',
       repeatPassword: '',
@@ -47,6 +45,7 @@ const SignUpForm = () => {
   const onSubmit = data => {
     const { repeatPassword, ...rest } = data;
     dispatch(signUp(rest));
+    console.log('component');
     reset();
   };
   return (
@@ -57,17 +56,6 @@ const SignUpForm = () => {
         <div className={css.formContainer}>
           <h1 className={css.title}>Sign up</h1>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            {/* <Label htmlFor={nameId}>Name</Label>
-            <Input
-              className={clsx(css.input, errors.name && css.error)}
-              type="text"
-              id={nameId}
-              {...register('name')}
-              placeholder="Enter your name"
-              autoComplete="on"
-            />
-            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>} */}
-
             <Label htmlFor={emailId}>Email</Label>
             <Input
               className={clsx(css.input, errors.email && css.error)}

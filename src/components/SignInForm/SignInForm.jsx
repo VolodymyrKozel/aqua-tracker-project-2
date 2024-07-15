@@ -1,11 +1,10 @@
-
 import css from './SignInForm.module.css';
 import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logIn } from '../../redux/auth/operations';
+import { signIn } from '../../redux/users/operations';
 import clsx from 'clsx';
 import { useId } from 'react';
 import { LoginUserSchema } from '../../validation/auth';
@@ -16,7 +15,7 @@ import ErrorMessage from '../shared/errorMessage/ErrorMessage';
 import { useToggle } from '../../hooks/useToggle';
 import Button from '../shared/Button/Button';
 import Loader from '../shared/Loader/Loader';
-import { selectIsLoading } from '../../redux/auth/selectors';
+import { selectIsLoading } from '../../redux/users/selectors';
 
 const SignInForm = () => {
   const emailId = useId();
@@ -41,7 +40,7 @@ const SignInForm = () => {
   });
 
   const onSubmit = data => {
-    dispatch(logIn(data));
+    dispatch(signIn(data));
     reset();
   };
 
@@ -119,4 +118,3 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
-

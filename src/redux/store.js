@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { authReducer } from './auth/slice';
+import { usersReducer } from './users/slice';
 import { aquaReducer } from './aqua/slice';
 import {
   persistStore,
@@ -24,7 +24,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    users: persistReducer(authPersistConfig, usersReducer),
     aqua: aquaReducer,
     popover: popoverReducer,
   },

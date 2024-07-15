@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { selectUser } from '../../redux/auth/selectors';
-import { updateUserInfo } from '../../redux/auth/operations';
+import { selectUser } from '../../redux/users/selectors';
+import { updateUser } from '../../redux/users/operations';
 import { closeModal } from '../../redux/modal/slice';
 
 /* import { errorToast, successToast } from '../../helpers/toast'; */
@@ -14,6 +14,7 @@ import { userSettingsSchema } from '../../validation/form';
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../shared/Loader/Loader';
 import { ava, ava2x, avatar_photo_default } from './images';
+import toast from 'react-hot-toast';
 
 export default function UserSettingsForm() {
   const dispatch = useDispatch();
@@ -83,11 +84,11 @@ export default function UserSettingsForm() {
       formData.append('avatarURL', file);
     }
     try {
-      await dispatch(updateUserInfo(formData)); // отправка данных(formData) на бек
-      successToast('User updated successfuly');
+      await dispatch(updateUser(formData)); // отправка данных(formData) на бек
+      toast.success('User updated successfuly');
       dispatch(closeModal());
     } catch (error) {
-      errorToast('Error: Unsuccessful update of user information', error);
+      toast.error('Error: Unsuccessful update of user information', error);
     } finally {
       setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
     }
