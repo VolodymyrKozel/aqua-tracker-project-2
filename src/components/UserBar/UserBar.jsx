@@ -1,18 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import Button from '../shared/Button/Button.jsx';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
 import { IconChevronDown } from './IconChevronDown.jsx';
-import { togglePopover } from '../../redux/popover/slice.js';
 import css from './UserBar.module.css';
-import { selectIsVisible } from '../../redux/popover/selector.js';
 import { IconChevronUp } from './IconChevronUp.jsx';
 
 const UserBar = () => {
-  const dispatch = useDispatch();
-  const isPopoverOpen = useSelector(selectIsVisible);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleButtonClick = () => {
-    dispatch(togglePopover());
+    setIsPopoverOpen(prev => !prev);
+  };
+
+  const handleClosePopover = () => {
+    setIsPopoverOpen(false);
   };
 
   return (
@@ -35,7 +36,7 @@ const UserBar = () => {
         )}
       </Button>
 
-      {isPopoverOpen && <UserBarPopover onClose={handleButtonClick} />}
+      {isPopoverOpen && <UserBarPopover onClose={handleClosePopover} />}
     </div>
   );
 };
