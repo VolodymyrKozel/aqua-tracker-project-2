@@ -1,10 +1,14 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import ModalExample from './ModalExample/ModalExample';
 import { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from '../redux/users/operations';
+import { selectIsRefreshing } from '../redux/users/selectors';
+import Loader from './shared/Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -13,7 +17,14 @@ const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
-  return (
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <Loader variant="fullScreen" />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>

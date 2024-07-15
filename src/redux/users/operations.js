@@ -7,7 +7,6 @@ const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -46,6 +45,7 @@ export const signIn = createAsyncThunk(
 
       console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
+
       toast.success('Login success');
       return data.data;
     } catch (error) {
@@ -70,7 +70,7 @@ export const refreshUser = createAsyncThunk(
   'users/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.users.token;
 
     if (persistedToken === null) {
       toast.error('You are not logged in');
@@ -80,6 +80,7 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await axios.get('users/current');
+      console.log('user refresh');
       return data;
     } catch (error) {
       const errorMessage = handleError(error);
