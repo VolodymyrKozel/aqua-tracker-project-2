@@ -1,6 +1,6 @@
 // import { startOfMonth, endOfMonth, addDays, isSameDay } from 'date-fns';
 // import CalendarItem from './CalendarItem/CalendarItem';
-// import css from './Calendar.module.css';
+import css from './Calendar.module.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 // import { selectMonthlyWater } from '../../redux/aqua/selectors.js';
@@ -41,31 +41,24 @@
 // return <div className={css.calendar}>{days}</div>;
 // }
 
-// export default Calendar;
-import List from '../shared/List/List';
+// // export default Calendar;
+// import List from '../shared/List/List';
 import CalendarItem from './CalendarItem/CalendarItem';
-import dataCalendar from './data/monthlyData.json';
+// import dataCalendar from './data/monthlyData.json';
 
-const Calendar = () => {
-  // const data = dataCalendar.map(item => ({
-  //   ...item,
-  // }));
-  const data = [...dataCalendar];
-  console.log(data);
+const Calendar = ({ selectedDate, setSelectedDate, monthlyData: data }) => {
   return (
     <>
-      <List>
+      <ul className={css.list}>
         {data.map(item => (
-          <li
-            key={item.id}
-            onClick={() => {
-              alert('Data');
-            }}
-          >
-            <CalendarItem data={item} />
-          </li>
+          <CalendarItem
+            data={item}
+            setSelectedDate={setSelectedDate}
+            selectedDate={selectedDate}
+            key={item.day}
+          />
         ))}
-      </List>
+      </ul>
     </>
   );
 };
