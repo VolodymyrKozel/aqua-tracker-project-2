@@ -5,6 +5,10 @@ import { handleError } from '../../utils/handleError';
 
 const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com';
 
+axios.defaults.crossWithCredentials = true;
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
