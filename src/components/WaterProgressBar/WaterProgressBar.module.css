@@ -1,10 +1,11 @@
-.wrapper {
+.containerProgressBar {
   border-radius: 15px;
   width: 198px;
   height: 70px;
   padding: 12px;
   background-color: #fff;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  margin: 49px auto 42px;
 }
 
 .container {
@@ -87,10 +88,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wrapper {
+  .containerProgressBar {
     width: 295px;
     height: 106px;
     padding: 20px;
+    margin: 87px auto 26px;
   }
 
   .container {
@@ -114,5 +116,11 @@
 
   .waterProgressBarLabel {
     top: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .containerProgressBar {
+    margin: 215px auto 56px;
   }
 }

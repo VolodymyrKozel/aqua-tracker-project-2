@@ -4,7 +4,7 @@ const WaterProgressBar = () => {
   const waterAmount = 70;
 
   return (
-    <div className={css.wrapper}>
+    <div className={css.containerProgressBar}>
       <div className={css.container}>
         <h2 className={css.day}>Today</h2>
 
