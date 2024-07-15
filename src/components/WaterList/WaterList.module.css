@@ -9,6 +9,14 @@
     gap: 8px;
 }
 
+.noWaterAdded {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    color: rgba(47, 47, 47, 0.6);
+    text-align: start;
+}
+
 .waterListWrap::-webkit-scrollbar {
     height: 8px;
 }
