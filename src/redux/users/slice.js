@@ -15,7 +15,7 @@ const usersSlice = createSlice({
       gender: null,
     },
     token: null,
-    isLoggedIn: true,
+    isLoggedIn: false,
     isRefreshing: false,
   },
   extraReducers: builder => {

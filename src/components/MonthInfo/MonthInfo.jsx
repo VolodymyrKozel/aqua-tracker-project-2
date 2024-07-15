@@ -3,8 +3,9 @@ import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
 import css from './MonthInfo.module.css';
 import { generateMonthlyData } from '../Calendar/data/monthlyData';
-
+import { useTranslation } from 'react-i18next';
 const MonthInfo = () => {
+  const { t } = useTranslation();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const monthlyData = generateMonthlyData();
   // const monthlyData = [
@@ -44,7 +45,7 @@ const MonthInfo = () => {
   return (
     <>
       <div className={css.header}>
-        <h1 className={css.title}>Month</h1>
+        <h1 className={css.title}>{t('trackerPage.month')}</h1>
         <CalendarPagination
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}

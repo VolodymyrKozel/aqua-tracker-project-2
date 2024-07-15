@@ -1,12 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import css from './WaterProgressBar.module.css';
 
 const WaterProgressBar = () => {
+  const { t } = useTranslation();
   const waterAmount = 70;
 
   return (
     <div className={css.wrapper}>
       <div className={css.container}>
-        <h2 className={css.day}>Today</h2>
+        <h2 className={css.day}>{t('trackerPage.today')}</h2>
 
         <div className={css.waterProgressBarWrapper}>
           <div className={css.waterProgressBar}>

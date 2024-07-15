@@ -1,5 +1,7 @@
 // import { useState } from 'react';
 import { format, addMonths, subMonths } from 'date-fns';
+import { enUS, uk } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
 // import Calendar from '../Calendar';
 import css from './CalendarPagination.module.css';
 import Icon from '../../shared/Icon/Icon';
@@ -33,8 +35,13 @@ import Icon from '../../shared/Icon/Icon';
 // }
 
 // export default CalendarPagination;
-
+const locales = {
+  en: enUS,
+  ua: uk,
+};
 const CalendarPagination = ({ selectedDate, setSelectedDate }) => {
+  const { i18n } = useTranslation();
+  const locale = locales[i18n.language] || enUS;
   const handlePrevMonth = () => {
     setSelectedDate(subMonths(selectedDate, 1));
   };
@@ -52,7 +59,7 @@ const CalendarPagination = ({ selectedDate, setSelectedDate }) => {
           id="icon-chevron-left"
         />
       </button>
-      <p className={css.date}>{format(selectedDate, 'MMMM, yyyy')}</p>
+      <p className={css.date}>{format(selectedDate, 'MMMM, yyyy', { locale })}</p>
       <button className={css.btn} onClick={handleNextMonth}>
         <Icon className={css.icon} id="icon-chevron-right" />
       </button>

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useRef, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 /* import { hidePopover } from '../../redux/popover/slice';
 import { openModal } from '../../redux/modal/slice'; */
@@ -13,6 +14,7 @@ export default function UserBarPopover() {
   /*   const { isVisible } = useSelector(state => state.popover); */
   const dispatch = useDispatch();
   const popoverRef = useRef();
+  const { t } = useTranslation();
 
   const handleClickOutside = useCallback(
     event => {
@@ -66,7 +68,7 @@ export default function UserBarPopover() {
           <use href={`${icons}#icon-settings`}></use>
         </svg> */}
 
-        <p className={css.popoverText}>Setting</p>
+        <p className={css.popoverText}>{t('trackerPage.settings')}</p>
       </button>
 
       <button
@@ -84,7 +86,7 @@ export default function UserBarPopover() {
           <use href={`${icons}#icon-log-out`}></use>
         </svg> */}
 
-        <p className={css.popoverText}>Log out</p>
+        <p className={css.popoverText}>{t('trackerPage.logout')}</p>
       </button>
     </div>
   );

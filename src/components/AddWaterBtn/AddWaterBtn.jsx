@@ -1,6 +1,7 @@
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
+import { useTranslation } from 'react-i18next';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -9,7 +10,10 @@ const AddWaterBtn = ({
   iconId,
   iconWidth,
   iconHeight,
+  text
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Button
@@ -23,7 +27,7 @@ const AddWaterBtn = ({
           height={iconHeight}
         />
         <span className={`${css.addWaterSpan} ${spanClassName}`}>
-          Add water
+          {text || t('trackerPage.addWater')}
         </span>
       </Button>
     </div>

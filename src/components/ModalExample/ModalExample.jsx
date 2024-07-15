@@ -12,12 +12,14 @@ import CalendarPagination from '../Calendar/CalendarPagination/CalendarPaginatio
 import ModalWrap from '../Modal/Modal';
 import useModal from '../../hooks/useOpenClose';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
+import { useTranslation } from 'react-i18next';
 
 const ModalExample = () => {
   const { isOpen, openModal: open, closeModal: close } = useModal();
   /* modal */
   const [showModal, setShowModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { t } = useTranslation();
   function openModal() {
     setModalIsOpen(true);
   }
@@ -55,12 +57,12 @@ const ModalExample = () => {
   return (
     <>
       {/* кнопка для відкриття модалки */}
-      <button onClick={openModal}>open modal</button>
+      <button onClick={openModal}>{t('openModalButton')}</button>
       <Button variant="primary" onClick={() => setShowModal(!showModal)}>
-        open modal
+      {t('openModalButton')}
       </Button>
       <Button variant="primary" onClick={open}>
-        Modal
+      {t('openModal')}
       </Button>
       <ModalWrap isOpen={showModal} handleClose={setShowModal}>
         {/* Тут має бути ваш компонент */}
@@ -76,7 +78,7 @@ const ModalExample = () => {
         {/* Тут має бути ваш компонент */}
         {/* Кнопка для закриття модалки */}
         <Button variant="primary" onClick={closeModal}>
-          close
+        {t('close')}
         </Button>{' '}
       </ModalReusable>
       <div>
@@ -84,25 +86,25 @@ const ModalExample = () => {
         <ErrorMessage>{'some error'}</ErrorMessage>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('signupForm.email')}</Label>
           <Input
             className={errors.email && 'error'}
             type="email"
             id="email"
             {...register('email')}
-            placeholder="Enter your email"
+            placeholder={t('signupForm.placeholderEmail')}
             autoComplete="on"
             onFocus={() => handFocus('email')}
           />
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">{t('signupForm.password')}</Label>
           <div>
             <Input
               className={errors.password && 'error'}
               type="password"
               id="password"
               {...register('password')}
-              placeholder="Enter your password"
+              placeholder={t('signupForm.placeholderPassword')}
               onFocus={() => handFocus('password')}
             />
             {errors.password && (
@@ -110,7 +112,7 @@ const ModalExample = () => {
             )}
           </div>
           <Button variant="primary" onClick={handleSubmit(onSubmit)}>
-            Sign In
+          {t('signinForm.signin')}
           </Button>
         </form>
         <CalendarPagination />

@@ -19,7 +19,7 @@ export const Header = () => {
           })}
           onClick={() => changeLanguage('en')}
         >
-          {t('en')}
+          {t('header.en')}
         </button>
         <button
           type="button"
@@ -28,7 +28,7 @@ export const Header = () => {
           })}
           onClick={() => changeLanguage('ua')}
         >
-          {t('ua')}
+          {t('header.ua')}
         </button>
       </div>
     </header>

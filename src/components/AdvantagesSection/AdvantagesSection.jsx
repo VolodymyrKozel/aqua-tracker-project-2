@@ -3,8 +3,10 @@ import css from './AdvantagesSection.module.css';
 import * as images from './images';
 import pictureData from './data/pictures.json';
 import Picture from '../shared/Picture/Picture';
+import { useTranslation } from 'react-i18next';
 
 function AdvantagesSection() {
+  const { t } = useTranslation();
   const data = pictureData.map(item => ({
     ...item,
     urlMobile: images[item.urlMobile],
@@ -29,12 +31,12 @@ function AdvantagesSection() {
           urlDesktop2x={item.urlDesktop2x}
           width={item.width}
           height={item.height}
-          alt={item.alt}
+          alt={t(item.alt)} 
         />
       ))}
       <ModalReusable className={css.modal} isOpenProp={true} closebtn={true}>
-        <h1>Modal</h1>
-        <p>some content</p>
+        <h1>{t('modals.modalTitle')}</h1>
+        <p>{t('modals.modalContent')}</p>
       </ModalReusable>
     </section>
   );

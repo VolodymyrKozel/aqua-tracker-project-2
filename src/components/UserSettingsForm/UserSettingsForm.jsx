@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { selectUser } from '../../redux/users/selectors';
 import { updateUser } from '../../redux/users/operations';
@@ -17,6 +18,7 @@ import { ava, ava2x, avatar_photo_default } from './images';
 import toast from 'react-hot-toast';
 
 export default function UserSettingsForm() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -133,7 +135,7 @@ export default function UserSettingsForm() {
               height="18"
               id="icon-upload"
             />
-            <p>Upload a photo</p>
+            <p>{t('modals.uploadPhoto')}</p>
           </label>
         </div>
 
@@ -143,7 +145,7 @@ export default function UserSettingsForm() {
               errors.gender ? css.hasError : ''
             }`}
           >
-            <h2 className={css.inputTitleBold}>Your gender identity</h2>
+            <h2 className={css.inputTitleBold}>{t('modals.gender')}</h2>
             <div className={css.genderInputWrap}>
               <label className={css.radio}>
                 <input
@@ -165,7 +167,7 @@ export default function UserSettingsForm() {
                     }
                   />
                 </span>
-                woman
+                {t('modals.woman')}
               </label>
               <label className={css.radio}>
                 <input
@@ -187,7 +189,7 @@ export default function UserSettingsForm() {
                     }
                   />
                 </span>
-                man
+                {t('modals.man')}
               </label>
             </div>
             {errors.gender && (
@@ -205,7 +207,7 @@ export default function UserSettingsForm() {
                 }`}
               >
                 <label htmlFor={nameId} className={css.inputTitleBold}>
-                  Your name
+                {t('modals.name')}
                 </label>
                 <input
                   type="text"
@@ -226,7 +228,7 @@ export default function UserSettingsForm() {
                 }`}
               >
                 <label htmlFor={emailId} className={css.inputTitleBold}>
-                  Email
+                {t('modals.email')}
                 </label>
                 <input
                   type="email"
@@ -243,25 +245,21 @@ export default function UserSettingsForm() {
             </div>
             <div className={css.partWrap}>
               <h2 className={`${css.inputTitleBold} ${css.dailyTitle}`}>
-                My daily norma
+              {t('modals.myDailyNorma')}
               </h2>
               <div className={css.normaForm}>
                 <div className={css.normaFormWoman}>
-                  <h3 className={css.inputTitle}>For woman:</h3>
+                  <h3 className={css.inputTitle}>{t('modals.forWoman')}:</h3>
                   <p className={css.accentText}>V=(M*0,03) + (T*0,4)</p>
                 </div>
                 <div className={css.normaFormMan}>
-                  <h3 className={css.inputTitle}>For man:</h3>
+                  <h3 className={css.inputTitle}>{t('modals.forMan')}:</h3>
                   <p className={css.accentText}>V=(M*0,04) + (T*0,6)</p>
                 </div>
               </div>
               <div className={css.border}>
                 <p className={css.borderText}>
-                  <span className={css.accentText}>*</span> V is the volume of
-                  the water norm in liters per day, M is your body weight, T is
-                  the time of active sports, or another type of activity
-                  commensurate in terms of loads (in the absence of these, you
-                  must set 0)
+                  <span className={css.accentText}>*</span> {t('modals.countVolume')}
                 </p>
               </div>
               <div className={css.activeTime}>
@@ -274,7 +272,7 @@ export default function UserSettingsForm() {
                   height={18}
                   id="icon-clamation"
                 />
-                <p>Active time in hours</p>
+                <p>{t('modals.activeTime')}</p>
               </div>
             </div>
           </div>
@@ -286,7 +284,7 @@ export default function UserSettingsForm() {
                 }`}
               >
                 <label className={css.inputTitle}>
-                  Your weight in kilograms:
+                {t('modals.yourWeight')}:
                 </label>
                 <input
                   type="number"
@@ -304,7 +302,7 @@ export default function UserSettingsForm() {
                 }`}
               >
                 <label className={css.inputTitle}>
-                  The time of active participation in sports:
+                {t('modals.yourActivities')}:
                 </label>
                 <input
                   type="number"
@@ -320,7 +318,7 @@ export default function UserSettingsForm() {
             <div className={`${css.partWrap} ${css.requiredAmountWrap}`}>
               <div className={css.requiredAmount}>
                 <h3 className={css.inputTitle}>
-                  The required amount of water in liters per day:
+                {t('modals.require')}:
                 </h3>
                 <p className={`${css.accentText} ${css.accentLiter}`}>
                   {calculate()} L
@@ -332,7 +330,7 @@ export default function UserSettingsForm() {
                 }`}
               >
                 <label className={css.inputTitleBold}>
-                  Write down how much water you will drink:
+                {t('modals.writeDown')}:
                 </label>
                 <input
                   type="number"
@@ -350,7 +348,7 @@ export default function UserSettingsForm() {
         </div>
 
         <button type="submit" className={css.submitBtn}>
-          Save
+        {t('modals.writeDown')}
         </button>
       </form>
       {/* <Toaster /> */}

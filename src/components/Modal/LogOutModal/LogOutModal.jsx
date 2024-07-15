@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import Icon from '../../shared/Icon/Icon';
 import Button from '../../shared/Button/Button';
 import css from './LogOutModal.module.css';
+import { useTranslation } from 'react-i18next';
 
 const LogOutModal = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(true);
   // const navigate = useNavigate();
   const handleClose = () => {
@@ -43,12 +45,12 @@ const LogOutModal = () => {
           id="icon-cross"
           onClick={handleClose}
         />
-        <h3 className={css.modalLogoutTitle}>Log out</h3>
-        <p className={css.modalLogoutText}>Do you really want to leave?</p>
+        <h3 className={css.modalLogoutTitle}>{t('modals.logout')}</h3>
+        <p className={css.modalLogoutText}>{t('modals.leave')}</p>
         <div className={css.modalButtonContainer}>
-          <Button variant="primary">Log out</Button>
+          <Button variant="primary">{t('modals.logout')}</Button>
           <Button variant="default" onClick={handleClose}>
-            Cancel
+          {t('modals.cancel')}
           </Button>
         </div>
       </div>
