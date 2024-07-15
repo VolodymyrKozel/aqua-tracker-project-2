@@ -9,7 +9,7 @@
 @media screen and (min-width: 1440px) {
   .wrapper {
     flex-direction: row;
-    padding-top: 32px;
+    /* padding-top: 32px; */
     gap: 32px;
   }
 }

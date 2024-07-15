@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Loader from './components/shared/Loader/Loader';
 import './index.css';
+import './i18/i18n.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

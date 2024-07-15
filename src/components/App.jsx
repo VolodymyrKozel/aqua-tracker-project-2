@@ -5,6 +5,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import ModalExample from './ModalExample/ModalExample';
 import { Toaster } from 'react-hot-toast';
+import { Header } from './Header/Header';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -15,6 +16,7 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route

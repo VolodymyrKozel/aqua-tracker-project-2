@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import css from './SignInForm.module.css';
 import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,6 +19,7 @@ import Loader from '../shared/Loader/Loader';
 import { selectIsLoading } from '../../redux/users/selectors';
 
 const SignInForm = () => {
+  const { t } = useTranslation();
   const emailId = useId();
   const passwordId = useId();
   const { isOpen: showPassword, toggle: togglePassword } = useToggle();
@@ -49,41 +51,32 @@ const SignInForm = () => {
       <Logo className={css.logo} />
       <div className={css.flexContainer}>
         <div className={css.formContainer}>
-          <h1 className={css.title}>Sign in</h1>
+          <h1 className={css.title}>{t('signinForm.signin')}</h1>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            <Label htmlFor={emailId}>Email</Label>
+            <Label htmlFor={emailId}>{t('signinForm.email')}</Label>
             <Input
               className={clsx(css.input, errors.email && css.error)}
               type="email"
               id={emailId}
               {...register('email')}
-              placeholder="Enter your email"
+              placeholder={t('signinForm.placeholderEmail')}
               autoComplete="on"
             />
-            {errors.email && (
-              <ErrorMessage>{errors.email.message}</ErrorMessage>
-            )}
-            <Label htmlFor={passwordId}>Password</Label>
+            {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+
+            <Label htmlFor={passwordId}>{t('signinForm.password')}</Label>
             <div className={css.showPassword}>
               <Input
                 className={clsx(css.input, errors.password && css.error)}
                 type={showPassword ? 'text' : 'password'}
                 id={passwordId}
                 {...register('password')}
-                placeholder="Enter your password"
+                placeholder={t('signinForm.placeholderPassword')}
                 autoComplete="off"
               />
               <span
-                title={
-                  showPassword
-                    ? 'click to hide password'
-                    : 'click to show password'
-                }
-                aria-label={
-                  showPassword
-                    ? 'click to hide password'
-                    : 'click to show password'
-                }
+                title={showPassword ? t('click to hide password') : t('click to show password')}
+                aria-label={showPassword ? t('click to hide password') : t('click to show password')}
               >
                 <Icon
                   onClick={togglePassword}
@@ -92,23 +85,17 @@ const SignInForm = () => {
                 />
               </span>
             </div>
-            {errors.password && (
-              <ErrorMessage>{errors.password.message}</ErrorMessage>
-            )}
-            <Button
-              className={css.button}
-              type="submit"
-              onClick={handleSubmit(onSubmit)}
-            >
-              Sign In
+            {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+
+            <Button className={css.button} type="submit" onClick={handleSubmit(onSubmit)}>
+              {t('signinForm.signin')}
               {isLoading && <Loader width={24} height={24} color={'#2f2f2f'} />}
             </Button>
           </form>
           <p className={css.afterDescription}>
-            Don't have an account?
+            {t('signinForm.dontAccount')}
             <NavLink className={css.link} to={'/signup'}>
-              {' '}
-              Sign Up
+              {t('signinForm.signup')}
             </NavLink>
           </p>
         </div>
