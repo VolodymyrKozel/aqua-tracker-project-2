@@ -1,12 +1,18 @@
 import css from './UserBarPopover.module.css';
 
 import { useRef, useEffect } from 'react';
+import { useState } from 'react';
 import clsx from 'clsx';
 
 import Icon from '../shared/Icon/Icon.jsx';
+import ModalReusable from '../shared/ModalReusable/ModalReusable.jsx';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
 
 export default function UserBarPopover({ onClose }) {
   const popoverRef = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -22,18 +28,25 @@ export default function UserBarPopover({ onClose }) {
     };
   }, [onClose]);
 
-  const showModal = modalType => {
-    console.log(`Opening modal: ${modalType}`);
-    onClose();
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openLogOutModal = () => {
+    setIsLogOutModalOpen(true);
+  };
+
+  const closeLogOutModal = () => {
+    setIsLogOutModalOpen(false);
   };
 
   return (
     <div ref={popoverRef} className={css.userBarPopoverContainer}>
-      <button
-        type="button"
-        className={css.popoverBtn}
-        onClick={() => showModal('UserSettingsModal')}
-      >
+      <button type="button" className={css.popoverBtn} onClick={openModal}>
         <Icon
           className={css.popoverIcon}
           title="settings"
@@ -47,7 +60,7 @@ export default function UserBarPopover({ onClose }) {
       <button
         type="button"
         className={clsx(css.popoverBtn, css.popoverBtnGray)}
-        onClick={() => showModal('LogOutModal')}
+        onClick={openLogOutModal}
       >
         <Icon
           className={css.popoverIcon}
@@ -57,6 +70,21 @@ export default function UserBarPopover({ onClose }) {
         />
         <p className={css.popoverText}>Log out</p>
       </button>
+
+      <ModalReusable modalIsOpen={isModalOpen} closeModal={closeModal}>
+        <div onClick={e => e.stopPropagation()}>
+          <UserSettingsModal closeModal={closeModal} />
+        </div>
+      </ModalReusable>
+
+      <ModalReusable
+        modalIsOpen={isLogOutModalOpen}
+        closeModal={closeLogOutModal}
+      >
+        <div onClick={e => e.stopPropagation()}>
+          <LogOutModal closeModal={closeLogOutModal} />
+        </div>
+      </ModalReusable>
     </div>
   );
 }
