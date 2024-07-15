@@ -1,0 +1,18 @@
+.title {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--mai-text);
+  padding: 2px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  align-items: center;
+  margin-top: 72px;
+  margin-bottom: 24px;
+}
