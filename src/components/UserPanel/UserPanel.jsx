@@ -3,20 +3,17 @@ import UserBar from '../UserBar/UserBar.jsx';
 import css from '../UserPanel/UserPanel.module.css';
 import { selectUser } from '../../redux/users/selectors.js';
 
-export const UserPanel = ({ settings = {}, logout = {} }) => {
+export const UserPanel = () => {
   const user = useSelector(selectUser);
-
-  // if (!user) {
-  //   return <div>Loading...</div>;
-  // }
+  console.log(user);
 
   return (
     <div className={css.userPanel}>
       <h2 className={css.userPanelName}>
         Hello
-        <span className={css.userPanelSpan}>, Nadia !{/* {user.name} */}</span>
+        <span className={css.userPanelSpan}>, {user.name}</span>
       </h2>
-      <UserBar settings={settings} logout={logout} user={user} />
+      <UserBar user={user} />
     </div>
   );
 };

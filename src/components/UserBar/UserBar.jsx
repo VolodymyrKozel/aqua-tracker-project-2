@@ -1,41 +1,51 @@
-import { useDispatch, useSelector } from 'react-redux';
 import Button from '../shared/Button/Button.jsx';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
 import { IconChevronDown } from './IconChevronDown.jsx';
-import { togglePopover } from '../../redux/popover/slice.js';
 import css from './UserBar.module.css';
-import { selectIsVisible } from '../../redux/popover/selector.js';
 import { IconChevronUp } from './IconChevronUp.jsx';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/users/selectors.js';
 
 const UserBar = () => {
-  const dispatch = useDispatch();
-  const isPopoverOpen = useSelector(selectIsVisible);
+  const [togglePopover, setTogglePopover] = useState(false);
+  const popoverRef = useRef(null);
+  const user = useSelector(selectUser);
 
-  const handleButtonClick = () => {
-    dispatch(togglePopover());
+  const handleOutsideClick = e => {
+    if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+      setTogglePopover(false);
+    }
   };
 
+  const handleButtonClick = () => {
+    setTogglePopover(!togglePopover);
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <div className={css.userBar}>
+    <div className={css.userBar} ref={popoverRef}>
       <Button
         onClick={handleButtonClick}
         variant="secondary"
         className={css.userBarButton}
       >
-        <p className={css.userBarName}>Nadia</p>
-        <img
-          className={css.userBarAvatar}
-          src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-373-456325.png"
-          alt="Avatar"
-        />
-        {isPopoverOpen ? (
+        <p className={css.userBarName}>{user.name}</p>
+        <img className={css.userBarAvatar} src={user.avatarURL} alt="Avatar" />
+        {togglePopover ? (
           <IconChevronUp className={css.iconChevronUp} />
         ) : (
           <IconChevronDown className={css.iconChevronDown} />
         )}
       </Button>
 
-      {isPopoverOpen && <UserBarPopover onClose={handleButtonClick} />}
+      {togglePopover && <UserBarPopover onClose={handleButtonClick} />}
     </div>
   );
 };
