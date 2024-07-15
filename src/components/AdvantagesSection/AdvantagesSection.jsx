@@ -3,6 +3,15 @@ import css from './AdvantagesSection.module.css';
 import * as images from './images';
 import pictureData from './data/pictures.json';
 import Picture from '../shared/Picture/Picture';
+import {
+  pic1,
+  pic1_2x,
+  pic2,
+  pic2_2x,
+  pic3,
+  pic3_2x,
+} from './images/pictureSmall';
+import List from '../shared/List/List';
 
 function AdvantagesSection() {
   const data = pictureData.map(item => ({
@@ -36,6 +45,38 @@ function AdvantagesSection() {
         <h1>Modal</h1>
         <p>some content</p>
       </ModalReusable>
+      <List className={css.listImages}>
+        <li className={css.images}>
+          <img
+            srcSet={`${pic1} 1x, ${pic1_2x} 2x`}
+            src={`${pic1}`}
+            alt="user avatar"
+            className={css.pic}
+          />
+        </li>
+        <li className={css.images}>
+          <img
+            srcSet={`${pic2} 1x, ${pic2_2x} 2x`}
+            src={`${pic2}`}
+            alt="user avatar"
+            className={css.pic}
+          />
+        </li>
+        <li className={css.images}>
+          <img
+            srcSet={`${pic3} 1x, ${pic3_2x} 2x`}
+            src={`${pic3}`}
+            alt="user avatar"
+            className={css.pic}
+          />
+        </li>
+        <p>Our happy customers</p>
+        <div>
+          <p>Habit drive</p>
+          <p>View statistics</p>
+          <p>Personal rate setting</p>
+        </div>
+      </List>
     </section>
   );
 }

@@ -9,6 +9,37 @@
   border-radius: 20px;
 }
 
+.listImages {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.images:not(:first-child) {
+  margin-left: -20px; /* Adjust the value to control the overlap */
+}
+
+.images img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.listImages > li:nth-child(1) {
+  z-index: 3;
+}
+
+.listImages > li:nth-child(2) {
+  z-index: 2;
+}
+
+.listImages > li:nth-child(3) {
+  z-index: 1;
+}
+
 @media screen and (min-width: 1440px) {
   .container {
     /* margin-left: 32px; */
