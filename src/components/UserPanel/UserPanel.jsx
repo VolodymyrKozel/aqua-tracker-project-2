@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import UserBar from '../UserBar/UserBar.jsx';
 import css from '../UserPanel/UserPanel.module.css';
-import { selectUser } from '../../redux/auth/selectors.js';
+import { selectUser } from '../../redux/users/selectors.js';
 
 export const UserPanel = ({ settings = {}, logout = {} }) => {
   const user = useSelector(selectUser);

@@ -39,12 +39,12 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.556" d="M28.8 16c.492 0 .739 0 .938.109.165.09.318.26.391.432.089.209.067.432.022.878A14.223 14.223 0 1 1 14.58 1.848c.446-.045.669-.067.878.022a.942.942 0 0 1 .432.391c.109.2.109.446.109.938v11.378c0 .498 0 .747.097.937a.887.887 0 0 0 .388.388c.19.097.439.097.937.097h11.378z"/>
     </symbol>
 
-    <symbol id="icon-chevron-right" viewBox="0 0 32 32">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.556" d="m12 24 8-8-8-8"/>
+    <symbol id="icon-chevron-right" viewBox="0 0 8 12">
+      <path d="M1.75 10.5L6.25 6L1.75 1.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
 
-    <symbol id="icon-chevron-left" viewBox="0 0 32 32">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.556" d="m20 24-8-8 8-8"/>
+    <symbol id="icon-chevron-left" viewBox="0 0 8 12">
+      <path d="M6.25 10.5L1.75 6L6.25 1.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
 
     <symbol id="icon-plus-in-circle" viewBox="0 0 32 32">
