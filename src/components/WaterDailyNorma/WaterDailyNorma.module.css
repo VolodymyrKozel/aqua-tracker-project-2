@@ -1,4 +1,7 @@
-.container {
+.containerDailyNorma {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   background-color: #fff;
   width: 102px;
   height: 54px;
@@ -12,7 +15,6 @@
   font-size: 14px;
   line-height: 1;
   color: #323f47;
-  margin-bottom: 6px;
 }
 
 .text {
@@ -23,10 +25,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
+  .containerDailyNorma {
     padding: 14px 18px;
     width: 129px;
     height: 78px;
+    gap: 4px;
   }
 
   .volume {
