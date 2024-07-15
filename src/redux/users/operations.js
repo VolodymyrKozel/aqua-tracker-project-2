@@ -3,9 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-axios.defaults.baseURL = 'https://webmail.swagger.epowhost.com:3443/';
-
-const URL_API = 'https://nodejs-hw-mongodb-1-vfnl.onrender.com/';
+const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,11 +14,14 @@ const clearAuthHeader = () => {
 };
 
 export const signUp = createAsyncThunk(
-  'auth/register',
+  'users/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${URL_API}auth/register`, credentials);
-      const response = await axios.post(`${URL_API}auth/login`, {
+      const { data } = await axios.post(
+        `${URL_API}users/register`,
+        credentials
+      );
+      const response = await axios.post(`${URL_API}users/login`, {
         email: credentials.email,
         password: credentials.password,
       });
@@ -34,11 +35,11 @@ export const signUp = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk(
-  'auth/login',
+export const signIn = createAsyncThunk(
+  'users/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${URL_API}auth/login`, credentials);
+      const { data } = await axios.post(`${URL_API}users/login`, credentials);
 
       console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
@@ -51,9 +52,9 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
-    await axios.post(`${URL_API}auth/logout`);
+    await axios.post(`${URL_API}users/logout`);
     clearAuthHeader();
     toast.success('Logout success');
   } catch (error) {
@@ -63,7 +64,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 });
 
 export const refreshUser = createAsyncThunk(
-  'auth/refresh',
+  'users/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -84,8 +85,8 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const updateUserInfo = createAsyncThunk(
-  'user/updateInfo',
+export const updateUser = createAsyncThunk(
+  'users/update',
   async (formData, thunkAPI) => {
     try {
       const res = await axios.patch('/users/update', formData, {
