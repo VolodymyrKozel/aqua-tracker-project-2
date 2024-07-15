@@ -1,19 +1,25 @@
 .WaterMainInfo {
+  display: flex;
+  flex-direction: column;
   background-color: #9be1a0;
   border-radius: 30px;
   min-width: 320px;
   max-width: 767px;
-  min-height: 415px;
-  padding: 50px 40px 30px;
-}
-
-.container {
-  width: 262px;
-  height: 335px;
-  background-image: url('/src/assets/images/transparent_bottle_for_water.png');
+  height: 415px;
+  padding: 24px 16px 32px;
+  background-image: url('/src/assets/images/transparent_bottle_for_water_mobile.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
+}
+
+.logoContainer {
+  margin-bottom: 78px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .waterMainInfoButton {
@@ -25,6 +31,9 @@
   width: 140px;
   height: 46px;
   border-radius: 30px;
+  transition-property: color, stroke;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
 }
 
 .waterMainInfoIcon {
@@ -34,6 +43,9 @@
   stroke-width: 0;
   width: 16px;
   height: 16px;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
 
 .waterMainInfoSpan {
@@ -43,31 +55,56 @@
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--main-white);
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.waterMainInfoButton:hover .waterMainInfoIcon,
+.waterMainInfoButton:hover .waterMainInfoSpan,
+.waterMainInfoButton:focus .waterMainInfoIcon,
+.waterMainInfoButton:focus .waterMainInfoSpan {
+  color: #9be1a0;
+  stroke: #9be1a0;
 }
 
 @media screen and (min-width: 768px) {
   .WaterMainInfo {
     min-width: 768px;
-    max-width: 1439px;
     height: 578px;
-    padding: 69px 165px 32px;
+    padding: 32px;
+    background-image: url('/src/assets/images/transparent_bottle_for_water_tablet.png');
   }
 
-  .container {
-    width: 374px;
-    height: 477px;
+  .logoContainer {
+    margin-bottom: 101px;
+  }
+
+  .waterMainInfoButton {
+    padding: 18px 30px;
+    width: 178px;
+    height: 60px;
+  }
+
+  .waterMainInfoIcon {
+    fill: transparent;
+    stroke: #fff;
+    border: none;
+    stroke-width: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  .waterMainInfoSpan {
+    font-size: 16px;
+    line-height: 1.5;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .WaterMainInfo {
-    min-width: 672px;
+    width: 672px;
     height: 736px;
-  }
-
-  .container {
-    width: 374px;
-    height: 477px;
-    padding: 92px 100px 40px;
+    background-image: url('/src/assets/images/transparent_bottle_for_water_desktop.png');
   }
 }
