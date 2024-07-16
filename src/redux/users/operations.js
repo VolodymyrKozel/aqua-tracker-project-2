@@ -6,11 +6,6 @@ import instance, {
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-/* const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
-instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.withCredentials = true; */
-
 export const signUp = createAsyncThunk(
   'users/register',
   async (credentials, thunkAPI) => {
@@ -74,8 +69,7 @@ export const refreshUser = createAsyncThunk(
       console.log('persistedToken', persistedToken);
       setAuthHeader(persistedToken);
       const { data } = await instance.get(`users/current`);
-      console.log('data current', data);
-      return data;
+      return data.user;
     } catch (error) {
       toast.error('You are not logged in');
       const errorMessage = handleError(error);
