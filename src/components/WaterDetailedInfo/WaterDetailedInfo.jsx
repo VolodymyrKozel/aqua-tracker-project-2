@@ -9,7 +9,7 @@ const WaterDetailedInfo = () => {
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
         <DailyInfo />
-        <MonthInfo />
+        {/*      <MonthInfo /> */}
       </div>
     </section>
   );

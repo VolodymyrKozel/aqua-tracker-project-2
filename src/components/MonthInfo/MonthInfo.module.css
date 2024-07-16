@@ -13,6 +13,10 @@
   justify-content: space-between;
   height: 32px;
   align-items: center;
-  margin-top: 72px;
   margin-bottom: 24px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 40px 20px;
 }

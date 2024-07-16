@@ -14,6 +14,7 @@
   width: 137px;
   }
 
+
 .popoverBtn {
   display: flex;
   align-items: center;
@@ -53,6 +54,7 @@
   .popoverText {
     font-size: 15px;
     line-height: 1.49;
+
   }
 }
 
@@ -60,6 +62,6 @@
     font-size: 15px;
     line-height: 1.49;
   }
-
 @media (min-width: 1440px) {
+
 }
