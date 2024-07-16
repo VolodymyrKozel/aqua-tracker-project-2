@@ -1,13 +1,13 @@
-import css from './UserBarPopover.module.css';
 
 import { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import clsx from 'clsx';
-
 import Icon from '../shared/Icon/Icon.jsx';
 import ModalReusable from '../shared/ModalReusable/ModalReusable.jsx';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
+
+import css from './UserBarPopover.module.css';
 
 export default function UserBarPopover({ onClose }) {
   const popoverRef = useRef();
@@ -20,14 +20,12 @@ export default function UserBarPopover({ onClose }) {
         onClose();
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [onClose]);
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -35,11 +33,9 @@ export default function UserBarPopover({ onClose }) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   const openLogOutModal = () => {
     setIsLogOutModalOpen(true);
   };
-
   const closeLogOutModal = () => {
     setIsLogOutModalOpen(false);
   };

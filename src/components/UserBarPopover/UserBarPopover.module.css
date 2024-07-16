@@ -1,6 +1,6 @@
 .userBarPopoverContainer {
   position: absolute;
-  display: flex;
+  display: inline-block;
   gap: 8px;
   flex-direction: column;
   top: 100%;
@@ -12,7 +12,8 @@
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   z-index: 1000;
   width: 137px;
-}
+  }
+
 
 .popoverBtn {
   display: flex;
@@ -21,7 +22,6 @@
   height: auto;
   border: none;
   background-color: inherit;
-  padding: 0;
 }
 
 .popoverBtnGray {
@@ -54,5 +54,14 @@
   .popoverText {
     font-size: 15px;
     line-height: 1.49;
+
   }
+}
+
+  .popoverText {
+    font-size: 15px;
+    line-height: 1.49;
+  }
+@media (min-width: 1440px) {
+
 }
