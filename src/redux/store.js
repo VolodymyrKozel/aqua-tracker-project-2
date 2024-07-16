@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { usersReducer } from './users/slice';
-import { aquaReducer } from './aqua/slice';
+import { waterReducer } from './water/slice';
 import {
   persistStore,
   persistReducer,
@@ -25,7 +25,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     users: persistReducer(authPersistConfig, usersReducer),
-    aqua: aquaReducer,
+    water: waterReducer,
     popover: popoverReducer,
   },
   middleware: getDefaultMiddleware =>

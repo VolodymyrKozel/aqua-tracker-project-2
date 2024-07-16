@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
-// import css from './CalendarItem.module.css';
-// import clsx from 'clsx';
+import css from './CalendarItem.module.css';
+import clsx from 'clsx';
 
 // import List from '../../shared/List/List';
 
@@ -18,16 +18,20 @@ import { format } from 'date-fns';
 
 // export default CalendarItem;
 
-const CalendarItem = ({ data, setSelectedDate }) => {
+const CalendarItem = ({ data, selectedDate, setSelectedDate }) => {
   const handleClickDay = () => {
     setSelectedDate(data.day);
   };
+
   return (
-    <li>
-      <button onClick={handleClickDay}>
-        <p>{format(data.day, 'd')}</p>
-        <span>{data.value}</span>
+    <li className={css.item}>
+      <button
+        className={clsx(css.btn, selectedDate === data.day && css.selectedBtn)}
+        onClick={handleClickDay}
+      >
+        <p className={css.number}>{format(data.day, 'd')}</p>
       </button>
+      <p className={css.percentage}>{data.value}</p>
     </li>
   );
 };
