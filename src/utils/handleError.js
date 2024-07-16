@@ -18,7 +18,7 @@ export const handleError = error => {
         errorMessage = 'Вам заборонено доступ до цієї інформації.';
         break;
       case 404:
-        errorMessage = 'Інформація не знайдена.';
+        errorMessage = 'Немає такого користувача.';
         break;
       case 500:
         errorMessage = 'Помилка сервера. Спробуйте ще раз пізніше.';

@@ -64,11 +64,12 @@ const usersSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;
-        state.user = payload.user;
+        state.user = payload;
         state.isLoggedIn = true;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
+        state.isLoggedIn = false;
       })
 
       .addCase(updateUser.pending, state => {
