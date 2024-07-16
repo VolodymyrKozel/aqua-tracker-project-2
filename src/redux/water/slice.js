@@ -29,7 +29,7 @@ const waterSlice = createSlice({
       .addCase(getWaterDataDay.pending, handlingPending)
       .addCase(getWaterDataDay.fulfilled, (state, action) => {
         handlingFulfilled;
-        state.waterDataDay = action.payload.data;
+        state.waterDataDay = action.payload;
       })
       .addCase(getWaterDataDay.rejected, handlingRejected)
       .addCase(getWaterDataMonthly.pending, handlingPending)
