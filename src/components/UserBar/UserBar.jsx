@@ -4,10 +4,13 @@ import { IconChevronDown } from './IconChevronDown.jsx';
 import css from './UserBar.module.css';
 import { IconChevronUp } from './IconChevronUp.jsx';
 import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/users/selectors.js';
 
 const UserBar = () => {
   const [togglePopover, setTogglePopover] = useState(false);
   const popoverRef = useRef(null);
+  const user = useSelector(selectUser);
 
   const handleOutsideClick = e => {
     if (popoverRef.current && !popoverRef.current.contains(e.target)) {
@@ -33,12 +36,8 @@ const UserBar = () => {
         variant="secondary"
         className={css.userBarButton}
       >
-        <p className={css.userBarName}>Nadia</p>
-        <img
-          className={css.userBarAvatar}
-          src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-373-456325.png"
-          alt="Avatar"
-        />
+        <p className={css.userBarName}>{user.name}</p>
+        <img className={css.userBarAvatar} src={user.avatarURL} alt="Avatar" />
         {togglePopover ? (
           <IconChevronUp className={css.iconChevronUp} />
         ) : (

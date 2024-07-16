@@ -1,52 +1,60 @@
-import css from './UserBarPopover.module.css';
-
-import { useRef, useEffect } from 'react';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useRef, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
 
-import Icon from '../shared/Icon/Icon.jsx';
-import ModalReusable from '../shared/ModalReusable/ModalReusable.jsx';
-import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
-import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
+/* import { hidePopover } from '../../redux/popover/slice';
+import { openModal } from '../../redux/modal/slice'; */
 
-export default function UserBarPopover({ onClose }) {
+import Icon from '../shared/Icon/Icon';
+
+import css from './UserBarPopover.module.css';
+
+export default function UserBarPopover() {
+  /*   const { isVisible } = useSelector(state => state.popover); */
+  const dispatch = useDispatch();
   const popoverRef = useRef();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-        onClose();
+  const handleClickOutside = useCallback(
+    event => {
+      if (
+        popoverRef.current &&
+        !popoverRef.current.contains(event.target) &&
+        !event.target.closest('button')
+      ) {
+        /*  dispatch(hidePopover()); */
       }
-    };
+    },
+    [dispatch]
+  );
 
-    document.addEventListener('mousedown', handleClickOutside);
+  /*   useEffect(() => {
+    if (isVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose]);
+  }, [isVisible, handleClickOutside]);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  if (!isVisible) {
+    return null;
+  } */
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const openLogOutModal = () => {
-    setIsLogOutModalOpen(true);
-  };
-
-  const closeLogOutModal = () => {
-    setIsLogOutModalOpen(false);
+  const showModal = modalType => {
+    dispatch(openModal({ modalType }));
+    dispatch(hidePopover());
   };
 
   return (
-    <div ref={popoverRef} className={css.userBarPopoverContainer}>
-      <button type="button" className={css.popoverBtn} onClick={openModal}>
+    <div className={css.container} ref={popoverRef}>
+      <button
+        type="button"
+        className={css.popoverBtn}
+        onClick={() => showModal('UserSettingsModal')}
+      >
         <Icon
           className={css.popoverIcon}
           title="settings"
@@ -54,13 +62,17 @@ export default function UserBarPopover({ onClose }) {
           height="16"
           id={'icon-settings'}
         />
+        {/*         <svg className={css.popoverIcon} width="16" height="16">
+          <use href={`${icons}#icon-settings`}></use>
+        </svg> */}
+
         <p className={css.popoverText}>Setting</p>
       </button>
 
       <button
         type="button"
         className={clsx(css.popoverBtn, css.popoverBtnGray)}
-        onClick={openLogOutModal}
+        onClick={() => showModal('LogOutModal')}
       >
         <Icon
           className={css.popoverIcon}
@@ -68,23 +80,12 @@ export default function UserBarPopover({ onClose }) {
           height="16"
           id={'icon-log-out'}
         />
+        {/*         <svg className={css.popoverIcon} width="16" height="16">
+          <use href={`${icons}#icon-log-out`}></use>
+        </svg> */}
+
         <p className={css.popoverText}>Log out</p>
       </button>
-
-      <ModalReusable modalIsOpen={isModalOpen} closeModal={closeModal}>
-        <div onClick={e => e.stopPropagation()}>
-          <UserSettingsModal closeModal={closeModal} />
-        </div>
-      </ModalReusable>
-
-      <ModalReusable
-        modalIsOpen={isLogOutModalOpen}
-        closeModal={closeLogOutModal}
-      >
-        <div onClick={e => e.stopPropagation()}>
-          <LogOutModal closeModal={closeLogOutModal} />
-        </div>
-      </ModalReusable>
     </div>
   );
 }

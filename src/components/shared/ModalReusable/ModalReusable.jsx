@@ -1,17 +1,15 @@
-import Modal from 'react-modal';
 import css from './ModalReusable.module.css';
+import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const ModalReusable = ({ children, modalIsOpen, closeModal }) => {
-  const handleClickInsideModal = event => {
-    event.stopPropagation();
-  };
-
-  const handleClickOutside = event => {
-    event.stopPropagation();
-    closeModal();
-  };
+export default function ModalReusable({
+  children,
+  modalIsOpen,
+  closeModal,
+  ...props
+}) {
+  //можна передати пропси за допомогою деструктуризації
 
   return (
     <Modal
@@ -19,19 +17,15 @@ const ModalReusable = ({ children, modalIsOpen, closeModal }) => {
       closeTimeoutMS={400}
       onRequestClose={closeModal}
       className={{
-        base: css.modal,
-        afterOpen: css.afterOpen,
-        beforeClose: css.beforeClose,
+        base: css['modal'] + ' ' + props.className,
+        afterOpen: css['afterOpen'],
+        beforeClose: css['beforeClose'],
       }}
-      overlayClassName={css.overlay}
+      overlayClassName={css['overlay']}
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      <div className={css.content} onClick={handleClickOutside}>
-        <div onClick={handleClickInsideModal}>{children}</div>
-      </div>
+      <div className={css.content}>{children}</div>
     </Modal>
   );
-};
-
-export default ModalReusable;
+}

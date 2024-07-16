@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
+import WaterModal from './WaterModal.jsx';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -11,29 +12,31 @@ const AddWaterBtn = ({
   iconWidth,
   iconHeight,
 }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const openModalRef = useRef(null);
+  const [openWaterModal, setOpenWaterModal] = useState(false);
+  const waterModalRef = useRef(null);
 
   const handleOutsideClick = e => {
-    if (openModalRef.current && !openModalRef.current.contains(e.target)) {
-      setOpenModal(false);
+    if (waterModalRef.current && !waterModalRef.current.contain(e.target)) {
+      setOpenWaterModal(false);
     }
   };
 
-  const handleButtonModalClick = () => {
-    setOpenModal(!openModal);
+  const handleButtonClick = () => {
+    setOpenWaterModal(!openWaterModal);
   };
 
   useEffect(() => {
+    document.addEventListener('keydown', handleOutsideClick);
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
+      document.addEventListener('keydown', handleOutsideClick);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   });
   return (
     <div>
       <Button
-        onClick={handleButtonModalClick}
+        onClick={handleButtonClick}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
       >
@@ -47,7 +50,7 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {/* {openModal && <WaterModal onClose={handleButtonModalClick} />} */}
+      {openWaterModal && <WaterModal onClose={handleButtonClick} />}
     </div>
   );
 };
