@@ -1,3 +1,4 @@
-/* export const selectIsLoading = state => state.auth.isLoading; */
+export const selectIsLoading = state => state.water.isLoading;
 
-// export const selectMonthlyWater = state => state.aqua.monthlyReception;
+export const selectMonthlyWater = state => state.water.waterDataMonth;
+export const selectDailyWater = state => state.water.waterDataDay;

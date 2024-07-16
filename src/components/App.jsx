@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/users/operations';
 import { selectIsRefreshing } from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
-import { getWaterDataMonthly } from '../redux/water/operations';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -19,10 +18,10 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
-  /*   console.log(dispatch(getWaterDataMonthly(2, 2022))); */
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
   return isRefreshing ? (
     <Loader variant="fullScreen" />
   ) : (

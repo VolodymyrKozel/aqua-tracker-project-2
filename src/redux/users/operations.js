@@ -48,6 +48,7 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await instance.post(`users/logout`);
     clearAuthHeader();
+
     toast.success('Logout success');
   } catch (error) {
     const errorMessage = handleError(error);

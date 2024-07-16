@@ -6,25 +6,27 @@ import css from './LogOutModal.module.css';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/users/operations';
 
-const LogOutModal = () => {
+const LogOutModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(true);
+
+  /*   const [isOpen, setIsOpen] = useState(true); */
   // const navigate = useNavigate();
-  const handleClose = () => {
+  /*  const handleClose = () => {
     setIsOpen(false);
   };
+  */
   const handleLogOut = () => {
     dispatch(logOut());
-    setIsOpen(false);
+    closeModal();
   };
 
-  const handleBackdropClick = event => {
+  /*   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       handleClose();
     }
-  };
+  }; */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const handleKeyDown = event => {
       if (event.key === 'Escape') {
         handleClose();
@@ -38,28 +40,26 @@ const LogOutModal = () => {
     };
   }, []);
 
-  if (!isOpen) return null;
+  if (!isOpen) return null; */
 
   return (
-    <div className={css.modalBackdrop} onClick={handleBackdropClick}>
-      <div className={css.logoutModal}>
-        <Icon
-          className={css.closeIcon}
-          width="28"
-          height="28"
-          id="icon-cross"
-          onClick={handleClose}
-        />
-        <h3 className={css.modalLogoutTitle}>Log out</h3>
-        <p className={css.modalLogoutText}>Do you really want to leave?</p>
-        <div className={css.modalButtonContainer}>
-          <Button onClick={handleLogOut} variant="primary">
-            Log out
-          </Button>
-          <Button variant="default" onClick={handleClose}>
-            Cancel
-          </Button>
-        </div>
+    <div className={css.logoutModal}>
+      <Icon
+        className={css.closeIcon}
+        width="28"
+        height="28"
+        id="icon-cross"
+        onClick={closeModal}
+      />
+      <h3 className={css.modalLogoutTitle}>Log out</h3>
+      <p className={css.modalLogoutText}>Do you really want to leave?</p>
+      <div className={css.modalButtonContainer}>
+        <Button onClick={handleLogOut} variant="primary">
+          Log out
+        </Button>
+        <Button variant="default" onClick={closeModal}>
+          Cancel
+        </Button>
       </div>
     </div>
   );

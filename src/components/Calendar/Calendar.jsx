@@ -1,5 +1,6 @@
 // import { startOfMonth, endOfMonth, addDays, isSameDay } from 'date-fns';
 // import CalendarItem from './CalendarItem/CalendarItem';
+import { useSelector } from 'react-redux';
 import css from './Calendar.module.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
@@ -40,22 +41,39 @@ import css from './Calendar.module.css';
 // }
 // return <div className={css.calendar}>{days}</div>;
 // }
-
-// // export default Calendar;
-// import List from '../shared/List/List';
 import CalendarItem from './CalendarItem/CalendarItem';
-// import dataCalendar from './data/monthlyData.json';
+import { selectMonthlyWater } from '../../redux/water/selectors';
+import { addDays, endOfMonth, format, getMonth, startOfMonth } from 'date-fns';
 
-const Calendar = ({ selectedDate, setSelectedDate, monthlyData: data }) => {
+const Calendar = ({ selectedDate, setSelectedDate }) => {
+  const monthlyData = useSelector(selectMonthlyWater);
+  const currentDate = new Date();
+  const currentMonth = getMonth(currentDate) + 1;
+  const monthStart = startOfMonth(currentMonth);
+  const monthEnd = endOfMonth(monthStart);
+
+  let days = [];
+  let day = monthStart;
+  let endMonth = monthEnd;
+  function getRandomPercentage() {
+    return Math.floor(Math.random() * 100) + 1;
+  }
+  while (day <= endMonth) {
+    days.push({
+      _id: format(day, 'd'),
+      totalValue: getRandomPercentage() + '%',
+    });
+    day = addDays(day, 1);
+  }
   return (
     <>
       <ul className={css.list}>
-        {data.map(item => (
+        {days.map(item => (
           <CalendarItem
             data={item}
             setSelectedDate={setSelectedDate}
             selectedDate={selectedDate}
-            key={item.day}
+            key={item._id}
           />
         ))}
       </ul>

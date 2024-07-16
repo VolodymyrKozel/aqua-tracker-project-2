@@ -24,14 +24,16 @@ const CalendarItem = ({ data, selectedDate, setSelectedDate }) => {
   };
 
   return (
-    <li className={css.item}>
+    <li className={css.item} key={data._id}>
       <button
         className={clsx(css.btn, selectedDate === data.day && css.selectedBtn)}
         onClick={handleClickDay}
       >
-        <p className={css.number}>{format(data.day, 'd')}</p>
+        <p className={css.number}>
+          {/* format(data.day, 'd') */} {data._id}{' '}
+        </p>
       </button>
-      <p className={css.percentage}>{data.value}</p>
+      <p className={css.percentage}>{data.totalValue}</p>
     </li>
   );
 };
