@@ -1,29 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import instance, {
+  setAuthHeader,
+  clearAuthHeader,
+} from '../../services/instance';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
 
-const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+/* const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+axios.defaults.withCredentials = true; */
 
 export const signUp = createAsyncThunk(
   'users/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `${URL_API}users/register`,
-        credentials
-      );
-      const response = await axios.post(`${URL_API}users/login`, {
+      const { data } = await instance.post(`users/register`, credentials);
+      const response = await instance.post(`users/login`, {
         email: credentials.email,
         password: credentials.password,
       });
@@ -41,7 +34,7 @@ export const signIn = createAsyncThunk(
   'users/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${URL_API}users/login`, credentials);
+      const { data } = await instance.post(`users/login`, credentials);
 
       console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
@@ -57,7 +50,7 @@ export const signIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
-    await axios.post(`${URL_API}users/logout`);
+    await instance.post(`users/logout`);
     clearAuthHeader();
     toast.success('Logout success');
   } catch (error) {
@@ -78,11 +71,13 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
+      console.log('persistedToken', persistedToken);
       setAuthHeader(persistedToken);
-      const { data } = await axios.get('users/current');
-      console.log('user refresh');
+      const { data } = await instance.get(`users/current`);
+      console.log('data current', data);
       return data;
     } catch (error) {
+      toast.error('You are not logged in');
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
     }
@@ -93,7 +88,7 @@ export const updateUser = createAsyncThunk(
   'users/update',
   async (formData, thunkAPI) => {
     try {
-      const res = await axios.patch('/users/update', formData, {
+      const res = await instance.patch('/users/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
