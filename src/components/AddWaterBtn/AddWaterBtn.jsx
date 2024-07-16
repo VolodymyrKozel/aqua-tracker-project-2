@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
-// import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -11,9 +11,9 @@ const AddWaterBtn = ({
   iconId,
   iconWidth,
   iconHeight,
-  // operationType = 'add',
-  // defaultValues = {},
-  // onSubmit,
+  operationType = 'add',
+  defaultValues = { time: '07:00', amount: 250 },
+  onSubmit,
 }) => {
   const [openWaterModal, setOpenWaterModal] = useState(false);
   const waterModalRef = useRef(null);
@@ -54,13 +54,13 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {/* <WaterModal
+      <WaterModal
         isOpen={openWaterModal}
         onRequestClose={handleButtonClick}
         onSubmit={onSubmit}
         operationType={operationType}
         defaultValues={defaultValues}
-      /> */}
+      />
     </div>
   );
 };
