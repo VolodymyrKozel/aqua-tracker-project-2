@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn, logOut, refreshUser, updateUser } from './operations';
+import {
+  signUp,
+  signIn,
+  logOut,
+  refreshUser,
+  updateUser,
+  fetchUser,
+} from './operations';
 
 const usersSlice = createSlice({
   name: 'users',
@@ -23,10 +30,10 @@ const usersSlice = createSlice({
       .addCase(signUp.pending, state => {
         state.isLoading = true;
       })
-      .addCase(signUp.fulfilled, (state, { payload }) => {
+      .addCase(signUp.fulfilled, (state /* , { payload } */) => {
         state.isLoading = false;
-        state.user = payload.data.user;
-        state.token = payload.accessToken;
+        /*         state.user = payload.data.user;
+        state.token = payload.accessToken; */
         state.isLoggedIn = true;
       })
       .addCase(signUp.rejected, state => {
@@ -38,7 +45,6 @@ const usersSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload.user;
         state.token = payload.accessToken;
         state.isLoggedIn = true;
       })
@@ -51,9 +57,10 @@ const usersSlice = createSlice({
       })
       .addCase(logOut.fulfilled, state => {
         state.isLoading = false;
-        state.user = { name: null, email: null };
+        state.user = {};
         state.token = null;
         state.isLoggedIn = false;
+        state.isRefreshing = false;
       })
       .addCase(logOut.rejected, state => {
         state.isLoading = false;
@@ -70,6 +77,16 @@ const usersSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
+      })
+      .addCase(fetchUser.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user = { ...state.user, ...payload.user };
+      })
+      .addCase(fetchUser.rejected, state => {
+        state.isLoading = false;
       })
 
       .addCase(updateUser.pending, state => {

@@ -11,13 +11,16 @@ export const signUp = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await instance.post(`users/register`, credentials);
-      const response = await instance.post(`users/login`, {
-        email: credentials.email,
-        password: credentials.password,
-      });
-      setAuthHeader(response.data.accessToken);
       toast.success('User created successfully');
-      return { data, accessToken: response.data.accessToken };
+      await thunkAPI.dispatch(
+        signIn({
+          email: credentials.email,
+          password: credentials.password,
+        })
+      );
+      await thunkAPI.dispatch(fetchUser());
+
+      return data;
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
@@ -30,10 +33,8 @@ export const signIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await instance.post(`users/login`, credentials);
-
-      console.log(data.data.accessToken);
       setAuthHeader(data.data.accessToken);
-
+      await thunkAPI.dispatch(fetchUser());
       toast.success('Login success');
       return data.data;
     } catch (error) {
@@ -66,12 +67,24 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      console.log('persistedToken', persistedToken);
       setAuthHeader(persistedToken);
       const { data } = await instance.get(`users/current`);
       return data.user;
     } catch (error) {
       toast.error('You are not logged in');
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const fetchUser = createAsyncThunk(
+  'users/current',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await instance.get(`users/current`);
+      return data.user;
+    } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
     }
