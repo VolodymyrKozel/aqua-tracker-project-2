@@ -11,7 +11,7 @@ const WaterList = () => {
 
   useEffect(() => {
     setWaterItems(waterItemsStore);
-  }, [waterItemsStore]);
+  }, []);
 
   return (
     <>
