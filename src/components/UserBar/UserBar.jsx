@@ -37,7 +37,7 @@ const UserBar = () => {
         className={css.userBarButton}
       >
         <p className={css.userBarName}>{user.name}</p>
-        <img className={css.userBarAvatar} src={user.avatarURL} alt="Avatar" />
+        <img className={css.userBarAvatar} src={user.avatarURL} alt="Photo" />
         {togglePopover ? (
           <IconChevronUp className={css.iconChevronUp} />
         ) : (
