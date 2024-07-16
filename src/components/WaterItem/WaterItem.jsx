@@ -40,8 +40,8 @@ const WaterItem = ({ item }) => {
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
-        <p className={css.waterItemMl}>{item.amount} ml</p>
-        <p className={css.waterItemData}>{item.date}</p>
+        <p className={css.waterItemMl}>{item.volume} ml</p>
+        <p className={css.waterItemData}>{item.time}</p>
       </div>
       <div className={css.waterItemBtnWrap}>
         <Button

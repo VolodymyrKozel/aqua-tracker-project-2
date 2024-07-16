@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
-import WaterModal from './WaterModal.jsx';
+// import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -11,12 +11,15 @@ const AddWaterBtn = ({
   iconId,
   iconWidth,
   iconHeight,
+  // operationType = 'add',
+  // defaultValues = {},
+  // onSubmit,
 }) => {
   const [openWaterModal, setOpenWaterModal] = useState(false);
   const waterModalRef = useRef(null);
 
   const handleOutsideClick = e => {
-    if (waterModalRef.current && !waterModalRef.current.contain(e.target)) {
+    if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
       setOpenWaterModal(false);
     }
   };
@@ -32,7 +35,8 @@ const AddWaterBtn = ({
       document.addEventListener('keydown', handleOutsideClick);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  });
+  }, []);
+
   return (
     <div>
       <Button
@@ -50,7 +54,13 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {openWaterModal && <WaterModal onClose={handleButtonClick} />}
+      {/* <WaterModal
+        isOpen={openWaterModal}
+        onRequestClose={handleButtonClick}
+        onSubmit={onSubmit}
+        operationType={operationType}
+        defaultValues={defaultValues}
+      /> */}
     </div>
   );
 };
