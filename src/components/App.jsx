@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/users/operations';
 import { selectIsRefreshing } from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
+import ModalExample from './ModalExample/ModalExample';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -65,6 +66,11 @@ export const App = () => {
                 />
               }
             />
+            <Route
+              path="/modal"
+              element={<ModalExample operationType="add" />}
+            />
+
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

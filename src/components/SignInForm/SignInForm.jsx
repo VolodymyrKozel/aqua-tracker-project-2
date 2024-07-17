@@ -105,7 +105,7 @@ const SignInForm = () => {
             </Button>
           </form>
           <p className={css.afterDescription}>
-            Don't have an account?
+            Don&apos;t have an account?{' '}
             <NavLink className={css.link} to={'/signup'}>
               {' '}
               Sign Up
