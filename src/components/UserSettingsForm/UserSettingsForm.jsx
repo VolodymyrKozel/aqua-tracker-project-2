@@ -95,19 +95,18 @@ export default function UserSettingsForm({ closeModal }) {
   return (
     <>
       {isLoading && <Loader />}
-      <div className={css.modalOverlay} onClick={closeModal}>
-        <form
-          className={css.form}
-          onSubmit={handleSubmit(submit)}
-          encType="multipart/form-data"
-          onClick={e => e.stopPropagation()} // Предотвращение всплытия события клика
-        >
-          <div className={css.imageWrap}>
-            <img
-              src={avatar_photo_default}
-              srcSet={`
-                ${ava} 
-                ${ava2x}
+      <form
+        className={css.form}
+        onSubmit={handleSubmit(submit)}
+        encType="multipart/form-data"
+      >
+        <div className={css.imageWrap}>
+          <img
+            // src={file ? URL.createObjectURL(file) : avatarURL}
+            src={avatar_photo_default}
+            srcSet={`
+                  ${ava} 
+                  ${ava2x} 
               `}
               alt="user avatar"
               className={css.avatarImg}
