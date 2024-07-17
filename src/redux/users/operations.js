@@ -108,8 +108,13 @@ export const updateUser = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'users/avatar',
-  async (formData, thunkAPI) => {
+  async (file, thunkAPI) => {
+    console.log(file);
     try {
+      const formData = new FormData();
+      formData.append('avatarURL', file);
+      const userId = thunkAPI.getState().user.id; // Adjust based on how you store the user data in your state
+      formData.append('id', userId);
       const res = await instance.patch('/users/avatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

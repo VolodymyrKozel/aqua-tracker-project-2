@@ -1,22 +1,21 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { selectUser } from '../../redux/users/selectors';
-import { updateUser } from '../../redux/users/operations';
-
-/* import { errorToast, successToast } from '../../helpers/toast'; */
+import { updateAvatar, updateUser } from '../../redux/users/operations';
 import Icon from '../shared/Icon/Icon';
 import { userSettingsSchema } from '../../validation/form';
 
-import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../shared/Loader/Loader';
+import { selectIsLoading } from '../../redux/users/selectors';
 import { ava, ava2x, avatar_photo_default } from './images';
-import toast from 'react-hot-toast';
+import css from '../UserSettingsForm/UserSettingsForm.module.css';
 
 export default function UserSettingsForm() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const user = useSelector(selectUser);
   const avatarURL = user.avatarURL;
@@ -37,8 +36,6 @@ export default function UserSettingsForm() {
       waterDrink: user?.waterDrink || 0,
     },
   });
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (user) {
       setValue('name', user.name || '');
@@ -49,15 +46,16 @@ export default function UserSettingsForm() {
       setValue('gender', user.gender || '');
     }
   }, [user, setValue]);
+
   const nameId = useId();
   const emailId = useId();
-  const [file, setFile] = useState(null);
   const fileInputRef = useRef(null); // объект ссылки для получения доступа к инпуту файла
 
   const onFileChange = e => {
-    // обработчик события (извлекаем выбранный userom файл)
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+    if (selectedFile) {
+      dispatch(updateAvatar(selectedFile)); // dispatch the file upload action
+    }
   };
 
   // функция расчёта нормы воды
@@ -74,42 +72,16 @@ export default function UserSettingsForm() {
 
   // обработка отправки формы
   const submit = async userData => {
-    /*     const userWithFile = { userData, avatarUrl: 'default' }; */
-    console.log('userData', userData);
     dispatch(updateUser(userData));
   };
-  /*   const submit = async userData => {
-    setIsLoading(true);
-    const formData = new FormData(); // создаём объект formData
-    Object.keys(userData).forEach(key => {
-      formData.append(key, userData[key]);
-    });
-    if (file) {
-      formData.append('avatarURL', file);
-    }
-    try {
-      await dispatch(updateUser(formData)); // отправка данных(formData) на бек
-      toast.success('User updated successfuly');
-    } catch (error) {
-      toast.error('Error: Unsuccessful update of user information', error);
-    } finally {
-      setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
-    }
-  }; */
 
   return (
     <>
       {isLoading && <Loader />}
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(submit)}
-        /*  encType="multipart/form-data" */
-        onClick={e => e.stopPropagation()}
-      >
+      <form className={css.form} onSubmit={handleSubmit(submit)}>
         <div className={css.imageWrap}>
           <img
-            // src={file ? URL.createObjectURL(file) : avatarURL}
-            src={avatar_photo_default}
+            src={avatarURL || avatar_photo_default}
             srcSet={`
                   ${ava} 
                   ${ava2x} 
@@ -128,9 +100,6 @@ export default function UserSettingsForm() {
               className={css.imgInput}
               ref={fileInputRef}
             />
-            {/* <svg className={css.iconUpload} width="18" height="18">
-              <use xlinkHref={`${modalIcons}#icon-upload`}></use>
-            </svg> */}
             <Icon
               className={css.iconUpload}
               width="18"
@@ -269,9 +238,6 @@ export default function UserSettingsForm() {
                 </p>
               </div>
               <div className={css.activeTime}>
-                {/* <svg className={css.iconExclamation} width="18" height="18">
-                  <use xlinkHref={`${modalIcons}#icon-exclamation-mark`}></use>
-                </svg> */}
                 <Icon
                   className={css.iconExclamation}
                   width={18}
@@ -357,7 +323,6 @@ export default function UserSettingsForm() {
           Save
         </button>
       </form>
-      {/* <Toaster /> */}
     </>
   );
 }
