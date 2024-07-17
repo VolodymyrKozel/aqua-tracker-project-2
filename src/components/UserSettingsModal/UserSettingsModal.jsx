@@ -8,6 +8,7 @@ export default function UserSettingsModal({ closeModal }) {
     <div className={css.container}>
       <div className={css.nav}>
         <h1 className={css.formTitle}>Setting</h1>
+
         <Icon
           onClick={closeModal}
           className={css.icon}

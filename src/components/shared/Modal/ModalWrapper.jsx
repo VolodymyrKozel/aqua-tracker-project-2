@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-export default function ModalReusable({
+export default function ModalWrapper({
   children,
   modalIsOpen,
   closeModal,
