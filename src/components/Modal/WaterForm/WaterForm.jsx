@@ -15,7 +15,7 @@ const schema = yup.object().shape({
     .typeError('Please, enter the amount between 1 and 5000 ml!')
     .required('Please, enter the amount of water drunk!'),
 });
-const WaterForm = ({ onRequestClose, onSubmit, defaultValues }) => {
+const WaterForm = ({  onSubmit, defaultValues }) => {
   const {
     register,
     handleSubmit,
