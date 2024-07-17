@@ -20,7 +20,7 @@ const WaterList = () => {
       {!Array.isArray(arrDailyWater) ? (
         // && !arrDailyWater.length
         <div className={css.noWaterAdded}>
-          You haven't had any water today. Start now!
+          You haven&apos;t had any water today. Start now!
         </div>
       ) : (
         <div className={css.waterListWrap}>
