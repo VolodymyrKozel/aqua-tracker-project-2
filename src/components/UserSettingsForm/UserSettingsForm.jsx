@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { selectUser } from '../../redux/users/selectors';
 import { updateUser } from '../../redux/users/operations';
-import { closeModal } from '../../redux/modal/slice';
 
 /* import { errorToast, successToast } from '../../helpers/toast'; */
 import Icon from '../shared/Icon/Icon';
