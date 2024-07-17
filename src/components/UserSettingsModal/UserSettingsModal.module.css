@@ -1,5 +1,5 @@
 .container {
-  position: relative;
+  position: absolute;
   margin-top: 92px;
 }
 
@@ -46,7 +46,7 @@
 
   .modal {
     top: 64px;
-    max-width: 648px;
+    /* max-width: 648px; */
     padding: 40px;
   }
 
