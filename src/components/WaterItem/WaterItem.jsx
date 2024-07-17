@@ -82,7 +82,7 @@ const WaterItem = ({ item }) => {
           />
         )}
         {toggleDelete && (
-          <DeleteWaterModal item={item} onClose={HandleButtonDeleteClick} />
+          <DeleteWaterModal id={item._id} onClose={HandleButtonDeleteClick} />
         )}
       </div>
     </div>
