@@ -6,6 +6,7 @@ import css from './DeleteWaterModal.module.css';
 
 const DeleteWaterModal = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const [iconSize, setIconSize] = useState({ width: 28, height: 28 });
 
   const handleClose = () => {
     setIsOpen(false);
@@ -24,6 +25,17 @@ const DeleteWaterModal = () => {
       }
     };
 
+    const updateIconSize = () => {
+      if (window.innerWidth < 375) {
+        setIconSize({ width: 24, height: 24 });
+        setIconSize({ width: 28, height: 28 });
+      }
+    };
+
+    updateIconSize();
+    window.addEventListener('resize', updateIconSize);
+    document.addEventListener('keydown', handleKeyDown);
+
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keydown', handleKeyDown);
 
@@ -39,8 +51,8 @@ const DeleteWaterModal = () => {
       <div className={css.deleteModal}>
         <Icon
           className={css.closeIcon}
-          width="28"
-          height="28"
+          width={iconSize.width}
+          height={iconSize.height}
           id="icon-cross"
           onClick={handleClose}
         />
@@ -49,8 +61,14 @@ const DeleteWaterModal = () => {
           Are you sure you want to delete the entry?
         </p>
         <div className={css.modalButtonContainer}>
-          <Button variant="primary">Delete</Button>
-          <Button variant="default" onClick={handleClose}>
+          <Button className={css.modalButon} variant="primary">
+            Delete
+          </Button>
+          <Button
+            className={css.modalButon}
+            variant="default"
+            onClick={handleClose}
+          >
             Cancel
           </Button>
         </div>
