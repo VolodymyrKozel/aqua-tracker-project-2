@@ -28,7 +28,7 @@ const Calendar = ({ selectedDate, setSelectedDate }) => {
     days.push({
       _id: dayFormatted,
       date: format(day, 'yyyy-MM-dd'),
-      totalValue: `${value}%`,
+      totalValue: value,
     });
 
     day = addDays(day, 1);
