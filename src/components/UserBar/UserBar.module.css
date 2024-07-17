@@ -7,12 +7,13 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    width: 137px;
+    min-width: 137px;
     height: 50px;
     padding: 6px 12px;
     text-align: center;
     gap: 8px;
     margin-bottom: 4px;
+    width: fit-content;
 }
 
 .userBarName {
@@ -49,7 +50,7 @@
     .userBarButton {
         gap: 10px;
         padding: 6px 12px;
-        width: 157px;
+        min-width: 157px;
         height: 56px;
         margin-bottom: 8px;
     }
@@ -71,4 +72,7 @@
 }
 
     @media screen and (min-width: 1440px) {
+        .userBarButton {
+            gap: 12px;
+        }
 }

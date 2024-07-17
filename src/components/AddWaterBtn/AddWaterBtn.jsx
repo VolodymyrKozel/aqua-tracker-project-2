@@ -24,15 +24,25 @@ const AddWaterBtn = ({
     }
   };
 
+  const handleEscapePress = e => {
+    if (e.key === 'Escape') {
+      setOpenWaterModal(false);
+    }
+  };
+
   const handleButtonClick = () => {
     setOpenWaterModal(!openWaterModal);
   };
 
+  const handleButtonClose = () => {
+    setOpenWaterModal(false);
+  };
+
   useEffect(() => {
-    document.addEventListener('keydown', handleOutsideClick);
+    document.addEventListener('keydown', handleEscapePress);
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
-      document.addEventListener('keydown', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscapePress);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
@@ -54,13 +64,17 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      <WaterModal
-        isOpen={openWaterModal}
-        onRequestClose={handleButtonClick}
-        onSubmit={onSubmit}
-        operationType={operationType}
-        defaultValues={defaultValues}
-      />
+      {openWaterModal && (
+        <div ref={waterModalRef}>
+          <WaterModal
+            isOpen={openWaterModal}
+            onRequestClose={handleButtonClose}
+            onSubmit={onSubmit}
+            operationType={operationType}
+            defaultValues={defaultValues}
+          />
+        </div>
+      )}
     </div>
   );
 };
