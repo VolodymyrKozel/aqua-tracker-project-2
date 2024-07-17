@@ -17,6 +17,7 @@ function WelcomeSection() {
           <Button variant="outline" onClick={() => navigate('/signin')}>
             Sign in
           </Button>
+          {/* <WaterModal /> */}
         </div>
       </div>
     </section>
