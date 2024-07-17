@@ -100,6 +100,7 @@ export default function UserSettingsForm() {
         className={css.form}
         onSubmit={handleSubmit(submit)}
         encType="multipart/form-data"
+        onClick={e => e.stopPropagation()}
       >
         <div className={css.imageWrap}>
           <img

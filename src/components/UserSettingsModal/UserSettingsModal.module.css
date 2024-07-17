@@ -1,14 +1,26 @@
 .container {
-  position: relative;
-  margin-top: 92px;
+  width: 343px;
+  padding: 40px 20px;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    width: 648px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 920px;
+  }
+}
+.btn {
+}
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: fixed;
+  position: sticky;
   padding: 40px 40px 20px 40px;
   left: 0;
   top: 0;
@@ -31,23 +43,10 @@
   margin-bottom: 20px;
 }
 
-.modal {
-  border-radius: 15px;
-  background: #fff;
-  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-  padding: 40px 20px;
-}
-
 @media screen and (min-width: 768px) {
   .formTitle {
     font-size: 28px;
     line-height: 1.4;
-  }
-
-  .modal {
-    top: 64px;
-    max-width: 648px;
-    padding: 40px;
   }
 
   .button {
@@ -65,11 +64,5 @@
     top: 40px;
     right: 40px;
     z-index: 10;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .modal {
-    max-width: 920px;
   }
 }
