@@ -29,12 +29,12 @@ export default function UserSettingsForm() {
   } = useForm({
     resolver: yupResolver(userSettingsSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      gender: '',
-      weight: 0,
-      activeTimeSport: 0,
-      dailyWaterRate: 0,
+      name: user?.name || '',
+      email: user?.email || '',
+      gender: user?.gender || '',
+      weight: user?.weight || 0,
+      activeTimeSports: user?.activeTimeSports || 0,
+      waterDrink: user?.waterDrink || 0,
     },
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -44,8 +44,8 @@ export default function UserSettingsForm() {
       setValue('name', user.name || '');
       setValue('email', user.email || '');
       setValue('weight', user.weight || 0);
-      setValue('activeTimeSport', user.activeTimeSport || 0);
-      setValue('dailyWaterRate', user.dailyWaterRate || 0);
+      setValue('activeTimeSports', user.activeTimeSports || 0);
+      setValue('waterDrink', user.waterDrink || 0);
       setValue('gender', user.gender || '');
     }
   }, [user, setValue]);
@@ -63,17 +63,22 @@ export default function UserSettingsForm() {
   // функция расчёта нормы воды
   const calculate = () => {
     const weight = parseFloat(watch('weight')) || 0;
-    const activeTimeSport = parseFloat(watch('activeTimeSport')) || 0;
+    const activeTimeSports = parseFloat(watch('activeTimeSports')) || 0;
     if (watch('gender') === 'woman') {
-      return (weight * 0.03 + activeTimeSport * 0.4).toFixed(1);
+      return (weight * 0.03 + activeTimeSports * 0.4).toFixed(1);
     } else if (watch('gender') === 'man') {
-      return (weight * 0.04 + activeTimeSport * 0.6).toFixed(1);
+      return (weight * 0.04 + activeTimeSports * 0.6).toFixed(1);
     }
     return 0;
   };
 
   // обработка отправки формы
   const submit = async userData => {
+    /*     const userWithFile = { userData, avatarUrl: 'default' }; */
+    console.log('userData', userData);
+    dispatch(updateUser(userData));
+  };
+  /*   const submit = async userData => {
     setIsLoading(true);
     const formData = new FormData(); // создаём объект formData
     Object.keys(userData).forEach(key => {
@@ -85,13 +90,12 @@ export default function UserSettingsForm() {
     try {
       await dispatch(updateUser(formData)); // отправка данных(formData) на бек
       toast.success('User updated successfuly');
-      dispatch(closeModal());
     } catch (error) {
       toast.error('Error: Unsuccessful update of user information', error);
     } finally {
       setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
     }
-  };
+  }; */
 
   return (
     <>
@@ -99,7 +103,7 @@ export default function UserSettingsForm() {
       <form
         className={css.form}
         onSubmit={handleSubmit(submit)}
-        encType="multipart/form-data"
+        /*  encType="multipart/form-data" */
         onClick={e => e.stopPropagation()}
       >
         <div className={css.imageWrap}>
@@ -300,7 +304,7 @@ export default function UserSettingsForm() {
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.activeTimeSport ? css.hasError : ''
+                  errors.activeTimeSports ? css.hasError : ''
                 }`}
               >
                 <label className={css.inputTitle}>
@@ -308,12 +312,12 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="activeTimeSport"
+                  name="activeTimeSports"
                   className={css.inputField}
-                  {...register('activeTimeSport')}
+                  {...register('activeTimeSports')}
                 />
-                {errors.activeTimeSport && (
-                  <p className={css.error}>{errors.activeTimeSport.message}</p>
+                {errors.activeTimeSports && (
+                  <p className={css.error}>{errors.activeTimeSports.message}</p>
                 )}
               </div>
             </div>
@@ -328,7 +332,7 @@ export default function UserSettingsForm() {
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.dailyWaterRate ? css.hasError : ''
+                  errors.waterDrink ? css.hasError : ''
                 }`}
               >
                 <label className={css.inputTitleBold}>
@@ -336,13 +340,13 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="dailyWaterRate"
+                  name="waterDrink"
                   className={css.inputField}
                   step={0.1}
-                  {...register('dailyWaterRate')}
+                  {...register('waterDrink')}
                 />
-                {errors.dailyWaterRate && (
-                  <p className={css.error}>{errors.dailyWaterRate.message}</p>
+                {errors.waterDrink && (
+                  <p className={css.error}>{errors.waterDrink.message}</p>
                 )}
               </div>
             </div>

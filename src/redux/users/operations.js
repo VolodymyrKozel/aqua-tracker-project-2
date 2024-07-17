@@ -94,14 +94,28 @@ export const fetchUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'users/update',
+  async (user, thunkAPI) => {
+    try {
+      const res = await instance.patch('/users/update', user);
+      toast.success('User updated successfully');
+      return res.data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'users/avatar',
   async (formData, thunkAPI) => {
     try {
-      const res = await instance.patch('/users/update', formData, {
+      const res = await instance.patch('/users/avatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      toast.success('User updated successfully');
+      toast.success('Avatar updated successfully');
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);
