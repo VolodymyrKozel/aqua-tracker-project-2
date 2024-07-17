@@ -1,9 +1,10 @@
 .waterItem {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background-color: var(--main-white);
-    width: 149px;
+    min-width: 149px;
+    width: fit-content;
     height: 74px;
     padding: 18px 14px;
     border-radius: 15px;
@@ -61,7 +62,8 @@
         gap: 20px;
         background-color: var(--main-white);
         border-radius: 15px;
-        width: 192px;
+        min-width: 192px;
+        width: max-content;
         height: 86px;
         padding: 20px;
     }

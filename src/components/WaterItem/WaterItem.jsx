@@ -3,9 +3,9 @@ import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
 import { useEffect, useRef, useState } from 'react';
-import WaterModal from '../AddWaterBtn/WaterModal';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
+import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 
 const WaterItem = ({ item }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
@@ -36,12 +36,25 @@ const WaterItem = ({ item }) => {
     };
   }, []);
 
+  const handleFormSubmit = () => {
+    // console.log('Updated item:', data);
+    setToggleEdit(false);
+  };
+
+  const formatTime = time => {
+    const [hour, minute] = time.split(':');
+    const hourNum = parseInt(hour, 10);
+    const period = hourNum < 12 ? 'AM' : 'PM';
+    const formattedHour = hourNum % 12 || 12;
+    return `${formattedHour}:${minute} ${period}`;
+  };
+
   return (
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>{item.volume} ml</p>
-        <p className={css.waterItemData}>{item.time}</p>
+        <p className={css.waterItemData}>{formatTime(item.time)}</p>
       </div>
       <div className={css.waterItemBtnWrap}>
         <Button
@@ -59,7 +72,14 @@ const WaterItem = ({ item }) => {
           <IconTrash className={css.waterIconBtn} />
         </Button>
         {toggleEdit && (
-          <WaterModal item={item} onClose={HandleButtonEditClick} />
+          <WaterModal
+            item={item}
+            isOpen={toggleEdit}
+            onClose={HandleButtonEditClick}
+            onSubmit={handleFormSubmit}
+            operationType="edit"
+            defaultValues={{ time: item.time, amount: item.volume }}
+          />
         )}
         {toggleDelete && (
           <DeleteWaterModal item={item} onClose={HandleButtonDeleteClick} />
