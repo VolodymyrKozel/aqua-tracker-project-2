@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { selectUser } from '../../redux/users/selectors';
 import { updateUser } from '../../redux/users/operations';
 
-/* import { errorToast, successToast } from '../../helpers/toast'; */
 import Icon from '../shared/Icon/Icon';
 import { userSettingsSchema } from '../../validation/form';
 
@@ -15,7 +14,7 @@ import Loader from '../shared/Loader/Loader';
 import { ava, ava2x, avatar_photo_default } from './images';
 import toast from 'react-hot-toast';
 
-export default function UserSettingsForm() {
+export default function UserSettingsForm({ closeModal }) {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -84,8 +83,8 @@ export default function UserSettingsForm() {
     }
     try {
       await dispatch(updateUser(formData)); // отправка данных(formData) на бек
-      toast.success('User updated successfuly');
-      dispatch(closeModal());
+      toast.success('User updated successfully');
+      closeModal();
     } catch (error) {
       toast.error('Error: Unsuccessful update of user information', error);
     } finally {
@@ -96,263 +95,259 @@ export default function UserSettingsForm() {
   return (
     <>
       {isLoading && <Loader />}
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(submit)}
-        encType="multipart/form-data"
-      >
-        <div className={css.imageWrap}>
-          <img
-            // src={file ? URL.createObjectURL(file) : avatarURL}
-            src={avatar_photo_default}
-            srcSet={`
-                  ${ava} 
-                  ${ava2x} 
+      <div className={css.modalOverlay} onClick={closeModal}>
+        <form
+          className={css.form}
+          onSubmit={handleSubmit(submit)}
+          encType="multipart/form-data"
+          onClick={e => e.stopPropagation()} // Предотвращение всплытия события клика
+        >
+          <div className={css.imageWrap}>
+            <img
+              src={avatar_photo_default}
+              srcSet={`
+                ${ava} 
+                ${ava2x}
               `}
-            // динамически отображаем выбранное пользователем изображение
-            // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
-            alt="user avatar"
-            className={css.avatarImg}
-          />
-
-          <label className={css.buttonUpload}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={onFileChange}
-              className={css.imgInput}
-              ref={fileInputRef}
+              alt="user avatar"
+              className={css.avatarImg}
             />
-            {/* <svg className={css.iconUpload} width="18" height="18">
-              <use xlinkHref={`${modalIcons}#icon-upload`}></use>
-            </svg> */}
-            <Icon
-              className={css.iconUpload}
-              width="18"
-              height="18"
-              id="icon-upload"
-            />
-            <p>Upload a photo</p>
-          </label>
-        </div>
 
-        <div className={css.partWrap}>
-          <div
-            className={`${css.inputContainerGender} ${
-              errors.gender ? css.hasError : ''
-            }`}
-          >
-            <h2 className={css.inputTitleBold}>Your gender identity</h2>
-            <div className={css.genderInputWrap}>
-              <label className={css.radio}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="woman"
-                  className={css.genderInput}
-                  {...register('gender')}
-                />
-                <span className={css.iconWrap}>
-                  <Icon
-                    className={css.iconRadio}
-                    width={20}
-                    height={20}
-                    id={
-                      watch('gender') === 'woman'
-                        ? 'icon-radio-active'
-                        : 'icon-radio'
-                    }
-                  />
-                </span>
-                woman
-              </label>
-              <label className={css.radio}>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="man"
-                  className={css.genderInput}
-                  {...register('gender')}
-                />
-                <span className={css.iconWrap}>
-                  <Icon
-                    className={css.iconRadio}
-                    width={20}
-                    height={20}
-                    id={
-                      watch('gender') === 'man'
-                        ? 'icon-radio-active'
-                        : 'icon-radio'
-                    }
-                  />
-                </span>
-                man
-              </label>
-            </div>
-            {errors.gender && (
-              <p className={css.error}>{errors.gender.message}</p>
-            )}
+            <label className={css.buttonUpload}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={onFileChange}
+                className={css.imgInput}
+                ref={fileInputRef}
+              />
+              <Icon
+                className={css.iconUpload}
+                width="18"
+                height="18"
+                id="icon-upload"
+              />
+              <p>Upload a photo</p>
+            </label>
           </div>
-        </div>
 
-        <div className={css.block}>
-          <div className={css.blockWrap}>
-            <div className={css.partWrap}>
-              <div
-                className={`${css.inputContainer} ${
-                  errors.name ? css.hasError : ''
-                }`}
-              >
-                <label htmlFor={nameId} className={css.inputTitleBold}>
-                  Your name
+          <div className={css.partWrap}>
+            <div
+              className={`${css.inputContainerGender} ${
+                errors.gender ? css.hasError : ''
+              }`}
+            >
+              <h2 className={css.inputTitleBold}>Your gender identity</h2>
+              <div className={css.genderInputWrap}>
+                <label className={css.radio}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="woman"
+                    className={css.genderInput}
+                    {...register('gender')}
+                  />
+                  <span className={css.iconWrap}>
+                    <Icon
+                      className={css.iconRadio}
+                      width={20}
+                      height={20}
+                      id={
+                        watch('gender') === 'woman'
+                          ? 'icon-radio-active'
+                          : 'icon-radio'
+                      }
+                    />
+                  </span>
+                  woman
                 </label>
-                <input
-                  type="text"
-                  name="name"
-                  id={nameId}
-                  className={`${css.inputField} ${
-                    errors.name && css.inputError
+                <label className={css.radio}>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="man"
+                    className={css.genderInput}
+                    {...register('gender')}
+                  />
+                  <span className={css.iconWrap}>
+                    <Icon
+                      className={css.iconRadio}
+                      width={20}
+                      height={20}
+                      id={
+                        watch('gender') === 'man'
+                          ? 'icon-radio-active'
+                          : 'icon-radio'
+                      }
+                    />
+                  </span>
+                  man
+                </label>
+              </div>
+              {errors.gender && (
+                <p className={css.error}>{errors.gender.message}</p>
+              )}
+            </div>
+          </div>
+
+          <div className={css.block}>
+            <div className={css.blockWrap}>
+              <div className={css.partWrap}>
+                <div
+                  className={`${css.inputContainer} ${
+                    errors.name ? css.hasError : ''
                   }`}
-                  {...register('name')}
-                />
-                {errors.name && (
-                  <p className={css.error}>{errors.name.message}</p>
-                )}
+                >
+                  <label htmlFor={nameId} className={css.inputTitleBold}>
+                    Your name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id={nameId}
+                    className={`${css.inputField} ${
+                      errors.name && css.inputError
+                    }`}
+                    {...register('name')}
+                  />
+                  {errors.name && (
+                    <p className={css.error}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div
+                  className={`${css.inputContainer} ${
+                    errors.email ? css.hasError : ''
+                  }`}
+                >
+                  <label htmlFor={emailId} className={css.inputTitleBold}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id={emailId}
+                    className={`${css.inputField} ${
+                      errors.email && css.inputError
+                    }`}
+                    {...register('email')}
+                  />
+                  {errors.email && (
+                    <p className={css.error}>{errors.email.message}</p>
+                  )}
+                </div>
               </div>
-              <div
-                className={`${css.inputContainer} ${
-                  errors.email ? css.hasError : ''
-                }`}
-              >
-                <label htmlFor={emailId} className={css.inputTitleBold}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id={emailId}
-                  className={`${css.inputField}
-                  ${css.inputField} ${errors.email && css.inputError}`}
-                  {...register('email')}
-                />
-                {errors.email && (
-                  <p className={css.error}>{errors.email.message}</p>
-                )}
+              <div className={css.partWrap}>
+                <h2 className={`${css.inputTitleBold} ${css.dailyTitle}`}>
+                  My daily norma
+                </h2>
+                <div className={css.normaForm}>
+                  <div className={css.normaFormWoman}>
+                    <h3 className={css.inputTitle}>For woman:</h3>
+                    <p className={css.accentText}>V=(M*0,03) + (T*0,4)</p>
+                  </div>
+                  <div className={css.normaFormMan}>
+                    <h3 className={css.inputTitle}>For man:</h3>
+                    <p className={css.accentText}>V=(M*0,04) + (T*0,6)</p>
+                  </div>
+                </div>
+                <div className={css.border}>
+                  <p className={css.borderText}>
+                    <span className={css.accentText}>*</span> V is the volume of
+                    the water norm in liters per day, M is your body weight, T
+                    is the time of active sports, or another type of activity
+                    commensurate in terms of loads (in the absence of these, you
+                    must set 0)
+                  </p>
+                </div>
+                <div className={css.activeTime}>
+                  <Icon
+                    className={css.iconExclamation}
+                    width={18}
+                    height={18}
+                    id="icon-exclamation-mark"
+                  />
+                  <p>Active time in hours</p>
+                </div>
               </div>
             </div>
-            <div className={css.partWrap}>
-              <h2 className={`${css.inputTitleBold} ${css.dailyTitle}`}>
-                My daily norma
-              </h2>
-              <div className={css.normaForm}>
-                <div className={css.normaFormWoman}>
-                  <h3 className={css.inputTitle}>For woman:</h3>
-                  <p className={css.accentText}>V=(M*0,03) + (T*0,4)</p>
+            <div className={css.blockWrap}>
+              <div className={css.partWrap}>
+                <div
+                  className={`${css.inputContainer} ${
+                    errors.weight ? css.hasError : ''
+                  }`}
+                >
+                  <label className={css.inputTitle}>
+                    Your weight in kilograms:
+                  </label>
+                  <input
+                    type="number"
+                    name="weight"
+                    className={css.inputField}
+                    {...register('weight')}
+                  />
+                  {errors.weight && (
+                    <p className={css.error}>{errors.weight.message}</p>
+                  )}
                 </div>
-                <div className={css.normaFormMan}>
-                  <h3 className={css.inputTitle}>For man:</h3>
-                  <p className={css.accentText}>V=(M*0,04) + (T*0,6)</p>
+                <div
+                  className={`${css.inputContainer} ${
+                    errors.activeTimeSport ? css.hasError : ''
+                  }`}
+                >
+                  <label className={css.inputTitle}>
+                    The time of active participation in sports:
+                  </label>
+                  <input
+                    type="number"
+                    name="activeTimeSport"
+                    className={css.inputField}
+                    {...register('activeTimeSport')}
+                  />
+                  {errors.activeTimeSport && (
+                    <p className={css.error}>
+                      {errors.activeTimeSport.message}
+                    </p>
+                  )}
                 </div>
               </div>
-              <div className={css.border}>
-                <p className={css.borderText}>
-                  <span className={css.accentText}>*</span> V is the volume of
-                  the water norm in liters per day, M is your body weight, T is
-                  the time of active sports, or another type of activity
-                  commensurate in terms of loads (in the absence of these, you
-                  must set 0)
-                </p>
-              </div>
-              <div className={css.activeTime}>
-                {/* <svg className={css.iconExclamation} width="18" height="18">
-                  <use xlinkHref={`${modalIcons}#icon-exclamation-mark`}></use>
-                </svg> */}
-                <Icon
-                  className={css.iconExclamation}
-                  width={18}
-                  height={18}
-                  id="icon-clamation"
-                />
-                <p>Active time in hours</p>
+              <div className={`${css.partWrap} ${css.requiredAmountWrap}`}>
+                <div className={css.requiredAmount}>
+                  <h3 className={css.inputTitle}>
+                    The required amount of water in liters per day:
+                  </h3>
+                  <p className={`${css.accentText} ${css.accentLiter}`}>
+                    {calculate()} L
+                  </p>
+                </div>
+                <div
+                  className={`${css.inputContainer} ${
+                    errors.dailyWaterRate ? css.hasError : ''
+                  }`}
+                >
+                  <label className={css.inputTitleBold}>
+                    Write down how much water you will drink:
+                  </label>
+                  <input
+                    type="number"
+                    name="dailyWaterRate"
+                    className={css.inputField}
+                    step={0.1}
+                    {...register('dailyWaterRate')}
+                  />
+                  {errors.dailyWaterRate && (
+                    <p className={css.error}>{errors.dailyWaterRate.message}</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-          <div className={css.blockWrap}>
-            <div className={css.partWrap}>
-              <div
-                className={`${css.inputContainer} ${
-                  errors.weight ? css.hasError : ''
-                }`}
-              >
-                <label className={css.inputTitle}>
-                  Your weight in kilograms:
-                </label>
-                <input
-                  type="number"
-                  name="weight"
-                  className={css.inputField}
-                  {...register('weight')}
-                />
-                {errors.weight && (
-                  <p className={css.error}>{errors.weight.message}</p>
-                )}
-              </div>
-              <div
-                className={`${css.inputContainer} ${
-                  errors.activeTimeSport ? css.hasError : ''
-                }`}
-              >
-                <label className={css.inputTitle}>
-                  The time of active participation in sports:
-                </label>
-                <input
-                  type="number"
-                  name="activeTimeSport"
-                  className={css.inputField}
-                  {...register('activeTimeSport')}
-                />
-                {errors.activeTimeSport && (
-                  <p className={css.error}>{errors.activeTimeSport.message}</p>
-                )}
-              </div>
-            </div>
-            <div className={`${css.partWrap} ${css.requiredAmountWrap}`}>
-              <div className={css.requiredAmount}>
-                <h3 className={css.inputTitle}>
-                  The required amount of water in liters per day:
-                </h3>
-                <p className={`${css.accentText} ${css.accentLiter}`}>
-                  {calculate()} L
-                </p>
-              </div>
-              <div
-                className={`${css.inputContainer} ${
-                  errors.dailyWaterRate ? css.hasError : ''
-                }`}
-              >
-                <label className={css.inputTitleBold}>
-                  Write down how much water you will drink:
-                </label>
-                <input
-                  type="number"
-                  name="dailyWaterRate"
-                  className={css.inputField}
-                  step={0.1}
-                  {...register('dailyWaterRate')}
-                />
-                {errors.dailyWaterRate && (
-                  <p className={css.error}>{errors.dailyWaterRate.message}</p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <button type="submit" className={css.submitBtn}>
-          Save
-        </button>
-      </form>
-      {/* <Toaster /> */}
+          <button type="submit" className={css.submitBtn}>
+            Save
+          </button>
+        </form>
+      </div>
     </>
   );
 }
