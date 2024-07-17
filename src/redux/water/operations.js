@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handleError } from '../../utils/handleError';
-import instance, { setAuthHeader } from '../../services/instance';
+import instance from '../../services/instance';
 import toast from 'react-hot-toast';
 
 export const getWaterDataDay = createAsyncThunk(
@@ -28,7 +28,48 @@ export const getWaterDataMonthly = createAsyncThunk(
       const res = await instance.get(
         `water/monthly?month=${month}&year=${year}&dailyNorma=${dailyNorma}`
       );
-      /*  toast.success('monthly water fetched successfully'); */
+      return res.data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const addWater = createAsyncThunk(
+  'water/add',
+  async (waterData, thunkAPI) => {
+    try {
+      const res = await instance.post('water/add', waterData);
+      toast.success('Water added successfully');
+      return res.data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const deleteWater = createAsyncThunk(
+  'water/delete',
+  async (id, thunkAPI) => {
+    try {
+      const res = await instance.delete(`water/${id}`);
+      toast.success('Water deleted successfully');
+      return res.data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateWater = createAsyncThunk(
+  'water/edit',
+  async (waterData, thunkAPI) => {
+    try {
+      const res = await instance.patch(`water/${waterData.id}`, waterData);
+      toast.success('Water edited successfully');
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);

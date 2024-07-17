@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getWaterDataDay, getWaterDataMonthly } from './operations';
+import {
+  addWater,
+  deleteWater,
+  getWaterDataDay,
+  getWaterDataMonthly,
+  updateWater,
+} from './operations';
 
 const handlingPending = state => {
   state.isLoading = true;
@@ -37,7 +43,16 @@ const waterSlice = createSlice({
         handlingFulfilled;
         state.waterDataMonth = action.payload;
       })
-      .addCase(getWaterDataMonthly.rejected, handlingRejected);
+      .addCase(getWaterDataMonthly.rejected, handlingRejected)
+      .addCase(addWater.pending, handlingPending)
+      .addCase(addWater.fulfilled, handlingFulfilled)
+      .addCase(addWater.rejected, handlingRejected)
+      .addCase(updateWater.pending, handlingPending)
+      .addCase(updateWater.fulfilled, handlingFulfilled)
+      .addCase(updateWater.rejected, handlingRejected)
+      .addCase(deleteWater.pending, handlingPending)
+      .addCase(deleteWater.fulfilled, handlingFulfilled)
+      .addCase(deleteWater.rejected, handlingRejected);
   },
 });
 
