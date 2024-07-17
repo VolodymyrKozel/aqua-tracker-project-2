@@ -23,6 +23,9 @@
   margin-bottom: 4px;
   transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
+.btnNotEnough {
+  background-color: rgba(50, 63, 71, 0.2);
+}
 .btn:focus {
   background-color: var(--main-color);
   color: var(--accent-color);
