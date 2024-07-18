@@ -1,6 +1,5 @@
 import Icon from '../shared/Icon/Icon';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
-
 import css from './UserSettingsModal.module.css';
 
 export default function UserSettingsModal({ closeModal }) {
@@ -8,7 +7,6 @@ export default function UserSettingsModal({ closeModal }) {
     <div className={css.container}>
       <div className={css.nav}>
         <h1 className={css.formTitle}>Setting</h1>
-
         <Icon
           onClick={closeModal}
           className={css.icon}
@@ -17,7 +15,6 @@ export default function UserSettingsModal({ closeModal }) {
           id={'icon-cross'}
         />
       </div>
-
       <UserSettingsForm />
     </div>
   );

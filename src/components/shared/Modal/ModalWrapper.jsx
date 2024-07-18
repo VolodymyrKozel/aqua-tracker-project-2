@@ -12,7 +12,7 @@ const ModalWrapper = forwardRef(
         closeTimeoutMS={400}
         onRequestClose={closeModal}
         className={{
-          base: css['modal'] + ' ' + props.className,
+          base: css['modal'] + ' ' + props.containerClassName,
           afterOpen: css['afterOpen'],
           beforeClose: css['beforeClose'],
         }}

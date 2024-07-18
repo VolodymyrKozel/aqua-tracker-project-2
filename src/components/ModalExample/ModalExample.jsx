@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import ModalWrapper from '../shared/Modal/ModalWrapper';
 import LogOutModal from '../Modal/LogOutModal/LogOutModal';
-import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
-import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
 import Popover from '../test/popover/popover';
 import ModalReusable from '../shared/ModalReusable/ModalReusable';
 import css from './ModalExample.module.css';
 import Icon from '../shared/Icon/Icon';
 import clsx from 'clsx';
 import PopoverModal from '../shared/PopoverModal/PopoverModal';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal';
 
 const ModalExample = () => {
   const [showModal, setShowModal] = useState(false);
@@ -50,6 +49,7 @@ const ModalExample = () => {
         <LogOutModal closeModal={() => setShowModal(false)} />
       </ModalWrapper>
       <ModalWrapper
+        containerClassName={css.modal}
         modalIsOpen={showModal2}
         closeModal={() => setShowModal(false)}
       >
