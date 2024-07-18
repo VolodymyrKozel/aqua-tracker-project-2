@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Popover } from 'react-tiny-popover';
 import ModalWrapper from '../../shared/Modal/ModalWrapper';
 import css from './PopoverModal.module.css';
@@ -16,6 +16,8 @@ const PopoverModal = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const buttonRef = useRef(null);
+  const [popoverWidth, setPopoverWidth] = useState('auto');
 
   const togglePopover = () => setIsPopoverOpen(!isPopoverOpen);
 
@@ -38,14 +40,32 @@ const PopoverModal = () => {
   const defaultAvatarURL =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3TpgxWOkIYqLt3oEVJxj-USRyho-iADVb5w&s';
 
+  // set width of popover content based on width of button bar
+  useEffect(() => {
+    if (buttonRef.current) {
+      setPopoverWidth(`${buttonRef.current.offsetWidth}px`);
+    }
+  }, [isPopoverOpen]);
+
   return (
     <>
       <Popover
         isOpen={isPopoverOpen}
-        position={'bottom'}
+        onClickOutside={() => setIsPopoverOpen(false)}
+        positions={'bottom'}
+        /*       transform={{ top: 20, left: 20 }}
+        transformMode={'relative'} */
         content={
-          <div className={css.userBarPopoverContainer}>
-            <button onClick={openSettingsModal} className={css.popoverBtn}>
+          <div
+            className={css.userBarPopoverContainer}
+            style={{ width: popoverWidth }}
+          >
+            <button
+              onClick={openSettingsModal}
+              className={css.popoverBtn}
+              title={'settings'}
+              aria-label="settings"
+            >
               <Icon
                 className={css.popoverIcon}
                 title="settings"
@@ -59,6 +79,8 @@ const PopoverModal = () => {
               onClick={openLogOutModal}
               type="button"
               className={clsx(css.popoverBtn, css.popoverBtnGray)}
+              title="log out"
+              aria-label="log out"
             >
               <Icon
                 className={css.popoverIcon}
@@ -73,17 +95,20 @@ const PopoverModal = () => {
       >
         <div className={css.userBar}>
           <Button
+            ref={buttonRef}
             onClick={togglePopover}
             variant="secondary"
             className={css.userBarButton}
           >
-            <p className={css.userBarName}>{user.name}</p>
+            <p className={css.userBarName} title={user.name}>
+              {user.name}
+            </p>
             <img
               className={css.userBarAvatar}
               src={user.avatarURL || defaultAvatarURL}
               alt="Photo"
             />
-            {togglePopover ? (
+            {isPopoverOpen ? (
               <IconChevronUp className={css.iconChevronUp} />
             ) : (
               <IconChevronDown className={css.iconChevronDown} />

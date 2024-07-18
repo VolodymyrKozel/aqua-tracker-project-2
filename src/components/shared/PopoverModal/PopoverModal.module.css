@@ -1,16 +1,11 @@
 .userBarPopoverContainer {
-  position: absolute;
-  display: inline-block;
-  gap: 8px;
-  /*   top: 100%;
-  left: 0; */
-  width: 100%;
+  width: fit-content;
   background-color: #fff;
   border-radius: 15px;
   padding: 14px 20px;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  width: 137px;
+  /*   width: 137px; */
 }
 
 .popoverBtn {
@@ -64,8 +59,8 @@
 
 /* user bar */
 .userBar {
+  width: fit-content;
   display: flex;
-  position: relative;
 }
 
 .userBarButton {
@@ -78,7 +73,7 @@
   text-align: center;
   gap: 8px;
   margin-bottom: 4px;
-  width: fit-content;
+  width: 157px;
 }
 
 .userBarName {
@@ -89,6 +84,9 @@
   letter-spacing: -0.01em;
   text-align: center;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .userBarAvatar {
