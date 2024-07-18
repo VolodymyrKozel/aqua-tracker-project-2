@@ -1,4 +1,3 @@
-// src/hooks/useWaterConsumptionData.js
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectWeeklyWaterConsumption } from '../redux/water/waterSelectors.js';
