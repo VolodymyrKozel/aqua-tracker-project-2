@@ -2,52 +2,38 @@ import css from './WaterItem.module.css';
 import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
-import { useEffect, useRef, useState } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteWater, updateWater } from '../../redux/water/operations.js';
+import { useState, useCallback } from 'react';
 
 const WaterItem = ({ item }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [toggleDelete, setToggleDelete] = useState(false);
   const dispatch = useDispatch();
-  const modalRef = useRef(null);
 
-  const HandleButtonEditClick = () => {
-    setToggleEdit(!toggleEdit);
-  };
+  const handleButtonEditClick = useCallback(() => {
+    setToggleEdit(true);
+  }, []);
 
-  const HandleButtonDeleteClick = () => {
-    setToggleDelete(!toggleDelete);
-  };
+  const handleButtonDeleteClick = useCallback(() => {
+    setToggleDelete(true);
+  }, []);
 
-  /*   const handleOutsideClick = e => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setToggleEdit(false);
-      setToggleDelete(false);
-    }
-  }; */
-
-  /*   useEffect(() => {
-    document.addEventListener('keydown', handleOutsideClick);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.addEventListener('keydown', handleOutsideClick);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []); */
-  const handleDelete = () => {
-    dispatch(deleteWater(item._id));
+  const handleDelete = useCallback(async () => {
+    await dispatch(deleteWater(item._id)).unwrap();
     setToggleDelete(false);
-  };
+  }, [dispatch, item._id]);
 
-  const handleFormSubmit = data => {
-    console.log('Updated item:', item);
-    dispatch(updateWater({ ...data, _id: item._id }));
-    setToggleEdit(false);
-  };
+  const handleFormSubmit = useCallback(
+    async data => {
+      await dispatch(updateWater({ ...data, _id: item._id })).unwrap();
+      setToggleEdit(false);
+    },
+    [dispatch, item._id]
+  );
 
   const formatTime = time => {
     const [hour, minute] = time.split(':');
@@ -58,7 +44,7 @@ const WaterItem = ({ item }) => {
   };
 
   return (
-    <div className={css.waterItem} ref={modalRef}>
+    <div className={css.waterItem}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>{item.volume} ml</p>
@@ -66,14 +52,14 @@ const WaterItem = ({ item }) => {
       </div>
       <div className={css.waterItemBtnWrap}>
         <Button
-          onClick={HandleButtonEditClick}
+          onClick={handleButtonEditClick}
           type="button"
           className={css.waterItemBtn}
         >
           <IconEdit className={css.waterIconBtn} />
         </Button>
         <Button
-          onClick={HandleButtonDeleteClick}
+          onClick={handleButtonDeleteClick}
           type="button"
           className={css.waterItemBtn}
         >
@@ -83,7 +69,7 @@ const WaterItem = ({ item }) => {
           <WaterModal
             item={item}
             isOpen={toggleEdit}
-            onClose={HandleButtonEditClick}
+            onClose={() => setToggleEdit(false)}
             onSubmit={handleFormSubmit}
             operationType="edit"
             defaultValues={{ time: item.time, amount: item.volume }}
@@ -92,7 +78,7 @@ const WaterItem = ({ item }) => {
         {toggleDelete && (
           <DeleteWaterModal
             handleDelete={handleDelete}
-            onClose={HandleButtonDeleteClick}
+            onClose={() => setToggleDelete(false)}
           />
         )}
       </div>
