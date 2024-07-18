@@ -7,7 +7,7 @@ const Button = forwardRef(
     {
       children,
       onClick,
-      btnType = 'button',
+      /*  btnType = 'button', */
       variant = 'primary',
       className,
       ...props
@@ -16,7 +16,7 @@ const Button = forwardRef(
   ) => {
     return (
       <button
-        type={btnType}
+        /*  type={btnType} */
         className={clsx(css.btn, css[variant], className)}
         onClick={onClick}
         ref={ref}

@@ -39,8 +39,9 @@ export const getWaterDataMonthly = createAsyncThunk(
 export const addWater = createAsyncThunk(
   'water/add',
   async (waterData, thunkAPI) => {
+    console.log(waterData);
     try {
-      const res = await instance.post('water/add', waterData);
+      const res = await instance.post('water/add-water', waterData);
       toast.success('Water added successfully');
       return res.data;
     } catch (error) {
