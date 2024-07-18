@@ -6,6 +6,8 @@ import css from './WaterForm.module.css';
 import { useEffect } from 'react';
 import Icon from '../../shared/Icon/Icon';
 import Button from '../../shared/Button/Button';
+import { useDispatch } from 'react-redux';
+import { addWater } from '../../../redux/water/operations';
 const schema = yup.object().shape({
   time: yup.string().required('Please, enter the recorded time!'),
   amount: yup
@@ -16,6 +18,7 @@ const schema = yup.object().shape({
     .required('Please, enter the amount of water drunk!'),
 });
 const WaterForm = ({ onSubmit, defaultValues }) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -43,8 +46,15 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
       setValue('amount', currentValue + 50);
     }
   };
+
+  // обработка отправки формы
+  const submit = data => {
+    const { amount } = data;
+    dispatch(addWater({ volume: amount.toString() }));
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+    <form onSubmit={handleSubmit(submit)} className={css.form}>
       <div className={css.amountSection}>
         <p className={css.amountText}>Amount of water</p>
         <div className={css.buttonBox}>
@@ -97,7 +107,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
           )}
         </label>
       </div>
-      <Button className={css.saveBtn} variant="primary" onClick={onSubmit}>
+      <Button className={css.saveBtn} variant="primary" type="submit">
         Save
       </Button>
     </form>

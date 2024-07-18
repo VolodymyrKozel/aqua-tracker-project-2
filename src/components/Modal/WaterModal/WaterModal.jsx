@@ -18,8 +18,14 @@ const WaterModal = ({
       className={css.modal}
       overlayClassName={css.overlay}
     >
-      <Icon className={css.closeIcon} width="28" height="28" id="icon-cross" />
-      <h2 className={css.waterModalTitlee}>
+      <Icon
+        className={css.closeIcon}
+        width="28"
+        height="28"
+        id="icon-cross"
+        onClick={onRequestClose}
+      />
+      <h2 className={css.waterModalTitle}>
         {operationType === 'add'
           ? 'Add Water'
           : 'Edit the entered amount of water'}
