@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .typeError('Please, enter the amount between 1 and 5000 ml!')
     .required('Please, enter the amount of water drunk!'),
 });
-const WaterForm = ({ onSubmit, defaultValues }) => {
+const WaterForm = ({ closeModal, defaultValues }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -35,13 +35,13 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
     reset(defaultValues);
   }, [defaultValues, reset]);
   const handleDecrementWaterAmount = () => {
-    const currentValue = getValues('amount');
+    const currentValue = parseInt(getValues('amount'));
     if (currentValue > 50) {
       setValue('amount', currentValue - 50);
     }
   };
   const handleIncrementWaterAmount = () => {
-    const currentValue = getValues('amount');
+    const currentValue = parseInt(getValues('amount'));
     if (currentValue < 5000) {
       setValue('amount', currentValue + 50);
     }
@@ -51,6 +51,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
   const submit = data => {
     const { amount } = data;
     dispatch(addWater({ volume: amount.toString() }));
+    closeModal();
   };
 
   return (

@@ -39,6 +39,7 @@ const WaterModal = ({
         onSubmit={onSubmit}
         onRequestClose={onRequestClose}
         defaultValues={defaultValues}
+        closeModal={onRequestClose}
       />
     </Modal>
   );
