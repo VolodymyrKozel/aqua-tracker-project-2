@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Popover } from 'react-tiny-popover';
 import ModalWrapper from '../../shared/Modal/ModalWrapper';
 import css from './PopoverModal.module.css';
-import UserSettingsForm from '../../UserSettingsForm/UserSettingsForm';
 import LogOutModal from '../../Modal/LogOutModal/LogOutModal';
 import Icon from '../Icon/Icon';
 import clsx from 'clsx';
@@ -10,7 +9,7 @@ import Button from '../Button/Button';
 import { selectUser } from '../../../redux/users/selectors';
 import { useSelector } from 'react-redux';
 import { IconChevronUp } from '../../UserBar/IconChevronUp';
-import { IconChevronDown } from '../../UserBar/IconChevronDown';
+import UserSettingsModal from '../../UserSettingsModal/UserSettingsModal';
 
 const PopoverModal = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -53,8 +52,6 @@ const PopoverModal = () => {
         isOpen={isPopoverOpen}
         onClickOutside={() => setIsPopoverOpen(false)}
         positions={'bottom'}
-        /*       transform={{ top: 20, left: 20 }}
-        transformMode={'relative'} */
         content={
           <div
             className={css.userBarPopoverContainer}
@@ -108,11 +105,6 @@ const PopoverModal = () => {
               src={user.avatarURL || defaultAvatarURL}
               alt="Photo"
             />
-            {/*             {isPopoverOpen ? (
-              <IconChevronUp className={css.iconChevronUp} />
-            ) : (
-              <IconChevronDown className={css.iconChevronDown} />
-            )} */}
             <IconChevronUp
               className={clsx(
                 css.iconChevronUp,
@@ -128,7 +120,7 @@ const PopoverModal = () => {
         closeModal={closeSettingsModal}
         className={css.modal}
       >
-        <UserSettingsForm closeModal={closeSettingsModal} />
+        <UserSettingsModal closeModal={closeSettingsModal} />
       </ModalWrapper>
 
       <ModalWrapper

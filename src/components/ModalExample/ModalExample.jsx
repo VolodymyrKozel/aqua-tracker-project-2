@@ -59,7 +59,6 @@ const ModalExample = () => {
       <Popover
         content={
           <div>
-            {' '}
             <button
               type="button"
               className={css.popoverBtn}
@@ -87,15 +86,15 @@ const ModalExample = () => {
               />
               <p className={css.popoverText}>Log out</p>
             </button>
-            <ModalReusable modalIsOpen={isModalOpen} closeModal={closeModal}>
+            <ModalWrapper modalIsOpen={isModalOpen} closeModal={closeModal}>
               <UserSettingsModal closeModal={closeModal} />
-            </ModalReusable>
-            <ModalReusable
+            </ModalWrapper>
+            <ModalWrapper
               modalIsOpen={isLogOutModalOpen}
               closeModal={closeLogOutModal}
             >
               <LogOutModal closeModal={closeLogOutModal} />
-            </ModalReusable>
+            </ModalWrapper>
           </div>
         }
       >
