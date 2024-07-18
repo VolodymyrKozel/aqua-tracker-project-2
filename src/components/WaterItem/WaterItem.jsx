@@ -2,13 +2,16 @@ import css from './WaterItem.module.css';
 import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
+
 import { useRef } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteWater, updateWater } from '../../redux/water/operations.js';
-import useModal from '../../hooks/useOpenClose.js';
+
+import { useState, useCallback } from 'react';
+
 
 const WaterItem = ({ item }) => {
   const {
@@ -23,18 +26,29 @@ const WaterItem = ({ item }) => {
     closeModal: closeDelete,
   } = useModal();
   const dispatch = useDispatch();
-  const modalRef = useRef(null);
 
-  const handleDelete = () => {
-    dispatch(deleteWater(item._id));
-    closeDelete();
-  };
 
-  const handleFormSubmit = data => {
-    console.log('Updated item:', item);
-    dispatch(updateWater({ ...data, _id: item._id }));
-    closeEdit();
-  };
+  const handleButtonEditClick = useCallback(() => {
+    setToggleEdit(true);
+  }, []);
+
+  const handleButtonDeleteClick = useCallback(() => {
+    setToggleDelete(true);
+  }, []);
+
+  const handleDelete = useCallback(async () => {
+    await dispatch(deleteWater(item._id)).unwrap();
+    setToggleDelete(false);
+  }, [dispatch, item._id]);
+
+  const handleFormSubmit = useCallback(
+    async data => {
+      await dispatch(updateWater({ ...data, _id: item._id })).unwrap();
+      setToggleEdit(false);
+    },
+    [dispatch, item._id]
+  );
+
 
   const formatTime = time => {
     const [hour, minute] = time.split(':');
@@ -45,31 +59,48 @@ const WaterItem = ({ item }) => {
   };
 
   return (
-    <div className={css.waterItem} ref={modalRef}>
+    <div className={css.waterItem}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>{item.volume} ml</p>
         <p className={css.waterItemData}>{formatTime(item.time)}</p>
       </div>
       <div className={css.waterItemBtnWrap}>
-        <Button onClick={openEdit} type="button" className={css.waterItemBtn}>
+
+        <Button
+          onClick={handleButtonEditClick}
+          type="button"
+          className={css.waterItemBtn}
+        >
           <IconEdit className={css.waterIconBtn} />
         </Button>
-        <Button onClick={openDelete} type="button" className={css.waterItemBtn}>
+        <Button
+          onClick={handleButtonDeleteClick}
+          type="button"
+          className={css.waterItemBtn}
+        >
+
           <IconTrash className={css.waterIconBtn} />
         </Button>
         {isOpenEdit && (
           <WaterModal
             item={item}
-            isOpen={isOpenEdit}
-            onClose={closeEdit}
+
+            isOpen={toggleEdit}
+            onClose={() => setToggleEdit(false)}
+
             onSubmit={handleFormSubmit}
             operationType="edit"
             defaultValues={{ time: item.time, amount: item.volume }}
           />
         )}
-        {isOpenDelete && (
-          <DeleteWaterModal handleDelete={handleDelete} onClose={closeDelete} />
+
+        {toggleDelete && (
+          <DeleteWaterModal
+            handleDelete={handleDelete}
+            onClose={() => setToggleDelete(false)}
+          />
+
         )}
       </div>
     </div>
