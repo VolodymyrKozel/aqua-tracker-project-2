@@ -108,11 +108,17 @@ const PopoverModal = () => {
               src={user.avatarURL || defaultAvatarURL}
               alt="Photo"
             />
-            {isPopoverOpen ? (
+            {/*             {isPopoverOpen ? (
               <IconChevronUp className={css.iconChevronUp} />
             ) : (
               <IconChevronDown className={css.iconChevronDown} />
-            )}
+            )} */}
+            <IconChevronUp
+              className={clsx(
+                css.iconChevronUp,
+                isPopoverOpen && css.iconChevronUpActive
+              )}
+            />
           </Button>
         </div>
       </Popover>

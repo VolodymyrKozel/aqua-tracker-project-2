@@ -107,6 +107,11 @@
   fill: transparent;
   width: 16px;
   height: 16px;
+  transition: transform 250ms ease-in-out;
+}
+
+.iconChevronUpActive {
+  transform: rotate(180deg);
 }
 
 @media screen and (min-width: 768px) {
