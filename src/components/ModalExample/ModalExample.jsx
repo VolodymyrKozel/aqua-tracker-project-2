@@ -8,6 +8,7 @@ import ModalReusable from '../shared/ModalReusable/ModalReusable';
 import css from './ModalExample.module.css';
 import Icon from '../shared/Icon/Icon';
 import clsx from 'clsx';
+import PopoverModal from '../shared/PopoverModal/PopoverModal';
 
 const ModalExample = () => {
   const [showModal, setShowModal] = useState(false);
@@ -100,6 +101,7 @@ const ModalExample = () => {
       >
         Click me!
       </Popover>
+      <PopoverModal />
     </>
   );
 };

@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import clsx from 'clsx';
@@ -8,6 +7,7 @@ import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
 
 import css from './UserBarPopover.module.css';
+import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
 
 export default function UserBarPopover({ onClose }) {
   const popoverRef = useRef();
@@ -35,6 +35,7 @@ export default function UserBarPopover({ onClose }) {
   };
   const openLogOutModal = () => {
     setIsLogOutModalOpen(true);
+    onClose();
   };
   const closeLogOutModal = () => {
     setIsLogOutModalOpen(false);
@@ -67,11 +68,11 @@ export default function UserBarPopover({ onClose }) {
         <p className={css.popoverText}>Log out</p>
       </button>
 
-      <ModalReusable modalIsOpen={isModalOpen} closeModal={closeModal}>
+      <ModalWrapper modalIsOpen={isModalOpen} closeModal={closeModal}>
         <div onClick={e => e.stopPropagation()}>
           <UserSettingsModal closeModal={closeModal} />
         </div>
-      </ModalReusable>
+      </ModalWrapper>
 
       <ModalReusable
         modalIsOpen={isLogOutModalOpen}

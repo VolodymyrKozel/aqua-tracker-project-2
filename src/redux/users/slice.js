@@ -87,7 +87,8 @@ const usersSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
-        state.isLoggedIn = action.payload;
+        state.isLoggedIn = false;
+        state.error = action.payload;
       })
       .addCase(fetchUser.pending, state => {
         state.isLoading = true;
