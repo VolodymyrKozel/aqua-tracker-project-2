@@ -30,12 +30,23 @@
 }
 
 .closeIcon {
-  position: absolute;
-  stroke: var(--main-text);
   fill: none;
+  cursor: pointer;
+  transition: stroke 0.3s ease;
+}
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
   top: 20px;
   right: 20px;
-  cursor: pointer;
+  position: absolute;
+  stroke: var(--main-text);
+  background-color: transparent;
+}
+
+.btn:hover .closeIcon {
+  stroke: var(--accent-color);
 }
 
 .text {
