@@ -92,6 +92,10 @@
     <symbol id="icon-only-plus" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M16 6.667v18.667M6.667 16h18.667"/>
     </symbol>
+
+    <symbol id="icon-minus" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.44" d="M10.286 16h11.429"></path>
+    </symbol>
     
   </defs>
 </svg>

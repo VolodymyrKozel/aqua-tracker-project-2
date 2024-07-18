@@ -1,6 +1,19 @@
 .userBar {
     display: flex;
     position: relative;
+    transition: color 250ms ease, stroke 250ms ease;
+}
+
+.userBarButton:hover .userBarName,
+.userBarButton:focus .userBarName {
+    color: var(--accent-color);
+}
+
+.userBarButton:hover .iconChevronDown,
+.userBarButton:focus .iconChevronDown,
+.userBarButton:hover .iconChevronUp,
+.userBarButton:focus .iconChevronUp {
+    stroke: var(--accent-color);
 }
 
 .userBarButton {
@@ -32,14 +45,7 @@
     border-radius: 50%;
 }
 
-.iconChevronDown {
-    stroke: var(--main-white);
-    fill: transparent;
-    width: 16px;
-    height: 16px;
-}
-
-.iconChevronUp {
+.iconChevronDown, .iconChevronUp {
     stroke: var(--main-white);
     fill: transparent;
     width: 16px;
