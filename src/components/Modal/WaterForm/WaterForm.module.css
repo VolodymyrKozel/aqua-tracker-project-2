@@ -1,181 +1,145 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
 }
 
 .amountSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.text {
-    font-size: 14px;
-    color: #2F2F2F;
-    line-height: 1.28;
-    letter-spacing: -0.14px;
-    margin-bottom: 8px;
-    text-align: left;
-
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
-    }
-}
-
-.amountWrap {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin-top: 20px;
 }
 
 .amountBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    min-width: 40px;
-    min-height: 40px;
-    border: 1.5px solid #323F47;
-    background-color: #FFFFFF;
-    color: #323F47;
-    transition: 0.3s ease-in-out;
-
-    @media screen and (min-width: 768px) {
-        min-width: 43px;
-        min-height: 43px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 43px;
+  height: 43px;
+  gap: 8px;
+  border-radius: 50%;
+  background-color: transparent;
 }
 
 .amountBtn:hover,
 .amountBtn:focus {
-    border-color: #87D28D;
+  border-color: var(--accent-color);
+}
+
+.amountText {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--main-text);
+  align-self: start;
+}
+
+.buttonBox {
+  display: flex;
+  gap: 8px;
 }
 
 .icon {
-    stroke: #2F2F2F;
-    fill: transparent;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s ease-in-out;
-
-    @media screen and (min-width: 768px) {
-        width: 24px;
-        height: 24px;
-    }
+  stroke: var(--main-text);
+  fill: none;
+  transition: 0.3s ease-in-out;
 }
 
 .amount {
-    border-radius: 30px;
-    padding: 11px 20px;
-    min-width: 98px;
-    background-color: #323F47;
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 700;
+  border-radius: 30px;
+  padding: 11px 20px;
+  min-width: 86px;
+  background-color: var(--main-color);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .inputWrap {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  gap: 24px;
 }
 
 .label {
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.01em;
 }
 
 .labelError {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 .input {
-    width: 100%;
-    color: #2E2F42;
-    background-color: #FFFFFF;
-    border: 1.5px solid rgba(47, 47, 47, 0.15);
-    border-radius: 15px;
-    padding: 14px 16px;
-    font-size: 14px;
-    line-height: 18px;
-    outline: none;
-    margin-top: 8px;
-    transition: border-color 300ms ease-in-out;
+  width: 100%;
+  color: #2e2f42;
+  background-color: #ffffff;
+  border: 1.5px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  outline: none;
+  margin-top: 8px;
+  transition: border-color 300ms ease-in-out;
 
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
-        line-height: 24px;
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .input:hover,
 .input:focus {
-    border-color: rgba(47, 47, 47, 0.4);
+  border-color: rgba(47, 47, 47, 0.4);
 }
 
 .input::placeholder {
-    color: #2E2F42;
+  color: #2e2f42;
 }
 
 .inputError {
-    width: 100%;
-    color: #EF5050;
-    background-color: #FFFFFF;
-    border: 1.5px solid #EF5050;
-    border-radius: 15px;
-    padding: 14px 16px;
-    font-size: 14px;
-    line-height: 18px;
-    outline: none;
-    margin-top: 8px;
+  width: 100%;
+  color: #ef5050;
+  background-color: #ffffff;
+  border: 1.5px solid #ef5050;
+  border-radius: 15px;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 18px;
+  outline: none;
+  margin-top: 8px;
 
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
-        line-height: 24px;
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .error {
-    color: #EF5050;
-    font-size: 12px;
-    padding-bottom: 4px;
+  color: #ef5050;
+  font-size: 12px;
+  padding-bottom: 4px;
 
-    @media screen and (min-width: 768px) {
-        font-size: 14px;
-        padding-bottom: 2px;
-    }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    padding-bottom: 2px;
+  }
 }
 
 .saveBtn {
-    border: none;
-    padding: 14px 40px;
-    border-radius: 30px;
-    width: 116px;
-    height: 46px;
-    color: #323F47;
-    background-color: #9BE1A0;
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 700;
-    transition: 0.3s ease-in-out;
-
-    @media screen and (min-width: 768px) {
-        padding: 18px 50px;
-        width: 141px;
-        height: 60px;
-        font-size: 16px;
-        line-height: 24px;
-    }
-}
-
-.saveBtn:hover,
-.saveBtn:focus {
-    background-color: #87D28D;
+  width: 141px;
+  height: 60px;
+  margin-top: 24px;
 }

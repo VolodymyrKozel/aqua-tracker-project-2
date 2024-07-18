@@ -7,13 +7,13 @@ import { selectDailyWater } from '../../redux/water/selectors.js';
 import { useEffect } from 'react';
 
 const WaterList = () => {
-  const dispatch = useDispatch();
+  /*   const dispatch = useDispatch(); */
 
   const { arrDailyWater = [] } = useSelector(selectDailyWater) || {};
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(getWaterDataDay({ date: '2024-07-16', dailyNorma: '1000' }));
-  }, [dispatch]);
+  }, [dispatch]); */
 
   return (
     <>

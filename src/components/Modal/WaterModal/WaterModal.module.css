@@ -1,25 +1,50 @@
 .modal {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    width: 343px;
-    height: 514px;
-    margin: auto;
-
-    @media screen and (min-width: 768px) {
-        width: 518px;
-        height: 587px;
-    }
+  position: relative;
+  border-radius: 15px;
+  padding: 40px;
+  width: 518px;
+  height: 555px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: var(--main-white);
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waterModalTitle {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 114%;
+  letter-spacing: -0.01em;
+  color: var(--main);
+}
+
+.closeIcon {
+  position: absolute;
+  stroke: var(--main-text);
+  fill: none;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 133%;
+  letter-spacing: -0.01em;
+  text-align: start;
+  color: var(--main);
+  margin-top: 24px;
 }

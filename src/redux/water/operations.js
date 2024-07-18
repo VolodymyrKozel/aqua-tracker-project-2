@@ -40,7 +40,7 @@ export const addWater = createAsyncThunk(
   'water/add',
   async (waterData, thunkAPI) => {
     try {
-      const res = await instance.post('water/add', waterData);
+      const res = await instance.post('water/add-water', waterData);
       toast.success('Water added successfully');
       return res.data;
     } catch (error) {
@@ -54,7 +54,7 @@ export const deleteWater = createAsyncThunk(
   'water/delete',
   async (id, thunkAPI) => {
     try {
-      const res = await instance.delete(`water/${id}`);
+      const res = await instance.delete(`water/delete/${id}`);
       toast.success('Water deleted successfully');
       return res.data;
     } catch (error) {
@@ -67,8 +67,13 @@ export const deleteWater = createAsyncThunk(
 export const updateWater = createAsyncThunk(
   'water/edit',
   async (waterData, thunkAPI) => {
+    const { time, amount } = waterData;
+    const volume = amount.toString();
     try {
-      const res = await instance.patch(`water/${waterData.id}`, waterData);
+      const res = await instance.patch(`water/update-volume/${waterData._id}`, {
+        /*  date: time, */
+        volume,
+      });
       toast.success('Water edited successfully');
       return res.data;
     } catch (error) {
