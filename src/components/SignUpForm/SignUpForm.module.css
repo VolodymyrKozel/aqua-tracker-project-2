@@ -110,5 +110,7 @@
 @media screen and (min-width: 1440px) {
   .container {
     height: 736px;
+    width: 672px;
+
   }
 }

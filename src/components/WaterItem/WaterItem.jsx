@@ -2,17 +2,31 @@ import css from './WaterItem.module.css';
 import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
+
+import { useRef } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteWater, updateWater } from '../../redux/water/operations.js';
+
 import { useState, useCallback } from 'react';
 
+
 const WaterItem = ({ item }) => {
-  const [toggleEdit, setToggleEdit] = useState(false);
-  const [toggleDelete, setToggleDelete] = useState(false);
+  const {
+    isOpen: isOpenEdit,
+    openModal: openEdit,
+    closeModal: closeEdit,
+  } = useModal();
+
+  const {
+    isOpen: isOpenDelete,
+    openModal: openDelete,
+    closeModal: closeDelete,
+  } = useModal();
   const dispatch = useDispatch();
+
 
   const handleButtonEditClick = useCallback(() => {
     setToggleEdit(true);
@@ -35,6 +49,7 @@ const WaterItem = ({ item }) => {
     [dispatch, item._id]
   );
 
+
   const formatTime = time => {
     const [hour, minute] = time.split(':');
     const hourNum = parseInt(hour, 10);
@@ -51,6 +66,7 @@ const WaterItem = ({ item }) => {
         <p className={css.waterItemData}>{formatTime(item.time)}</p>
       </div>
       <div className={css.waterItemBtnWrap}>
+
         <Button
           onClick={handleButtonEditClick}
           type="button"
@@ -63,23 +79,28 @@ const WaterItem = ({ item }) => {
           type="button"
           className={css.waterItemBtn}
         >
+
           <IconTrash className={css.waterIconBtn} />
         </Button>
-        {toggleEdit && (
+        {isOpenEdit && (
           <WaterModal
             item={item}
+
             isOpen={toggleEdit}
             onClose={() => setToggleEdit(false)}
+
             onSubmit={handleFormSubmit}
             operationType="edit"
             defaultValues={{ time: item.time, amount: item.volume }}
           />
         )}
+
         {toggleDelete && (
           <DeleteWaterModal
             handleDelete={handleDelete}
             onClose={() => setToggleDelete(false)}
           />
+
         )}
       </div>
     </div>

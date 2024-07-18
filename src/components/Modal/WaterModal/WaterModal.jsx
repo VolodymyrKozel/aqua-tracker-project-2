@@ -5,26 +5,30 @@ import css from './WaterModal.module.css';
 import Icon from '../../shared/Icon/Icon.jsx';
 const WaterModal = ({
   isOpen,
-  onRequestClose,
+  onClose,
   onSubmit,
   operationType,
   defaultValues,
 }) => {
+  Modal.setAppElement('#root');
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={onClose}
       contentLabel={operationType === 'add' ? 'Add Water' : 'Edit Water'}
       className={css.modal}
       overlayClassName={css.overlay}
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
     >
-      <Icon
-        className={css.closeIcon}
-        width="28"
-        height="28"
-        id="icon-cross"
-        onClick={onRequestClose}
-      />
+      <button className={css.btn} onClick={onClose}>
+        <Icon
+          className={css.closeIcon}
+          width="28"
+          height="28"
+          id="icon-cross"
+        />
+      </button>
       <h2 className={css.waterModalTitle}>
         {operationType === 'add'
           ? 'Add Water'
@@ -35,12 +39,7 @@ const WaterModal = ({
       ) : (
         <p className={css.text}>Correct entered data:</p>
       )}
-      <WaterForm
-        onSubmit={onSubmit}
-        onRequestClose={onRequestClose}
-        defaultValues={defaultValues}
-        closeModal={onRequestClose}
-      />
+      <WaterForm onSubmit={onSubmit} defaultValues={defaultValues} />
     </Modal>
   );
 };

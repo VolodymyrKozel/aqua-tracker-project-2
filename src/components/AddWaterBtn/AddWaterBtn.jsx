@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { addWater } from '../../redux/water/operations.js';
 import { useDispatch } from 'react-redux';
+import useModal from '../../hooks/useOpenClose.js';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -16,49 +17,20 @@ const AddWaterBtn = ({
   operationType = 'add',
   defaultValues = { time: '07:00', amount: 250 },
 }) => {
-  const [openWaterModal, setOpenWaterModal] = useState(false);
+  const { isOpen, openModal, closeModal: onClose } = useModal();
   const waterModalRef = useRef(null);
   const dispatch = useDispatch();
-  /* 
-  const handleOutsideClick = e => {
-    if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
-      setOpenWaterModal(false);
-    }
-  };
-
-  const handleEscapePress = e => {
-    if (e.key === 'Escape') {
-      setOpenWaterModal(false);
-    }
-  }; */
-
-  const handleButtonClick = () => {
-    setOpenWaterModal(!openWaterModal);
-  };
-
-  const handleButtonClose = () => {
-    setOpenWaterModal(false);
-  };
   const onSubmit = data => {
     console.log('add data', data);
     const { amount } = data;
     dispatch(addWater({ volume: amount.toString() }));
-    setOpenWaterModal(false);
+    onClose();
   };
-
-  /*   useEffect(() => {
-    document.addEventListener('keydown', handleEscapePress);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('keydown', handleEscapePress);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []); */
 
   return (
     <div>
       <Button
-        onClick={handleButtonClick}
+        onClick={openModal}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
       >
@@ -72,11 +44,11 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {openWaterModal && (
+      {isOpen && (
         <div ref={waterModalRef}>
           <WaterModal
-            isOpen={openWaterModal}
-            onRequestClose={handleButtonClose}
+            isOpen={isOpen}
+            onClose={onClose}
             onSubmit={onSubmit}
             operationType={operationType}
             defaultValues={defaultValues}

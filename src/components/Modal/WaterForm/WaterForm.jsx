@@ -6,8 +6,6 @@ import css from './WaterForm.module.css';
 import { useEffect } from 'react';
 import Icon from '../../shared/Icon/Icon';
 import Button from '../../shared/Button/Button';
-import { useDispatch } from 'react-redux';
-import { addWater } from '../../../redux/water/operations';
 const schema = yup.object().shape({
   time: yup.string().required('Please, enter the recorded time!'),
   amount: yup
@@ -17,8 +15,7 @@ const schema = yup.object().shape({
     .typeError('Please, enter the amount between 1 and 5000 ml!')
     .required('Please, enter the amount of water drunk!'),
 });
-const WaterForm = ({ onSubmit, closeModal, defaultValues }) => {
-  const dispatch = useDispatch();
+const WaterForm = ({ onSubmit, defaultValues }) => {
   const {
     register,
     handleSubmit,
@@ -46,13 +43,6 @@ const WaterForm = ({ onSubmit, closeModal, defaultValues }) => {
       setValue('amount', currentValue + 50);
     }
   };
-
-  // обработка отправки формы
-  /*   const submit = data => {
-    const { amount } = data;
-    dispatch(addWater({ volume: amount.toString() }));
-    closeModal();
-  }; */
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
