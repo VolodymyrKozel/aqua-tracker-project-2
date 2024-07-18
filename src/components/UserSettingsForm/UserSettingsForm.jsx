@@ -85,7 +85,6 @@ export default function UserSettingsForm() {
     try {
       await dispatch(updateUser(formData)); // отправка данных(formData) на бек
       toast.success('User updated successfuly');
-      dispatch(closeModal());
     } catch (error) {
       toast.error('Error: Unsuccessful update of user information', error);
     } finally {
@@ -353,7 +352,6 @@ export default function UserSettingsForm() {
           Save
         </button>
       </form>
-      {/* <Toaster /> */}
     </>
   );
 }
