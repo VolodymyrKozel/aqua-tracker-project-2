@@ -6,10 +6,13 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { useDispatch } from 'react-redux';
+import { deleteWater, updateWater } from '../../redux/water/operations.js';
 
 const WaterItem = ({ item }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [toggleDelete, setToggleDelete] = useState(false);
+  const dispatch = useDispatch();
   const modalRef = useRef(null);
 
   const HandleButtonEditClick = () => {
@@ -20,24 +23,29 @@ const WaterItem = ({ item }) => {
     setToggleDelete(!toggleDelete);
   };
 
-  const handleOutsideClick = e => {
+  /*   const handleOutsideClick = e => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       setToggleEdit(false);
       setToggleDelete(false);
     }
-  };
+  }; */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     document.addEventListener('keydown', handleOutsideClick);
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
       document.addEventListener('keydown', handleOutsideClick);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, []);
+  }, []); */
+  const handleDelete = () => {
+    dispatch(deleteWater(item._id));
+    setToggleDelete(false);
+  };
 
-  const handleFormSubmit = () => {
-    // console.log('Updated item:', data);
+  const handleFormSubmit = data => {
+    console.log('Updated item:', item);
+    dispatch(updateWater({ ...data, _id: item._id }));
     setToggleEdit(false);
   };
 
@@ -82,7 +90,10 @@ const WaterItem = ({ item }) => {
           />
         )}
         {toggleDelete && (
-          <DeleteWaterModal id={item._id} onClose={HandleButtonDeleteClick} />
+          <DeleteWaterModal
+            handleDelete={handleDelete}
+            onClose={HandleButtonDeleteClick}
+          />
         )}
       </div>
     </div>

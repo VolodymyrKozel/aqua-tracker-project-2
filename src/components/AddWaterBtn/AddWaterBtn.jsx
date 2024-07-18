@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { addWater } from '../../redux/water/operations.js';
+import { useDispatch } from 'react-redux';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -13,10 +15,10 @@ const AddWaterBtn = ({
   iconHeight,
   operationType = 'add',
   defaultValues = { time: '07:00', amount: 250 },
-  onSubmit,
 }) => {
   const [openWaterModal, setOpenWaterModal] = useState(false);
   const waterModalRef = useRef(null);
+  const dispatch = useDispatch();
   /* 
   const handleOutsideClick = e => {
     if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
@@ -35,6 +37,12 @@ const AddWaterBtn = ({
   };
 
   const handleButtonClose = () => {
+    setOpenWaterModal(false);
+  };
+  const onSubmit = data => {
+    console.log('add data', data);
+    const { amount } = data;
+    dispatch(addWater({ volume: amount.toString() }));
     setOpenWaterModal(false);
   };
 

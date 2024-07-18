@@ -45,13 +45,30 @@ const waterSlice = createSlice({
       })
       .addCase(getWaterDataMonthly.rejected, handlingRejected)
       .addCase(addWater.pending, handlingPending)
-      .addCase(addWater.fulfilled, handlingFulfilled)
+      .addCase(addWater.fulfilled, (state, action) => {
+        handlingFulfilled(state);
+        state.waterDataDay.arrDailyWater.push(action.payload); // Update the state with the new water entry
+      })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
-      .addCase(updateWater.fulfilled, handlingFulfilled)
+      .addCase(updateWater.fulfilled, (state, action) => {
+        handlingFulfilled(state);
+        const index = state.waterDataDay.arrDailyWater.findIndex(
+          water => water._id === action.payload._id
+        );
+        if (index !== -1) {
+          state.waterDataDay.arrDailyWater[index] = action.payload; // Update the water entry
+        }
+      })
       .addCase(updateWater.rejected, handlingRejected)
       .addCase(deleteWater.pending, handlingPending)
-      .addCase(deleteWater.fulfilled, handlingFulfilled)
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        handlingFulfilled(state);
+        state.waterDataDay.arrDailyWater =
+          state.waterDataDay.arrDailyWater.filter(
+            water => water._id !== action.meta.arg // Remove the deleted water entry
+          );
+      })
       .addCase(deleteWater.rejected, handlingRejected);
   },
 });

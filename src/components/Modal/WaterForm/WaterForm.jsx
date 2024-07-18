@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .typeError('Please, enter the amount between 1 and 5000 ml!')
     .required('Please, enter the amount of water drunk!'),
 });
-const WaterForm = ({ closeModal, defaultValues }) => {
+const WaterForm = ({ onSubmit, closeModal, defaultValues }) => {
   const dispatch = useDispatch();
   const {
     register,
@@ -48,14 +48,14 @@ const WaterForm = ({ closeModal, defaultValues }) => {
   };
 
   // обработка отправки формы
-  const submit = data => {
+  /*   const submit = data => {
     const { amount } = data;
     dispatch(addWater({ volume: amount.toString() }));
     closeModal();
-  };
+  }; */
 
   return (
-    <form onSubmit={handleSubmit(submit)} className={css.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.amountSection}>
         <p className={css.amountText}>Amount of water</p>
         <div className={css.buttonBox}>
