@@ -15,22 +15,13 @@ const UserBar = () => {
   const defaultAvatarURL =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3TpgxWOkIYqLt3oEVJxj-USRyho-iADVb5w&s';
 
-  const handleOutsideClick = e => {
-    if (popoverRef.current && !popoverRef.current.contains(e.target)) {
-      setTogglePopover(false);
-    }
-  };
-
   const handleButtonClick = () => {
     setTogglePopover(!togglePopover);
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
+  const handleButtonClose = () => {
+    setTogglePopover(false);
+  };
 
   return (
     <div className={css.userBar} ref={popoverRef}>
@@ -52,7 +43,7 @@ const UserBar = () => {
         )}
       </Button>
 
-      {togglePopover && <UserBarPopover onClose={handleButtonClick} />}
+      {togglePopover && <UserBarPopover onClose={handleButtonClose} />}
     </div>
   );
 };

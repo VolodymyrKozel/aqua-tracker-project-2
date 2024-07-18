@@ -2,7 +2,7 @@ import css from './WaterItem.module.css';
 import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
@@ -20,24 +20,7 @@ const WaterItem = ({ item }) => {
     setToggleDelete(!toggleDelete);
   };
 
-  const handleOutsideClick = e => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setToggleEdit(false);
-      setToggleDelete(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleOutsideClick);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.addEventListener('keydown', handleOutsideClick);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-
   const handleFormSubmit = () => {
-    // console.log('Updated item:', data);
     setToggleEdit(false);
   };
 

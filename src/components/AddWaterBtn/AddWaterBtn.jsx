@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
@@ -17,18 +17,6 @@ const AddWaterBtn = ({
 }) => {
   const [openWaterModal, setOpenWaterModal] = useState(false);
   const waterModalRef = useRef(null);
-  /* 
-  const handleOutsideClick = e => {
-    if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
-      setOpenWaterModal(false);
-    }
-  };
-
-  const handleEscapePress = e => {
-    if (e.key === 'Escape') {
-      setOpenWaterModal(false);
-    }
-  }; */
 
   const handleButtonClick = () => {
     setOpenWaterModal(!openWaterModal);
@@ -37,15 +25,6 @@ const AddWaterBtn = ({
   const handleButtonClose = () => {
     setOpenWaterModal(false);
   };
-
-  /*   useEffect(() => {
-    document.addEventListener('keydown', handleEscapePress);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('keydown', handleEscapePress);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []); */
 
   return (
     <div>
