@@ -17,7 +17,7 @@ const AddWaterBtn = ({
 }) => {
   const [openWaterModal, setOpenWaterModal] = useState(false);
   const waterModalRef = useRef(null);
-
+  /* 
   const handleOutsideClick = e => {
     if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
       setOpenWaterModal(false);
@@ -28,7 +28,7 @@ const AddWaterBtn = ({
     if (e.key === 'Escape') {
       setOpenWaterModal(false);
     }
-  };
+  }; */
 
   const handleButtonClick = () => {
     setOpenWaterModal(!openWaterModal);
@@ -38,14 +38,14 @@ const AddWaterBtn = ({
     setOpenWaterModal(false);
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     document.addEventListener('keydown', handleEscapePress);
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
       document.removeEventListener('keydown', handleEscapePress);
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, []);
+  }, []); */
 
   return (
     <div>
