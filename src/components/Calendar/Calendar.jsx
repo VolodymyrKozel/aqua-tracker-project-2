@@ -1,64 +1,58 @@
-// import { startOfMonth, endOfMonth, addDays, isSameDay } from 'date-fns';
-// import CalendarItem from './CalendarItem/CalendarItem';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './Calendar.module.css';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { selectMonthlyWater } from '../../redux/aqua/selectors.js';
-// import { getMonthlyWater } from '../../redux/aqua/operations.js';
-
-// function Calendar({ month, currentDate }) {
-// const dispatch = useDispatch();
-// const monthlyData = useSelector(selectMonthlyWater);
-
-// useEffect(() => {
-//   dispatch(getMonthlyWater(month));
-// }, [dispatch, month]);
-
-// const monthStart = startOfMonth(month);
-// const monthEnd = endOfMonth(monthStart);
-
-// let days = [];
-// let day = monthStart;
-// let endMonth = monthEnd;
-
-// const getDayData = day => {
-//   return monthlyData.find(data => isSameDay(new Date(data.date), day));
-// };
-
-// while (day <= endMonth) {
-//   days.push(
-//     <CalendarItem
-//       className={css.item}
-//       key={day}
-//       day={day}
-//       monthStart={monthStart}
-//       currentDate={currentDate}
-//       getDayData={getDayData}
-//     />
-//   );
-//   day = addDays(day, 1);
-// }
-// return <div className={css.calendar}>{days}</div>;
-// }
-
-// // export default Calendar;
-// import List from '../shared/List/List';
 import CalendarItem from './CalendarItem/CalendarItem';
-// import dataCalendar from './data/monthlyData.json';
+import { selectMonthlyWater } from '../../redux/water/selectors';
+import { addDays, endOfMonth, format, startOfMonth } from 'date-fns';
+import { logOut } from '../../redux/users/operations';
 
-const Calendar = ({ selectedDate, setSelectedDate, monthlyData: data }) => {
+const Calendar = ({ selectedDate, setSelectedDate }) => {
+  const monthlyData = useSelector(selectMonthlyWater);
+  const currentDate = new Date();
+  const monthStart = startOfMonth(currentDate);
+  const monthEnd = endOfMonth(monthStart);
+  const dispatch = useDispatch();
+
+  let days = [];
+  let day = monthStart;
+
+  while (day <= monthEnd) {
+    let value = 0;
+    const dayFormatted = format(day, 'd');
+    const foundItem = monthlyData.find(
+      item => dayFormatted === item._id.toString()
+    );
+    if (foundItem) {
+      value = foundItem.totalValue;
+    }
+
+    days.push({
+      _id: dayFormatted,
+      date: format(day, 'yyyy-MM-dd'),
+      totalValue: value,
+    });
+
+    day = addDays(day, 1);
+  }
+
   return (
     <>
       <ul className={css.list}>
-        {data.map(item => (
+        {days.map(item => (
           <CalendarItem
             data={item}
             setSelectedDate={setSelectedDate}
             selectedDate={selectedDate}
-            key={item.day}
+            key={item._id}
           />
         ))}
       </ul>
+      <button
+        onClick={() => {
+          dispatch(logOut());
+        }}
+      >
+        LogOut
+      </button>
     </>
   );
 };

@@ -1,36 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import instance, {
+  setAuthHeader,
+  clearAuthHeader,
+} from '../../services/instance';
 import toast from 'react-hot-toast';
 import { handleError } from '../../utils/handleError';
-
-const URL_API = 'https://aqua-tracker-project-2-backend.onrender.com/';
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
 
 export const signUp = createAsyncThunk(
   'users/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `${URL_API}users/register`,
-        credentials
-      );
-      const response = await axios.post(`${URL_API}users/login`, {
-        email: credentials.email,
-        password: credentials.password,
-      });
-      setAuthHeader(response.data.accessToken);
+      const { data } = await instance.post(`users/register`, credentials);
       toast.success('User created successfully');
-      return { data, accessToken: response.data.accessToken };
+      await thunkAPI.dispatch(
+        signIn({
+          email: credentials.email,
+          password: credentials.password,
+        })
+      );
+      await thunkAPI.dispatch(fetchUser());
+
+      return data;
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
@@ -42,10 +32,9 @@ export const signIn = createAsyncThunk(
   'users/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${URL_API}users/login`, credentials);
-
-      console.log(data.data.accessToken);
+      const { data } = await instance.post(`users/login`, credentials);
       setAuthHeader(data.data.accessToken);
+      await thunkAPI.dispatch(fetchUser());
       toast.success('Login success');
       return data.data;
     } catch (error) {
@@ -57,8 +46,9 @@ export const signIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
-    await axios.post(`${URL_API}users/logout`);
+    await instance.post(`users/logout`);
     clearAuthHeader();
+
     toast.success('Logout success');
   } catch (error) {
     const errorMessage = handleError(error);
@@ -70,7 +60,7 @@ export const refreshUser = createAsyncThunk(
   'users/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.users.token;
 
     if (persistedToken === null) {
       toast.error('You are not logged in');
@@ -79,8 +69,22 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const { data } = await axios.get('users/current');
-      return data;
+      const { data } = await instance.get(`users/current`);
+      return data.user;
+    } catch (error) {
+      toast.error('You are not logged in');
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const fetchUser = createAsyncThunk(
+  'users/current',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await instance.get(`users/current`);
+      return data.user;
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
@@ -90,14 +94,33 @@ export const refreshUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'users/update',
-  async (formData, thunkAPI) => {
+  async (user, thunkAPI) => {
     try {
-      const res = await axios.patch('/users/update', formData, {
+      const res = await instance.patch('/users/update', user);
+      toast.success('User updated successfully');
+      return res.data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'users/avatar',
+  async (file, thunkAPI) => {
+    console.log(file);
+    try {
+      const formData = new FormData();
+      formData.append('avatarURL', file);
+      const userId = thunkAPI.getState().user.id; // Adjust based on how you store the user data in your state
+      formData.append('id', userId);
+      const res = await instance.patch('/users/avatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      toast.success('User updated successfully');
+      toast.success('Avatar updated successfully');
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);

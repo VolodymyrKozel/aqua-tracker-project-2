@@ -1,33 +1,37 @@
-import { format } from 'date-fns';
-// import css from './CalendarItem.module.css';
-// import clsx from 'clsx';
+import { useRef, useEffect } from 'react';
+import css from './CalendarItem.module.css';
+import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { getWaterDataDay } from '../../../redux/water/operations';
+// import { selectDailyNorma } from '../../../redux/users/selectors';
 
-// import List from '../../shared/List/List';
-
-// function CalendarItem({ day, currentDate }) {
-//   const isToday = isSameDay(day, currentDate);
-
-//   return (
-//     <div className={css.wrapper}>
-//       <span className={clsx(css.day, isToday && css.today)}>
-//         {format(day, 'd')}
-//       </span>
-//     </div>
-//   );
-// }
-
-// export default CalendarItem;
-
-const CalendarItem = ({ data, setSelectedDate }) => {
+const CalendarItem = ({ data, selectedDate, setSelectedDate }) => {
+  const dispatch = useDispatch();
+  // const dailyNorma = useSelector(selectDailyNorma);
+  console.log(data);
   const handleClickDay = () => {
-    setSelectedDate(data.day);
+    setSelectedDate(data.date);
+    dispatch(getWaterDataDay({ date: data.date, dailyNorma: '2000' }));
   };
+
+  const currentBtn = useRef();
+
+  useEffect(() => {
+    if (selectedDate === data.date) {
+      currentBtn.current.focus();
+    }
+  }, [selectedDate, data.date]);
+
   return (
-    <li>
-      <button onClick={handleClickDay}>
-        <p>{format(data.day, 'd')}</p>
-        <span>{data.value}</span>
+    <li className={css.item} key={data._id}>
+      <button
+        ref={currentBtn}
+        className={clsx(css.btn, data.totalValue < 100 && css.btnNotEnough)}
+        onClick={handleClickDay}
+      >
+        <p className={css.number}>{data._id}</p>
       </button>
+      <p className={css.percentage}>{data.totalValue}%</p>
     </li>
   );
 };

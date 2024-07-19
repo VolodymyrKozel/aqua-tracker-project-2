@@ -1,7 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
+import { addWater } from '../../redux/water/operations.js';
+import { useDispatch } from 'react-redux';
+import useModal from '../../hooks/useOpenClose.js';
+import { getDateWithTime } from '../../utils/dateFunctions.js';
+import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { format } from 'date-fns';
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -10,30 +15,30 @@ const AddWaterBtn = ({
   iconId,
   iconWidth,
   iconHeight,
+  operationType = 'add',
+  defaultValues = { time: '07:00', amount: 250 },
 }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const openModalRef = useRef(null);
+  const { isOpen, openModal, closeModal: onClose } = useModal();
+  const dispatch = useDispatch();
 
-  const handleOutsideClick = e => {
-    if (openModalRef.current && !openModalRef.current.contains(e.target)) {
-      setOpenModal(false);
-    }
+  const onSubmit = data => {
+    const { amount, time } = data;
+    /* toLocaleString: Converts the date to a string using the local time zone and locale. */
+    /* import { format } from 'date-fns';
+
+const date = new Date();
+const formattedDate = format(date, 'yyyy-MM-dd HH:mm:ss');
+console.log(formattedDate); // e.g., "2024-07-20 10:10:20"
+ */
+    const dateWithTime = format(getDateWithTime(time), 'yyyy-MM-dd HH:mm');
+    console.log('Submitted data:', dateWithTime);
+    dispatch(addWater({ date: dateWithTime, volume: amount.toString() }));
+    onClose();
   };
-
-  const handleButtonModalClick = () => {
-    setOpenModal(!openModal);
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  });
   return (
     <div>
       <Button
-        onClick={handleButtonModalClick}
+        onClick={openModal}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
       >
@@ -47,7 +52,13 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {/* {openModal && <WaterModal onClose={handleButtonModalClick} />} */}
+      <WaterModal
+        modalIsOpen={isOpen}
+        onClose={onClose}
+        onSubmit={onSubmit}
+        operationType={operationType}
+        defaultValues={defaultValues}
+      />
     </div>
   );
 };

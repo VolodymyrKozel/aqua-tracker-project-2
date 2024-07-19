@@ -1,0 +1,147 @@
+.userBarPopoverContainer {
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 14px 20px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  /*   width: 137px; */
+}
+
+.popoverBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: auto;
+  border: none;
+  background-color: inherit;
+}
+
+.popoverBtnGray {
+  opacity: 0.4;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.popoverBtnGray:hover {
+  opacity: 1;
+}
+
+.popoverIcon {
+  stroke: #323f47;
+  fill: none;
+}
+
+.popoverText {
+  color: #323f47;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29;
+}
+
+@media (min-width: 768px) {
+  .userBarPopoverContainer {
+    width: 157px;
+  }
+
+  .popoverText {
+    font-size: 15px;
+    line-height: 1.49;
+  }
+}
+
+.popoverText {
+  font-size: 15px;
+  line-height: 1.49;
+}
+@media (min-width: 1440px) {
+}
+
+/* user bar */
+.userBar {
+  width: fit-content;
+  display: flex;
+}
+
+.userBarButton {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  min-width: 137px;
+  height: 50px;
+  padding: 6px 12px;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  width: 157px;
+}
+
+.userBarName {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userBarAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.iconChevronDown {
+  stroke: var(--main-white);
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+}
+
+.iconChevronUp {
+  stroke: var(--main-white);
+  fill: transparent;
+  width: 16px;
+  height: 16px;
+  transition: transform 250ms ease-in-out;
+}
+
+.iconChevronUpActive {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: 768px) {
+  .userBarButton {
+    gap: 10px;
+    padding: 6px 12px;
+    min-width: 157px;
+    height: 56px;
+    margin-bottom: 8px;
+  }
+
+  .userBarAvatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .userBarName {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .iconChevronDown,
+  .iconChevronUp {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .userBarButton {
+    gap: 12px;
+  }
+}

@@ -21,7 +21,7 @@
     font-size: 32px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
     .userPanel {
         padding: 32px 0px 42px 0px;
         display: flex;

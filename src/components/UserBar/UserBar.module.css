@@ -1,24 +1,39 @@
 .userBar {
     display: flex;
-    gap: 8px;
+    position: relative;
+    transition: color 250ms ease, stroke 250ms ease;
+}
+
+.userBarButton:hover .userBarName,
+.userBarButton:focus .userBarName {
+    color: var(--accent-color);
+}
+
+.userBarButton:hover .iconChevronDown,
+.userBarButton:focus .iconChevronDown,
+.userBarButton:hover .iconChevronUp,
+.userBarButton:focus .iconChevronUp {
+    stroke: var(--accent-color);
 }
 
 .userBarButton {
-    width: 137px;
-    height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
+    min-width: 137px;
+    height: 50px;
+    padding: 6px 12px;
     text-align: center;
-    padding: 6px 17px 6px 12px;
     gap: 8px;
+    margin-bottom: 4px;
+    width: fit-content;
 }
 
 .userBarName {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 14px;
-    line-height: 1.28571;
+    line-height: 1.29;
     letter-spacing: -0.01em;
     text-align: center;
     color: #fff;
@@ -30,14 +45,7 @@
     border-radius: 50%;
 }
 
-.iconChevronDown {
-    stroke: var(--main-white);
-    fill: transparent;
-    width: 16px;
-    height: 16px;
-}
-
-.iconChevronUp {
+.iconChevronDown, .iconChevronUp {
     stroke: var(--main-white);
     fill: transparent;
     width: 16px;
@@ -48,8 +56,9 @@
     .userBarButton {
         gap: 10px;
         padding: 6px 12px;
-        width: 157px;
+        min-width: 157px;
         height: 56px;
+        margin-bottom: 8px;
     }
 
     .userBarAvatar {
@@ -69,4 +78,7 @@
 }
 
     @media screen and (min-width: 1440px) {
+        .userBarButton {
+            gap: 12px;
+        }
 }

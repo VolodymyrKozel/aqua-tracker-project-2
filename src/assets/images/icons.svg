@@ -56,6 +56,10 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" d="m8 12 8 8 8-8"/>
     </symbol>
 
+    <symbol id="icon-chevron-up" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M8 20l8-8 8 8"></path>
+    </symbol>
+
     <symbol id="icon-trash" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4h8"/>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.6" d="M4 8h24m-2.667 0-.935 14.026c-.14 2.104-.21 3.156-.665 3.954a4.007 4.007 0 0 1-1.731 1.62c-.826.4-1.881.4-3.99.4h-4.025c-2.109 0-3.163 0-3.99-.4a4.001 4.001 0 0 1-1.731-1.62c-.455-.798-.525-1.85-.665-3.954L6.666 8"/>
@@ -81,16 +85,16 @@
       <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"/>
     </symbol>
 
-    <symbol id="icon-ChevronUp" viewBox="0 0 32 32">
+    <symbol id="icon-ChevronUp" viewBox="0 0 53 32">
       <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="8" d="M5.333 26.667l21.333-21.333 21.333 21.333"></path>
-    </symbol>
-    
-    <symbol id="icon-chevron-up" viewBox="0 0 32 32">
-      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.2" d="M8 20l8-8 8 8"></path>
     </symbol>
     
     <symbol id="icon-only-plus" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M16 6.667v18.667M6.667 16h18.667"/>
+    </symbol>
+
+    <symbol id="icon-minus" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.44" d="M10.286 16h11.429"></path>
     </symbol>
     
   </defs>

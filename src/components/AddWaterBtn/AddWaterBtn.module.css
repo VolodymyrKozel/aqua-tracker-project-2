@@ -8,6 +8,9 @@
   height: 46px;
   padding: 14px 0px;
   justify-content: end;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
 
 .iconPlusWater {
@@ -17,6 +20,13 @@
   stroke-width: 0;
   width: 30px;
   height: 30px;
+  transition: fill 250ms ease, stroke 250ms ease;
+}
+
+.addWaterButton:hover .iconPlusWater,
+.addWaterButton:focus .iconPlusWater {
+  fill: #323f47;
+  stroke: #fff;
 }
 
 .addWaterSpan {
@@ -34,11 +44,6 @@
     padding: 18px 0px;
     width: 178px;
     height: 60px;
-  }
-
-  .iconPlusWater {
-    width: 24px;
-    height: 24px;
   }
 
   .addWaterSpan {

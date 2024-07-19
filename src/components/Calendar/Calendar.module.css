@@ -1,7 +1,20 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px 18px;
+  gap: 18px 20px;
+  width: 304px;
+}
+@media (min-width: 768px) {
+  .list {
+    width: 640px;
+    gap: 15px 48px;
+  }
+}
+@media (min-width: 1440px) {
+  .list {
+    width: 608px;
+    gap: 15px 43px;
+  }
 }
 .item {
   display: flex;

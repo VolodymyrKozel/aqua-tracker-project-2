@@ -1,4 +1,4 @@
-.modalBackdrop {
+/* .modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-}
+} */
 
 .logoutModal {
   display: flex;
@@ -62,4 +62,60 @@
   align-self: center;
   gap: 10px;
   margin-top: 24px;
+}
+
+@media screen and (max-width: 375px) {
+  .logoutModal {
+    border-radius: 15px;
+    padding: 40px 14px;
+    width: 344px;
+    height: 267px;
+  }
+
+  .logoutModal .closeIcon {
+    position: absolute;
+    stroke: var(--main-text);
+    fill: none;
+    top: 20px;
+    right: 16x;
+    cursor: pointer;
+  }
+
+  .modalLogoutTitle {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--main);
+  }
+
+  .modalLogoutText {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--main);
+    margin-top: 16px;
+  }
+
+  .modalButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 304px;
+    height: 101px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 9px;
+    margin-top: 28px;
+  }
+
+  .modalButon {
+    width: 304px;
+    height: 46px;
+  }
 }
