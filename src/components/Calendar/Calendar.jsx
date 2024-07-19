@@ -19,14 +19,14 @@ const Calendar = ({ selectedDate, setSelectedDate }) => {
     let value = 0;
     const dayFormatted = format(day, 'd');
     const foundItem = monthlyData.find(
-      item => dayFormatted === item._id.toString()
+      item => dayFormatted === item.dayOfMonth.toString()
     );
     if (foundItem) {
-      value = foundItem.totalValue;
+      value = foundItem.percentage;
     }
 
     days.push({
-      _id: dayFormatted,
+      day: dayFormatted,
       date: format(day, 'yyyy-MM-dd'),
       totalValue: value,
     });
@@ -42,7 +42,7 @@ const Calendar = ({ selectedDate, setSelectedDate }) => {
             data={item}
             setSelectedDate={setSelectedDate}
             selectedDate={selectedDate}
-            key={item._id}
+            key={item.day}
           />
         ))}
       </ul>
