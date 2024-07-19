@@ -4,8 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './WaterForm.module.css';
 import { useEffect } from 'react';
-import Icon from '../../shared/Icon/Icon';
 import Button from '../../shared/Button/Button';
+import Icon from '../../shared/Icon/Icon';
 const schema = yup.object().shape({
   time: yup.string().required('Please, enter the recorded time!'),
   amount: yup

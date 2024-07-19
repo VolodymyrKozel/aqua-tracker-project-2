@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import clsx from 'clsx';
 import Icon from '../shared/Icon/Icon.jsx';
-import ModalReusable from '../shared/ModalReusable/ModalReusable.jsx';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
 
@@ -74,14 +73,14 @@ export default function UserBarPopover({ onClose }) {
         </div>
       </ModalWrapper>
 
-      <ModalReusable
+      <ModalWrapper
         modalIsOpen={isLogOutModalOpen}
         closeModal={closeLogOutModal}
       >
         <div onClick={e => e.stopPropagation()}>
           <LogOutModal closeModal={closeLogOutModal} />
         </div>
-      </ModalReusable>
+      </ModalWrapper>
     </div>
   );
 }
