@@ -6,9 +6,10 @@ import { useDispatch } from 'react-redux';
 import useModal from '../../hooks/useOpenClose.js';
 import { getDateWithTime } from '../../utils/dateFunctions.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
-import { format } from 'date-fns';
+import { addHours, addMinutes, format } from 'date-fns';
 
 const AddWaterBtn = ({
+  selectedDate,
   buttonClassName,
   iconClassName,
   spanClassName,
@@ -23,16 +24,7 @@ const AddWaterBtn = ({
 
   const onSubmit = data => {
     const { amount, time } = data;
-    /* toLocaleString: Converts the date to a string using the local time zone and locale. */
-    /* import { format } from 'date-fns';
-
-const date = new Date();
-const formattedDate = format(date, 'yyyy-MM-dd HH:mm:ss');
-console.log(formattedDate); // e.g., "2024-07-20 10:10:20"
- */
-    const dateWithTime = format(getDateWithTime(time), 'yyyy-MM-dd HH:mm');
-    console.log('Submitted data:', dateWithTime);
-    dispatch(addWater({ date: dateWithTime, volume: amount.toString() }));
+    dispatch(addWater({ time: time, volume: amount.toString() }));
     onClose();
   };
   return (

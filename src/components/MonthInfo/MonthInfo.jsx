@@ -2,17 +2,21 @@ import { useEffect, useState } from 'react';
 import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
 import css from './MonthInfo.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getWaterDataMonthly } from '../../redux/water/operations';
+import { getMonth, getYear, format } from 'date-fns';
+/* import { selectDailyNorma } from '../../redux/water/selectors'; */
 
-const MonthInfo = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const MonthInfo = ({ selectedDate, setSelectedDate }) => {
+  /*   const dailyNorma = useSelector(selectDailyWaterRate); */
   const dispatch = useDispatch();
   useEffect(() => {
+    /*     const month = format(getMonth(selectedDate)+1, 'M'); // Повертає номер місяця (0 - січень, 11 - грудень)
+    const year = getYear(selectedDate); // Повертає рік */
     dispatch(
-      getWaterDataMonthly({ month: '07', year: '2024', dailyNorma: '2000' })
+      getWaterDataMonthly({ month: '07', year: '2024', dailyNorma: '200' })
     );
-  }, []);
+  }, [dispatch, selectedDate]);
 
   return (
     <div className={css.container}>

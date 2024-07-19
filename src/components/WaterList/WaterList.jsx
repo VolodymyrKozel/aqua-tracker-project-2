@@ -1,13 +1,13 @@
 import WaterItem from '../WaterItem/WaterItem.jsx';
 import css from './WaterList.module.css';
-import { selectDailyWater } from '../../redux/water/selectors.js';
+import {
+  selectDailyWater,
+  selectIsLoading,
+} from '../../redux/water/selectors.js';
 import { useSelector } from 'react-redux';
-
-const WaterList = () => {
-  /*   const dispatch = useDispatch(); */
-
+const WaterList = ({ selectedDate }) => {
+  const isLoading = useSelector(selectIsLoading);
   const { arrDailyWater = [] } = useSelector(selectDailyWater) || {};
-
   return (
     <>
       {!Array.isArray(arrDailyWater) || !arrDailyWater.length ? (

@@ -65,7 +65,6 @@ const PopoverModal = () => {
             >
               <Icon
                 className={css.popoverIcon}
-                title="settings"
                 width="16"
                 height="16"
                 id={'icon-settings'}
