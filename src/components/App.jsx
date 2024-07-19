@@ -33,15 +33,11 @@ export const App = () => {
       <Suspense fallback={<Loader variant="fullScreen" />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              index
-              element={
-                <RestrictedRoute
+            <Route index element={<HomePage />} />
+            {/*  <RestrictedRoute
                   redirectTo="/tracker"
                   component={<HomePage />}
-                />
-              }
-            />
+                /> */}
             <Route
               path="/signup"
               element={
