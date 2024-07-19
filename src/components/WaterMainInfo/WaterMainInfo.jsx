@@ -14,9 +14,6 @@ const WaterMainInfo = () => {
       <WaterProgressBar />
       <div className={css.buttonContainer}>
         <AddWaterBtn
-          onClick={() => {
-            alert('clicl add');
-          }}
           buttonClassName={css.waterMainInfoButton}
           iconClassName={css.waterMainInfoIcon}
           spanClassName={css.waterMainInfoSpan}

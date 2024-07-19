@@ -22,25 +22,9 @@ const AddWaterBtn = ({
   const { isOpen, openModal, closeModal: onClose } = useModal();
   const dispatch = useDispatch();
 
-  function addTimeToDate(date, time) {
-    // Розділити час на години і хвилини
-    const [hours, minutes] = time.split(':').map(Number);
-
-    // Додати години і хвилини до дати
-    let newDate = addHours(date, hours);
-    newDate = addMinutes(newDate, minutes);
-
-    return newDate;
-  }
-
   const onSubmit = data => {
     const { amount, time } = data;
-    /*     const newDate = addTimeToDate(selectedDate, time); */
-    const dateWithTime = format(
-      addTimeToDate(selectedDate, time),
-      'yyyy-MM-dd HH:mm'
-    );
-    dispatch(addWater({ date: dateWithTime, volume: amount.toString() }));
+    dispatch(addWater({ time: time, volume: amount.toString() }));
     onClose();
   };
   return (

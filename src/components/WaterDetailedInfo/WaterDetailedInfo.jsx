@@ -6,16 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getWaterDataDay } from '../../redux/water/operations.js';
 import { selectDailyWaterRate } from '../../redux/users/selectors.js';
+import { format } from 'date-fns';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
 
-  const dailyNorma = useSelector(selectDailyWaterRate);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
+  let dailyNorma = useSelector(selectDailyWaterRate);
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), 'yyyy-MM-dd')
+  );
+  // can not select daily norma
+  if (!dailyNorma) {
+    dailyNorma = '200';
+  }
   useEffect(() => {
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma: dailyNorma }));
-  }, [dispatch]);
+  }, [dispatch, dailyNorma, selectedDate]);
   return (
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>

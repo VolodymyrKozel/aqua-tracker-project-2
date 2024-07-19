@@ -7,8 +7,7 @@ import { getWaterDataDay } from '../../../redux/water/operations';
 
 const CalendarItem = ({ data, selectedDate, setSelectedDate }) => {
   const dispatch = useDispatch();
-  // const dailyNorma = useSelector(selectDailyNorma);
-  console.log(data);
+  //const dailyNorma = useSelector(selectDailyNorma);
   const handleClickDay = () => {
     setSelectedDate(data.date);
     dispatch(getWaterDataDay({ date: data.date, dailyNorma: '2000' }));
