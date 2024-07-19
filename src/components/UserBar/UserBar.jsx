@@ -6,6 +6,7 @@ import { IconChevronUp } from './IconChevronUp.jsx';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/users/selectors.js';
+import PopoverModal from '../shared/PopoverModal/PopoverModal.jsx';
 
 const UserBar = () => {
   const [togglePopover, setTogglePopover] = useState(false);
@@ -32,9 +33,10 @@ const UserBar = () => {
     };
   }, []);
 
-  return (
-    <div className={css.userBar} ref={popoverRef}>
-      <Button
+  return <PopoverModal />;
+  {
+    /* <div className={css.userBar} ref={popoverRef}>
+         <Button
         onClick={handleButtonClick}
         variant="secondary"
         className={css.userBarButton}
@@ -52,9 +54,10 @@ const UserBar = () => {
         )}
       </Button>
 
-      {togglePopover && <UserBarPopover onClose={handleButtonClick} />}
-    </div>
-  );
+       {togglePopover && <UserBarPopover onClose={handleButtonClick} />}
+     
+    </div> */
+  }
 };
 
 export default UserBar;
