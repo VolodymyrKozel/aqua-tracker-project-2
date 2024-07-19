@@ -5,10 +5,12 @@ import IconTrash from './IconTrash.jsx';
 import { useRef } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
-import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteWater, updateWater } from '../../redux/water/operations.js';
 import useModal from '../../hooks/useOpenClose.js';
+import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { formatTime } from '../../utils/dateFunctions.js';
+import { format } from 'date-fns';
 
 const WaterItem = ({ item }) => {
   const {
@@ -30,18 +32,15 @@ const WaterItem = ({ item }) => {
     closeDelete();
   };
 
-  const handleFormSubmit = data => {
-    console.log('Updated item:', item);
-    dispatch(updateWater({ ...data, _id: item._id }));
+  const onSubmit = data => {
+    dispatch(
+      updateWater({
+        ...data,
+        _id: item._id,
+        date: format(item.time, 'yyyy-MM-dd HH:mm'),
+      })
+    );
     closeEdit();
-  };
-
-  const formatTime = time => {
-    const [hour, minute] = time.split(':');
-    const hourNum = parseInt(hour, 10);
-    const period = hourNum < 12 ? 'AM' : 'PM';
-    const formattedHour = hourNum % 12 || 12;
-    return `${formattedHour}:${minute} ${period}`;
   };
 
   return (
@@ -49,7 +48,11 @@ const WaterItem = ({ item }) => {
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>{item.volume} ml</p>
-        <p className={css.waterItemData}>{formatTime(item.time)}</p>
+        <p className={css.waterItemData}>
+          {item.time && !item.date
+            ? formatTime(item.time)
+            : format(item.date, 'HH:mm')}
+        </p>
       </div>
       <div className={css.waterItemBtnWrap}>
         <Button onClick={openEdit} type="button" className={css.waterItemBtn}>
@@ -58,16 +61,15 @@ const WaterItem = ({ item }) => {
         <Button onClick={openDelete} type="button" className={css.waterItemBtn}>
           <IconTrash className={css.waterIconBtn} />
         </Button>
-        {isOpenEdit && (
-          <WaterModal
-            item={item}
-            isOpen={isOpenEdit}
-            onClose={closeEdit}
-            onSubmit={handleFormSubmit}
-            operationType="edit"
-            defaultValues={{ time: item.time, amount: item.volume }}
-          />
-        )}
+
+        <WaterModal
+          modalIsOpen={isOpenEdit}
+          item={item}
+          onSubmit={onSubmit}
+          defaultValues={{ time: item.time, amount: item.volume }}
+          operationType="edit"
+          onClose={closeEdit}
+        />
         {isOpenDelete && (
           <DeleteWaterModal handleDelete={handleDelete} onClose={closeDelete} />
         )}

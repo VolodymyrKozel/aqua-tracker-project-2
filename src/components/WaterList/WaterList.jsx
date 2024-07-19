@@ -10,7 +10,7 @@ const WaterList = () => {
 
   return (
     <>
-      {!Array.isArray(arrDailyWater) && !arrDailyWater.length ? (
+      {!Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
         <div className={css.noWaterAdded}>
           You haven&apos;t had any water today. Start now!
         </div>

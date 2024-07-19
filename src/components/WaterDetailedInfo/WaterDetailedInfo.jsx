@@ -8,7 +8,7 @@ import { getWaterDataDay } from '../../redux/water/operations.js';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
-  const getStartOfDay = () => {
+  /*   const getStartOfDay = () => {
     const now = new Date();
     const startOfDay = new Date(
       now.getFullYear(),
@@ -16,18 +16,19 @@ const WaterDetailedInfo = () => {
       now.getDate()
     );
     return startOfDay.toISOString();
-  };
+  }; */
+  const currentDate = new Date();
 
   useEffect(() => {
-    const dateWithOffset = getStartOfDay();
-    dispatch(getWaterDataDay({ date: dateWithOffset, dailyNorma: '1000' }));
+    /* const dateWithOffset = getStartOfDay(); */
+    dispatch(getWaterDataDay({ date: currentDate, dailyNorma: '1000' }));
   }, [dispatch]);
   return (
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
         <DailyInfo />
-        <MonthInfo />
+        {/*  <MonthInfo /> */}
       </div>
     </section>
   );
