@@ -6,9 +6,10 @@ import { useDispatch } from 'react-redux';
 import useModal from '../../hooks/useOpenClose.js';
 import { getDateWithTime } from '../../utils/dateFunctions.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
-import { format } from 'date-fns';
+import { addHours, addMinutes, format } from 'date-fns';
 
 const AddWaterBtn = ({
+  selectedDate,
   buttonClassName,
   iconClassName,
   spanClassName,
@@ -21,17 +22,24 @@ const AddWaterBtn = ({
   const { isOpen, openModal, closeModal: onClose } = useModal();
   const dispatch = useDispatch();
 
+  function addTimeToDate(date, time) {
+    // Розділити час на години і хвилини
+    const [hours, minutes] = time.split(':').map(Number);
+
+    // Додати години і хвилини до дати
+    let newDate = addHours(date, hours);
+    newDate = addMinutes(newDate, minutes);
+
+    return newDate;
+  }
+
   const onSubmit = data => {
     const { amount, time } = data;
-    /* toLocaleString: Converts the date to a string using the local time zone and locale. */
-    /* import { format } from 'date-fns';
-
-const date = new Date();
-const formattedDate = format(date, 'yyyy-MM-dd HH:mm:ss');
-console.log(formattedDate); // e.g., "2024-07-20 10:10:20"
- */
-    const dateWithTime = format(getDateWithTime(time), 'yyyy-MM-dd HH:mm');
-    console.log('Submitted data:', dateWithTime);
+    /*     const newDate = addTimeToDate(selectedDate, time); */
+    const dateWithTime = format(
+      addTimeToDate(selectedDate, time),
+      'yyyy-MM-dd HH:mm'
+    );
     dispatch(addWater({ date: dateWithTime, volume: amount.toString() }));
     onClose();
   };

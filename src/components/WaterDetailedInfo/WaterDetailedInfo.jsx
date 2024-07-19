@@ -2,33 +2,29 @@ import UserPanel from '../UserPanel/UserPanel.jsx';
 import DailyInfo from '../DailyInfo/DailyInfo.jsx';
 import css from './WaterDetailedInfo.module.css';
 import MonthInfo from '../MonthInfo/MonthInfo.jsx';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { getWaterDataDay } from '../../redux/water/operations.js';
+import { selectDailyWaterRate } from '../../redux/users/selectors.js';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
-  /*   const getStartOfDay = () => {
-    const now = new Date();
-    const startOfDay = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate()
-    );
-    return startOfDay.toISOString();
-  }; */
-  const currentDate = new Date();
+
+  const dailyNorma = useSelector(selectDailyWaterRate);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    /* const dateWithOffset = getStartOfDay(); */
-    dispatch(getWaterDataDay({ date: currentDate, dailyNorma: '1000' }));
+    dispatch(getWaterDataDay({ date: selectedDate, dailyNorma: dailyNorma }));
   }, [dispatch]);
   return (
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
-        <DailyInfo />
-        {/*  <MonthInfo /> */}
+        <DailyInfo selectedDate={selectedDate} />
+        <MonthInfo
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
       </div>
     </section>
   );

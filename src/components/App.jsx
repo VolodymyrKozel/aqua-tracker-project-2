@@ -9,7 +9,6 @@ import { refreshUser } from '../redux/users/operations';
 import { selectIsRefreshing } from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
 import LogOutModal from './Modal/LogOutModal/LogOutModal';
-import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import ModalExample from './ModalExample/ModalExample';
 import Presentation from '../pages/Presentation/Presentation';
 /*import { ModalExample } from './ModalExample/ModalExample';  */
