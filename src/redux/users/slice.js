@@ -111,7 +111,8 @@ const usersSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.user = { ...state.user, avatarURL: payload };
+        console.log('payload', payload);
+        state.user = { ...state.user, ...payload };
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -125,6 +126,7 @@ const usersSlice = createSlice({
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        console.log('avatar', payload);
         state.user = { ...state.user, avatarURL: payload };
       })
       .addCase(updateAvatar.rejected, (state, action) => {
