@@ -1,0 +1,76 @@
+[
+  { "id": "id-1", "name": "VOLODYMYR KOZEL", "role": "Team Lead", "photo": "" },
+  {
+    "id": "id-2",
+    "name": "MARYNA NAZINA",
+    "role": "Scrum Master",
+    "photo": "",
+    "descriotion": "descriotion"
+  },
+  {
+    "id": "id-3",
+    "name": "RUSLAN IVASIUNKO",
+    "role": "Backend Developer",
+    "photo": "../../../src/Presentation/images/RUSLAN_IVASIUNKO.jpg"
+  },
+  {
+    "id": "id-4",
+    "name": "VIKTOR ATSBERHER",
+    "role": "Backend Developer",
+    "photo": "../../../src/Presentation/images/VIKTOR_ATSBERHER.jpg"
+  },
+  {
+    "id": "id-6",
+    "name": "SOFIIA CHAIKOVSKA",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/SOFIIA_CHAIKOVSKA.jpg"
+  },
+  {
+    "id": "id-5",
+    "name": "YULIIA BRYK",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/YULIIA_BRYK.jpg"
+  },
+  {
+    "id": "id-7",
+    "name": "DANYLO BOBOSHKO",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/DANYLO_BOBOSHKO.jpg"
+  },
+  {
+    "id": "id-8",
+    "name": "MAKSYM MOKHNIUK",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/MAKSYM_MOKHNIUK.jpg"
+  },
+  {
+    "id": "id-9",
+    "name": "IHOR SLAKVA",
+    "role": "Frontend Developer",
+    "photo": ""
+  },
+  {
+    "id": "id-10",
+    "name": "YURII KOKSHAROV",
+    "role": "Frontend Developer",
+    "photo": ""
+  },
+  {
+    "id": "id-11",
+    "name": "YEVHENII DEMCHUK",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/YEVHENII_DEMCHUK.jpg"
+  },
+  {
+    "id": "id-13",
+    "name": "HALYNA MARCHENKO",
+    "role": "Frontend Developer",
+    "photo": ""
+  },
+  {
+    "id": "id-12",
+    "name": "ANNA KOROTKEVYCH",
+    "role": "Frontend Developer",
+    "photo": ""
+  }
+]
