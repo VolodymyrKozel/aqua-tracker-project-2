@@ -41,10 +41,10 @@ function AdvantagesSection() {
           alt={item.alt}
         />
       ))}
-      <ModalReusable className={css.modal} isOpenProp={true} closebtn={true}>
+      {/* <ModalReusable className={css.modal} isOpenProp={true} closebtn={true}>
         <h1>Modal</h1>
         <p>some content</p>
-      </ModalReusable>
+      </ModalReusable> */}
       <List className={css.listImages}>
         <li className={css.images}>
           <img
