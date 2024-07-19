@@ -72,7 +72,7 @@ export const updateWater = createAsyncThunk(
     const volume = amount.toString();
     try {
       const res = await instance.patch(`water/update-volume/${waterData._id}`, {
-        date: time,
+        time,
         volume,
       });
       toast.success('Water edited successfully');

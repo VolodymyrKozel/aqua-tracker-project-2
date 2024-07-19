@@ -33,16 +33,16 @@ const WaterItem = ({ item }) => {
   };
 
   const onSubmit = data => {
+    console.log('update data', data);
     dispatch(
       updateWater({
         ...data,
         _id: item._id,
-        date: format(item.time, 'yyyy-MM-dd HH:mm'),
       })
     );
     closeEdit();
   };
-
+  console.log('item', item);
   return (
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
