@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
 import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
+import { addWater } from '../../redux/water/operations.js';
+import { useDispatch } from 'react-redux';
+import useModal from '../../hooks/useOpenClose.js';
+import { getDateWithTime } from '../../utils/dateFunctions.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { addHours, addMinutes, format } from 'date-fns';
 
 const AddWaterBtn = ({
+  selectedDate,
   buttonClassName,
   iconClassName,
   spanClassName,
@@ -13,44 +18,19 @@ const AddWaterBtn = ({
   iconHeight,
   operationType = 'add',
   defaultValues = { time: '07:00', amount: 250 },
-  onSubmit,
 }) => {
-  const [openWaterModal, setOpenWaterModal] = useState(false);
-  const waterModalRef = useRef(null);
+  const { isOpen, openModal, closeModal: onClose } = useModal();
+  const dispatch = useDispatch();
 
-  const handleOutsideClick = e => {
-    if (waterModalRef.current && !waterModalRef.current.contains(e.target)) {
-      setOpenWaterModal(false);
-    }
+  const onSubmit = data => {
+    const { amount, time } = data;
+    dispatch(addWater({ time: time, volume: amount.toString() }));
+    onClose();
   };
-
-  const handleEscapePress = e => {
-    if (e.key === 'Escape') {
-      setOpenWaterModal(false);
-    }
-  };
-
-  const handleButtonClick = () => {
-    setOpenWaterModal(!openWaterModal);
-  };
-
-  const handleButtonClose = () => {
-    setOpenWaterModal(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleEscapePress);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('keydown', handleEscapePress);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-
   return (
     <div>
       <Button
-        onClick={handleButtonClick}
+        onClick={openModal}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
       >
@@ -64,17 +44,13 @@ const AddWaterBtn = ({
           Add water
         </span>
       </Button>
-      {openWaterModal && (
-        <div ref={waterModalRef}>
-          <WaterModal
-            isOpen={openWaterModal}
-            onRequestClose={handleButtonClose}
-            onSubmit={onSubmit}
-            operationType={operationType}
-            defaultValues={defaultValues}
-          />
-        </div>
-      )}
+      <WaterModal
+        modalIsOpen={isOpen}
+        onClose={onClose}
+        onSubmit={onSubmit}
+        operationType={operationType}
+        defaultValues={defaultValues}
+      />
     </div>
   );
 };

@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/users/operations';
 import { selectIsRefreshing } from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
+import LogOutModal from './Modal/LogOutModal/LogOutModal';
+import ModalExample from './ModalExample/ModalExample';
+import Presentation from '../pages/Presentation/Presentation';
+/*import { ModalExample } from './ModalExample/ModalExample';  */
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const TrackerPage = lazy(() => import('../pages/TrackerPage/TrackerPage'));
@@ -29,15 +33,11 @@ export const App = () => {
       <Suspense fallback={<Loader variant="fullScreen" />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route
-              index
-              element={
-                <RestrictedRoute
+            <Route index element={<HomePage />} />
+            {/*  <RestrictedRoute
                   redirectTo="/tracker"
                   component={<HomePage />}
-                />
-              }
-            />
+                /> */}
             <Route
               path="/signup"
               element={
@@ -65,6 +65,10 @@ export const App = () => {
                 />
               }
             />
+
+            <Route path="/logout" element={<LogOutModal />} />
+            <Route path="/presentation" element={<Presentation />} />
+            <Route path="/example" element={<ModalExample />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

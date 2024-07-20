@@ -1,6 +1,5 @@
 import Icon from '../shared/Icon/Icon';
 import UserSettingsForm from '../UserSettingsForm/UserSettingsForm';
-
 import css from './UserSettingsModal.module.css';
 
 export default function UserSettingsModal({ closeModal }) {
@@ -16,8 +15,7 @@ export default function UserSettingsModal({ closeModal }) {
           id={'icon-cross'}
         />
       </div>
-
-      <UserSettingsForm />
+      <UserSettingsForm closeModal={closeModal} />
     </div>
   );
 }

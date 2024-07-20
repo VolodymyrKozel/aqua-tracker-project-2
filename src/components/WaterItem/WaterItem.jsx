@@ -2,87 +2,74 @@ import css from './WaterItem.module.css';
 import IconGlass from './IconGlass';
 import IconEdit from './IconEdit.jsx';
 import IconTrash from './IconTrash.jsx';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
+import { useDispatch } from 'react-redux';
+import { deleteWater, updateWater } from '../../redux/water/operations.js';
+import useModal from '../../hooks/useOpenClose.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { formatTime } from '../../utils/dateFunctions.js';
+import { format } from 'date-fns';
 
 const WaterItem = ({ item }) => {
-  const [toggleEdit, setToggleEdit] = useState(false);
-  const [toggleDelete, setToggleDelete] = useState(false);
+  const {
+    isOpen: isOpenEdit,
+    openModal: openEdit,
+    closeModal: closeEdit,
+  } = useModal();
+
+  const {
+    isOpen: isOpenDelete,
+    openModal: openDelete,
+    closeModal: closeDelete,
+  } = useModal();
+  const dispatch = useDispatch();
   const modalRef = useRef(null);
 
-  const HandleButtonEditClick = () => {
-    setToggleEdit(!toggleEdit);
+  const handleDelete = () => {
+    dispatch(deleteWater(item._id));
+    closeDelete();
   };
 
-  const HandleButtonDeleteClick = () => {
-    setToggleDelete(!toggleDelete);
+  const onSubmit = data => {
+    dispatch(
+      updateWater({
+        ...data,
+        _id: item._id,
+      })
+    );
+    closeEdit();
   };
-
-  const handleOutsideClick = e => {
-    if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setToggleEdit(false);
-      setToggleDelete(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleOutsideClick);
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.addEventListener('keydown', handleOutsideClick);
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-
-  const handleFormSubmit = () => {
-    // console.log('Updated item:', data);
-    setToggleEdit(false);
-  };
-
-  const formatTime = time => {
-    const [hour, minute] = time.split(':');
-    const hourNum = parseInt(hour, 10);
-    const period = hourNum < 12 ? 'AM' : 'PM';
-    const formattedHour = hourNum % 12 || 12;
-    return `${formattedHour}:${minute} ${period}`;
-  };
-
   return (
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>{item.volume} ml</p>
-        <p className={css.waterItemData}>{formatTime(item.time)}</p>
+        <p className={css.waterItemData}>
+          {item.time && !item.date
+            ? formatTime(item.time)
+            : format(item.date, 'HH:mm')}
+        </p>
       </div>
       <div className={css.waterItemBtnWrap}>
-        <Button
-          onClick={HandleButtonEditClick}
-          type="button"
-          className={css.waterItemBtn}
-        >
+        <Button onClick={openEdit} type="button" className={css.waterItemBtn}>
           <IconEdit className={css.waterIconBtn} />
         </Button>
-        <Button
-          onClick={HandleButtonDeleteClick}
-          type="button"
-          className={css.waterItemBtn}
-        >
+        <Button onClick={openDelete} type="button" className={css.waterItemBtn}>
           <IconTrash className={css.waterIconBtn} />
         </Button>
-        {toggleEdit && (
-          <WaterModal
-            item={item}
-            isOpen={toggleEdit}
-            onClose={HandleButtonEditClick}
-            onSubmit={handleFormSubmit}
-            operationType="edit"
-            defaultValues={{ time: item.time, amount: item.volume }}
-          />
-        )}
-        {toggleDelete && (
-          <DeleteWaterModal item={item} onClose={HandleButtonDeleteClick} />
+
+        <WaterModal
+          modalIsOpen={isOpenEdit}
+          item={item}
+          onSubmit={onSubmit}
+          defaultValues={{ time: item.time, amount: item.volume }}
+          operationType="edit"
+          onClose={closeEdit}
+        />
+        {isOpenDelete && (
+          <DeleteWaterModal handleDelete={handleDelete} onClose={closeDelete} />
         )}
       </div>
     </div>

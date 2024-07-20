@@ -73,7 +73,6 @@
   }
 
   .deleteModal .closeIcon {
-    position: absolute;
     stroke: var(--main-text);
     fill: none;
     top: 20px;

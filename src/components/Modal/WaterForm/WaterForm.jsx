@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './WaterForm.module.css';
-import iconPlus from '../../../assets/images/icons.svg';
-import iconMinus from '../../../assets/images/icons.svg';
 import { useEffect } from 'react';
+import Button from '../../shared/Button/Button';
+import Icon from '../../shared/Icon/Icon';
 const schema = yup.object().shape({
   time: yup.string().required('Please, enter the recorded time!'),
   amount: yup
@@ -15,7 +15,7 @@ const schema = yup.object().shape({
     .typeError('Please, enter the amount between 1 and 5000 ml!')
     .required('Please, enter the amount of water drunk!'),
 });
-const WaterForm = ({  onSubmit, defaultValues }) => {
+const WaterForm = ({ onSubmit, defaultValues }) => {
   const {
     register,
     handleSubmit,
@@ -32,31 +32,30 @@ const WaterForm = ({  onSubmit, defaultValues }) => {
     reset(defaultValues);
   }, [defaultValues, reset]);
   const handleDecrementWaterAmount = () => {
-    const currentValue = getValues('amount');
+    const currentValue = parseInt(getValues('amount'));
     if (currentValue > 50) {
       setValue('amount', currentValue - 50);
     }
   };
   const handleIncrementWaterAmount = () => {
-    const currentValue = getValues('amount');
+    const currentValue = parseInt(getValues('amount'));
     if (currentValue < 5000) {
       setValue('amount', currentValue + 50);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.amountSection}>
-        <p className={css.text}>Correct entered data:</p>
-        <div className={css.amountWrap}>
+        <p className={css.amountText}>Amount of water</p>
+        <div className={css.buttonBox}>
           <button
             className={css.amountBtn}
             type="button"
             disabled={getValues('amount') <= 50}
             onClick={handleDecrementWaterAmount}
           >
-            <svg className={css.icon} width="14" height="14">
-              <use href={`${iconMinus}#icon-minus`}></use>
-            </svg>
+            <Icon className={css.icon} width="28" height="28" />
           </button>
           <span className={css.amount}>{`${watch('amount')} ml`}</span>
           <button
@@ -65,9 +64,12 @@ const WaterForm = ({  onSubmit, defaultValues }) => {
             disabled={getValues('amount') >= 5000}
             onClick={handleIncrementWaterAmount}
           >
-            <svg className={css.icon} width="14" height="14">
-              <use href={`${iconPlus}#icon-plus`}></use>
-            </svg>
+            <Icon
+              className={css.icon}
+              width="28"
+              height="28"
+              id="icon-only-plus"
+            />
           </button>
         </div>
       </div>
@@ -96,9 +98,9 @@ const WaterForm = ({  onSubmit, defaultValues }) => {
           )}
         </label>
       </div>
-      <button className={css.saveBtn} type="submit">
+      <Button className={css.saveBtn} variant="primary" type="submit">
         Save
-      </button>
+      </Button>
     </form>
   );
 };

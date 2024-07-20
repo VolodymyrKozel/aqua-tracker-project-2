@@ -1,24 +1,24 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { selectUser } from '../../redux/users/selectors';
-import { updateUser } from '../../redux/users/operations';
-
-/* import { errorToast, successToast } from '../../helpers/toast'; */
+import { updateAvatar, updateUser } from '../../redux/users/operations';
 import Icon from '../shared/Icon/Icon';
 import { userSettingsSchema } from '../../validation/form';
 
-import css from '../UserSettingsForm/UserSettingsForm.module.css';
 import Loader from '../shared/Loader/Loader';
+import { selectIsLoading } from '../../redux/users/selectors';
 import { ava, ava2x, avatar_photo_default } from './images';
-import toast from 'react-hot-toast';
+import css from '../UserSettingsForm/UserSettingsForm.module.css';
 
-export default function UserSettingsForm() {
+export default function UserSettingsForm({ closeModal }) {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const user = useSelector(selectUser);
+  console.log('user', user);
   const avatarURL = user.avatarURL;
   const {
     register,
@@ -29,82 +29,61 @@ export default function UserSettingsForm() {
   } = useForm({
     resolver: yupResolver(userSettingsSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      gender: '',
-      weight: 0,
-      activeTimeSport: 0,
-      dailyWaterRate: 0,
+      name: user?.name || '',
+      email: user?.email || '',
+      gender: user?.gender || '',
+      weight: user?.weight || 0,
+      activeTimeSports: user?.activeTimeSports || 0,
+      waterDrink: user?.waterDrink || 0,
     },
   });
-  const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (user) {
       setValue('name', user.name || '');
       setValue('email', user.email || '');
       setValue('weight', user.weight || 0);
-      setValue('activeTimeSport', user.activeTimeSport || 0);
-      setValue('dailyWaterRate', user.dailyWaterRate || 0);
+      setValue('activeTimeSports', user.activeTimeSports || 0);
+      setValue('waterDrink', user.waterDrink || 0);
       setValue('gender', user.gender || '');
     }
   }, [user, setValue]);
+
   const nameId = useId();
   const emailId = useId();
-  const [file, setFile] = useState(null);
   const fileInputRef = useRef(null); // объект ссылки для получения доступа к инпуту файла
 
   const onFileChange = e => {
-    // обработчик события (извлекаем выбранный userom файл)
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+    if (selectedFile) {
+      dispatch(updateAvatar(selectedFile)); // dispatch the file upload action
+    }
   };
 
   // функция расчёта нормы воды
   const calculate = () => {
     const weight = parseFloat(watch('weight')) || 0;
-    const activeTimeSport = parseFloat(watch('activeTimeSport')) || 0;
+    const activeTimeSports = parseFloat(watch('activeTimeSports')) || 0;
     if (watch('gender') === 'woman') {
-      return (weight * 0.03 + activeTimeSport * 0.4).toFixed(1);
+      return (weight * 0.03 + activeTimeSports * 0.4).toFixed(1);
     } else if (watch('gender') === 'man') {
-      return (weight * 0.04 + activeTimeSport * 0.6).toFixed(1);
+      return (weight * 0.04 + activeTimeSports * 0.6).toFixed(1);
     }
     return 0;
   };
 
   // обработка отправки формы
   const submit = async userData => {
-    setIsLoading(true);
-    const formData = new FormData(); // создаём объект formData
-    Object.keys(userData).forEach(key => {
-      formData.append(key, userData[key]);
-    });
-    if (file) {
-      formData.append('avatarURL', file);
-    }
-    try {
-      await dispatch(updateUser(formData)); // отправка данных(formData) на бек
-      toast.success('User updated successfuly');
-      dispatch(closeModal());
-    } catch (error) {
-      toast.error('Error: Unsuccessful update of user information', error);
-    } finally {
-      setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
-    }
+    dispatch(updateUser(userData));
+    closeModal();
   };
 
   return (
     <>
       {isLoading && <Loader />}
-      <form
-        className={css.form}
-        onSubmit={handleSubmit(submit)}
-        encType="multipart/form-data"
-      >
+      <form className={css.form} onSubmit={handleSubmit(submit)}>
         <div className={css.imageWrap}>
           <img
-            // src={file ? URL.createObjectURL(file) : avatarURL}
-            src={avatar_photo_default}
+            src={avatarURL || avatar_photo_default}
             srcSet={`
                   ${ava} 
                   ${ava2x} 
@@ -123,9 +102,6 @@ export default function UserSettingsForm() {
               className={css.imgInput}
               ref={fileInputRef}
             />
-            {/* <svg className={css.iconUpload} width="18" height="18">
-              <use xlinkHref={`${modalIcons}#icon-upload`}></use>
-            </svg> */}
             <Icon
               className={css.iconUpload}
               width="18"
@@ -264,9 +240,6 @@ export default function UserSettingsForm() {
                 </p>
               </div>
               <div className={css.activeTime}>
-                {/* <svg className={css.iconExclamation} width="18" height="18">
-                  <use xlinkHref={`${modalIcons}#icon-exclamation-mark`}></use>
-                </svg> */}
                 <Icon
                   className={css.iconExclamation}
                   width={18}
@@ -299,7 +272,7 @@ export default function UserSettingsForm() {
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.activeTimeSport ? css.hasError : ''
+                  errors.activeTimeSports ? css.hasError : ''
                 }`}
               >
                 <label className={css.inputTitle}>
@@ -307,12 +280,12 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="activeTimeSport"
+                  name="activeTimeSports"
                   className={css.inputField}
-                  {...register('activeTimeSport')}
+                  {...register('activeTimeSports')}
                 />
-                {errors.activeTimeSport && (
-                  <p className={css.error}>{errors.activeTimeSport.message}</p>
+                {errors.activeTimeSports && (
+                  <p className={css.error}>{errors.activeTimeSports.message}</p>
                 )}
               </div>
             </div>
@@ -327,7 +300,7 @@ export default function UserSettingsForm() {
               </div>
               <div
                 className={`${css.inputContainer} ${
-                  errors.dailyWaterRate ? css.hasError : ''
+                  errors.waterDrink ? css.hasError : ''
                 }`}
               >
                 <label className={css.inputTitleBold}>
@@ -335,13 +308,13 @@ export default function UserSettingsForm() {
                 </label>
                 <input
                   type="number"
-                  name="dailyWaterRate"
+                  name="waterDrink"
                   className={css.inputField}
                   step={0.1}
-                  {...register('dailyWaterRate')}
+                  {...register('waterDrink')}
                 />
-                {errors.dailyWaterRate && (
-                  <p className={css.error}>{errors.dailyWaterRate.message}</p>
+                {errors.waterDrink && (
+                  <p className={css.error}>{errors.waterDrink.message}</p>
                 )}
               </div>
             </div>
@@ -352,7 +325,6 @@ export default function UserSettingsForm() {
           Save
         </button>
       </form>
-      {/* <Toaster /> */}
     </>
   );
 }

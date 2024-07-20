@@ -1,7 +1,28 @@
+import { useSelector } from 'react-redux';
 import css from './WaterProgressBar.module.css';
+import { selectDailyNorma } from '../../redux/users/selectors.js';
+import { selectDailyWater } from '../../redux/water/selectors.js';
+import { useEffect, useState } from 'react';
 
 const WaterProgressBar = () => {
-  const waterAmount = 70;
+  const dailyNorma = useSelector(selectDailyNorma);
+  const dailyWater = useSelector(selectDailyWater);
+
+  const [waterAmount, setWaterAmount] = useState(0);
+
+  useEffect(() => {
+    if (dailyNorma > 0 && dailyWater.length > 0) {
+      const totalWater = dailyWater.reduce((acc, water) => acc + water, 0);
+      const procentWater = (totalWater / dailyNorma) * 100;
+      setWaterAmount(procentWater > 100 ? 100 : procentWater);
+    } else {
+      setWaterAmount(0);
+    }
+  }, [dailyNorma, dailyWater]);
+
+  const hideLabel = value => {
+    return value === 0 || value === 50 || value === 100;
+  };
 
   return (
     <div className={css.containerProgressBar}>
@@ -20,9 +41,11 @@ const WaterProgressBar = () => {
                 <svg className={css.icon} width={12} height={12}>
                   <use href="/src/assets/images/icons.svg#icon-ellipse"></use>
                 </svg>
-                <span className={css.waterProgressBarLabel}>
-                  {`${Math.round(waterAmount)}%`}
-                </span>
+                {!hideLabel(Math.round(waterAmount)) && (
+                  <span className={css.waterProgressBarLabel}>
+                    {`${Math.round(waterAmount)}%`}
+                  </span>
+                )}
               </div>
             </div>
           </div>

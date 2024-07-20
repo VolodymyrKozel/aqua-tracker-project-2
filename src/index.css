@@ -114,6 +114,10 @@ body {
   background-color: var(--main-white);
   color: var(--main-text);
   line-height: 1.5;
+  overflow: auto;
+}
+.ReactModal__Body--open {
+  overflow: hidden;
 }
 
 h1,

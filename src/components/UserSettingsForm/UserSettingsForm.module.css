@@ -1,4 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:regular,700&display=swap);
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .imageWrap {
   display: flex;
   flex-direction: column;
@@ -207,6 +213,7 @@
 }
 
 .submitBtn {
+  width: 141px;
   border-radius: 30px;
   padding: 14px 40px;
   background-color: var(--accent);
