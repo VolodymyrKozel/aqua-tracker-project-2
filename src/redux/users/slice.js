@@ -17,7 +17,7 @@ const usersSlice = createSlice({
       name: null,
       email: null,
       avatarURL: null,
-      dailyWaterRate: 0,
+      waterDrink: 0,
       activeTimeSport: 0,
       weight: 0,
       gender: null,
@@ -112,7 +112,8 @@ const usersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         console.log('payload', payload);
-        state.user = { ...state.user, ...payload };
+
+        state.user = { ...state.user, ...payload.user };
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;

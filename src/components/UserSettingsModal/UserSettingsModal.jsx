@@ -15,7 +15,7 @@ export default function UserSettingsModal({ closeModal }) {
           id={'icon-cross'}
         />
       </div>
-      <UserSettingsForm />
+      <UserSettingsForm closeModal={closeModal} />
     </div>
   );
 }

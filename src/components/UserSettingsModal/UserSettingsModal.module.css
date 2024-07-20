@@ -1,6 +1,23 @@
 .container {
   width: 343px;
-  padding: 40px 20px;
+  padding-top: 0;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .icon {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    flex: none;
+    fill: none;
+    stroke: rgb(50, 63, 71);
+    top: 40px;
+    right: 20px;
+    z-index: 10;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -20,16 +37,11 @@
   align-items: center;
   width: 100%;
   position: sticky;
-  padding: 40px 40px 20px 40px;
+  padding: 40px 40px 20px 20px;
   left: 0;
   top: 0;
   background-color: #fff;
   z-index: 10;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
 }
 
 .formTitle {
@@ -61,7 +73,7 @@
     fill: none;
     stroke: rgb(50, 63, 71);
     top: 40px;
-    right: 40px;
+    right: 20px;
     z-index: 10;
   }
 }

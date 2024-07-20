@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
 import css from './MonthInfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWaterDataMonthly } from '../../redux/water/operations';
-import { getMonth, getYear, format } from 'date-fns';
+import { getMonth, getYear } from 'date-fns';
+import { selectDailyNorma } from '../../redux/users/selectors';
+import Loader from '../shared/Loader/Loader';
 /* import { selectDailyNorma } from '../../redux/water/selectors'; */
 
 const MonthInfo = ({ selectedDate, setSelectedDate }) => {
   /*   const dailyNorma = useSelector(selectDailyWaterRate); */
   const dispatch = useDispatch();
+  const dailyNorma = useSelector(selectDailyNorma);
+  const isLoading = useSelector(state => state.water.isLoading);
   useEffect(() => {
-    /*     const month = format(getMonth(selectedDate)+1, 'M'); // Повертає номер місяця (0 - січень, 11 - грудень)
-    const year = getYear(selectedDate); // Повертає рік */
+    const month = getMonth(selectedDate) + 1; // Повертає номер місяця (0 - січень, 11 - грудень)
+    const year = getYear(selectedDate); // Повертає рік
+    console.log(isLoading);
     dispatch(
-      getWaterDataMonthly({ month: '07', year: '2024', dailyNorma: '200' })
+      getWaterDataMonthly({ month: month, year: year, dailyNorma: dailyNorma })
     );
-  }, [dispatch, selectedDate]);
+  }, [dispatch]);
 
   return (
     <div className={css.container}>
