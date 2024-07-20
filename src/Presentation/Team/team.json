@@ -1,75 +1,81 @@
 [
-  { "id": "id-1", "name": "VOLODYMYR KOZEL", "role": "Team Lead", "photo": "" },
+  {
+    "id": "id-1",
+    "name": "ВОЛОДИМИР КОЗЕЛ",
+    "role": "Team Lead",
+    "photo": "../../../src/Presentation/images/VOLODYMYR_KOZEL.jpg",
+    "description": "Розгортання проекту, організація командної роботи, перевірка та контроль пул-запитів. Виправлення помилок та доведення проекту до коректної роботи додатку."
+  },
   {
     "id": "id-2",
-    "name": "MARYNA NAZINA",
+    "name": "МАРИНА НАЗІНА",
     "role": "Scrum Master",
-    "photo": "",
-    "descriotion": "descriotion"
+    "photo": ""
   },
   {
     "id": "id-3",
-    "name": "RUSLAN IVASIUNKO",
+    "name": "РУСЛАН ІВАСЮНЬКО",
     "role": "Backend Developer",
-    "photo": "../../../src/Presentation/images/RUSLAN_IVASIUNKO.jpg"
+    "photo": "../../../src/Presentation/images/RUSLAN_IVASIUNKO.jpg",
+    "description": "Project deployment, teamwork organisation, verification and control of pull-requests. Correcting errors and bringing the project to the correct operation of the application."
   },
   {
     "id": "id-4",
-    "name": "VIKTOR ATSBERHER",
+    "name": "ВІКТОР АЦБЕРГЕР",
     "role": "Backend Developer",
     "photo": "../../../src/Presentation/images/VIKTOR_ATSBERHER.jpg"
   },
   {
     "id": "id-6",
-    "name": "SOFIIA CHAIKOVSKA",
+    "name": "СОФІЯ ЧАЙКОВСЬКА",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/SOFIIA_CHAIKOVSKA.jpg"
   },
   {
     "id": "id-5",
-    "name": "YULIIA BRYK",
+    "name": "ЮЛІЯ БРИK",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/YULIIA_BRYK.jpg"
   },
   {
     "id": "id-7",
-    "name": "DANYLO BOBOSHKO",
+    "name": "ДАНИЛО БОБОШКО",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/DANYLO_BOBOSHKO.jpg"
   },
   {
     "id": "id-8",
-    "name": "MAKSYM MOKHNIUK",
+    "name": "МАКСИМ МОХНЮК",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/MAKSYM_MOKHNIUK.jpg"
   },
   {
     "id": "id-9",
-    "name": "IHOR SLAKVA",
+    "name": "ІГОР СЛАКВА",
     "role": "Frontend Developer",
-    "photo": ""
+    "photo": "../../../src/Presentation/images/IHOR_SLAKVA.jpg"
   },
   {
     "id": "id-10",
-    "name": "YURII KOKSHAROV",
+    "name": "ЮРІЙ КОКШАРОВ",
     "role": "Frontend Developer",
     "photo": ""
   },
   {
     "id": "id-11",
-    "name": "YEVHENII DEMCHUK",
+    "name": "ЄВГЕНІЙ ДЕМЧУК",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/YEVHENII_DEMCHUK.jpg"
   },
   {
     "id": "id-13",
-    "name": "HALYNA MARCHENKO",
+    "name": "ГАЛИНА МАРЧЕНКО",
     "role": "Frontend Developer",
     "photo": ""
   },
   {
     "id": "id-12",
-    "name": "ANNA KOROTKEVYCH",
+    "name": "АННА КОРОТКЕВИЧ",
     "role": "Frontend Developer",
     "photo": ""
   }

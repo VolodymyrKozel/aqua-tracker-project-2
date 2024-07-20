@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import Team from '../Team/Team.jsx';
 import { Route, Routes } from 'react-router-dom';
 import team from '../Team/team.json';
+import AboutClient from './AboutClient/AboutClient.jsx';
+import AboutProject from './AboutProject/AboutProject.jsx';
 
 const PresentationPage = () => {
   return (
@@ -14,6 +16,8 @@ const PresentationPage = () => {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="team" element={<Team teams={team} />} />
+        <Route path="team/about-client" element={<AboutClient />} />
+        <Route path="about-client/about-project" element={<AboutProject />} />
       </Routes>
     </div>
   );

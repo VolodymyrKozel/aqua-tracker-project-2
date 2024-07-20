@@ -3,6 +3,42 @@
     display: flex;
     justify-content: center;
     position: relative;
+    background-color: #fff;
+}
+
+.aboutClientBtn,
+.goBackBtn {
+    position: absolute;
+    padding: 8px 16px;
+    color: #323f47;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    background-color: #fff;
+    opacity: 0;
+    z-index: 3;
+}
+
+.aboutClientBtn {
+    right: 10px;
+}
+
+.goBackBtn {
+    left: 10px;
+}
+
+.aboutClientBtn:hover {
+    background-color: var(--accent-color);
+}
+
+.goBackBtn:hover {
+    background-color: var(--accent-color);
+}
+
+.TeamListItem:nth-child(1):hover .aboutClientBtn,
+.TeamListItem:nth-child(1):hover .goBackBtn {
+    opacity: 1;
 }
 
 .TeamList {
@@ -11,14 +47,7 @@
     gap: 20px;
     width: 100%;
     max-width: 1440px;
-}
-
-.TeamListItem:nth-child(1) {
-    grid-column: span 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    position: relative;
 }
 
 .TeamListItem {
@@ -27,10 +56,20 @@
     align-items: center;
     text-align: center;
     gap: 5px;
-    opacity: 0;
-    animation: slideIn 0.8s ease-out forwards;
     position: relative;
-    padding-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: photoSlideIn 0.8s ease-out forwards;
+}
+
+.TeamListItem:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .TeamName {
@@ -55,11 +94,38 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
-    background-color: blueviolet;
-    animation: slideIn 0.8s ease-out forwards;
+    background-color: var(--accent-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@keyframes slideIn {
+.TeamListItem:hover .TeamPhoto {
+    transform: scale(1.2);
+}
+
+.TeamDescription {
+    display: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #323f47;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(72, 179, 18);
+    z-index: 2;
+}
+
+.TeamListItem:hover .TeamDescription {
+    display: block;
+}
+
+@keyframes photoSlideIn {
     from {
         opacity: 0;
         transform: translateY(100px);
@@ -72,85 +138,7 @@
 }
 
 .TeamListItem:nth-child(1) {
-    animation: slideInFromTop 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(2) {
-    animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(3) {
-    animation: slideInFromRight 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(4) {
-    animation: slideInFromBottom 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(5) {
-    animation: slideInFromTop 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(6) {
-    animation: slideInFromLeft 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(7) {
-    animation: slideInFromRight 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(8) {
-    animation: slideInFromBottom 0.8s ease-out forwards;
-}
-
-.TeamListItem:nth-child(9) {
-    animation: slideInFromTop 0.8s ease-out forwards;
-}
-
-@keyframes slideInFromTop {
-    from {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInFromBottom {
-    from {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    grid-column: span 4;
+    grid-row: 1;
+    animation: photoSlideIn 0.8s ease-out forwards;
 }

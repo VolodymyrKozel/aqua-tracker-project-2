@@ -1,0 +1,134 @@
+.AboutClient {
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+.photo {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: dropInPhoto 1s ease-out forwards;
+}
+
+.title {
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1.05556;
+    letter-spacing: -0.01em;
+    color: #323f47;
+    animation: dropInTitle 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+.details {
+    list-style-type: none;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.49333;
+    color: #323f47;
+    text-align: start;
+    animation: dropInDetails 1s ease-out forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+
+.details li {
+    margin: 15px 0;
+}
+
+.buttons {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    max-width: 1000px;
+    /* Ширина, достатня для обох кнопок */
+    display: flex;
+    justify-content: space-between;
+    /* Розміщення кнопок зліва і справа */
+    padding: 0 20px;
+}
+
+.aboutClientBtn {
+    padding: 8px 16px;
+    color: #323f47;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.goBackBtn {
+    padding: 8px 16px;
+    color: #323f47;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.aboutClientBtn:hover,
+.goBackBtn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.aboutClientBtn {
+    /* Немає додаткових змін */
+}
+
+.goBackBtn {
+    /* Немає додаткових змін */
+}
+
+@keyframes dropInPhoto {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dropInTitle {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dropInDetails {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

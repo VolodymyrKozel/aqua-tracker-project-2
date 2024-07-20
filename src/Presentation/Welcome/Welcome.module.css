@@ -1,5 +1,4 @@
 .Welcome {
-    min-width: 1440px;
     display: flex;
     height: 100%;
     gap: 40px;
@@ -34,7 +33,7 @@
     font-size: 160px;
     line-height: 1.2;
     letter-spacing: var(--letter-spacing-normal);
-    color: var(--main-color);
+    color: var(--accent-color);
     text-align: center;
     opacity: 0;
     animation: slideInWithBounce 1s forwards;
