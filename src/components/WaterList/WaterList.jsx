@@ -5,10 +5,7 @@ import {
   selectIsLoading,
 } from '../../redux/water/selectors.js';
 import { useSelector } from 'react-redux';
-import Loader from '../shared/Loader/Loader.jsx';
-
-const WaterList = () => {
-  /*   const dispatch = useDispatch(); */
+const WaterList = ({ selectedDate }) => {
   const isLoading = useSelector(selectIsLoading);
   const { arrDailyWater = [] } = useSelector(selectDailyWater) || {};
   return (

@@ -13,11 +13,12 @@ import { selectIsLoading } from '../../redux/users/selectors';
 import { ava, ava2x, avatar_photo_default } from './images';
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 
-export default function UserSettingsForm() {
+export default function UserSettingsForm({ closeModal }) {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   const user = useSelector(selectUser);
+  console.log('user', user);
   const avatarURL = user.avatarURL;
   const {
     register,
@@ -73,6 +74,7 @@ export default function UserSettingsForm() {
   // обработка отправки формы
   const submit = async userData => {
     dispatch(updateUser(userData));
+    closeModal();
   };
 
   return (
