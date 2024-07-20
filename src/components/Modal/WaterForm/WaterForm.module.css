@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: stroke 0.3s ease;
 }
+
 .btn {
   border: none;
   outline: none;
@@ -35,7 +36,6 @@
   letter-spacing: -0.01em;
   text-align: start;
   color: var(--main);
-  margin-top: 24px;
 }
 
 .form {
@@ -98,7 +98,7 @@
   min-width: 86px;
   background-color: var(--main-color);
   color: #ffffff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -109,35 +109,32 @@
   gap: 24px;
 }
 
-.label {
+/* .label {
   font-family: Poppins;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.01em;
-}
+} */
 
 .labelError {
   margin-bottom: 6px;
 }
 
 .input {
-  width: 100%;
+  width: 438px;
+  height: 56px;
   color: #2e2f42;
   background-color: #ffffff;
   border: 1.5px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
   padding: 14px 16px;
-  font-size: 14px;
-  line-height: 18px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
   outline: none;
   margin-top: 8px;
   transition: border-color 300ms ease-in-out;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }
 
 .input:hover,
@@ -160,26 +157,69 @@
   line-height: 18px;
   outline: none;
   margin-top: 8px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }
 
 .error {
   color: #ef5050;
   font-size: 12px;
   padding-bottom: 4px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    padding-bottom: 2px;
-  }
 }
 
 .saveBtn {
   width: 141px;
   height: 60px;
   margin-top: 24px;
+}
+
+@media screen and (max-width: 375px) {
+  .amountText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .buttonBox {
+    display: flex;
+    min-width: 177px;
+    height: 40px;
+  }
+
+  .amount {
+    border-radius: 30px;
+    padding: 11px 20px;
+    min-width: 81px;
+    height: 40px;
+    background-color: var(--main-color);
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .amountBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .input {
+    width: 303px;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    height: 46px;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .text {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    text-align: start;
+    color: var(--main);
+  }
+
+  .saveBtn {
+    width: 116px;
+    height: 46px;
+  }
 }
