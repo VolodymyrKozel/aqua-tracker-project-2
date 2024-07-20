@@ -1,13 +1,25 @@
 .AboutClient {
+    min-width: 1280px;
     display: flex;
-    padding: 20px;
+    padding: 20px 40px;
+    position: relative;
+    gap: 30px;
     text-align: center;
     align-items: center;
-    gap: 30px;
-    position: relative;
+    justify-content: center;
 }
 
+/* .AboutClientWrap {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+} */
+
 .photo {
+    display: block;
     width: 600px;
     height: 600px;
     object-fit: cover;
@@ -21,10 +33,11 @@
     font-size: 46px;
     line-height: 1.05556;
     letter-spacing: -0.01em;
-    color: #323f47;
+    color: var(--accent-color);
     animation: dropInTitle 1s ease-out forwards;
     animation-delay: 1s;
     opacity: 0;
+    margin-right: 45px;
 }
 
 .details {
@@ -32,66 +45,76 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.49333;
-    color: #323f47;
+    color:var(--accent-color);
     text-align: start;
     animation: dropInDetails 1s ease-out forwards;
     animation-delay: 1.5s;
     opacity: 0;
+
 }
 
 .details li {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
-.buttons {
+/* .buttons {
     position: absolute;
     top: 20px;
     width: 100%;
     max-width: 1000px;
-    /* Ширина, достатня для обох кнопок */
     display: flex;
-    justify-content: space-between;
-    /* Розміщення кнопок зліва і справа */
     padding: 0 20px;
+    cursor: pointer;
+    opacity: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+} */
+
+.svg {
+    stroke: var(--accent-color);
+    width: 20px;
+    height: 20px;
 }
 
 .aboutClientBtn {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    /* position: relative;
+    top: 0px;
+    left: 1150px;
     padding: 8px 16px;
     color: #323f47;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: #fff;
-    z-index: 3;
+    background-color: transparent;
+    z-index: 3; */
 }
 
 .goBackBtn {
-    padding: 8px 16px;
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    /* padding: 8px 16px;
     color: #323f47;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: #fff;
     z-index: 3;
+    background-color: transparent; */
 }
 
 .aboutClientBtn:hover,
 .goBackBtn:hover {
-    background-color: var(--accent-color);
-    color: #fff;
+    /* background-color: var(--accent-color); */
+    color: var(--accent-color);
 }
 
-.aboutClientBtn {
-    /* Немає додаткових змін */
-}
-
-.goBackBtn {
-    /* Немає додаткових змін */
-}
 
 @keyframes dropInPhoto {
     0% {

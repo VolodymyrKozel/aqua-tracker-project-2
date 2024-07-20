@@ -1,8 +1,7 @@
 .containerPage {
-    min-width: 1440px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color:#0e2b41;
+    min-height: 100vh;
+    background:#0e2b41;
+    padding: 16px;
 }

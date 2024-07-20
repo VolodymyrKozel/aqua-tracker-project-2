@@ -1,19 +1,11 @@
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import css from './AboutClient.module.css';
+import sprite from '../../images/icons.svg';
 
 const AboutClient = () => {
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate('/present/team/about-project');
-  };
-
-  const handleGoBack = () => {
-    navigate('/present/team');
-  };
-
   return (
     <div className={css.AboutClient}>
+      {/* <div className={css.AboutClientWrap}> */}
       <img
         src="../../../../src/Presentation/PresentationPage/AboutClient/ClientPhoto.jpg"
         alt="Client"
@@ -31,20 +23,23 @@ const AboutClient = () => {
         <li>
           Він організована особистість. Стиль життя потребує постійного
           розумового навантаження, часті онлайн-конференції. В&apos;ячеслав
-          прагне досягти контролю у всьому. Тому, веде у додатку облік спожитих
-          кілокалорій за добу, і наступним кроком потребує кваліфікованого і
-          зручного додатку обліку спожитої води.
+          прагне досягти контролю у всьому, тому веде у додатку облік спожитих
+          кілокалорій за добу. Відповідно, наступним кроком потребує
+          функціонального та зручного додатку обліку спожитої води.
         </li>
       </ul>
-      <div className={css.buttons}>
-        <button className={css.goBackBtn} onClick={handleGoBack}>
-          Go Back
-        </button>
-        <button className={css.aboutClientBtn} onClick={handleNavigate}>
-          About Project
-        </button>
-      </div>
+      <Link className={css.goBackBtn} to="/present/team">
+        <svg className={css.svg}>
+          <use href={`${sprite}#icon-chevron-left`} />
+        </svg>
+      </Link>
+      <Link className={css.aboutClientBtn} to="/present/team/about-project">
+        <svg className={css.svg}>
+          <use href={`${sprite}#icon-chevron-right`} />
+        </svg>
+      </Link>
     </div>
+    // </div>
   );
 };
 

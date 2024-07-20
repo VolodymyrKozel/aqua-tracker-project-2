@@ -1,0 +1,80 @@
+/* AboutProject.module.css */
+.AboutProject {
+    min-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    /* Змінюємо на стовпцеву орієнтацію для кнопок */
+    gap: 40px;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.detailsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    width: 100%;
+    /* max-width: 800px; */
+}
+
+.listItem {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: transparent;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.listItem:hover {
+    transform: scale(1.02);
+}
+
+.AboutProjectText {
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.05556;
+    letter-spacing: -0.01em;
+    color: var(--accent-color);
+    text-align: start;
+
+}
+
+/* .buttons {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+} */
+
+.svg {
+    stroke: var(--accent-color);
+    width: 20px;
+    height: 20px;
+}
+
+.aboutClientBtn,
+.goBackBtn {
+    top: 0;
+    left: 0;
+    /* padding: 8px 16px;
+    color: #323f47;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent; */
+}
+
+.aboutClientBtn:hover,
+.goBackBtn:hover {
+    color: var(--accent-color);
+}

@@ -17,7 +17,7 @@ const PresentationPage = () => {
         <Route path="/" element={<Welcome />} />
         <Route path="team" element={<Team teams={team} />} />
         <Route path="team/about-client" element={<AboutClient />} />
-        <Route path="about-client/about-project" element={<AboutProject />} />
+        <Route path="team/about-project" element={<AboutProject />} />
       </Routes>
     </div>
   );
