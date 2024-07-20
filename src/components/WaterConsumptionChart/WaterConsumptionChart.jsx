@@ -7,21 +7,27 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-
-const WaterConsumptionChart = ({ data }) => {
-  // Преобразуем данные для отображения на графике (литры)
+const data = [
+  { date: '16', consumption: 500 },
+  { date: '17', consumption: 400 },
+  { date: '18', consumption: 2400 },
+  { date: '19', consumption: 600 },
+  { date: '20', consumption: 2000 },
+  { date: '21', consumption: 1700},
+  { date: '22', consumption: 250 },
+];  
+const WaterConsumptionChart = () => {
   const convertedData = data.map(item => ({
     ...item,
-    consumption: item.consumption / 1000 // Преобразование из мл в литры
+    consumption: item.consumption / 1000 
   }));
 
   const CustomTooltip = ({ payload }) => {
     if (payload && payload.length) {
-      // Получаем исходное значение в миллилитрах
       const valueInMilliliters = data.find(item => item.date === payload[0].payload.date).consumption;
       return (
         <div className={css.tooltip}>
-          <p className="intro">{`${valueInMilliliters} ml`}</p> {/* Отображение в миллилитрах */}
+          <p className="intro">{`${valueInMilliliters} ml`}</p>
         </div>
       );
     }
@@ -36,6 +42,13 @@ const WaterConsumptionChart = ({ data }) => {
       ticks.push(i);
     }
     return ticks;
+  };
+
+  const formatYAxisTick = (tickItem) => {
+    if (tickItem === 0) {
+      return '0%'; // Добавляем знак процента к нулю
+    }
+    return `${tickItem} L`; // Остальные значения без изменений
   };
 
   return (
@@ -54,7 +67,7 @@ const WaterConsumptionChart = ({ data }) => {
           <XAxis dataKey="date" axisLine={false} tickLine={false} />
           <YAxis
             ticks={generateYAxisTicks()}
-            tickFormatter={tickItem => `${tickItem} L`}
+            tickFormatter={formatYAxisTick}
             axisLine={false}
             tickLine={false}
             tick={{ fontSize: 12, dx: -10 }}

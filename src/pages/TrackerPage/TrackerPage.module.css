@@ -4,6 +4,12 @@
     gap: 16px;
 }
 
+.trackerPageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
 @media screen and (min-width: 1440px) {
     .trackerPageWrap {
         display: flex;

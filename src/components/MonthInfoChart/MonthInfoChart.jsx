@@ -1,25 +1,25 @@
 import { useEffect } from 'react';
-import Calendar from '../Calendar/Calendar';
 import CalendarPagination from '../Calendar/CalendarPagination/CalendarPagination';
-import css from './MonthInfo.module.css';
+import css from './MonthInfoChart.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWaterDataMonthly } from '../../redux/water/operations';
 import { getMonth, getYear } from 'date-fns';
 import { selectDailyNorma } from '../../redux/users/selectors';
+import WaterConsumptionChart from '../WaterConsumptionChart/WaterConsumptionChart';
 
-const MonthInfo = ({ selectedDate, setSelectedDate }) => {
-  /*   const dailyNorma = useSelector(selectDailyWaterRate); */
+const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
   const dispatch = useDispatch();
   const dailyNorma = useSelector(selectDailyNorma);
   const isLoading = useSelector(state => state.water.isLoading);
+
   useEffect(() => {
-    const month = getMonth(selectedDate) + 1; // Повертає номер місяця (0 - січень, 11 - грудень)
-    const year = getYear(selectedDate); // Повертає рік
+    const month = getMonth(selectedDate);
+    const year = getYear(selectedDate);
     console.log(isLoading);
     dispatch(
       getWaterDataMonthly({ month: month, year: year, dailyNorma: dailyNorma })
     );
-  }, [dispatch]);
+  }, [dispatch, selectedDate, dailyNorma]);
 
   return (
     <div className={css.container}>
@@ -30,9 +30,11 @@ const MonthInfo = ({ selectedDate, setSelectedDate }) => {
           setSelectedDate={setSelectedDate}
         />
       </div>
-      <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+      <div className={css.chartWrapper}>
+          <WaterConsumptionChart />
+      </div>
     </div>
   );
 };
 
-export default MonthInfo;
+export default MonthInfoChart;
