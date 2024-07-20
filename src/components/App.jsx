@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
@@ -6,7 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/users/operations';
-import { selectIsRefreshing } from '../redux/users/selectors';
+import { selectIsRefreshing, selectIsLoading } from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
 import LogOutModal from './Modal/LogOutModal/LogOutModal';
 import ModalExample from './ModalExample/ModalExample';
@@ -22,14 +22,14 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
+  const isLoading = useSelector(selectIsLoading);
   useEffect(() => {
-    dispatch(refreshUser()).finally(() => setLoading(false));
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  const handlePageLoad = () => setLoading(false);
 
-  return isRefreshing || loading ? (
+
+  return isRefreshing || isLoading ? (
     <Loader variant="fullScreen" />
   ) : (
     <>
@@ -48,8 +48,8 @@ export const App = () => {
                   redirectTo="/tracker"
                   component={
                     <Suspense fallback={<Loader variant="fullScreen" />}>
-                      <SignUpPage onLoad={handlePageLoad} />
-                    </Suspense>
+                    <SignUpPage />
+                  </Suspense>
                   }
                 />
               }
@@ -61,7 +61,7 @@ export const App = () => {
                   redirectTo="/tracker"
                   component={
                     <Suspense fallback={<Loader variant="fullScreen" />}>
-                      <SignInPage onLoad={handlePageLoad} />
+                      <SignInPage />
                     </Suspense>
                   }
                 />
