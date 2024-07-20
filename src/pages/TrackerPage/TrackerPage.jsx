@@ -20,7 +20,9 @@ const TrackerPage = () => {
       <WaterMainInfo />
       <WaterDetailedInfo />
       <h1>Statistics</h1>
-      <WaterConsumptionChart data={data} />
+      <WaterConsumptionChart
+       data={data} 
+       />
     </div>
   );
 };

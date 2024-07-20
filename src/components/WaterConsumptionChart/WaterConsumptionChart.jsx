@@ -6,6 +6,7 @@ import {
   AreaChart,
 //   ReferenceLine,
   Area,
+  LabelList,
 //   CartesianGrid,
   Tooltip,
   CartesianGrid,
@@ -16,6 +17,9 @@ import {
 const WaterConsumptionChart = ({ data }) => {
     
   const formatYAxis = (tickItem) => {
+    if (tickItem === 0) {
+      return '0%';
+    }
     return `${tickItem} L`;
   };
 
@@ -32,11 +36,22 @@ const WaterConsumptionChart = ({ data }) => {
               <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <XAxis dataKey="date" />
-          <YAxis tickFormatter={formatYAxis}/>
-          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" axisLine={false} tickLine={false}/>
+          <YAxis tickFormatter={formatYAxis} axisLine={false} tickLine={false}/>
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
           <Tooltip formatter={formatTooltip}/>
-          <Area type="monotone" dataKey="consumption" stroke="#82ca9d" fillOpacity={1} fill="url(#colorConsumption)" />
+          <Area 
+          type="monotone" 
+          dataKey="consumption" 
+          stroke="#82ca9d" 
+          fillOpacity={1} 
+          fill="url(#colorConsumption)" 
+          dot={{ 
+            stroke: '#82ca9d', 
+            strokeWidth: 1, 
+            fill: 'white', 
+            r: 10
+            }}/>
         </AreaChart>
       </ResponsiveContainer>
     </div>
