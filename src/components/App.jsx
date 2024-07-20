@@ -11,6 +11,7 @@ import Loader from './shared/Loader/Loader';
 import LogOutModal from './Modal/LogOutModal/LogOutModal';
 import ModalExample from './ModalExample/ModalExample';
 import Presentation from '../pages/Presentation/Presentation';
+import { Header } from './Header/Header';
 /*import { ModalExample } from './ModalExample/ModalExample';  */
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -33,6 +34,7 @@ export const App = () => {
     <Loader variant="fullScreen" />
   ) : (
     <>
+      <Header />
       <Suspense fallback={<Loader variant="fullScreen" />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
