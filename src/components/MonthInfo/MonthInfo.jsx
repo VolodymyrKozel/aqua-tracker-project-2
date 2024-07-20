@@ -21,11 +21,9 @@ const MonthInfo = ({ selectedDate, setSelectedDate }) => {
     dispatch(
       getWaterDataMonthly({ month: month, year: year, dailyNorma: dailyNorma })
     );
-  }, [dispatch, selectedDate]);
+  }, [dispatch]);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <div className={css.container}>
       <div className={css.header}>
         <h1 className={css.title}>Month</h1>
