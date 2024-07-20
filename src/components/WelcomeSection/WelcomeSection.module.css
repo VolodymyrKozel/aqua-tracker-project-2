@@ -3,6 +3,8 @@
   padding-top: 24px;
   padding-left: 16px;
   background: var(--background-white);
+  flex: 1;
+  width: 343px;
 }
 
 .wrapper_welcome {
@@ -11,12 +13,14 @@
 }
 
 .text {
+  font-weight: 400;
   font-size: 14px;
-  letter-spacing: 0.06em;
-  line-height: 18.06px;
+  line-height: 18px;
+  letter-spacing: 0.84px;
 }
 
 .title {
+  font-weight: 700;
   font-size: 38px;
   line-height: 38px;
   letter-spacing: var(--letter-spacing-normal);
@@ -30,20 +34,29 @@
   gap: 10px;
 }
 
+@media screen and (max-width: 343px) {
+  .container {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     padding-top: 32px;
     padding-left: 32px;
+    width: 704px;
   }
   .wrapper_welcome {
     padding-top: 50px;
     padding-bottom: 50px;
+    padding-left: 32px;
   }
   .text {
     font-size: 16px;
     line-height: 24px;
   }
   .title {
+    font-weight: 700;
     font-size: 64px;
     line-height: 70px;
     letter-spacing: var(--letter-spacing-normal);
@@ -53,7 +66,8 @@
 
 @media screen and (min-width: 1440px) {
   .container {
-    max-width: 50%;
+    width: 50%;
+    max-height: 100%;
   }
   .wrapper_welcome {
     padding-left: 32px;

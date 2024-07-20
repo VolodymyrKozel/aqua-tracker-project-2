@@ -45,7 +45,7 @@ function AdvantagesSection() {
         <h1>Modal</h1>
         <p>some content</p>
       </ModalReusable> */}
-      <List className={css.listImages}>
+      {/* <List className={css.listImages}>
         <li className={css.images}>
           <img
             srcSet={`${pic1} 1x, ${pic1_2x} 2x`}
@@ -76,7 +76,7 @@ function AdvantagesSection() {
           <p>View statistics</p>
           <p>Personal rate setting</p>
         </div>
-      </List>
+      </List> */}
     </section>
   );
 }
