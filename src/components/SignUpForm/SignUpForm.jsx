@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Logo from '../shared/Logo/Logo';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -18,6 +19,8 @@ import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
 
 const SignUpForm = () => {
+  
+  const { t } = useTranslation();
   const emailId = useId();
   const passwordId = useId();
   const repeatPasswordId = useId();
@@ -54,29 +57,29 @@ const SignUpForm = () => {
 
       <div className={css.flexContainer}>
         <div className={css.formContainer}>
-          <h1 className={css.title}>Sign up</h1>
+          <h1 className={css.title}>{t('signupForm.signup')}</h1>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            <Label htmlFor={emailId}>Email</Label>
+            <Label htmlFor={emailId}>{t('signupForm.email')}</Label>
             <Input
               className={clsx(css.input, errors.email && css.error)}
               type="email"
               id={emailId}
               {...register('email')}
-              placeholder="Enter your email"
+              placeholder={t('signupForm.placeholderEmail')}
               autoComplete="on"
             />
             {errors.email && (
               <ErrorMessage>{errors.email.message}</ErrorMessage>
             )}
 
-            <Label htmlFor={passwordId}>Password</Label>
+            <Label htmlFor={passwordId}>{t('signupForm.password')}</Label>
             <div className={css.showPassword}>
               <Input
                 className={clsx(css.input, errors.password && css.error)}
                 type={showPassword ? 'text' : 'password'}
                 id={passwordId}
                 {...register('password')}
-                placeholder="Enter your password"
+                placeholder={t('signupForm.placeholderPassword')}
                 autoComplete="off"
               />
               <span
@@ -102,14 +105,14 @@ const SignUpForm = () => {
               <ErrorMessage>{errors.password.message}</ErrorMessage>
             )}
 
-            <Label htmlFor={repeatPasswordId}>Repeat password</Label>
+            <Label htmlFor={repeatPasswordId}>{t('signupForm.repeat')}</Label>
             <div className={css.showPassword}>
               <Input
                 className={clsx(css.input, errors.repeatPassword && css.error)}
                 type={showRepeatPassword ? 'text' : 'password'}
                 id={repeatPasswordId}
                 {...register('repeatPassword')}
-                placeholder="Repeat your password"
+                placeholder={t('signupForm.placeholderPasswordRepeat')}
                 autoComplete="off"
               />
               <span
@@ -139,14 +142,14 @@ const SignUpForm = () => {
               type="submit"
               onClick={handleSubmit(onSubmit)}
             >
-              Sign up
+              {t('signupForm.signup')}
               {isLoading && <Loader width={24} height={24} color={'#2f2f2f'} />}
             </Button>
           </form>
           <p className={css.afterDescription}>
-            Already have account?{' '}
+          {t('signupForm.haveAccount')}?{' '}
             <NavLink className={css.link} to={'/signin'}>
-              Sign In
+            {t('signupForm.signin')}
             </NavLink>
           </p>
         </div>

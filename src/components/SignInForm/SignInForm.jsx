@@ -108,7 +108,7 @@ const SignInForm = () => {
             </Button>
           </form>
           <p className={css.afterDescription}>
-          {t('signinForm.dontAccount')}
+          {t('signinForm.dontAccount')}?
             <NavLink className={css.link} to={'/signup'}>
               {' '}
               {t('signinForm.signup')}

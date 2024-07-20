@@ -1,32 +1,35 @@
 import * as yup from 'yup';
+import i18n from 'i18next';
+
+const { t } = i18n;
 
 export const LoginUserSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Enter a valid email')
-    .required('Email is required'),
+    .email(t('errors.email.invalid'))
+    .required(t('errors.email.required')),
   password: yup
     .string()
-    .required('Password is required')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .max(16, 'Password should be of maximum 16 characters length'),
+    .required(t('errors.password.required'))
+    .min(8, t('errors.password.min', { min: 8 }))
+    .max(16, t('errors.password.max', { max: 16 })),
 });
 
 export const registerUserSchema = yup.object().shape({
   email: yup
     .string()
-    .email('Email must be a valid email!')
-    .required('Email is required!'),
+    .email(t('errors.email.invalid'))
+    .required(t('errors.email.required')),
   password: yup
     .string()
-    .min(8, 'Password must be at least ${min} characters long!')
-    .max(20, 'Password must be no more than ${max} characters long!')
-    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter!')
-    .matches(/[a-z]/, 'Password must contain at least one lowercase letter!')
-    .matches(/[0-9]/, 'Password must contain at least one number!')
-    .required('Password is required!'),
+    .min(8, t('errors.password.min', { min: 8 }))
+    .max(20, t('errors.password.max', { max: 20 }))
+    .matches(/[A-Z]/, t('errors.password.uppercase'))
+    .matches(/[a-z]/, t('errors.password.lowercase'))
+    .matches(/[0-9]/, t('errors.password.number'))
+    .required(t('errors.password.required')),
   repeatPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Repeat Password is required'),
+    .oneOf([yup.ref('password'), null], t('errors.repeatPassword.match'))
+    .required(t('errors.repeatPassword.required')),
 });

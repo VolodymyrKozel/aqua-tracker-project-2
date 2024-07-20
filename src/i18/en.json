@@ -130,7 +130,26 @@
       "logoutSuccess": "Successfully logout",
       "avatarUploadSuccess": "Avatar uploaded successfully",
       "updateUserSuccess": "User update successfully"
+    },
+
+    "errors": {
+    "email": {
+      "required": "Email is required!",
+      "invalid": "Email must be a valid email!"
+    },
+    "password": {
+      "required": "Password is required!",
+      "min": "Password must be at least {{min}} characters long!",
+      "max": "Password must be no more than {{max}} characters long!",
+      "uppercase": "Password must contain at least one uppercase letter!",
+      "lowercase": "Password must contain at least one lowercase letter!",
+      "number": "Password must contain at least one number!"
+    },
+    "repeatPassword": {
+      "required": "Repeat Password is required!",
+      "match": "Passwords must match!"
     }
+  }
   
   }
   
