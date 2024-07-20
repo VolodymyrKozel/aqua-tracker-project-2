@@ -24,7 +24,7 @@ export default function UserBarPopover({ onClose }) {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose]);
+  }, [onClose, isLogOutModalOpen, isModalOpen]);
   const openModal = () => {
     setIsModalOpen(true);
   };

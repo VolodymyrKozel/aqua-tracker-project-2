@@ -3,11 +3,11 @@ import AddWaterBtn from '../AddWaterBtn/AddWaterBtn.jsx';
 import WaterList from '../WaterList/WaterList.jsx';
 import css from './DailyInfo.module.css';
 
-const DailyInfo = () => {
+const DailyInfo = ({ selectedDate }) => {
   return (
     <>
       <div className={css.dailyInfo}>
-        <ChooseDate />
+        <ChooseDate selectedDate={selectedDate} />
         <AddWaterBtn
           buttonClassName={css.dailyInfoButton}
           iconClassName={css.dailyInfoIcon}
@@ -17,7 +17,7 @@ const DailyInfo = () => {
           iconHeight={30}
         />
       </div>
-      <WaterList />
+      <WaterList selectedDate={selectedDate} />
     </>
   );
 };
