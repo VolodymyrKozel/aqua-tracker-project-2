@@ -36,6 +36,7 @@ export const signIn = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       await thunkAPI.dispatch(fetchUser());
       toast.success('Login success');
+      console.log(data);
       return data.data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -84,7 +85,7 @@ export const fetchUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get(`users/current`);
-      return data.user;
+      return data;
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);

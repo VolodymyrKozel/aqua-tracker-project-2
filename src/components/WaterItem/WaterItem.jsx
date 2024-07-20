@@ -33,7 +33,6 @@ const WaterItem = ({ item }) => {
   };
 
   const onSubmit = data => {
-    console.log('update data', data);
     dispatch(
       updateWater({
         ...data,
@@ -42,7 +41,6 @@ const WaterItem = ({ item }) => {
     );
     closeEdit();
   };
-  console.log('item', item);
   return (
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
