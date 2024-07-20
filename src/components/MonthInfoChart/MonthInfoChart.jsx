@@ -24,7 +24,7 @@ const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
   return (
     <div className={css.container}>
       <div className={css.header}>
-        <h1 className={css.title}>Month</h1>
+        <h1 className={css.title}>Statistics</h1>
         <CalendarPagination
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}

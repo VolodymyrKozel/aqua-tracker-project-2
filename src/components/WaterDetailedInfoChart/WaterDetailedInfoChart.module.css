@@ -1,4 +1,4 @@
-.sectionWaterDetailInfo {
+   /* .sectionWaterDetailInfo {
     border-radius: 30px;
     min-width: 320px;
     max-width: 767px;
@@ -6,6 +6,7 @@
     background-color: var(--background-white);
     padding-left: 20px;
     padding-right: 20px;
+    margin-bottom: 20px;   
 }
 
 @media screen and (min-width: 768px) {
@@ -14,6 +15,7 @@
         height: 738px;
         padding-left: 32px;
         padding-right: 32px;
+        margin-bottom: 20px;   
     }
 }
 
@@ -24,5 +26,49 @@
         height: 736px;
         padding-left: 32px;
         padding-right: 32px;
+        margin-bottom: 20px;   
     }
+} */
+
+.sectionWaterDetailInfo {
+  border-radius: 30px;
+  min-width: 320px;
+  max-width: 767px;
+  height: 770px;
+  background-color: var(--background-white);
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .sectionWaterDetailInfo {
+    min-width: 768px;
+    height: 738px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .sectionWaterDetailInfo {
+    --h1-font-size: 5rem;
+    min-width: 672px;
+    height: 736px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+.waterDetailInfoContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
 }

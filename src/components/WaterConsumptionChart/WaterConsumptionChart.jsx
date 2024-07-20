@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+
 const data = [
   { date: '16', consumption: 500 },
   { date: '17', consumption: 400 },
@@ -16,6 +17,7 @@ const data = [
   { date: '21', consumption: 1700},
   { date: '22', consumption: 250 },
 ];  
+
 const WaterConsumptionChart = () => {
   const convertedData = data.map(item => ({
     ...item,
@@ -46,13 +48,13 @@ const WaterConsumptionChart = () => {
 
   const formatYAxisTick = (tickItem) => {
     if (tickItem === 0) {
-      return '0%'; // Добавляем знак процента к нулю
+      return '0%'; 
     }
-    return `${tickItem} L`; // Остальные значения без изменений
+    return `${tickItem} L`; 
   };
 
   return (
-    <div style={{ width: '100%', height: 400 }}>
+    <div style={{ width: '100%', height: '300px' }}>
       <ResponsiveContainer>
         <AreaChart
           data={convertedData} 
