@@ -4,12 +4,20 @@
   width: 100%;
   box-sizing: border-box;
   padding-top: 16px;
+  padding-bottom: 16px;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .wrapper {
     flex-direction: row;
-    padding-top: 32px;
     gap: 32px;
   }
 }
