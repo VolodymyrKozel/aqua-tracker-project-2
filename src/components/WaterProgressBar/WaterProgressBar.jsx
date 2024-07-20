@@ -1,24 +1,34 @@
 import { useSelector } from 'react-redux';
 import css from './WaterProgressBar.module.css';
 import { selectDailyNorma } from '../../redux/users/selectors.js';
-import { selectDailyWater } from '../../redux/water/selectors.js';
+import {
+  selectDailyWater,
+  selectPercentageWater,
+} from '../../redux/water/selectors.js';
 import { useEffect, useState } from 'react';
 
 const WaterProgressBar = () => {
   const dailyNorma = useSelector(selectDailyNorma);
   const dailyWater = useSelector(selectDailyWater);
+  const percentageWater = useSelector(selectPercentageWater);
+  console.log(percentageWater);
 
   const [waterAmount, setWaterAmount] = useState(0);
 
   useEffect(() => {
     if (dailyNorma > 0 && dailyWater.length > 0) {
-      const totalWater = dailyWater.reduce((acc, water) => acc + water, 0);
-      const procentWater = (totalWater / dailyNorma) * 100;
-      setWaterAmount(procentWater > 100 ? 100 : procentWater);
+      const totalWater = dailyWater.reduce(
+        (acc, water) => acc + water.volume,
+        0
+      );
+
+      console.log(totalWater);
+
+      setWaterAmount(percentageWater > 100 ? 100 : percentageWater);
     } else {
       setWaterAmount(0);
     }
-  }, [dailyNorma, dailyWater]);
+  }, [dailyNorma, dailyWater, percentageWater]);
 
   const hideLabel = value => {
     return value === 0 || value === 50 || value === 100;
