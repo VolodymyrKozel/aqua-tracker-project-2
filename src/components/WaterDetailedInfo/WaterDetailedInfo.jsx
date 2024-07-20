@@ -5,13 +5,13 @@ import MonthInfo from '../MonthInfo/MonthInfo.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getWaterDataDay } from '../../redux/water/operations.js';
-import { selectDailyWaterRate } from '../../redux/users/selectors.js';
+import { selectDailyNorma } from '../../redux/users/selectors.js';
 import { format } from 'date-fns';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
 
-  let dailyNorma = useSelector(selectDailyWaterRate);
+  let dailyNorma = useSelector(selectDailyNorma);
   const [selectedDate, setSelectedDate] = useState(
     format(new Date(), 'yyyy-MM-dd')
   );

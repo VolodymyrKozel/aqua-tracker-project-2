@@ -13,11 +13,12 @@ import { selectIsLoading } from '../../redux/users/selectors';
 import { ava, ava2x, avatar_photo_default } from './images';
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 
-export default function UserSettingsForm() {
+export default function UserSettingsForm({ closeModal }) {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   const user = useSelector(selectUser);
+  console.log('user', user);
   const avatarURL = user.avatarURL;
   const {
     register,
@@ -72,6 +73,7 @@ export default function UserSettingsForm() {
 
   // обработка отправки формы
   const submit = async userData => {
+<<<<<<< HEAD
     setIsLoading(true);
     const formData = new FormData(); // создаём объект formData
     Object.keys(userData).forEach(key => {
@@ -89,6 +91,10 @@ export default function UserSettingsForm() {
     } finally {
       setIsLoading(false); // Устанавливаем isLoading в false после получения ответа
     }
+=======
+    dispatch(updateUser(userData));
+    closeModal();
+>>>>>>> main
   };
 
   return (
