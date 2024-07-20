@@ -7,13 +7,13 @@ import css from './TrackerPage.module.css';
 const TrackerPage = () => {
   // const data = useWaterConsumptionData();
   const data = [
-    { date: '16', consumption: 2.0 },
-    { date: '17', consumption: 1.8 },
-    { date: '18', consumption: 2.3 },
-    { date: '19', consumption: 1.6 },
-    { date: '20', consumption: 2.1 },
-    { date: '21', consumption: 1.7 },
-    { date: '22', consumption: 2.4 },
+    { date: '16', consumption: 500 },
+    { date: '17', consumption: 400 },
+    { date: '18', consumption: 2400 },
+    { date: '19', consumption: 600 },
+    { date: '20', consumption: 2000 },
+    { date: '21', consumption: 1700},
+    { date: '22', consumption: 250 },
   ];  
   return (
     <div className={css.trackerPageWrap}>
