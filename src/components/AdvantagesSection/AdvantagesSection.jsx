@@ -1,8 +1,8 @@
-import ModalReusable from '../shared/ModalReusable/ModalReusable';
 import css from './AdvantagesSection.module.css';
 import * as images from './images';
 import pictureData from './data/pictures.json';
 import Picture from '../shared/Picture/Picture';
+import Icon from '../shared/Icon/Icon';
 import {
   pic1,
   pic1_2x,
@@ -41,42 +41,52 @@ function AdvantagesSection() {
           alt={item.alt}
         />
       ))}
-      {/* <ModalReusable className={css.modal} isOpenProp={true} closebtn={true}>
-        <h1>Modal</h1>
-        <p>some content</p>
-      </ModalReusable> */}
-      {/* <List className={css.listImages}>
-        <li className={css.images}>
-          <img
-            srcSet={`${pic1} 1x, ${pic1_2x} 2x`}
-            src={`${pic1}`}
-            alt="user avatar"
-            className={css.pic}
-          />
-        </li>
-        <li className={css.images}>
-          <img
-            srcSet={`${pic2} 1x, ${pic2_2x} 2x`}
-            src={`${pic2}`}
-            alt="user avatar"
-            className={css.pic}
-          />
-        </li>
-        <li className={css.images}>
-          <img
-            srcSet={`${pic3} 1x, ${pic3_2x} 2x`}
-            src={`${pic3}`}
-            alt="user avatar"
-            className={css.pic}
-          />
-        </li>
-        <p>Our happy customers</p>
-        <div>
-          <p>Habit drive</p>
-          <p>View statistics</p>
-          <p>Personal rate setting</p>
+      <div className={css.advertising}>
+        <div className={css.customer_box}>
+          <List className={css.listImages}>
+            <li className={css.images}>
+              <img
+                srcSet={`${pic1} 1x, ${pic1_2x} 2x`}
+                src={`${pic1}`}
+                alt="user avatar"
+                className={css.pic}
+              />
+            </li>
+            <li className={css.images}>
+              <img
+                srcSet={`${pic2} 1x, ${pic2_2x} 2x`}
+                src={`${pic2}`}
+                alt="user avatar"
+                className={css.pic}
+              />
+            </li>
+            <li className={css.images}>
+              <img
+                srcSet={`${pic3} 1x, ${pic3_2x} 2x`}
+                src={`${pic3}`}
+                alt="user avatar"
+                className={css.pic}
+              />
+            </li>
+          </List>
+          <p className={css.customer_text}>
+            Our<span> happy </span>customers
+          </p>
         </div>
-      </List> */}
+      </div>
+      <div className={css.statistic}>
+        <button className={css.habit}>
+          <Icon
+            className={css.icon_ellips}
+            id="icon-ellipse"
+            width="8"
+            height="8"
+          />
+          <p className={css.habit_text}>Habit drive</p>
+        </button>
+        <button className={css.view_statistic}>View statistics</button>
+        <button className={css.rate}>Personal rate setting</button>
+      </div>
     </section>
   );
 }

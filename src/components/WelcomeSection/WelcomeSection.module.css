@@ -34,12 +34,6 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 343px) {
-  .container {
-    width: 100%;
-  }
-}
-
 @media only screen and (min-width: 768px) {
   .container {
     padding-top: 32px;
@@ -67,11 +61,12 @@
 @media screen and (min-width: 1440px) {
   .container {
     width: 50%;
-    max-height: 100%;
+    width: 672px;
   }
   .wrapper_welcome {
     padding-left: 32px;
     padding-top: 132px;
+    padding-bottom: 166px;
   }
   .title {
     font-size: 80px;
