@@ -11,19 +11,11 @@ const WaterProgressBar = () => {
   const dailyNorma = useSelector(selectDailyNorma);
   const dailyWater = useSelector(selectDailyWater);
   const percentageWater = useSelector(selectPercentageWater);
-  console.log(percentageWater);
 
   const [waterAmount, setWaterAmount] = useState(0);
 
   useEffect(() => {
-    if (dailyNorma > 0 && dailyWater.length > 0) {
-      const totalWater = dailyWater.reduce(
-        (acc, water) => acc + water.volume,
-        0
-      );
-
-      console.log(totalWater);
-
+    if (dailyNorma && dailyWater.length > 0) {
       setWaterAmount(percentageWater > 100 ? 100 : percentageWater);
     } else {
       setWaterAmount(0);
@@ -31,7 +23,7 @@ const WaterProgressBar = () => {
   }, [dailyNorma, dailyWater, percentageWater]);
 
   const hideLabel = value => {
-    return value === 0 || value === 50 || value === 100;
+    return value < 15 || (value >= 35 && value <= 60) || value > 80;
   };
 
   return (
