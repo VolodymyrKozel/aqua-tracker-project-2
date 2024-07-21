@@ -51,7 +51,10 @@ const WaterDetailedInfo = () => {
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
-        <DailyInfo selectedDate={selectedDate} />
+        <DailyInfo
+          selectedDate={selectedDate}
+          setMonthChange={setMonthChange}
+        />
         <MonthInfo
           handleNextMonth={handleNextMonth}
           handlePrevMonth={handlePrevMonth}
