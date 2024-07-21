@@ -3,7 +3,7 @@
   padding-top: 24px;
   padding-left: 16px;
   background: var(--background-white);
-  flex: 1;
+  /* flex: 1; */
   width: 343px;
 }
 
@@ -62,6 +62,7 @@
   .container {
     width: 50%;
     width: 672px;
+    height: 736px;
   }
   .wrapper_welcome {
     padding-left: 32px;
