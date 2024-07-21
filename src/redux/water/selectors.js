@@ -1,4 +1,17 @@
+import { createSelector } from '@reduxjs/toolkit';
+
 export const selectIsLoading = state => state.water.isLoading;
 
 export const selectMonthlyWater = state => state.water.waterDataMonth;
-export const selectDailyWater = state => state.water.waterDataDay;
+
+const selectWaterDataDay = state => state.water.waterDataDay;
+
+export const selectDailyWater = createSelector(
+  [selectWaterDataDay],
+  waterDataDay => waterDataDay?.arrDailyWater || []
+);
+
+export const selectPercentageWater = createSelector(
+  [selectWaterDataDay],
+  waterDataDay => waterDataDay?.percentage || 0
+);

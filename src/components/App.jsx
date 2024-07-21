@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Routes, Route } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
@@ -22,11 +22,14 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUser()).finally(() => setLoading(false));
   }, [dispatch]);
 
-  return isRefreshing ? (
+  const handlePageLoad = () => setLoading(false);
+
+  return isRefreshing || loading ? (
     <Loader variant="fullScreen" />
   ) : (
     <>
@@ -43,7 +46,11 @@ export const App = () => {
               element={
                 <RestrictedRoute
                   redirectTo="/tracker"
-                  component={<SignUpPage />}
+                  component={
+                    <Suspense fallback={<Loader variant="fullScreen" />}>
+                      <SignUpPage onLoad={handlePageLoad} />
+                    </Suspense>
+                  }
                 />
               }
             />
@@ -52,17 +59,18 @@ export const App = () => {
               element={
                 <RestrictedRoute
                   redirectTo="/tracker"
-                  component={<SignInPage />}
+                  component={
+                    <Suspense fallback={<Loader variant="fullScreen" />}>
+                      <SignInPage onLoad={handlePageLoad} />
+                    </Suspense>
+                  }
                 />
               }
             />
             <Route
               path="/tracker"
               element={
-                <PrivateRoute
-                  redirectTo="/signin"
-                  component={<TrackerPage />}
-                />
+                <PrivateRoute redirectTo="/" component={<TrackerPage />} />
               }
             />
 
