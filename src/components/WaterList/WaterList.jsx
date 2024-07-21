@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 const WaterList = ({ selectedDate }) => {
   const isLoading = useSelector(selectIsLoading);
   const { arrDailyWater = [] } = useSelector(selectDailyWater) || {};
+  console.log('arrDailyWater: ', arrDailyWater);
   return (
     <>
       {!Array.isArray(arrDailyWater) || !arrDailyWater.length ? (

@@ -31,7 +31,10 @@ const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
         />
       </div>
       <div className={css.chartWrapper}>
-          <WaterConsumptionChart />
+          <WaterConsumptionChart 
+           selectedDate={selectedDate}
+           setSelectedDate={setSelectedDate}
+          />
       </div>
     </div>
   );

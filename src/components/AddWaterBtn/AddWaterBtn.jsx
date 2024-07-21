@@ -4,12 +4,12 @@ import css from './AddWaterBtn.module.css';
 import { addWater } from '../../redux/water/operations.js';
 import { useDispatch } from 'react-redux';
 import useModal from '../../hooks/useOpenClose.js';
-import { getDateWithTime } from '../../utils/dateFunctions.js';
+// import { getDateWithTime } from '../../utils/dateFunctions.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
-import { addHours, addMinutes, format } from 'date-fns';
+// import { addHours, addMinutes, format } from 'date-fns';
 
 const AddWaterBtn = ({
-  selectedDate,
+  // selectedDate,
   buttonClassName,
   iconClassName,
   spanClassName,
