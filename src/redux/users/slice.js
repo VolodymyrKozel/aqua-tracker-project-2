@@ -35,11 +35,11 @@ const usersSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(signUp.fulfilled, (state /* , { payload } */) => {
+      .addCase(signUp.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        /*         state.user = payload.data.user;
-        state.token = payload.accessToken; */
+        state.user = payload.data.user;
+        state.token = payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(signUp.rejected, (state, action) => {

@@ -1,4 +1,5 @@
 import WaterItem from '../WaterItem/WaterItem.jsx';
+import Loader from '../../components/shared/Loader/Loader.jsx';
 import css from './WaterList.module.css';
 import {
   selectDailyWater,
@@ -7,25 +8,24 @@ import {
 import { useSelector } from 'react-redux';
 const WaterList = ({ selectedDate }) => {
   const isLoading = useSelector(selectIsLoading);
-  const { arrDailyWater = [] } = useSelector(selectDailyWater) || {};
-  return (
-    <>
-      {!Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
-        <div className={css.noWaterAdded}>
-          You haven&apos;t had any water today. Start now!
-        </div>
-      ) : (
-        <div className={css.waterListWrap}>
-          <ul className={css.waterList}>
-            {arrDailyWater.map(item => (
-              <li key={item._id + item.volume} className={css.waterItem}>
-                <WaterItem item={item} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </>
+  const arrDailyWater = useSelector(selectDailyWater);
+  console.log('arrDailyWater', arrDailyWater);
+  return isLoading ? (
+    <Loader />
+  ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
+    <div className={css.noWaterAdded}>
+      You haven&apos;t had any water today. Start now!
+    </div>
+  ) : (
+    <div className={css.waterListWrap}>
+      <ul className={css.waterList}>
+        {arrDailyWater.map(item => (
+          <li key={item._id + item.volume} className={css.waterItem}>
+            <WaterItem item={item} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
