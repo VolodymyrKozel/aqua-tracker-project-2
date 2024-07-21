@@ -16,6 +16,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,6 +36,7 @@
   cursor: pointer;
   transition: stroke 0.3s ease;
 }
+
 .btn {
   border: none;
   outline: none;
@@ -59,4 +61,34 @@
   text-align: start;
   color: var(--main);
   margin-top: 24px;
+}
+
+@media screen and (max-width: 375px) {
+  .overlay {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .waterModal {
+    padding: 40px 20px;
+    width: 343px;
+    height: 490px;
+  }
+
+  .closeIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .waterModalTitle {
+    font-size: 20px;
+    line-height: 120%;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    text-align: start;
+  }
 }
