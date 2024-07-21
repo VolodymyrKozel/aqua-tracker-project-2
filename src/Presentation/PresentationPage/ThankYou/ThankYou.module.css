@@ -1,0 +1,137 @@
+/* ThankYou.module.css */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50%) scale(0.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.ThankYou {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    min-height: 100vh;
+}
+
+.ThankYouTitle {
+    color: var(--accent-color);
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 1.05556;
+    letter-spacing: -0.01em;
+    margin-bottom: 60px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.linkWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.05556;
+    letter-spacing: -0.01em;
+    margin-bottom: 60px;
+    padding-top: 100px;
+    text-align: end;
+    justify-content: center;
+    font-style: italic;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+    animation: slideIn 0.6s ease forwards;
+}
+
+a:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+a:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+a:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+
+a:hover {
+    color: darken(var(--accent-color), 10%);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.goBackBtn,
+.projectLink {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.goBackBtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.goBackBtn:hover,
+.projectLink:hover {
+    color: var(--accent-color);
+}
+
+.svg {
+    stroke: var(--accent-color);
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.icon {
+    fill: orange;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    border: none;
+}
+
+.goBackBtn:hover,
+.goBackBtn:focus,
+.projectLink:hover,
+.projectLink:focus,
+.repoLink:hover,
+.repoLink:focus {
+    box-shadow: 0 4px 6px black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--accent-color);
+    box-shadow: 0 8px 16px orange;
+    outline: none;
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "id-1",
+    "name": "ВОЛОДИМИР КОЗЕЛ",
+    "role": "Team Lead",
+    "photo": "../../../src/Presentation/images/VOLODYMYR_KOZEL.jpg",
+    "description": "Розгортання проекту та виконання маршрутизації, встановлення Redux-toolkit, структури папок та файлів, підключення шрифтів, організація командної роботи, перевірка та контроль пул-запитів. Виправлення помилок та доведення проекту до коректної роботи додатку. Розробка компонентів Modals, SignUpForm, SharedLayout, Logo"
+  },
+  {
+    "id": "id-2",
+    "name": "МАРИНА НАЗІНА",
+    "role": "Scrum Master",
+    "photo": "",
+    "description": "Розробка компонентів WelcomeSection, AdvantagesSection."
+  },
+  {
+    "id": "id-3",
+    "name": "РУСЛАН ІВАСЮНЬКО",
+    "role": "Backend Developer",
+    "photo": "../../../src/Presentation/images/RUSLAN_IVASIUNKO.jpg",
+    "description": "Project deployment, teamwork organisation, verification and control of pull-requests. Correcting errors and bringing the project to the correct operation of the application."
+  },
+  {
+    "id": "id-4",
+    "name": "ВІКТОР АЦБЕРГЕР",
+    "role": "Backend Developer",
+    "photo": "../../../src/Presentation/images/VIKTOR_ATSBERHER.jpg"
+  },
+  {
+    "id": "id-6",
+    "name": "СОФІЯ ЧАЙКОВСЬКА",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/SOFIIA_CHAIKOVSKA.jpg",
+    "description": "Розробка компонентів UserBarPopover, ."
+  },
+  {
+    "id": "id-5",
+    "name": "ЮЛІЯ БРИK",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/YULIIA_BRYK.jpg",
+    "description": "Розробка компонентів DeleteWaterModal, LogOutModal, стилізація WaterForm, WaterModal"
+  },
+  {
+    "id": "id-7",
+    "name": "ДАНИЛО БОБОШКО",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/DANYLO_BOBOSHKO.jpg",
+    "description": "Розробка компонентів UserSettingsForm, UserSettingsModal."
+  },
+  {
+    "id": "id-8",
+    "name": "МАКСИМ МОХНЮК",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/MAKSYM_MOKHNIUK.jpg",
+    "description": "Розробка компонентів MonthInfo, ChooseDate, Calendar, CalendarItem, CalendarPagination."
+  },
+  {
+    "id": "id-9",
+    "name": "ІГОР СЛАКВА",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/IHOR_SLAKVA.jpg",
+    "description": "Розробка компонентів WaterMainInfo, WaterDailyNorma, AddWaterBtn, WaterProgressBar"
+  },
+  {
+    "id": "id-10",
+    "name": "ЮРІЙ КОКШАРОВ",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/YURII_KOKSHAROV.jpg",
+    "description": "Розробка компонента ModalWrapper. Реалізація функціоналу візуалізації статистичних даних споживання води за тиждень за допомогою бібліотеки, графік"
+  },
+  {
+    "id": "id-11",
+    "name": "ЄВГЕНІЙ ДЕМЧУК",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/YEVHENII_DEMCHUK.jpg",
+    "description": "Розробка компонентів WaterModal, WaterForm."
+  },
+  {
+    "id": "id-13",
+    "name": "ГАЛИНА МАРЧЕНКО",
+    "role": "Frontend Developer",
+    "photo": "",
+    "description": "Розробка компонентів SignInForm, ."
+  },
+  {
+    "id": "id-12",
+    "name": "АННА КОРОТКЕВИЧ",
+    "role": "Frontend Developer",
+    "photo": "../../../src/Presentation/images/ANNA_KOROTKEVYCH.jpg",
+    "description": "Розробка компонентів WaterDetailedInfo, UserPanel, UserBar, DailyInfo, WaterList, WaterItem, AddWaterBtn"
+  }
+]

@@ -1,0 +1,164 @@
+.Team {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #0e2b41;
+    height: 100vh;
+}
+
+.aboutClientBtn,
+.goBackBtn {
+    position: absolute;
+    /* padding: 8px 16px; */
+    color: #323f47;;
+    /* border: none; */
+    /* border-radius: 5px; */
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    background-color:transparent;
+    opacity: 0;
+    z-index: 3;
+}
+
+.svg {
+    stroke: var(--accent-color);
+    width: 20px;
+    height: 20px;
+}
+
+.aboutClientBtn {
+    right: 20px;
+}
+
+.goBackBtn {
+    left: 20px;
+}
+
+.aboutClientBtn:hover {
+    box-shadow: 0 4px 6px black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: var(--accent-color);
+        box-shadow: 0 8px 16px orange;
+        outline: none;
+}
+
+.goBackBtn:hover {
+    box-shadow: 0 4px 6px black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: var(--accent-color);
+        box-shadow: 0 8px 16px orange;
+        outline: none;
+}
+
+.TeamListItem:nth-child(1):hover .aboutClientBtn,
+.TeamListItem:nth-child(1):hover .goBackBtn {
+    opacity: 1;
+}
+
+.TeamList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    position: relative;
+    background-color: #0e2b41;
+}
+
+.TeamListItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    position: relative;
+    padding: 10px;
+    background-color: #0e2b41;
+    border: solid 1px var(--accent-color);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: photoSlideIn 0.8s ease-out forwards;
+}
+
+.TeamListItem:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.TeamName {
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.05556;
+    letter-spacing: -0.01em;
+    color: orange;
+}
+
+.TeamRole {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.49333;
+    color:orange;
+}
+
+.TeamPhoto {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    background-color: var(--accent-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.TeamListItem:hover .TeamPhoto {
+    transform: scale(1.2);
+}
+
+.TeamDescription {
+    display: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #6a1228;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 90%;
+    max-width: 400px;
+    background-color: rgb(191 224 193 / 90%);
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(72, 179, 18);
+    z-index: 2;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.TeamListItem:hover .TeamDescription {
+    display: flex;
+}
+
+@keyframes photoSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.TeamListItem:nth-child(1) {
+    grid-column: span 4;
+    grid-row: 1;
+    animation: photoSlideIn 0.8s ease-out forwards;
+}
