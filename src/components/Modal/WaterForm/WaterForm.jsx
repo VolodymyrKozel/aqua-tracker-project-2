@@ -54,7 +54,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
             disabled={getValues('amount') <= 50}
             onClick={handleDecrementWaterAmount}
           >
-            <Icon className={css.icon} width="28" height="28" />
+            <Icon className={css.icon} width="28" height="28" id="icon-minus" />
           </button>
           <span className={css.amount}>{`${watch('amount')} ml`}</span>
           <button
@@ -73,7 +73,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
         </div>
       </div>
       <div className={css.inputWrap}>
-        <label className={errors.time ? css.labelError : css.text}>
+        <label className={errors.time ? css.labelError : css.amountText}>
           Recording time:
           <input
             className={errors.time ? css.inputError : css.input}

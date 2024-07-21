@@ -2,6 +2,7 @@ import Logo from '../../components/shared/Logo/Logo';
 import Button from '../shared/Button/Button';
 import css from './WelcomeSection.module.css';
 import { useNavigate } from 'react-router';
+
 function WelcomeSection() {
   const navigate = useNavigate();
   return (
@@ -17,7 +18,6 @@ function WelcomeSection() {
           <Button variant="outline" onClick={() => navigate('/signin')}>
             Sign in
           </Button>
-          {/* <WaterModal /> */}
         </div>
       </div>
     </section>
