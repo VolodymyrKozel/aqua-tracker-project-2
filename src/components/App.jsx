@@ -12,6 +12,8 @@ import LogOutModal from './Modal/LogOutModal/LogOutModal';
 import ModalExample from './ModalExample/ModalExample';
 import Presentation from '../pages/Presentation/Presentation';
 import { Header } from './Header/Header';
+
+import PresentationPage from '../Presentation/PresentationPage/PresentationPage.jsx';
 /*import { ModalExample } from './ModalExample/ModalExample';  */
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
@@ -79,6 +81,7 @@ export const App = () => {
             <Route path="/logout" element={<LogOutModal />} />
             <Route path="/presentation" element={<Presentation />} />
             <Route path="/example" element={<ModalExample />} />
+            <Route path="/present/*" element={<PresentationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

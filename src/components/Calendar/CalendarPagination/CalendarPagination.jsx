@@ -1,15 +1,12 @@
-import { format, addMonths, subMonths } from 'date-fns';
+import { format } from 'date-fns';
 import css from './CalendarPagination.module.css';
 import Icon from '../../shared/Icon/Icon';
 
-const CalendarPagination = ({ selectedDate, setSelectedDate }) => {
-  const handlePrevMonth = () => {
-    setSelectedDate(subMonths(selectedDate, 1));
-  };
-
-  const handleNextMonth = () => {
-    setSelectedDate(addMonths(selectedDate, 1));
-  };
+const CalendarPagination = ({
+  selectedDate,
+  handleNextMonth,
+  handlePrevMonth,
+}) => {
   return (
     <div className={css.container}>
       <button className={css.btn} onClick={handlePrevMonth}>

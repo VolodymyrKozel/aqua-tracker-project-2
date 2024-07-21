@@ -17,11 +17,6 @@ const handlingRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handlingFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
-
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
@@ -34,28 +29,29 @@ const waterSlice = createSlice({
     builder
       .addCase(getWaterDataDay.pending, handlingPending)
       .addCase(getWaterDataDay.fulfilled, (state, action) => {
-        handlingFulfilled;
+        state.isLoading = false;
+        state.error = null;
         state.waterDataDay = action.payload;
       })
       .addCase(getWaterDataDay.rejected, handlingRejected)
       .addCase(getWaterDataMonthly.pending, handlingPending)
       .addCase(getWaterDataMonthly.fulfilled, (state, action) => {
-        handlingFulfilled;
         state.isLoading = false;
-
+        state.error = null;
         state.waterDataMonth = action.payload;
       })
       .addCase(getWaterDataMonthly.rejected, handlingRejected)
       .addCase(addWater.pending, handlingPending)
       .addCase(addWater.fulfilled, (state, action) => {
-        console.log('add water', action.payload.data);
-        handlingFulfilled;
+        state.isLoading = false;
+        state.error = null;
         state.waterDataDay.arrDailyWater.push(action.payload.data); // Update the state with the new water entry
       })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
       .addCase(updateWater.fulfilled, (state, action) => {
-        handlingFulfilled;
+        state.isLoading = false;
+        state.error = null;
         const index = state.waterDataDay.arrDailyWater.findIndex(
           water => water._id === action.payload.data._id
         );
@@ -66,8 +62,8 @@ const waterSlice = createSlice({
       .addCase(updateWater.rejected, handlingRejected)
       .addCase(deleteWater.pending, handlingPending)
       .addCase(deleteWater.fulfilled, (state, action) => {
-        console.log('update water', action);
-        handlingFulfilled;
+        state.isLoading = false;
+        state.error = null;
         state.waterDataDay.arrDailyWater =
           state.waterDataDay.arrDailyWater.filter(
             water => water._id !== action.meta.arg // Remove the deleted water entry
