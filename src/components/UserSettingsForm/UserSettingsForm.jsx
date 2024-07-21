@@ -19,6 +19,8 @@ export default function UserSettingsForm({ closeModal }) {
 
   const user = useSelector(selectUser);
   console.log('user', user);
+  const userId = user.id;
+  console.log(userId);
   const avatarURL = user.avatarURL;
   const {
     register,
@@ -55,7 +57,7 @@ export default function UserSettingsForm({ closeModal }) {
   const onFileChange = e => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      dispatch(updateAvatar(selectedFile)); // dispatch the file upload action
+      dispatch(updateAvatar({ file: selectedFile, userId })); // Передача userId разом з файлом
     }
   };
 
