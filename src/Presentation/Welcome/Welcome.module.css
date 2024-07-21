@@ -7,6 +7,7 @@
     justify-content: center;
     position: relative;
     margin: 0 auto;
+    height: 100vh;
 }
 
 @keyframes slideInWithBounce {
@@ -69,6 +70,7 @@
     animation: slideInFromTop 1s forwards;
     animation-delay: 1.5s;
     position: relative;
+    border: solid 8px orange
 }
 
 @keyframes slideInText {

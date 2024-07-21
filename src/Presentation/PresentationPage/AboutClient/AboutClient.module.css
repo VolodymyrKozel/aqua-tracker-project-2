@@ -1,12 +1,17 @@
 .AboutClient {
     min-width: 1280px;
     display: flex;
+    /* flex-direction: column; */
+    /* Змінити на вертикальне вирівнювання */
+    align-items: center;
+    /* Центрувати по горизонталі */
+    justify-content: center;
+    /* Центрувати по вертикалі */
     padding: 20px 40px;
     position: relative;
     gap: 30px;
     text-align: center;
-    align-items: center;
-    justify-content: center;
+    height: 100vh;
 }
 
 /* .AboutClientWrap {
@@ -45,14 +50,13 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 23px;
     line-height: 1.49333;
     color:var(--accent-color);
-    text-align: start;
+    text-align: justify;
     animation: dropInDetails 1s ease-out forwards;
     animation-delay: 1.5s;
     opacity: 0;
-
 }
 
 .details li {
@@ -111,8 +115,11 @@
 
 .aboutClientBtn:hover,
 .goBackBtn:hover {
-    /* background-color: var(--accent-color); */
+box-shadow: 0 4px 6px black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: var(--accent-color);
+    box-shadow: 0 8px 16px orange;
+    outline: none;
 }
 
 

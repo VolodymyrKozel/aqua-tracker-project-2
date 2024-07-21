@@ -38,7 +38,7 @@
     "name": "ЮЛІЯ БРИK",
     "role": "Frontend Developer",
     "photo": "../../../src/Presentation/images/YULIIA_BRYK.jpg",
-    "description": "Розробка компонентів WaterForm, DeleteWaterModal, LogOutModal."
+    "description": "Розробка компонентів DeleteWaterModal, LogOutModal, стилізація WaterForm, WaterModal"
   },
   {
     "id": "id-7",
@@ -65,8 +65,8 @@
     "id": "id-10",
     "name": "ЮРІЙ КОКШАРОВ",
     "role": "Frontend Developer",
-    "photo": "",
-    "description": "Розробка компонентів, ."
+    "photo": "../../../src/Presentation/images/YURII_KOKSHAROV.jpg",
+    "description": "Розробка компонента ModalWrapper. Реалізація функціоналу візуалізації статистичних даних споживання води за тиждень за допомогою бібліотеки, графік"
   },
   {
     "id": "id-11",
@@ -86,7 +86,7 @@
     "id": "id-12",
     "name": "АННА КОРОТКЕВИЧ",
     "role": "Frontend Developer",
-    "photo": "",
-    "description": "Розробка секцій WaterDetailedInfo, UserPanel, UserBar, DailyInfo, WaterList, WaterItem, AddWaterBtn"
+    "photo": "../../../src/Presentation/images/ANNA_KOROTKEVYCH.jpg",
+    "description": "Розробка компонентів WaterDetailedInfo, UserPanel, UserBar, DailyInfo, WaterList, WaterItem, AddWaterBtn"
   }
 ]

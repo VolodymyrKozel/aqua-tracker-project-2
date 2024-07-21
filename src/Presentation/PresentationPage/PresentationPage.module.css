@@ -1,6 +1,6 @@
 .containerPage {
-    display: flex;
-    align-items: center;
+    display: block;
+    /* align-items: center; */
     min-height: 100vh;
     background:#0e2b41;
     padding: 16px;

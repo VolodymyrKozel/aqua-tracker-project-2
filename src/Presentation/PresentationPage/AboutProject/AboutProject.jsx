@@ -1,51 +1,63 @@
 import { Link } from 'react-router-dom';
 import css from './AboutProject.module.css';
-import sprite from '../../images/icons.svg';
+import spriteIcons from '../../images/icons.svg'; // Спрайт для іконок навігації
+import spriteSymbols from '../../images/symbol-defs.svg'; // Спрайт для іконок проекту
 
 const AboutProject = () => {
+  const projectDetails = [
+    {
+      id: 1,
+      text: 'Допомагає розрахувати денну норму споживання води на основі багатофакторної моделі',
+      icon: 'icon-water-hand',
+    },
+    {
+      id: 2,
+      text: 'Функціонал додатку дозволяє записати точний час та об`єм спожитої води',
+      icon: 'icon-clock',
+    },
+    {
+      id: 3,
+      text: 'Зручний контроль споживання води',
+      icon: 'icon-water-drop',
+    },
+    {
+      id: 4,
+      text: 'Персоналізація даних зі збереженням історії',
+      icon: 'icon-calendar',
+    },
+    {
+      id: 5,
+      text: 'Позитивний результат мотивує вподальшому дотримуватись здорового режиму споживання води та показати чудовий приклад своїй сім`ї',
+      icon: 'icon-cup',
+    },
+  ];
+
   return (
     <div className={css.AboutProject}>
       <div className={css.buttons}>
         <Link className={css.goBackBtn} to="/present/team/about-client">
           <svg className={css.svg}>
-            <use href={`${sprite}#icon-chevron-left`} />
+            <use href={`${spriteIcons}#icon-chevron-left`} />
           </svg>
         </Link>
         <Link className={css.aboutClientBtn} to="/present/team/technologies">
           <svg className={css.svg}>
-            <use href={`${sprite}#icon-chevron-right`} />
+            <use href={`${spriteIcons}#icon-chevron-right`} />
           </svg>
         </Link>
       </div>
+      <h1 className={css.AboutProjectTitle}>Корисні "плюшки" додатку</h1>
       <ul className={css.detailsList}>
-        <li className={css.listItem}>
-          <p className={css.AboutProjectText}>
-            Допомагає розрахувати денну норму споживання води на основі
-            багатофакторної моделі.
-          </p>
-        </li>
-        <li className={css.listItem}>
-          <p className={css.AboutProjectText}>
-            Функціонал додатку дозволяє записати точні час та обєм спожитої води
-          </p>
-        </li>
-        <li className={css.listItem}>
-          <p className={css.AboutProjectText}>
-            Зручний контроль споживання води
-          </p>
-        </li>
-        <li className={css.listItem}>
-          <p className={css.AboutProjectText}>
-            Персоналізація даних зі збереженням історі.
-          </p>
-        </li>
-        <li className={css.listItem}>
-          <p className={css.AboutProjectText}>
-            Позитивний результат мотивує і вподальшому дотримуватись здорового
-            режиму споживання води та показувати чудовий приклад у сімейному
-            колі.
-          </p>
-        </li>
+        {projectDetails.map(({ id, text, icon }) => (
+          <li key={id} className={css.listItem}>
+            <div>
+              <svg className={css.icon}>
+                <use href={`${spriteSymbols}#${icon}`} />
+              </svg>
+            </div>
+            <p className={css.AboutProjectText}>{text}</p>
+          </li>
+        ))}
       </ul>
     </div>
   );

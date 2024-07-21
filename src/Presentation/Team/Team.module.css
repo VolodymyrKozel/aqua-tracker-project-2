@@ -4,6 +4,7 @@
     justify-content: center;
     position: relative;
     background-color: #0e2b41;
+    height: 100vh;
 }
 
 .aboutClientBtn,
@@ -35,13 +36,19 @@
 }
 
 .aboutClientBtn:hover {
-    color: var(--accent-color);
-    background-color: transparent;
+    box-shadow: 0 4px 6px black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: var(--accent-color);
+        box-shadow: 0 8px 16px orange;
+        outline: none;
 }
 
 .goBackBtn:hover {
-    color: var(--accent-color);
-    background-color: transparent;
+    box-shadow: 0 4px 6px black;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: var(--accent-color);
+        box-shadow: 0 8px 16px orange;
+        outline: none;
 }
 
 .TeamListItem:nth-child(1):hover .aboutClientBtn,
@@ -67,7 +74,7 @@
     position: relative;
     padding: 10px;
     background-color: #0e2b41;
-    border: solid 2px var(--accent-color);
+    border: solid 1px var(--accent-color);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -87,7 +94,7 @@
     font-size: 26px;
     line-height: 1.05556;
     letter-spacing: -0.01em;
-    color: var(--accent-color);
+    color: orange;
 }
 
 .TeamRole {
@@ -95,7 +102,7 @@
     font-weight: 700;
     font-size: 15px;
     line-height: 1.49333;
-    color: var(--accent-color);
+    color:orange;
 }
 
 .TeamPhoto {
@@ -115,7 +122,7 @@
     display: none;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
-    color:#6a1228;;
+    color: #6a1228;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -130,10 +137,12 @@
     border: 2px solid rgb(72, 179, 18);
     z-index: 2;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .TeamListItem:hover .TeamDescription {
-    display: block;
+    display: flex;
 }
 
 @keyframes photoSlideIn {
