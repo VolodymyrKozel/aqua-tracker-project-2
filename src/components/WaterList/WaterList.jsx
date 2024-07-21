@@ -10,7 +10,7 @@ const WaterList = () => {
   const isLoading = useSelector(selectIsLoading);
   const arrDailyWater = useSelector(selectDailyWater);
   return isLoading ? (
-    <Loader />
+    <Loader variant="center" />
   ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
     <div className={css.noWaterAdded}>
       You haven&apos;t had any water today. Start now!

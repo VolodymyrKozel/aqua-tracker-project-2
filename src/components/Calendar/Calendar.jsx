@@ -3,7 +3,8 @@ import css from './Calendar.module.css';
 import CalendarItem from './CalendarItem/CalendarItem';
 import { selectMonthlyWater } from '../../redux/water/selectors';
 import { addDays, endOfMonth, format, startOfMonth } from 'date-fns';
-import { SkeletonCalendar } from '../skeleton/SkeletonCalendar';
+import Loader from '../shared/Loader/Loader';
+//import { SkeletonCalendar } from '../skeleton/SkeletonCalendar';
 
 const Calendar = ({ selectedDate, setSelectedDate }) => {
   const monthlyData = useSelector(selectMonthlyWater);
@@ -35,9 +36,9 @@ const Calendar = ({ selectedDate, setSelectedDate }) => {
   }
 
   return isLoading ? (
-    /*  <Loader variant="center" /> */
-    <SkeletonCalendar />
+    <Loader variant="center" />
   ) : (
+    /*   <SkeletonCalendar /> */
     <>
       <ul className={css.list}>
         {days.map(item => (
