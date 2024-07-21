@@ -1,16 +1,38 @@
+.trackerPageContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-width: 320px;
+  max-width: 375px;
+  gap: 16px;
+}
+
 .trackerPageWrap {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.trackerPageContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+@media only screen and (min-width: 768px) { 
+  .trackerPageContainer {
+    padding: 0 32px;
+    max-width: 100%;
+    gap: 16px;
   }
+}
 
 @media screen and (min-width: 1440px) {
+  .trackerPageContainer {
+    padding: 32px 0 0 0;
+    gap: 32px;
+    flex-direction: row; 
+    max-width: 100%;
+  }
+
   .trackerPageWrap {
     display: flex;
     justify-content: center;

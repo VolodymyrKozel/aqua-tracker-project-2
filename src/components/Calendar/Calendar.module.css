@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 20px;
+  gap: 20px 18px;
   width: 304px;
 }
 @media (min-width: 768px) {

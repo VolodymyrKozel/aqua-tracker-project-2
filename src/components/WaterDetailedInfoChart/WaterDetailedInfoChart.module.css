@@ -32,8 +32,8 @@
 
 .sectionWaterDetailInfo {
   border-radius: 30px;
-  min-width: 320px;
-  max-width: 767px;
+  min-width: 343px;
+  /* max-width: 767px; */
   height: 770px;
   background-color: var(--background-white);
   padding-left: 20px;
@@ -60,6 +60,7 @@
     height: 736px;
     padding-left: 32px;
     padding-right: 32px;
+    padding-top: 41px;
     margin-bottom: 20px;
   }
 }
