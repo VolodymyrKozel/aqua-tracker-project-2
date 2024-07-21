@@ -18,9 +18,7 @@ export default function UserSettingsForm({ closeModal }) {
   const isLoading = useSelector(selectIsLoading);
 
   const user = useSelector(selectUser);
-  console.log('user', user);
   const userId = user.id;
-  console.log(userId);
   const avatarURL = user.avatarURL;
   const {
     register,

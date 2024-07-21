@@ -16,15 +16,15 @@ const WaterDetailedInfo = () => {
   const [selectedDate, setSelectedDate] = useState(
     format(new Date(), 'yyyy-MM-dd')
   );
-  // попередня дата
-  // const prevDate = useRef(null);
-  const [monthChange, setMonthChange] = useState(null);
-
+  const [monthChange, setMonthChange] = useState(false);
+  const dailyNorma = useSelector(selectDailyNorma);
   const handlePrevMonth = () => {
     setSelectedDate(subMonths(selectedDate, 1));
+    setMonthChange(true);
   };
   const handleNextMonth = () => {
     setSelectedDate(addMonths(selectedDate, 1));
+    setMonthChange(true);
   };
   const getMonthsData = () => {
     const month = getMonth(selectedDate) + 1;
@@ -36,23 +36,16 @@ const WaterDetailedInfo = () => {
         dailyNorma: dailyNorma,
       })
     );
+    setMonthChange(false);
   };
 
-  let dailyNorma = useSelector(selectDailyNorma);
   useEffect(() => {
     getMonthsData();
-    // prevDate.current = selectedDate;
-  }, [monthChange]);
+  }, [monthChange, dailyNorma, dispatch]);
+
   useEffect(() => {
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma: dailyNorma }));
-    // if (
-    //   prevDate.current !== selectedDate &&
-    //   !isSameMonth(prevDate.current, selectedDate)
-    // ) {
-    //   getMonthsData();
-    // }
-    // prevDate.current = selectedDate;
-  }, [selectedDate]);
+  }, [selectedDate, dailyNorma, dispatch]);
 
   return (
     <section className={css.sectionWaterDetailInfo}>

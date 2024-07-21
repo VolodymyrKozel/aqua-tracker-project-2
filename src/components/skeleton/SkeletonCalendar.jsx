@@ -7,7 +7,7 @@ export const SkeletonCalendar = () => {
     <>
       <SkeletonTheme baseColor="#202020" highlightColor="#444">
         <p>
-          <Skeleton count={3} />
+          <Skeleton className={css.circle} count={3} />
         </p>
       </SkeletonTheme>
       <Skeleton count={31} circle={true} className={css.circle} />

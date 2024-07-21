@@ -6,10 +6,9 @@ import {
   selectIsLoading,
 } from '../../redux/water/selectors.js';
 import { useSelector } from 'react-redux';
-const WaterList = ({ selectedDate }) => {
+const WaterList = () => {
   const isLoading = useSelector(selectIsLoading);
   const arrDailyWater = useSelector(selectDailyWater);
-  console.log('arrDailyWater', arrDailyWater);
   return isLoading ? (
     <Loader />
   ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (

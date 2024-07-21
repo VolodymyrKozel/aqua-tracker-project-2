@@ -19,7 +19,6 @@ import Icon from '../shared/Icon/Icon';
 import { useToggle } from '../../hooks/useToggle';
 
 const SignUpForm = () => {
-  
   const { t } = useTranslation();
   const emailId = useId();
   const passwordId = useId();
@@ -48,7 +47,6 @@ const SignUpForm = () => {
   const onSubmit = data => {
     const { repeatPassword, ...rest } = data;
     dispatch(signUp(rest));
-    console.log('component');
     reset();
   };
   return (
@@ -147,9 +145,9 @@ const SignUpForm = () => {
             </Button>
           </form>
           <p className={css.afterDescription}>
-          {t('signupForm.haveAccount')}?{' '}
+            {t('signupForm.haveAccount')}?{' '}
             <NavLink className={css.link} to={'/signin'}>
-            {t('signupForm.signin')}
+              {t('signupForm.signin')}
             </NavLink>
           </p>
         </div>

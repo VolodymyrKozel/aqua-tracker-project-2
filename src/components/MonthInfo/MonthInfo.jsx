@@ -8,7 +8,6 @@ const MonthInfo = ({
   setSelectedDate,
   handleNextMonth,
   handlePrevMonth,
-  setMonthChange,
 }) => {
   return (
     <div className={css.container}>
@@ -18,7 +17,6 @@ const MonthInfo = ({
           selectedDate={selectedDate}
           handleNextMonth={handleNextMonth}
           handlePrevMonth={handlePrevMonth}
-          setMonthChange={setMonthChange}
         />
       </div>
       <Calendar selectedDate={selectedDate} setSelectedDate={setSelectedDate} />

@@ -3,8 +3,6 @@ import css from './Calendar.module.css';
 import CalendarItem from './CalendarItem/CalendarItem';
 import { selectMonthlyWater } from '../../redux/water/selectors';
 import { addDays, endOfMonth, format, startOfMonth } from 'date-fns';
-// import { logOut } from '../../redux/users/operations';
-// import Loader from '../shared/Loader/Loader';
 import { SkeletonCalendar } from '../skeleton/SkeletonCalendar';
 
 const Calendar = ({ selectedDate, setSelectedDate }) => {
@@ -12,7 +10,6 @@ const Calendar = ({ selectedDate, setSelectedDate }) => {
   const currentDate = new Date();
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
-  // const dispatch = useDispatch();
   const isLoading = useSelector(state => state.water.isLoading);
   /* const daysInMonth = getDaysInMonth(selectedDate); */
   let days = [];

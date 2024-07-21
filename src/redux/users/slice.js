@@ -114,7 +114,6 @@ const usersSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        console.log('payload', payload);
 
         state.user = { ...state.user, ...payload.user };
       })
@@ -130,7 +129,6 @@ const usersSlice = createSlice({
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        console.log('avatar', payload);
         state.user = { ...state.user, avatarURL: payload };
       })
       .addCase(updateAvatar.rejected, (state, action) => {

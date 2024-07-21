@@ -6,6 +6,7 @@ import { getWaterDataMonthly } from '../../redux/water/operations';
 import { getMonth, getYear } from 'date-fns';
 import { selectDailyNorma } from '../../redux/users/selectors';
 import WaterConsumptionChart from '../WaterConsumptionChart/WaterConsumptionChart';
+import Loader from '../shared/Loader/Loader';
 
 const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
   const dispatch = useDispatch();
@@ -15,19 +16,18 @@ const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
   useEffect(() => {
     const month = getMonth(selectedDate);
     const year = getYear(selectedDate);
-    console.log(isLoading);
     dispatch(
       getWaterDataMonthly({ month: month, year: year, dailyNorma: dailyNorma })
     );
   }, [dispatch, selectedDate, dailyNorma]);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={css.container}>
       <div className={css.header}>
         <h1 className={css.title}>Statistics</h1>
-        <CalendarPagination
-          selectedDate={selectedDate}
-        />
+        <CalendarPagination selectedDate={selectedDate} />
       </div>
       <div className={css.chartWrapper}>
         <WaterConsumptionChart

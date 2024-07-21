@@ -10,3 +10,9 @@
   z-index: 999;
   background-color: #2f2f2f80;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

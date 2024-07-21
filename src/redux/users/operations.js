@@ -36,7 +36,6 @@ export const signIn = createAsyncThunk(
       setAuthHeader(data.data.accessToken);
       await thunkAPI.dispatch(fetchUser());
       toast.success('Login success');
-      console.log(data);
       return data.data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -114,19 +113,14 @@ export const updateAvatar = createAsyncThunk(
       const formData = new FormData();
       formData.append('avatar', file);
       formData.append('id', userId); // Додайте userId до formData
-
       const res = await instance.patch('/users/avatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      console.log('Response:', res); // Додано для відладки
-
       toast.success('Avatar updated successfully');
       return res.data;
     } catch (error) {
-      console.error('Error:', error); // Додано для відладки
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
     }
