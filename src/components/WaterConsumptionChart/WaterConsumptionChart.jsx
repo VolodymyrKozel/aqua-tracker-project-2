@@ -68,6 +68,8 @@ const WaterConsumptionChart = () => {
     }
     return `${tickItem} L`;
   };
+  console.log('Data for chart:', dataForChart);
+
 
   return (
     <div style={{ width: '100%', height: '300px' }}>
