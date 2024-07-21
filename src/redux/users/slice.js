@@ -21,11 +21,13 @@ const usersSlice = createSlice({
       activeTimeSport: 0,
       weight: 0,
       gender: null,
+      id: null,
     },
     error: null,
     token: null,
     isLoggedIn: true,
     isRefreshing: false,
+    userId: null,
   },
   extraReducers: builder => {
     builder
@@ -84,6 +86,7 @@ const usersSlice = createSlice({
         state.isRefreshing = false;
         state.user = payload;
         state.isLoggedIn = true;
+        state.user.id = payload.id;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;

@@ -10,7 +10,7 @@ import { userSettingsSchema } from '../../validation/form';
 
 import Loader from '../shared/Loader/Loader';
 import { selectIsLoading } from '../../redux/users/selectors';
-import { ava, ava2x, avatar_photo_default } from './images';
+import { avatar_photo_default } from './images';
 import css from '../UserSettingsForm/UserSettingsForm.module.css';
 
 export default function UserSettingsForm({ closeModal }) {
@@ -19,6 +19,8 @@ export default function UserSettingsForm({ closeModal }) {
 
   const user = useSelector(selectUser);
   console.log('user', user);
+  const userId = user.id;
+  console.log(userId);
   const avatarURL = user.avatarURL;
   const {
     register,
@@ -55,7 +57,7 @@ export default function UserSettingsForm({ closeModal }) {
   const onFileChange = e => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      dispatch(updateAvatar(selectedFile)); // dispatch the file upload action
+      dispatch(updateAvatar({ file: selectedFile, userId })); // Передача userId разом з файлом
     }
   };
 
@@ -84,10 +86,6 @@ export default function UserSettingsForm({ closeModal }) {
         <div className={css.imageWrap}>
           <img
             src={avatarURL || avatar_photo_default}
-            srcSet={`
-                  ${ava} 
-                  ${ava2x} 
-              `}
             // динамически отображаем выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"

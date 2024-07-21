@@ -17,6 +17,7 @@
     top: 40px;
     right: 20px;
     z-index: 10;
+    cursor: pointer;
   }
 }
 
@@ -75,5 +76,6 @@
     top: 40px;
     right: 20px;
     z-index: 10;
+    cursor: pointer;
   }
 }

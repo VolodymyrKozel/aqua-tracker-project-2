@@ -109,21 +109,24 @@ export const updateUser = createAsyncThunk(
 
 export const updateAvatar = createAsyncThunk(
   'users/avatar',
-  async (file, thunkAPI) => {
-    console.log(file);
+  async ({ file, userId }, thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append('avatarURL', file);
-      const userId = thunkAPI.getState().user.id; // Adjust based on how you store the user data in your state
-      formData.append('id', userId);
+      formData.append('avatar', file);
+      formData.append('id', userId); // Додайте userId до formData
+
       const res = await instance.patch('/users/avatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
+      console.log('Response:', res); // Додано для відладки
+
       toast.success('Avatar updated successfully');
       return res.data;
     } catch (error) {
+      console.error('Error:', error); // Додано для відладки
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
     }
