@@ -22,7 +22,7 @@
 
 @media only screen and (min-width: 1440px) {
   .generalSignInInfo {
-    padding:  32px;
+    padding: 32px 0 0 0;
     gap: 32px;
     flex-direction: row; 
     max-width: 100%;
