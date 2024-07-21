@@ -10,10 +10,10 @@ const TrackerPage = () => {
         <WaterMainInfo />
         <WaterDetailedInfo />
       </div>
-      <div className={css.trackerPageWrap}>
+      {/* <div className={css.trackerPageWrap}>
         <WaterMainInfo />
         <WaterDetailedInfoChart />
-      </div>
+      </div> */}
     </div>
   );
 };
