@@ -11,7 +11,10 @@ import Icon from '../../shared/Icon/Icon';
 import { setDate } from '../../../redux/water/slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedDate } from '../../../redux/water/selectors';
-import { getWaterDataMonthly } from '../../../redux/water/operations';
+import {
+  getWaterDataDay,
+  getWaterDataMonthly,
+} from '../../../redux/water/operations';
 import { selectDailyNorma } from '../../../redux/users/selectors';
 import { useEffect } from 'react';
 
@@ -27,6 +30,7 @@ const CalendarPagination = () => {
         dailyNorma: dailyNorma,
       })
     );
+    dispatch(getWaterDataDay({ date: selectedDate, dailyNorma }));
   }, []);
 
   function getMonthlyData(month, year) {
@@ -42,7 +46,9 @@ const CalendarPagination = () => {
   const handlePrevMonth = () => {
     const newDate = subMonths(selectedDate, 1);
     dispatch(setDate(format(newDate, 'yyyy-MM-dd'))); // Update the date in the store
-
+    dispatch(
+      getWaterDataDay({ date: format(newDate, 'yyyy-MM-dd'), dailyNorma })
+    );
     getMonthlyData(getMonth(newDate) + 1, getYear(newDate));
   };
 
@@ -50,6 +56,9 @@ const CalendarPagination = () => {
     const newDate = addMonths(selectedDate, 1);
     dispatch(setDate(format(newDate, 'yyyy-MM-dd'))); // Update the date in the store
     getMonthlyData(getMonth(newDate) + 1, getYear(newDate));
+    dispatch(
+      getWaterDataDay({ date: format(newDate, 'yyyy-MM-dd'), dailyNorma })
+    );
   };
   return (
     <div className={css.container}>

@@ -6,7 +6,11 @@ import { PrivateRoute } from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../redux/users/operations';
-import { selectIsRefreshing, selectIsLoading } from '../redux/users/selectors';
+import {
+  selectIsRefreshing,
+  selectIsLoading,
+  selectUser,
+} from '../redux/users/selectors';
 import Loader from './shared/Loader/Loader';
 import LogOutModal from './Modal/LogOutModal/LogOutModal';
 import ModalExample from './ModalExample/ModalExample';
@@ -30,8 +34,6 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-
-
   return isRefreshing || isLoading ? (
     <Loader variant="fullScreen" />
   ) : (
@@ -52,8 +54,8 @@ export const App = () => {
                   redirectTo="/tracker"
                   component={
                     <Suspense fallback={<Loader variant="fullScreen" />}>
-                    <SignUpPage />
-                  </Suspense>
+                      <SignUpPage />
+                    </Suspense>
                   }
                 />
               }
