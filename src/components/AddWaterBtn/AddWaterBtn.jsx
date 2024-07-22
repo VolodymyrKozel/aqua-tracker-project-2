@@ -2,13 +2,13 @@ import { IconPlusWater } from '../DailyInfo/IconPlusWater.jsx';
 import Button from '../shared/Button/Button.jsx';
 import css from './AddWaterBtn.module.css';
 import { addWater } from '../../redux/water/operations.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useModal from '../../hooks/useOpenClose.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
+import { selectSelectedDate } from '../../redux/water/selectors.js';
+import { isToday } from 'date-fns';
 
 const AddWaterBtn = ({
-  selectedDate,
-  setMonthChange,
   buttonClassName,
   iconClassName,
   spanClassName,
@@ -20,12 +20,12 @@ const AddWaterBtn = ({
 }) => {
   const { isOpen, openModal, closeModal: onClose } = useModal();
   const dispatch = useDispatch();
+  const selectedDate = useSelector(selectSelectedDate);
 
   const onSubmit = data => {
     const { amount, time } = data;
     dispatch(addWater({ time: time, volume: amount.toString() }));
     onClose();
-    setMonthChange(true);
   };
   return (
     <div>
@@ -33,6 +33,7 @@ const AddWaterBtn = ({
         onClick={openModal}
         variant=".outline"
         className={`${css.addWaterButton} ${buttonClassName}`}
+        disabled={isToday(selectedDate) ? false : true}
       >
         <IconPlusWater
           className={`${css.iconPlusWater} ${iconClassName}`}

@@ -13,8 +13,20 @@ import { addMonths, format, getMonth, getYear, subMonths } from 'date-fns';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
+  const [selectedDate, setSelectedDate] = useState(() =>
+    format(new Date(), 'yyyy-MM-dd')
+  );
+  const [monthChange, setMonthChange] = useState(false);
   const dailyNorma = useSelector(selectDailyNorma);
-  /*   const getMonthsData = () => {
+  const handlePrevMonth = () => {
+    setSelectedDate(subMonths(selectedDate, 1));
+    setMonthChange(true);
+  };
+  const handleNextMonth = () => {
+    setSelectedDate(addMonths(selectedDate, 1));
+    setMonthChange(true);
+  };
+  const getMonthsData = () => {
     const month = getMonth(selectedDate) + 1;
     const year = getYear(selectedDate);
     dispatch(
@@ -24,22 +36,32 @@ const WaterDetailedInfo = () => {
         dailyNorma: dailyNorma,
       })
     );
-  }; */
+    setMonthChange(false);
+  };
 
-  /*   useEffect(() => {
+  useEffect(() => {
     getMonthsData();
   }, [monthChange, dailyNorma, dispatch]);
 
   useEffect(() => {
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma: dailyNorma }));
-  }, [selectedDate, dailyNorma, dispatch]); */
+  }, [selectedDate, dailyNorma, dispatch]);
 
   return (
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
-        <DailyInfo />
-        <MonthInfo />
+        <DailyInfo
+          selectedDate={selectedDate}
+          setMonthChange={setMonthChange}
+        />
+        <MonthInfo
+          handleNextMonth={handleNextMonth}
+          handlePrevMonth={handlePrevMonth}
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          setMonthChange={setMonthChange}
+        />
       </div>
     </section>
   );
