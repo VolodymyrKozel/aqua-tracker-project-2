@@ -27,7 +27,7 @@ const WaterList = () => {
         animate="visible"
         exit="hidden"
         variants={{
-          visible: { transition: { staggerChildren: 0.2 } }, // Stagger children animations
+          visible: { transition: { staggerChildren: 0.3 } }, // Stagger children animations
         }}
         className={css.waterList}
       >

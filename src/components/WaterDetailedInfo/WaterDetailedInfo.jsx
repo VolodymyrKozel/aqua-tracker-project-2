@@ -11,6 +11,7 @@ import {
 import { selectDailyNorma } from '../../redux/users/selectors.js';
 import { selectSelectedDate } from '../../redux/water/selectors.js';
 import { getMonth, getYear } from 'date-fns';
+import { motion } from 'framer-motion';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
@@ -27,13 +28,13 @@ const WaterDetailedInfo = () => {
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma }));
   }, []);
   return (
-    <section className={css.sectionWaterDetailInfo}>
+    <motion.section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
         <DailyInfo />
         <MonthInfo />
       </div>
-    </section>
+    </motion.section>
   );
 };
 
