@@ -32,7 +32,9 @@
 }
 
 .welcomeTitle {
-    font-size: 160px;
+    display: block;
+    max-width: 900px;
+    font-size: 140px;
     line-height: 1.2;
     letter-spacing: var(--letter-spacing-normal);
     color: var(--accent-color);
@@ -62,7 +64,7 @@
     height: 300px;
     border-radius: 50%;
     text-decoration: none;
-    background-color: var(--accent-color);
+    background-color: white;
     color: var(--main-color);
     font-size: 1.5rem;
     font-weight: bold;
@@ -70,30 +72,28 @@
     animation: slideInFromTop 1s forwards;
     animation-delay: 1.5s;
     position: relative;
-    border: solid 8px orange
+    border: solid 6px orange;
+    overflow: hidden;
 }
 
-@keyframes slideInText {
-    from {
-        transform: translateY(100%);
+@keyframes fadeInAndScale {
+    0% {
         opacity: 0;
+        transform: scale(0.8);
     }
 
-    to {
-        transform: translateY(0);
+    100% {
         opacity: 1;
+        transform: scale(1);
     }
 }
 
-.WelcomeLogoLink::after {
-    content: 'GoInFeature';
-    font-size: 2.5rem;
-    font-weight: bold;
+.WelcomeLogoImage {
+    width: 98%;
+    height: 98%;
+    object-fit: contain;
+    border-radius: 50%;
     opacity: 0;
-    animation: slideInText 1s forwards;
-    animation-delay: 2.5s;
-    position: absolute;
-    /* top: 50%;
-    left: 50%; */
-    transform: translate(-50%, -50%);
+    animation: fadeInAndScale 1s ease-out forwards;
+    animation-delay: 1.5s;
 }

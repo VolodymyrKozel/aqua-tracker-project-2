@@ -1,27 +1,14 @@
 .AboutClient {
     min-width: 1280px;
     display: flex;
-    /* flex-direction: column; */
-    /* Змінити на вертикальне вирівнювання */
     align-items: center;
-    /* Центрувати по горизонталі */
     justify-content: center;
-    /* Центрувати по вертикалі */
     padding: 20px 40px;
     position: relative;
     gap: 30px;
     text-align: center;
     height: 100vh;
 }
-
-/* .AboutClientWrap {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-
-} */
 
 .photo {
     display: block;
@@ -63,19 +50,6 @@
     margin: 10px 0;
 }
 
-/* .buttons {
-    position: absolute;
-    top: 20px;
-    width: 100%;
-    max-width: 1000px;
-    display: flex;
-    padding: 0 20px;
-    cursor: pointer;
-    opacity: 0;
-    background-color: transparent;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-} */
-
 .svg {
     stroke: var(--accent-color);
     width: 20px;
@@ -86,31 +60,12 @@
     position: absolute;
     top: 20px;
     right: 15px;
-    /* position: relative;
-    top: 0px;
-    left: 1150px;
-    padding: 8px 16px;
-    color: #323f47;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: transparent;
-    z-index: 3; */
 }
 
 .goBackBtn {
     position: absolute;
     left: 15px;
     top: 20px;
-    /* padding: 8px 16px;
-    color: #323f47;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 3;
-    background-color: transparent; */
 }
 
 .aboutClientBtn:hover,
