@@ -6,6 +6,7 @@ import {
   getWaterDataMonthly,
   updateWater,
 } from './operations';
+import { format } from 'date-fns';
 
 const handlingPending = state => {
   state.isLoading = true;
@@ -20,10 +21,16 @@ const handlingRejected = (state, action) => {
 const waterSlice = createSlice({
   name: 'water',
   initialState: {
+    selectedDate: format(new Date(), 'yyyy-MM-dd'),
     waterDataDay: [],
     waterDataMonth: [],
     error: null,
     isLoading: false,
+  },
+  reducers: {
+    setDate: (state, action) => {
+      state.selectedDate = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -73,4 +80,5 @@ const waterSlice = createSlice({
   },
 });
 
+export const { setDate } = waterSlice.actions;
 export const waterReducer = waterSlice.reducer;

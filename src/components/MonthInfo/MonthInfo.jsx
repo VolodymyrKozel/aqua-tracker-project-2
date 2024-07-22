@@ -59,6 +59,7 @@ const MonthInfo = ({
           <WaterConsumptionChart />
         )}
       </div>
+
     </div>
   );
 };

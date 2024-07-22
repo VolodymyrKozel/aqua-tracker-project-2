@@ -6,8 +6,9 @@ import css from './TrackerPage.module.css';
 const TrackerPage = () => {
   return (
     <div className={css.trackerPageContainer}>
+      <WaterMainInfo />
       <div className={css.trackerPageWrap}>
-        <WaterMainInfo />
+        
         <WaterDetailedInfo />
       </div>
       {/* <div className={css.trackerPageWrap}>
