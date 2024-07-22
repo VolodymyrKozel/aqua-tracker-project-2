@@ -1,8 +1,14 @@
+.listContainer {
+  position: relative;
+  overflow: hidden;
+}
 .list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px 18px;
   width: 304px;
+  overflow: hidden;
+  position: relative;
 }
 @media (min-width: 768px) {
   .list {

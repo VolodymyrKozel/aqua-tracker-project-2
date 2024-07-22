@@ -1,11 +1,4 @@
-import {
-  addMonths,
-  format,
-  getMonth,
-  getYear,
-  setMonth,
-  subMonths,
-} from 'date-fns';
+import { addMonths, format, getMonth, getYear, subMonths } from 'date-fns';
 import css from './CalendarPagination.module.css';
 import Icon from '../../shared/Icon/Icon';
 import { setDate } from '../../../redux/water/slice';
@@ -16,22 +9,11 @@ import {
   getWaterDataMonthly,
 } from '../../../redux/water/operations';
 import { selectDailyNorma } from '../../../redux/users/selectors';
-import { useEffect } from 'react';
 
 const CalendarPagination = () => {
   const dispatch = useDispatch();
   const selectedDate = useSelector(selectSelectedDate);
   const dailyNorma = useSelector(selectDailyNorma);
-  useEffect(() => {
-    dispatch(
-      getWaterDataMonthly({
-        month: getMonth(selectedDate) + 1,
-        year: getYear(selectedDate),
-        dailyNorma: dailyNorma,
-      })
-    );
-    dispatch(getWaterDataDay({ date: selectedDate, dailyNorma }));
-  }, []);
 
   function getMonthlyData(month, year) {
     dispatch(

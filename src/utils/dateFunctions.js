@@ -1,3 +1,5 @@
+import { eachDayOfInterval, endOfMonth, startOfMonth } from 'date-fns';
+
 export const getDateWithTime = time => {
   const [hours, minutes] = time.split(':');
 
@@ -30,3 +32,11 @@ export const formatTime = time => {
   const formattedHour = hourNum % 12 || 12;
   return `${formattedHour}:${minute} ${period}`;
 };
+
+export function getDaysInMonth(date) {
+  const start = startOfMonth(date);
+  const end = endOfMonth(date);
+
+  const days = eachDayOfInterval({ start, end });
+  return days;
+}
