@@ -38,9 +38,10 @@ const usersSlice = createSlice({
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.user = payload.data.user;
-        state.token = payload.accessToken;
-        state.isLoggedIn = true;
+        /*       console.log(payload);
+        state.user = payload.data.data.user;
+        state.token = payload.accessToken; */
+        /*  state.isLoggedIn = true; */
       })
       .addCase(signUp.rejected, (state, action) => {
         state.isLoading = false;

@@ -12,13 +12,13 @@ export const signUp = createAsyncThunk(
     try {
       const { data } = await instance.post(`users/register`, credentials);
       toast.success('User created successfully');
-      await thunkAPI.dispatch(
+      /*      await thunkAPI.dispatch(
         signIn({
           email: credentials.email,
           password: credentials.password,
         })
       );
-      await thunkAPI.dispatch(fetchUser());
+      await thunkAPI.dispatch(fetchUser()); */
 
       return data;
     } catch (error) {
