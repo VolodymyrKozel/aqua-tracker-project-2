@@ -1,4 +1,3 @@
-/* Technologies.module.css */
 @keyframes pixelate {
     0% {
         filter: blur(10px);
@@ -37,7 +36,6 @@
 }
 
 .techColumn {
-    /* flex: 1; */
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -52,14 +50,15 @@
     line-height: 1.05556;
     letter-spacing: -0.01em;
     color: orange;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     padding-top: 100px;
     text-align: center;
 }
 
-.techList {
-    list-style: none;
+.techListItem {
+    margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .techListItem {
@@ -71,11 +70,22 @@
     border: solid 1px orange;
     margin-bottom: 10px;
     position: relative;
-    width: 300px;
+    width: 350px;
+    height: 55px;
     font-size: 20px;
     gap: 15px;
     box-shadow: 0 4px 6px black;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.techLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .techListItem:hover {

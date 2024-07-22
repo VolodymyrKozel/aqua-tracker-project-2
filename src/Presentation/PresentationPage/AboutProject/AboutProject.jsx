@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import css from './AboutProject.module.css';
-import spriteIcons from '../../images/icons.svg'; // Спрайт для іконок навігації
-import spriteSymbols from '../../images/symbol-defs.svg'; // Спрайт для іконок проекту
+import spriteIcons from '../../images/icons.svg';
+import spriteSymbols from '../../images/symbol-defs.svg';
 
 const AboutProject = () => {
   const projectDetails = [

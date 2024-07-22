@@ -5,7 +5,6 @@ import sprite from '../../images/icons.svg';
 const AboutClient = () => {
   return (
     <div className={css.AboutClient}>
-      {/* <div className={css.AboutClientWrap}> */}
       <img
         src="../../../../src/Presentation/PresentationPage/AboutClient/ClientPhoto.jpg"
         alt="Client"
@@ -40,7 +39,6 @@ const AboutClient = () => {
         </svg>
       </Link>
     </div>
-    // </div>
   );
 };
 
