@@ -10,16 +10,17 @@
 
 @media screen and (min-width: 768px) {
     .sectionWaterDetailInfo {
-        width: 704px;
-        height: auto;
-        padding: 32px
+        min-width: 768px;
+        height: 738px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
 }
 
 @media screen and (min-width: 1440px) {
     .sectionWaterDetailInfo {
         --h1-font-size: 5rem;
-        width: 672px;
+        min-width: 672px;
         height: 736px;
         padding-left: 32px;
         padding-right: 32px;

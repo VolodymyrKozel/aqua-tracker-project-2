@@ -11,10 +11,13 @@ import {
 } from 'recharts';
 import { getWaterDataMonthly } from '../../redux/water/operations';
 import { selectMonthlyWater } from '../../redux/water/selectors';
+import { selectDailyNorma } from '../../redux/users/selectors';
+import Loader from '../shared/Loader/Loader';
 
 const WaterConsumptionChart = () => {
   const dispatch = useDispatch();
   const monthlyWaterData = useSelector(selectMonthlyWater);
+  const dailyNorma = useSelector(selectDailyNorma); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -22,9 +25,9 @@ const WaterConsumptionChart = () => {
     const fetchData = async () => {
       try {
         const currentDate = new Date();
-        const month = currentDate.getMonth() + 1; 
-        const year = currentDate.getFullYear(); 
-        await dispatch(getWaterDataMonthly({ month, year, dailyNorma: 2000 }));
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        await dispatch(getWaterDataMonthly({ month, year, dailyNorma }));
       } catch (err) {
         setError(err);
       } finally {
@@ -33,26 +36,26 @@ const WaterConsumptionChart = () => {
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, dailyNorma]);
 
-  const convertedData = (monthlyWaterData || []).map(item => ({
-    date: new Date(item.date).getDate(), 
-    totalConsumption: (item.arrDailyWater || []).reduce((sum, entry) => sum + entry.volume, 0) / 1000, 
-  }));
-  const dataForChart = convertedData.length > 0 ? convertedData : [{ date: 1, totalConsumption: 0 }];
+  const dataForChart = (monthlyWaterData || [])
+    .map(item => ({
+      date: item.dayOfMonth,
+      totalConsumption: (item.percentage / 100) * dailyNorma / 1000, 
+    }))
+    .filter(item => item.totalConsumption > 0);
 
-  const CustomTooltip = ({ payload = [] }) => {
-    if (payload && payload.length) {
-      const totalVolume = payload[0].payload.totalConsumption * 1000; 
-      return (
-        <div className={css.tooltip}>
-          <p className="intro">{`${totalVolume} ml`}</p>
-        </div>
-      );
-    }
-    return null;
-  };
-
+    const CustomTooltip = ({ payload = [] }) => {
+      if (payload && payload.length) {
+        const totalVolume = Math.round(payload[0].payload.totalConsumption * 1000); 
+        return (
+          <div className={css.tooltip}>
+            <p className="intro">{`${totalVolume} ml`}</p>
+          </div>
+        );
+      }
+      return null;
+    };
   const maxY = Math.max(...dataForChart.map(item => item.totalConsumption), 0);
 
   const generateYAxisTicks = () => {
@@ -62,6 +65,7 @@ const WaterConsumptionChart = () => {
     }
     return ticks;
   };
+
   const formatYAxisTick = (tickItem) => {
     if (tickItem === 0) {
       return '0 L';
@@ -72,7 +76,7 @@ const WaterConsumptionChart = () => {
   return (
     <div style={{ width: '100%', height: '300px' }}>
       {loading ? (
-        <p>Loading...</p>
+        <Loader variant="center" />
       ) : error ? (
         <p>Error loading data: {error.message}</p>
       ) : (

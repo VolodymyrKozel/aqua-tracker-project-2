@@ -15,3 +15,5 @@ export const selectPercentageWater = createSelector(
   [selectWaterDataDay],
   waterDataDay => waterDataDay?.percentage || 0
 );
+
+export const selectSelectedDate = state => state.water.selectedDate;

@@ -1,0 +1,30 @@
+.btn {
+  width: 18px;
+  height: 18px;
+  padding: 4px 6px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.icon {
+  width: 8px;
+  height: 12px;
+  fill: transparent;
+  stroke: var(--main-text);
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.date {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main-text);
+}

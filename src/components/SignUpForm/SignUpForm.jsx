@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/users/selectors';
 import { signUp } from '../../redux/users/operations';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { registerUserSchema } from '../../validation/auth';
 import { useId } from 'react';
 import Label from '../shared/Label/Label';
@@ -48,6 +48,7 @@ const SignUpForm = () => {
     const { repeatPassword, ...rest } = data;
     dispatch(signUp(rest));
     reset();
+    Navigate('/signin');
   };
   return (
     <div className={css.container}>
