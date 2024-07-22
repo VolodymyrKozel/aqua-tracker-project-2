@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom';
 import css from './AboutClient.module.css';
 import sprite from '../../images/icons.svg';
+import clientImg from '../../../../src/Presentation/PresentationPage/AboutClient/ClientPhoto.jpg';
 
 const AboutClient = () => {
   return (
     <div className={css.AboutClient}>
-      <img
-        src="../../../../src/Presentation/PresentationPage/AboutClient/ClientPhoto.jpg"
-        alt="Client"
-        className={css.photo}
-      />
+      <img src={clientImg} alt="Client" className={css.photo} />
       <h2 className={css.title}>В&apos;ячеслав Маркóвич</h2>
       <ul className={css.details}>
         <li>46 років</li>
