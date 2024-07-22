@@ -11,6 +11,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto;
+  width: 343px;
 }
 
 .logoContainer {
@@ -70,7 +71,7 @@
 
 @media screen and (min-width: 768px) {
   .WaterMainInfo {
-    min-width: 768px;
+    width: 704px;
     height: 578px;
     padding: 32px;
     background-image: url('/src/assets/images/transparent_bottle_for_water_tablet.png');
