@@ -6,13 +6,15 @@
   letter-spacing: -0.01em;
   color: var(--mai-text);
   padding: 2px 0;
+  margin-right: auto;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
+  /*   justify-content: space-between; */
   height: 32px;
-  align-items: center;
+  gap: 16px;
+  /*   align-items: center; */
   margin-bottom: 24px;
 }
 

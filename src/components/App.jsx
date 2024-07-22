@@ -76,7 +76,10 @@ export const App = () => {
             <Route
               path="/tracker"
               element={
-                <PrivateRoute redirectTo="/" component={<TrackerPage />} />
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<TrackerPage />}
+                />
               }
             />
 
