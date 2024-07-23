@@ -17,8 +17,8 @@ const WaterModal = ({ onClose, onSubmit, operationType, defaultValues }) => {
       </button>
       <h2 className={css.waterModalTitle}>
         {operationType === 'add'
-          ? 'Add Water'
-          : 'Edit the entered amount of water'}
+          ? t('modals.addHeader')
+          : t('modals.editHeader')}
       </h2>
       {operationType === 'add' ? (
         <p className={css.text}>{t('modals.addText')}</p>

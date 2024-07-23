@@ -70,7 +70,9 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
           >
             <Icon className={css.icon} width="28" height="28" id="icon-minus" />
           </button>
-          <span className={css.amount}>{`${watch('amount')} ml`}</span>
+          <span className={css.amount}>{`${watch('amount')} ${t(
+            'trackerPage.ml'
+          )}`}</span>
           <button
             className={css.amountBtn}
             type="button"
