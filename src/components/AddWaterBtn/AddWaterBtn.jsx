@@ -32,7 +32,6 @@ const AddWaterBtn = ({
 
   const onSubmit = data => {
     const { amount, time } = data;
-    console.log(time);
     dispatch(addWater({ time: time, volume: amount.toString() }));
     onClose();
   };
