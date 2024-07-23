@@ -7,7 +7,10 @@ import useModal from '../../hooks/useOpenClose.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { selectSelectedDate } from '../../redux/water/selectors.js';
 import { isToday } from 'date-fns';
+import { useTranslation } from 'react-i18next';
+
 import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
+
 
 const AddWaterBtn = ({
   buttonClassName,
@@ -19,7 +22,8 @@ const AddWaterBtn = ({
   operationType = 'add',
   defaultValues = { time: '07:00', amount: 250 },
 }) => {
-  const { isOpen, openModal, closeModal: onClose } = useModal(false);
+  const { t } = useTranslation();
+  const { isOpen, openModal, closeModal: onClose } = useModal();
   const dispatch = useDispatch();
   const selectedDate = useSelector(selectSelectedDate);
 
@@ -44,7 +48,7 @@ const AddWaterBtn = ({
           height={iconHeight}
         />
         <span className={`${css.addWaterSpan} ${spanClassName}`}>
-          Add water
+          {t('trackerPage.addWater')}
         </span>
       </Button>
       <ModalWrapper modalIsOpen={isOpen} closeModal={onClose}>

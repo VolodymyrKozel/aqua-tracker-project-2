@@ -7,7 +7,11 @@ import {
   selectIsLoading,
 } from '../../redux/water/selectors.js';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 const WaterList = () => {
+  const { t } = useTranslation();
+
   const itemVariants = {
     hidden: { opacity: 0, scale: 0.8 }, // Initial state
     visible: { opacity: 1, scale: 1 }, // Final state
@@ -17,9 +21,7 @@ const WaterList = () => {
   return isLoading ? (
     <Loader variant="center" className={css.loader} />
   ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
-    <div className={css.noWaterAdded}>
-      You haven&apos;t had any water today. Start now!
-    </div>
+    <div className={css.noWaterAdded}>{t('trackerPage.noWater')}</div>
   ) : (
     <div className={css.waterListWrap}>
       <motion.ul
