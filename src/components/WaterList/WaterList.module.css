@@ -1,7 +1,7 @@
 .waterListWrap {
   padding: 24px 0px 24px 0px;
   overflow-x: auto;
-  height: 134px;
+  height: fit-content;
   margin-bottom: 40px;
 }
 
