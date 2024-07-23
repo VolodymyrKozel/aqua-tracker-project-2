@@ -4,8 +4,11 @@ import CalendarPagination from '../Calendar/CalendarPagination/CalendarPaginatio
 import WaterConsumptionChart from '../WaterConsumptionChart/WaterConsumptionChart';
 import css from './MonthInfo.module.css';
 import Icon from '../shared/Icon/Icon';
+import { useTranslation } from 'react-i18next';
 
 const MonthInfo = () => {
+  const { t } = useTranslation();
+
   const [showCalendar, setShowCalendar] = useState(true);
 
   const toggleView = () => {
@@ -15,7 +18,7 @@ const MonthInfo = () => {
   return (
     <div className={css.container}>
       <div className={css.header}>
-        <h1 className={css.title}>Month</h1>
+        <h1 className={css.title}>{t('trackerPage.month')}</h1>
         <div className={css.wrapper}>
           <div className={css.header}>
             <CalendarPagination />
