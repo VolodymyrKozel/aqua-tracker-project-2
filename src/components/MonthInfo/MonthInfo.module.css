@@ -35,6 +35,12 @@
   /* padding-top: 20px; */
 }
 
+.icon {
+  fill: transparent;
+  stroke-width: 1.80px;
+    stroke: #323f47;
+}
+
 @media screen and (min-width: 768px) {
   .title {
     font-family: var(--font-family);

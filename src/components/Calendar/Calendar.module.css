@@ -17,6 +17,10 @@
   }
 }
 @media (min-width: 1440px) {
+  .listContainer {
+      margin-top: 24px;
+    }
+
   .list {
     width: 608px;
     gap: 15px 43px;
