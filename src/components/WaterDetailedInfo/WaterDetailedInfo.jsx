@@ -2,18 +2,12 @@ import UserPanel from '../UserPanel/UserPanel.jsx';
 import DailyInfo from '../DailyInfo/DailyInfo.jsx';
 import css from './WaterDetailedInfo.module.css';
 import MonthInfo from '../MonthInfo/MonthInfo.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import {
-  getWaterDataDay,
-  getWaterDataMonthly,
-} from '../../redux/water/operations.js';
-import { selectDailyNorma } from '../../redux/users/selectors.js';
-import { addMonths, format, getMonth, getYear, subMonths } from 'date-fns';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { selectDailyNorma } from '../../redux/users/selectors.js';
 
 const WaterDetailedInfo = () => {
-  const dispatch = useDispatch();
-  const dailyNorma = useSelector(selectDailyNorma);
+  // const dispatch = useDispatch();
+  // const dailyNorma = useSelector(selectDailyNorma);
   /*   const getMonthsData = () => {
     const month = getMonth(selectedDate) + 1;
     const year = getYear(selectedDate);

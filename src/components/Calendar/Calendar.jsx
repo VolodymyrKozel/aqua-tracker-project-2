@@ -12,7 +12,6 @@ import Loader from '../shared/Loader/Loader';
 const Calendar = () => {
   const selectedDate = useSelector(selectSelectedDate);
   const monthlyData = useSelector(selectMonthlyWater);
-  const currentDate = new Date();
   const monthStart = startOfMonth(selectedDate);
   const monthEnd = endOfMonth(monthStart);
   const isLoading = useSelector(state => state.water.isLoading);

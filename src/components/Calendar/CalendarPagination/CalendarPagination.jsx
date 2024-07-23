@@ -1,11 +1,4 @@
-import {
-  addMonths,
-  format,
-  getMonth,
-  getYear,
-  setMonth,
-  subMonths,
-} from 'date-fns';
+import { addMonths, format, getMonth, getYear, subMonths } from 'date-fns';
 import css from './CalendarPagination.module.css';
 import Icon from '../../shared/Icon/Icon';
 import { setDate } from '../../../redux/water/slice';
