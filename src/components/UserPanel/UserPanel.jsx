@@ -9,8 +9,12 @@ export const UserPanel = () => {
   return (
     <div className={css.userPanel}>
       <h2 className={css.userPanelName}>
-        Hello
-        <span className={css.userPanelSpan}>, {user.name}</span>
+        Hello,{' '}
+        <span className={css.userPanelSpan}>
+          {user === ''
+            ? user.email.substring(0, user.email.indexOf('@'))
+            : user.name}
+        </span>
       </h2>
       <UserBar user={user} />
     </div>
