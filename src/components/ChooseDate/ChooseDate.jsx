@@ -7,11 +7,14 @@ import { useTranslation } from 'react-i18next';
 const ChooseDate = () => {
   const { t } = useTranslation();
   const selectedDate = useSelector(selectSelectedDate);
+  const monthName = format(selectedDate, 'MMMM'); // Get the full month name
+  const formattedMonth = t(`months.${monthName}`); // Translate the month name
+
   return (
     <h3 className={css.chooseDateTitle}>
       {isToday(selectedDate)
         ? t('trackerPage.today')
-        : format(selectedDate, 'd-MMMM')}
+        : `${format(selectedDate, 'd')}, ${formattedMonth}`}
     </h3>
   );
 };

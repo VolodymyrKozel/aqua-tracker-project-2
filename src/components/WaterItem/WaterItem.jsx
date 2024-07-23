@@ -13,8 +13,11 @@ import { formatTime } from '../../utils/dateFunctions.js';
 import { format } from 'date-fns';
 import { selectSelectedDate } from '../../redux/water/selectors.js';
 import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
+import { useTranslation } from 'react-i18next';
 
 const WaterItem = ({ item }) => {
+  const { t } = useTranslation();
+
   const selectedDate = useSelector(selectSelectedDate);
   item.date == format(selectedDate, 'd');
   const {
@@ -50,7 +53,10 @@ const WaterItem = ({ item }) => {
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
       <div className={css.waterItemWrap}>
-        <p className={css.waterItemMl}>{item.volume} ml</p>
+        <p className={css.waterItemMl}>
+          {item.volume}
+          {t('trackerPage.ml')}
+        </p>
         <p className={css.waterItemData}>
           {item.time && !item.date
             ? formatTime(item.time)

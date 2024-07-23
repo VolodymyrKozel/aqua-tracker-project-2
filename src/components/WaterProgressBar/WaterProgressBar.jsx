@@ -6,8 +6,11 @@ import {
   selectPercentageWater,
 } from '../../redux/water/selectors.js';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const WaterProgressBar = () => {
+  const { t } = useTranslation();
+
   const dailyNorma = useSelector(selectDailyNorma);
   const dailyWater = useSelector(selectDailyWater);
   const percentageWater = useSelector(selectPercentageWater);
@@ -29,7 +32,7 @@ const WaterProgressBar = () => {
   return (
     <div className={css.containerProgressBar}>
       <div className={css.container}>
-        <h2 className={css.day}>Today</h2>
+        <h2 className={css.day}>{t('trackerPage.today')}</h2>
 
         <div className={css.waterProgressBarWrapper}>
           <div className={css.waterProgressBar}>
