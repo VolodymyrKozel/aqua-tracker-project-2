@@ -26,7 +26,7 @@ const WaterDetailedInfo = () => {
       })
     );
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma }));
-  }, []);
+  }, [dispatch, selectedDate, dailyNorma]);
   return (
     <motion.section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>

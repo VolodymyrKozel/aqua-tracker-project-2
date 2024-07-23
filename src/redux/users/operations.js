@@ -72,7 +72,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await instance.get(`users/current`);
       return data.user;
     } catch (error) {
-      toast.error('You are not logged in');
+      /* toast.error('You are not logged in'); */
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
     }

@@ -54,18 +54,19 @@ const waterSlice = createSlice({
       .addCase(addWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        /*      console.log(payload.data);
         state.waterDataDay.arrDailyWater.push(payload.data); // Update the state with the new water entry
         const newValue = addPercentage(state, payload.data);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
           newValue;
-        state.waterDataDay.percentage = newValue;
+        state.waterDataDay.percentage = newValue; */
       })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // Update the state with the updated water entry
+        /*        // Update the state with the updated water entry
         const newValue = addPercentage(state, action.payload.data);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
           newValue;
@@ -76,7 +77,7 @@ const waterSlice = createSlice({
         );
         if (index !== -1) {
           state.waterDataDay.arrDailyWater[index] = action.payload.data; // Update the water entry
-        }
+        } */
       })
       .addCase(updateWater.rejected, handlingRejected)
       .addCase(deleteWater.pending, handlingPending)
@@ -84,14 +85,14 @@ const waterSlice = createSlice({
         console.log(state);
         state.isLoading = false;
         state.error = null;
-        const newValue = deletePercentage(state, payload);
+        /*         const newValue = deletePercentage(state, payload);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
           newValue;
         state.waterDataDay.percentage = newValue;
         state.waterDataDay.arrDailyWater =
           state.waterDataDay.arrDailyWater.filter(
             water => water._id !== meta.arg._id // Remove the deleted water entry
-          );
+          ); */
       })
       .addCase(deleteWater.rejected, handlingRejected);
   },

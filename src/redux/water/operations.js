@@ -43,6 +43,16 @@ export const addWater = createAsyncThunk(
     try {
       const res = await instance.post('water/add-water', waterData);
       toast.success('Water added successfully');
+      const dailyNorma = thunkAPI.getState().users.user.waterDrink;
+      await thunkAPI.dispatch(
+        getWaterDataDay({
+          date: thunkAPI.getState().water.selectedDate,
+          dailyNorma,
+        })
+      );
+      await thunkAPI.dispatch(
+        getWaterDataMonthly({ month: '07', year: '2024', dailyNorma })
+      );
       res.data.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
@@ -58,9 +68,16 @@ export const deleteWater = createAsyncThunk(
     try {
       const res = await instance.delete(`water/delete/${item._id}`);
       toast.success('Water deleted successfully');
-      res.data = {};
-      res.data.volume = item.volume;
-      res.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
+      const dailyNorma = thunkAPI.getState().users.user.waterDrink;
+      await thunkAPI.dispatch(
+        getWaterDataDay({
+          date: thunkAPI.getState().water.selectedDate,
+          dailyNorma,
+        })
+      );
+      await thunkAPI.dispatch(
+        getWaterDataMonthly({ month: '07', year: '2024', dailyNorma })
+      );
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -91,6 +108,16 @@ export const updateWater = createAsyncThunk(
           dailyNorma: thunkAPI.getState().users.user.waterDrink,
         })
       ); */
+      const dailyNorma = thunkAPI.getState().users.user.waterDrink;
+      await thunkAPI.dispatch(
+        getWaterDataDay({
+          date: thunkAPI.getState().water.selectedDate,
+          dailyNorma,
+        })
+      );
+      await thunkAPI.dispatch(
+        getWaterDataMonthly({ month: '07', year: '2024', dailyNorma })
+      );
       res.data.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
