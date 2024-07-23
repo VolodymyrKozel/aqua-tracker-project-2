@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import css from './CalendarItem.module.css';
 import clsx from 'clsx';
-import { isSameDay } from 'date-fns';
+import { isSameDay, isToday } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedDate } from '../../../redux/water/selectors';
 import { getWaterDataDay } from '../../../redux/water/operations';
@@ -39,7 +39,11 @@ const CalendarItem = ({ data }) => {
           },
         }}
         ref={currentBtn}
-        className={clsx(css.btn, data.totalValue < 100 && css.btnNotEnough)}
+        className={clsx(
+          css.btn,
+          data.totalValue < 100 && css.btnNotEnough,
+          isToday(data.date) && css.btnToday
+        )}
         onClick={handleClickDay}
       >
         <p className={css.number}>{data.day}</p>
