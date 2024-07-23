@@ -13,7 +13,7 @@ export const UserPanel = () => {
       <h2 className={css.userPanelName}>
         {t('trackerPage.greeting')}
         <span className={css.userPanelSpan}>
-          ,
+          ,&nbsp;
           {user === ''
             ? user.email.substring(0, user.email.indexOf('@'))
             : user.name}
