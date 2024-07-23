@@ -130,7 +130,7 @@ const usersSlice = createSlice({
       .addCase(updateAvatar.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.user = { ...state.user, avatarURL: payload };
+        state.user = { ...state.user, ...payload };
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         state.isLoading = false;
