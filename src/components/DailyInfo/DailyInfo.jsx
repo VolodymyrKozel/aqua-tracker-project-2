@@ -8,6 +8,7 @@ const DailyInfo = () => {
     <>
       <div className={css.dailyInfo}>
         <ChooseDate />
+        <div   className ="reactour__waterAddCard">
         <AddWaterBtn
           buttonClassName={css.dailyInfoButton}
           iconClassName={css.dailyInfoIcon}
@@ -16,6 +17,8 @@ const DailyInfo = () => {
           iconWidth={30}
           iconHeight={30}
         />
+        </div>
+    
       </div>
       <WaterList />
     </>

@@ -36,7 +36,7 @@ const AddWaterBtn = ({
     onClose();
   };
   return (
-    <div>
+    <div className="reactour__waterAdd">
       <Button
         onClick={openModal}
         variant=".outline"

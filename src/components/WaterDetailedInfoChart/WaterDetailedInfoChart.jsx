@@ -37,7 +37,6 @@
 
 // export default WaterDetailedInfoChart;
 
-
 import UserPanel from '../UserPanel/UserPanel.jsx';
 import DailyInfo from '../DailyInfo/DailyInfo.jsx';
 import css from './WaterDetailedInfoChart.module.css';
@@ -51,7 +50,9 @@ import MonthInfoChart from '../MonthInfoChart/MonthInfoChart.jsx';
 const WaterDetailedInfoChart = () => {
   const dispatch = useDispatch();
   const dailyNorma = useSelector(selectDailyNorma) || '200';
-  const [selectedDate, setSelectedDate] = useState(format(new Date(), 'yyyy-MM-dd'));
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), 'yyyy-MM-dd')
+  );
 
   useEffect(() => {
     dispatch(getWaterDataDay({ date: selectedDate, dailyNorma }));
@@ -61,8 +62,9 @@ const WaterDetailedInfoChart = () => {
     <section className={css.sectionWaterDetailInfo}>
       <div className={css.waterDetailInfoContainer}>
         <UserPanel />
+
         <DailyInfo selectedDate={selectedDate} />
-        <div style={{ flexGrow: 1 }} /> 
+        <div style={{ flexGrow: 1 }} />
         <MonthInfoChart
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}

@@ -9,6 +9,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Loader from './components/shared/Loader/Loader';
 import './index.css';
 import './i18/i18n.js';
+import TranslationProvider from './tourProvider/TranslationProvider.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={<Loader />} persistor={persistor}>
         <BrowserRouter>
           <HelmetProvider>
+            <TranslationProvider>
             <App />
+            </TranslationProvider>
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>

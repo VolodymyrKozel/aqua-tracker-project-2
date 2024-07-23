@@ -23,7 +23,8 @@ const WaterList = () => {
   ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
     <div className={css.noWaterAdded}>{t('trackerPage.noWater')}</div>
   ) : (
-    <div className={css.waterListWrap}>
+    <div className='reactour__waterCardList'>
+          <div className={css.waterListWrap}>
       <motion.ul
         initial="hidden"
         animate="visible"
@@ -44,6 +45,8 @@ const WaterList = () => {
         ))}
       </motion.ul>
     </div>
+    </div>
+
   );
 };
 

@@ -16,35 +16,41 @@ const MonthInfo = () => {
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.header}>
-        {showCalendar ? t('trackerPage.month') : t('trackerPage.statistics')}
-        <div className={css.wrapper}>
-          <div className={css.header}>
-            <CalendarPagination />
-          </div>
-          <div className={css.buttons}>
-            <button onClick={toggleView} className={css.toggleButton}>
-              {showCalendar ? (
-                <Icon
-                  className={css.icon}
-                  width="20"
-                  height="20"
-                  id="icon-pie-chart-02"
-                />
-              ) : (
-                <Icon
-                  className={css.icon}
-                  width="20"
-                  height="20"
-                  id="icon-part-of-circle"
-                />
-              )}
-            </button>
+    <div className='reactour__waterMonthInfo'>
+      <div className={css.container}>
+        <div className={css.header}>
+          <p className={css.headerTitle}>
+            {showCalendar ? t('trackerPage.month') : t('trackerPage.statistics')}
+          </p>
+          <div className={css.wrapper}>
+            <div className={css.header}>
+              <CalendarPagination />
+            </div>
+            <div className={css.buttons}>
+              <button onClick={toggleView} className={css.toggleButton}>
+                {showCalendar ? (
+                  <div className='reactour__waterStatisticInfo'>
+                    <Icon
+                      className={css.icon}
+                      width="20"
+                      height="20"
+                      id="icon-pie-chart-02"
+                    />
+                  </div>
+                ) : (
+                  <Icon
+                    className={css.icon}
+                    width="20"
+                    height="20"
+                    id="icon-part-of-circle"
+                  />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+        <div>{showCalendar ? <Calendar /> : <WaterConsumptionChart />}</div>
       </div>
-      <div>{showCalendar ? <Calendar /> : <WaterConsumptionChart />}</div>
     </div>
   );
 };

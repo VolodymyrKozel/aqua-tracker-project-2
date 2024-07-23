@@ -31,6 +31,7 @@ const WaterProgressBar = () => {
 
   return (
     <div className={css.containerProgressBar}>
+      <div className='reactour__waterPercentage'>
       <div className={css.container}>
         <h2 className={css.day}>{t('trackerPage.today')}</h2>
 
@@ -62,6 +63,8 @@ const WaterProgressBar = () => {
           <span className={css.label}>100%</span>
         </div>
       </div>
+      </div>
+     
     </div>
   );
 };

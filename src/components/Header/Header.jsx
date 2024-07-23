@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 import css from './Header.module.css';
+import { useTour } from '@reactour/tour'; 
 
 export const Header = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { setIsOpen } = useTour();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -30,6 +32,12 @@ export const Header = () => {
         >
         УКР
         </button>
+        <button
+            className={`first-step ${css.tour}`}
+            onClick={() => setIsOpen(true)}
+          >
+            {t('header.guide')}
+          </button>
       </div>
     </header>
   );

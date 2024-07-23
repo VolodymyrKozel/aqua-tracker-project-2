@@ -52,6 +52,7 @@ const WaterItem = ({ item }) => {
   return (
     <div className={css.waterItem} ref={modalRef}>
       <IconGlass className={css.waterIconGlass} />
+
       <div className={css.waterItemWrap}>
         <p className={css.waterItemMl}>
           {item.volume}

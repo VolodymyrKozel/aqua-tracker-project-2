@@ -15,7 +15,9 @@ const WaterMainInfo = () => {
       transition={{ duration: 0.5 }} // Duration of the animation
     >
       <div className={css.logoContainer}>
-        <Logo />
+        <div className="reactour__Bye">
+          <Logo />
+        </div>
       </div>
       <WaterDailyNorma />
       <WaterProgressBar />
