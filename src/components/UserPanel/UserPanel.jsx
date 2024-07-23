@@ -5,13 +5,15 @@ import { selectUser } from '../../redux/users/selectors.js';
 import { useTranslation } from 'react-i18next';
 
 export const UserPanel = () => {
+  const { t } = useTranslation();
   const user = useSelector(selectUser);
 
   return (
     <div className={css.userPanel}>
       <h2 className={css.userPanelName}>
-        Hello,{' '}
+        {t('trackerPage.greeting')}
         <span className={css.userPanelSpan}>
+          ,
           {user === ''
             ? user.email.substring(0, user.email.indexOf('@'))
             : user.name}
