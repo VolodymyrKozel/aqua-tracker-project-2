@@ -83,7 +83,7 @@
 
   .waterMainInfoButton {
     padding: 18px 30px;
-    width: 178px;
+    width: fit-content;
     height: 60px;
   }
 
