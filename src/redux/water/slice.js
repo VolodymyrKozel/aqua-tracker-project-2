@@ -7,6 +7,7 @@ import {
   updateWater,
 } from './operations';
 import { format } from 'date-fns';
+import { addPercentage } from '../../utils/sliceHelper';
 
 const handlingPending = state => {
   state.isLoading = true;
@@ -49,10 +50,12 @@ const waterSlice = createSlice({
       })
       .addCase(getWaterDataMonthly.rejected, handlingRejected)
       .addCase(addWater.pending, handlingPending)
-      .addCase(addWater.fulfilled, (state, action) => {
+      .addCase(addWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.waterDataDay.arrDailyWater.push(action.payload.data); // Update the state with the new water entry
+        state.waterDataDay.arrDailyWater.push(payload.data); // Update the state with the new water entry
+        state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
+          addPercentage(state, payload.data);
       })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
