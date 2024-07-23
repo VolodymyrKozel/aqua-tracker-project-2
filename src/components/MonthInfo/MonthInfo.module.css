@@ -1,11 +1,10 @@
 .title {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: var(--mai-text);
-  padding: 2px 0;
+  font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #323f47;
 }
 
 .header {
@@ -36,9 +35,9 @@
 }
 
 .icon {
+stroke-width: 1.80px;
+  stroke: #323f47;
   fill: transparent;
-  stroke-width: 1.80px;
-    stroke: #323f47;
 }
 
 @media screen and (min-width: 768px) {

@@ -30,14 +30,14 @@ const MonthInfo = () => {
                   className={css.icon}
                   width="20"
                   height="20"
-                  id="icon-big-part-of-circle"
+                  id="icon-pie-chart-02"
                 />
               ) : (
                 <Icon
                   className={css.icon}
                   width="20"
                   height="20"
-                  id="icon-part-of-cirlce"
+                  id="icon-part-of-circle"
                 />
               )}
             </button>
