@@ -82,7 +82,6 @@ const waterSlice = createSlice({
       .addCase(updateWater.rejected, handlingRejected)
       .addCase(deleteWater.pending, handlingPending)
       .addCase(deleteWater.fulfilled, (state, { meta, payload }) => {
-        console.log(state);
         state.isLoading = false;
         state.error = null;
         /*         const newValue = deletePercentage(state, payload);

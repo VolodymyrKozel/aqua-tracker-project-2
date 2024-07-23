@@ -38,7 +38,7 @@ const usersSlice = createSlice({
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        /*       console.log(payload);
+        /*     
         state.user = payload.data.data.user;
         state.token = payload.accessToken; */
         /*  state.isLoggedIn = true; */
