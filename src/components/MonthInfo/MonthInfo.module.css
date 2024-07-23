@@ -12,12 +12,20 @@
   display: flex;
   justify-content: space-between;
   height: 32px;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 24px;
 }
 .wrapper {
   display: flex;
   gap: 16px;
+}
+.toggleButton {
+  width: 24px;
+  height: 24px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .container {

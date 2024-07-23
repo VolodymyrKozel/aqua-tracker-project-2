@@ -25,15 +25,15 @@ const MonthInfo = () => {
               {showCalendar ? (
                 <Icon
                   className={css.icon}
-                  width="8"
-                  height="12"
+                  width="20"
+                  height="20"
                   id="icon-big-part-of-circle"
                 />
               ) : (
                 <Icon
                   className={css.icon}
-                  width="8"
-                  height="12"
+                  width="20"
+                  height="20"
                   id="icon-part-of-cirlce"
                 />
               )}
