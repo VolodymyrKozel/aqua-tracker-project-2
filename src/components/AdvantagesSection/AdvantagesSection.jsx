@@ -12,8 +12,11 @@ import {
   pic3_2x,
 } from './images/pictureSmall';
 import List from '../shared/List/List';
+import { useTranslation } from 'react-i18next';
 
 function AdvantagesSection() {
+  const { t } = useTranslation();
+
   const data = pictureData.map(item => ({
     ...item,
     urlMobile: images[item.urlMobile],
@@ -70,7 +73,9 @@ function AdvantagesSection() {
             </li>
           </List>
           <p className={css.customer_text}>
-            Our<span> happy </span>customers
+            {`${t('advantagesSection.Our')} `}
+            <span>{`${t('advantagesSection.happy')} `}</span>
+            {t('advantagesSection.customers')}
           </p>
         </div>
       </div>
@@ -82,10 +87,12 @@ function AdvantagesSection() {
             width="8"
             height="8"
           />
-          <p className={css.habit_text}>Habit drive</p>
+          <p className={css.habit_text}>{t('advantagesSection.habit')}</p>
         </button>
-        <button className={css.view_statistic}>View statistics</button>
-        <button className={css.rate}>Personal rate setting</button>
+        <button className={css.view_statistic}>
+          {t('advantagesSection.statistics')}
+        </button>
+        <button className={css.rate}>{t('advantagesSection.rate')}</button>
       </div>
     </section>
   );
