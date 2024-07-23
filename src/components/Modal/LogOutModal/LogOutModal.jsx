@@ -3,8 +3,10 @@ import Button from '../../shared/Button/Button';
 import css from './LogOutModal.module.css';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/users/operations';
+import { useTranslation } from 'react-i18next';
 
 const LogOutModal = ({ closeModal }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -20,14 +22,14 @@ const LogOutModal = ({ closeModal }) => {
         id="icon-cross"
         onClick={closeModal}
       />
-      <h3 className={css.modalLogoutTitle}>Log out</h3>
-      <p className={css.modalLogoutText}>Do you really want to leave?</p>
+      <h3 className={css.modalLogoutTitle}>{t('modals.logout')}</h3>
+      <p className={css.modalLogoutText}>{t('modals.leave')}?</p>
       <div className={css.modalButtonContainer}>
         <Button onClick={handleLogOut} variant="primary">
-          Log out
+          {t('modals.logout')}
         </Button>
         <Button variant="default" onClick={closeModal}>
-          Cancel
+          {t('modals.cancel')}
         </Button>
       </div>
     </div>
