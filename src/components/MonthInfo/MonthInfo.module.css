@@ -13,6 +13,12 @@
   height: 32px;
   align-items: baseline;
   margin-bottom: 24px;
+  font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #323f47;
 }
 .wrapper {
   display: flex;
@@ -41,7 +47,7 @@ stroke-width: 1.80px;
 }
 
 @media screen and (min-width: 768px) {
-  .title {
+  .header {
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 28px;
@@ -66,5 +72,11 @@ stroke-width: 1.80px;
   .header {
     margin-bottom: 8px;
     margin-top: 16px;
+    font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.14286;
+      letter-spacing: -0.01em;
+      color: #323f47;
   }
 }

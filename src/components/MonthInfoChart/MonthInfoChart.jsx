@@ -7,8 +7,10 @@ import { getMonth, getYear } from 'date-fns';
 import { selectDailyNorma } from '../../redux/users/selectors';
 import WaterConsumptionChart from '../WaterConsumptionChart/WaterConsumptionChart';
 import Loader from '../shared/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const dailyNorma = useSelector(selectDailyNorma);
   const isLoading = useSelector(state => state.water.isLoading);
@@ -26,7 +28,7 @@ const MonthInfoChart = ({ selectedDate, setSelectedDate }) => {
   ) : (
     <div className={css.container}>
       <div className={css.header}>
-        <h1 className={css.title}>Statistics</h1>
+        <h1 className={css.title}>{t('trackerPage.statistics')}</h1>
         <CalendarPagination selectedDate={selectedDate} />
       </div>
       <div className={css.chartWrapper}>

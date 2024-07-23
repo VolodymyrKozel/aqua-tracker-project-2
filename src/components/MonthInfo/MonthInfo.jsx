@@ -18,7 +18,7 @@ const MonthInfo = () => {
   return (
     <div className={css.container}>
       <div className={css.header}>
-        <h1 className={css.title}>{t('trackerPage.month')}</h1>
+        {showCalendar ? t('trackerPage.month') : t('trackerPage.statistics')}
         <div className={css.wrapper}>
           <div className={css.header}>
             <CalendarPagination />
