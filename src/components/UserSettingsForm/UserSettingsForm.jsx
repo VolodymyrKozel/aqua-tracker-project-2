@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,6 +20,8 @@ export default function UserSettingsForm({ closeModal }) {
   const user = useSelector(selectUser);
   const userId = user.id;
   const avatarURL = user.avatarURL;
+  const [preview, setPreview] = useState(avatarURL || avatar_photo_default);
+
   const {
     register,
     handleSubmit,
@@ -55,9 +57,22 @@ export default function UserSettingsForm({ closeModal }) {
   const onFileChange = e => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      dispatch(updateAvatar({ file: selectedFile, userId })); // Передача userId разом з файлом
+      const objectUrl = URL.createObjectURL(selectedFile);
+      setPreview(objectUrl);
+      dispatch(updateAvatar({ file: selectedFile, userId }))
+        .unwrap()
+        .then(res => {
+          setPreview(res.avatarURL);
+        });
     }
   };
+
+  /*  const onFileChange = e => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      dispatch(updateAvatar({ file: selectedFile, userId })); // Передача userId разом з файлом
+    }
+  }; */
 
   // функция расчёта нормы воды
   const calculate = () => {
@@ -83,7 +98,7 @@ export default function UserSettingsForm({ closeModal }) {
       <form className={css.form} onSubmit={handleSubmit(submit)}>
         <div className={css.imageWrap}>
           <img
-            src={avatarURL || avatar_photo_default}
+            src={preview}
             // динамически отображаем выбранное пользователем изображение
             // (если оно выбрано) или аватар пользователя(переменная avatarURL) (если изображение не выбрано или не загружено).
             alt="user avatar"
