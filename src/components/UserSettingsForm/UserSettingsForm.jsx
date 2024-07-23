@@ -67,13 +67,6 @@ export default function UserSettingsForm({ closeModal }) {
     }
   };
 
-  /*  const onFileChange = e => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      dispatch(updateAvatar({ file: selectedFile, userId })); // Передача userId разом з файлом
-    }
-  }; */
-
   // функция расчёта нормы воды
   const calculate = () => {
     const weight = parseFloat(watch('weight')) || 0;
