@@ -14,7 +14,7 @@ export const UserPanel = () => {
         {t('trackerPage.greeting')}
         <span className={css.userPanelSpan}>
           ,&nbsp;
-          {user === ''
+          {user.name === 'unknown'
             ? user.email.substring(0, user.email.indexOf('@'))
             : user.name}
         </span>
