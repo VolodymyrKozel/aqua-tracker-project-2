@@ -7,8 +7,10 @@ import LogOutModal from '../Modal/LogOutModal/LogOutModal.jsx';
 
 import css from './UserBarPopover.module.css';
 import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function UserBarPopover({ onClose }) {
+  const { t } = useTranslation();
   const popoverRef = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
@@ -50,7 +52,7 @@ export default function UserBarPopover({ onClose }) {
           height="16"
           id={'icon-settings'}
         />
-        <p className={css.popoverText}>Setting</p>
+        <p className={css.popoverText}>{t('trackerPage.settings')}</p>
       </button>
 
       <button
@@ -64,7 +66,7 @@ export default function UserBarPopover({ onClose }) {
           height="16"
           id={'icon-log-out'}
         />
-        <p className={css.popoverText}>Log out</p>
+        <p className={css.popoverText}>{t('trackerPage.logout')}</p>
       </button>
 
       <ModalWrapper modalIsOpen={isModalOpen} closeModal={closeModal}>

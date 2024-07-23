@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
 import css from './CalendarItem.module.css';
 import clsx from 'clsx';
-import { isSameDay } from 'date-fns';
+import { isSameDay, isToday } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSelectedDate } from '../../../redux/water/selectors';
 import { getWaterDataDay } from '../../../redux/water/operations';
 import { selectDailyNorma } from '../../../redux/users/selectors';
 import { setDate } from '../../../redux/water/slice';
+import { motion } from 'framer-motion';
 
 const CalendarItem = ({ data }) => {
   const dispatch = useDispatch();
@@ -26,13 +27,27 @@ const CalendarItem = ({ data }) => {
 
   return (
     <li className={css.item} key={data.day}>
-      <button
+      <motion.button
+        initial={{ x: 0, y: 0 }}
+        whileHover={{
+          x: [0, -2, 2, 0],
+          /*  y: [0, 2, -2, 0], */
+          transition: {
+            duration: 0.2,
+            repeat: Infinity,
+            repeatType: 'loop',
+          },
+        }}
         ref={currentBtn}
-        className={clsx(css.btn, data.totalValue < 100 && css.btnNotEnough)}
+        className={clsx(
+          css.btn,
+          data.totalValue < 100 && css.btnNotEnough,
+          isToday(data.date) && css.btnToday
+        )}
         onClick={handleClickDay}
       >
         <p className={css.number}>{data.day}</p>
-      </button>
+      </motion.button>
       <p className={css.percentage}>{data.totalValue}%</p>
     </li>
   );

@@ -5,50 +5,56 @@ import {
   selectMonthlyWater,
   selectSelectedDate,
 } from '../../redux/water/selectors';
-import { addDays, endOfMonth, format, startOfMonth } from 'date-fns';
+import { format } from 'date-fns';
 import Loader from '../shared/Loader/Loader';
+import { getDaysInMonth } from '../../utils/dateFunctions';
+import { useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 //import { SkeletonCalendar } from '../skeleton/SkeletonCalendar';
 
 const Calendar = () => {
   const selectedDate = useSelector(selectSelectedDate);
   const monthlyData = useSelector(selectMonthlyWater);
-  const monthStart = startOfMonth(selectedDate);
-  const monthEnd = endOfMonth(monthStart);
   const isLoading = useSelector(state => state.water.isLoading);
-  /* const daysInMonth = getDaysInMonth(selectedDate); */
-  let days = [];
-  let day = monthStart;
 
-  while (day <= monthEnd) {
-    let value = 0;
-    const dayFormatted = format(day, 'd');
-    const foundItem = monthlyData.find(
-      item => dayFormatted === item.dayOfMonth.toString()
-    );
-    if (foundItem) {
-      value = foundItem.percentage;
-    }
-
-    days.push({
-      day: dayFormatted,
-      date: format(day, 'yyyy-MM-dd'),
-      totalValue: value,
+  const daysInMonth = getDaysInMonth(selectedDate);
+  const days = useMemo(() => {
+    return daysInMonth.map(day => {
+      let value = 0;
+      const dayFormatted = format(day, 'd');
+      const dayString = format(day, 'yyyy-MM-dd');
+      const foundItem = monthlyData.find(
+        item => dayFormatted === item.dayOfMonth.toString()
+      );
+      if (foundItem) {
+        value = foundItem.percentage;
+      }
+      return {
+        day: dayFormatted,
+        date: dayString,
+        totalValue: value,
+      };
     });
+  }, [monthlyData]);
 
-    day = addDays(day, 1);
-  }
-
-  return isLoading ? (
+  return isLoading && !Array.isArray(days) ? (
     <Loader variant="center" />
   ) : (
     /*   <SkeletonCalendar /> */
-    <>
-      <ul className={css.list}>
+    <div className={css.listContainer}>
+      <motion.ul
+        key={selectedDate}
+        className={css.list}
+        initial={{ y: '100vw' }} // Start off-screen to the right
+        animate={{ y: 0 }} // Animate to the center
+        exit={{ x: '-100vw' }} // Exit off-screen to the left
+        transition={{ duration: 0.5 }} // Duration of the animation
+      >
         {days.map(item => (
           <CalendarItem data={item} key={item.day} />
         ))}
-      </ul>
-    </>
+      </motion.ul>
+    </div>
   );
 };
 

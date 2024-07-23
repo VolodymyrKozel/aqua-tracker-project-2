@@ -12,13 +12,22 @@
   display: flex;
   justify-content: space-between;
   height: 32px;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 24px;
 }
 .wrapper {
   margin-top: 40px;
   display: flex;
   gap: 16px;
+  align-items: baseline;
+}
+.toggleButton {
+  width: 24px;
+  height: 24px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .container {
@@ -46,5 +55,10 @@
     letter-spacing: -0.01em;
     color: var(--mai-text);
     padding: 2px 0;
+  }
+
+  .header {
+    margin-bottom: 8px;
+    margin-top: 16px;
   }
 }

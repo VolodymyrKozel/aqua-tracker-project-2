@@ -10,13 +10,10 @@
 .aboutClientBtn,
 .goBackBtn {
     position: absolute;
-    /* padding: 8px 16px; */
-    color: #323f47;;
-    /* border: none; */
-    /* border-radius: 5px; */
+    color: #323f47;
     cursor: pointer;
     transition: background-color 0.3s ease, opacity 0.3s ease;
-    background-color:transparent;
+    background-color: transparent;
     opacity: 0;
     z-index: 3;
 }
@@ -37,18 +34,18 @@
 
 .aboutClientBtn:hover {
     box-shadow: 0 4px 6px black;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        color: var(--accent-color);
-        box-shadow: 0 8px 16px orange;
-        outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--accent-color);
+    box-shadow: 0 8px 16px orange;
+    outline: none;
 }
 
 .goBackBtn:hover {
     box-shadow: 0 4px 6px black;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        color: var(--accent-color);
-        box-shadow: 0 8px 16px orange;
-        outline: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--accent-color);
+    box-shadow: 0 8px 16px orange;
+    outline: none;
 }
 
 .TeamListItem:nth-child(1):hover .aboutClientBtn,
@@ -80,7 +77,7 @@
     overflow: hidden;
     z-index: 1;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    animation: photoSlideIn 0.8s ease-out forwards;
+    justify-content: center;
 }
 
 .TeamListItem:hover {
@@ -102,7 +99,15 @@
     font-weight: 700;
     font-size: 15px;
     line-height: 1.49333;
-    color:orange;
+    color: orange;
+}
+
+.TeamPhotoButton {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
 }
 
 .TeamPhoto {
@@ -126,7 +131,7 @@
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(0);
     width: 100%;
     height: 90%;
     max-width: 400px;
@@ -139,16 +144,19 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.TeamListItem:hover .TeamDescription {
+.TeamPhotoButton:focus+.TeamName+.TeamRole+.TeamDescription {
     display: flex;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
 }
 
-@keyframes photoSlideIn {
+@keyframes photoSlideInFromTop {
     from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateY(-100%);
     }
 
     to {
@@ -157,8 +165,92 @@
     }
 }
 
+@keyframes photoSlideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes photoSlideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes photoSlideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .TeamListItem:nth-child(1) {
     grid-column: span 4;
     grid-row: 1;
-    animation: photoSlideIn 0.8s ease-out forwards;
+    animation: photoSlideInFromTop 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(2) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(3) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(4) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(5) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(6) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(7) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(8) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(9) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(10) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(11) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(12) {
+    animation: photoSlideInFromLeft 0.8s ease-out forwards;
+}
+
+.TeamListItem:nth-child(13) {
+    animation: photoSlideInFromRight 0.8s ease-out forwards;
 }

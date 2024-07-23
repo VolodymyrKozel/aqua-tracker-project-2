@@ -3,90 +3,94 @@
     "id": "id-1",
     "name": "ВОЛОДИМИР КОЗЕЛ",
     "role": "Team Lead",
-    "photo": "../../../src/Presentation/images/VOLODYMYR_KOZEL.jpg",
+    "photo": "/images/VOLODYMYR_KOZEL.jpg",
     "description": "Розгортання проекту та виконання маршрутизації, встановлення Redux-toolkit, структури папок та файлів, підключення шрифтів, організація командної роботи, перевірка та контроль пул-запитів. Виправлення помилок та доведення проекту до коректної роботи додатку. Розробка компонентів Modals, SignUpForm, SharedLayout, Logo"
   },
   {
     "id": "id-2",
     "name": "МАРИНА НАЗІНА",
     "role": "Scrum Master",
-    "photo": "",
-    "description": "Розробка компонентів WelcomeSection, AdvantagesSection."
+    "photo": "/images/MARYNA_NAZINA.jpg",
+    "description": "Розробка та стилізація компонентів WelcomeSection, AdvantagesSection, документація Swagger"
   },
   {
     "id": "id-3",
     "name": "РУСЛАН ІВАСЮНЬКО",
     "role": "Backend Developer",
-    "photo": "../../../src/Presentation/images/RUSLAN_IVASIUNKO.jpg",
-    "description": "Project deployment, teamwork organisation, verification and control of pull-requests. Correcting errors and bringing the project to the correct operation of the application."
+    "photo": "/images/RUSLAN_IVASIUNKO.jpg",
+    "description": "Backend-розробка для Water. Створення приватних ендпоінтів для Water: додавання, редагування, видалення, отримання даних з вибіркою за день/місяць"
   },
   {
     "id": "id-4",
     "name": "ВІКТОР АЦБЕРГЕР",
     "role": "Backend Developer",
-    "photo": "../../../src/Presentation/images/VIKTOR_ATSBERHER.jpg"
+    "photo": "/images/VIKTOR_ATSBERHER.jpg",
+    "description": "Backend-розробка для Users, реєстрація, логінізація, авторизація. Middleware для перевірки токенів. Приватні ендпоінти для Users. Збереження зображень через Cloudinary. Авторизація через Google. Зміна паролю через ед.пошту. Участь у створенні Swagger"
   },
   {
     "id": "id-6",
     "name": "СОФІЯ ЧАЙКОВСЬКА",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/SOFIIA_CHAIKOVSKA.jpg",
-    "description": "Розробка компонентів UserBarPopover, ."
+    "photo": "/images/SOFIIA_CHAIKOVSKA.jpg",
+    "description": "Розробка та стилізація компонента UserBarPopover"
   },
   {
     "id": "id-5",
     "name": "ЮЛІЯ БРИK",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/YULIIA_BRYK.jpg",
-    "description": "Розробка компонентів DeleteWaterModal, LogOutModal, стилізація WaterForm, WaterModal"
+    "photo": "/images/YULIIA_BRYK.jpg",
+    "description": "Розробка та стилізація  компонентів DeleteWaterModal, LogOutModal, стилізація WaterForm, WaterModal"
   },
   {
     "id": "id-7",
     "name": "ДАНИЛО БОБОШКО",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/DANYLO_BOBOSHKO.jpg",
-    "description": "Розробка компонентів UserSettingsForm, UserSettingsModal."
+    "photo": "/images/DANYLO_BOBOSHKO.jpg",
+    "description": "Розробка компонентів та стилізація UserSettingsForm, UserSettingsModal, NotFoundPage"
   },
   {
     "id": "id-8",
     "name": "МАКСИМ МОХНЮК",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/MAKSYM_MOKHNIUK.jpg",
-    "description": "Розробка компонентів MonthInfo, ChooseDate, Calendar, CalendarItem, CalendarPagination."
+    "photo": "/images/MAKSYM_MOKHNIUK.jpg",
+    "description": "Розробка та стилізація компонентів MonthInfo, ChooseDate, Calendar, CalendarItem, CalendarPagination"
   },
   {
     "id": "id-9",
     "name": "ІГОР СЛАКВА",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/IHOR_SLAKVA.jpg",
-    "description": "Розробка компонентів WaterMainInfo, WaterDailyNorma, AddWaterBtn, WaterProgressBar"
+    "photo": "/images/IHOR_SLAKVA.jpg",
+    "description": "Розробка та стилізація компонентів WaterMainInfo, WaterDailyNorma, AddWaterBtn, WaterProgressBar"
   },
+
   {
     "id": "id-10",
     "name": "ЮРІЙ КОКШАРОВ",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/YURII_KOKSHAROV.jpg",
-    "description": "Розробка компонента ModalWrapper. Реалізація функціоналу візуалізації статистичних даних споживання води за тиждень за допомогою бібліотеки, графік"
+    "photo": "/images/YURII_KOKSHAROV.jpg",
+    "description": "Розробка компонента ModalWrapper. Реалізація функціоналу візуалізації статистичних даних споживання води за тиждень за допомогою бібліотеки"
   },
+
   {
     "id": "id-11",
     "name": "ЄВГЕНІЙ ДЕМЧУК",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/YEVHENII_DEMCHUK.jpg",
-    "description": "Розробка компонентів WaterModal, WaterForm."
+    "photo": "/images/YEVHENII_DEMCHUK.jpg",
+    "description": "Розробка та стилізація компонентів WaterModal, WaterForm."
   },
+
   {
     "id": "id-13",
     "name": "ГАЛИНА МАРЧЕНКО",
     "role": "Frontend Developer",
-    "photo": "",
-    "description": "Розробка компонентів SignInForm, ."
+    "photo": "/images/HALYNA_MARCHENKO.jpg",
+    "description": "Розробка та стилізація компонента SignInForm. Redux SignIn, SignUp form, локалізація SignIn, SignUp Form"
   },
   {
     "id": "id-12",
     "name": "АННА КОРОТКЕВИЧ",
     "role": "Frontend Developer",
-    "photo": "../../../src/Presentation/images/ANNA_KOROTKEVYCH.jpg",
-    "description": "Розробка компонентів WaterDetailedInfo, UserPanel, UserBar, DailyInfo, WaterList, WaterItem, AddWaterBtn"
+    "photo": "/images/ANNA_KOROTKEVYCH.jpg",
+    "description": "Розробка та стилізація компонентів WaterDetailedInfo, UserPanel, UserBar, DailyInfo, WaterList, WaterItem, AddWaterBtn"
   }
 ]

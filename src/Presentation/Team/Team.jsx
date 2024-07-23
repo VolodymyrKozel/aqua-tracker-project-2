@@ -15,7 +15,9 @@ const Team = ({ teams }) => {
                 </svg>
               </Link>
             )}
-            <img className={css.TeamPhoto} src={photo} alt={name} />
+            <button className={css.TeamPhotoButton}>
+              <img className={css.TeamPhoto} src={photo} alt={name} />
+            </button>
             <h1 className={css.TeamName}>{name}</h1>
             <p className={css.TeamRole}>{role}</p>
             <p className={css.TeamDescription}>{description}</p>

@@ -1,78 +1,81 @@
 .waterListWrap {
-    padding: 24px 0px 24px 0px;
-    overflow-x: auto;
+  padding: 24px 0px 24px 0px;
+  overflow-x: auto;
+  height: 134px;
 }
 
 .waterList {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
 
 .noWaterAdded {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(47, 47, 47, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 134px;
+}
+.loader {
+  height: 134px;
+}
+
+.waterListWrap::-webkit-scrollbar {
+  height: 8px;
+}
+
+.waterListWrap::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.waterListWrap::-webkit-scrollbar-thumb:active {
+  background-color: var(--accent-color-hover);
+}
+
+.waterListWrap::-webkit-scrollbar-track {
+  background-color: var(--main-white);
+  border-radius: 9px;
+}
+
+.waterListWrap::-webkit-scrollbar-thumb:vertical {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .waterListWrap {
+    padding: 24px 0px;
+  }
+
+  .waterList {
+    gap: 32px;
+  }
+
+  .noWaterAdded {
+    height: 86px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .waterList {
+    gap: 16px;
+  }
+
+  .noWaterAdded {
     font-weight: 400;
     font-size: 14px;
     line-height: 1;
     color: rgba(47, 47, 47, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 72px;
-   
-}
+    text-align: center;
+    column-gap: 1rem;
+    width: 608px;
+    height: 134px;
 
-.waterListWrap::-webkit-scrollbar {
-    height: 8px;
-}
-
-.waterListWrap::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
-    border-radius: 9px;
-    cursor: pointer;
-}
-
-.waterListWrap::-webkit-scrollbar-thumb:active {
-    background-color: var(--accent-color-hover);
-}
-
-.waterListWrap::-webkit-scrollbar-track {
-    background-color: var(--main-white);
-    border-radius: 9px;
-}
-
-.waterListWrap::-webkit-scrollbar-thumb:vertical {
-    display: none;
-}
-
-@media screen and (min-width: 768px) {
-    .waterListWrap {
-        padding: 24px 0px;
-    }
-
-    .waterList {
-        gap: 32px;
-    }
-
-    .noWaterAdded {
-        height: 86px;
-     }
-}
-
-@media screen and (min-width: 1440px) {
-    .waterList {
-        gap: 16px;
-    }
-
-    .noWaterAdded {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1;
-        color: rgba(47, 47, 47, 0.6);
-        text-align: center;
-        column-gap: 1rem;
-        width: 608px;
-        height: 108px;
-        
-        padding: 24px 0px;
-    }
+    padding: 24px 0px;
+  }
 }

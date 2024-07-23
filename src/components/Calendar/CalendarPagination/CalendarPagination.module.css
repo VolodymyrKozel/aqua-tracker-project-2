@@ -27,4 +27,5 @@
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--main-text);
+  padding: 1px 0;
 }

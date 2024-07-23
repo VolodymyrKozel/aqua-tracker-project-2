@@ -5,14 +5,18 @@ import IconTrash from './IconTrash.jsx';
 import { useRef } from 'react';
 import Button from '../shared/Button/Button';
 import DeleteWaterModal from '../Modal/DeleteWaterModal/DeleteWaterModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteWater, updateWater } from '../../redux/water/operations.js';
 import useModal from '../../hooks/useOpenClose.js';
 import WaterModal from '../Modal/WaterModal/WaterModal.jsx';
 import { formatTime } from '../../utils/dateFunctions.js';
 import { format } from 'date-fns';
+import { selectSelectedDate } from '../../redux/water/selectors.js';
+import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
 
 const WaterItem = ({ item }) => {
+  const selectedDate = useSelector(selectSelectedDate);
+  item.date == format(selectedDate, 'd');
   const {
     isOpen: isOpenEdit,
     openModal: openEdit,
@@ -28,7 +32,8 @@ const WaterItem = ({ item }) => {
   const modalRef = useRef(null);
 
   const handleDelete = () => {
-    dispatch(deleteWater(item._id));
+    dispatch(deleteWater(item));
+
     closeDelete();
   };
 
@@ -59,18 +64,19 @@ const WaterItem = ({ item }) => {
         <Button onClick={openDelete} type="button" className={css.waterItemBtn}>
           <IconTrash className={css.waterIconBtn} />
         </Button>
-
-        <WaterModal
-          modalIsOpen={isOpenEdit}
-          item={item}
-          onSubmit={onSubmit}
-          defaultValues={{ time: item.time, amount: item.volume }}
-          operationType="edit"
-          onClose={closeEdit}
-        />
-        {isOpenDelete && (
+        <ModalWrapper modalIsOpen={isOpenEdit} closeModal={closeEdit}>
+          <WaterModal
+            className={css.waterModal}
+            item={item}
+            onSubmit={onSubmit}
+            defaultValues={{ time: item.time, amount: item.volume }}
+            operationType="edit"
+            onClose={closeEdit}
+          />
+        </ModalWrapper>
+        <ModalWrapper modalIsOpen={isOpenDelete} closeModal={closeDelete}>
           <DeleteWaterModal handleDelete={handleDelete} onClose={closeDelete} />
-        )}
+        </ModalWrapper>
       </div>
     </div>
   );

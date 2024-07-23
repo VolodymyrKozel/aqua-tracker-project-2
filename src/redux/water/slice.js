@@ -73,7 +73,7 @@ const waterSlice = createSlice({
         state.error = null;
         state.waterDataDay.arrDailyWater =
           state.waterDataDay.arrDailyWater.filter(
-            water => water._id !== action.meta.arg // Remove the deleted water entry
+            water => water._id !== action.meta.arg._id // Remove the deleted water entry
           );
       })
       .addCase(deleteWater.rejected, handlingRejected);
