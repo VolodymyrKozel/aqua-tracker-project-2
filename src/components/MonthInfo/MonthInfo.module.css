@@ -18,6 +18,7 @@
 .wrapper {
   display: flex;
   gap: 16px;
+  align-items: baseline;
 }
 .toggleButton {
   width: 24px;
@@ -55,5 +56,10 @@
     letter-spacing: -0.01em;
     color: var(--mai-text);
     padding: 2px 0;
+  }
+
+  .header {
+    margin-bottom: 8px;
+    margin-top: 16px;
   }
 }

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import css from './Header.module.css';
 
 export const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -19,7 +19,7 @@ export const Header = () => {
           })}
           onClick={() => changeLanguage('en')}
         >
-          {t('header.en')}
+          EN
         </button>
         <button
           type="button"
@@ -28,7 +28,7 @@ export const Header = () => {
           })}
           onClick={() => changeLanguage('ua')}
         >
-          {t('header.ua')}
+        УКР
         </button>
       </div>
     </header>
