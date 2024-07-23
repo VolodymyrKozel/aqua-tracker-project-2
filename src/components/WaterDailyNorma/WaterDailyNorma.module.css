@@ -22,12 +22,14 @@
   font-size: 10px;
   line-height: 1;
   color: rgba(47, 47, 47, 0.6);
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .containerDailyNorma {
     padding: 14px 18px;
-    width: 129px;
+    /* width: 129px; */
+    width: fit-content;
     height: 78px;
     gap: 4px;
   }
