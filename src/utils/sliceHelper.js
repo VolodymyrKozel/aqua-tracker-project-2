@@ -16,3 +16,9 @@ export function deletePercentage(state, data) {
   const percentage = currentPercentage(state, data);
   return percentage.currentPercentage - percentage.newPercentage;
 }
+
+export function dateToMonthYear(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  return { year, month };
+}

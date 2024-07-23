@@ -65,6 +65,12 @@ const waterSlice = createSlice({
       .addCase(updateWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        // Update the state with the updated water entry
+        const newValue = addPercentage(state, action.payload.data);
+        state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
+          newValue;
+        state.waterDataDay.percentage = newValue;
+
         const index = state.waterDataDay.arrDailyWater.findIndex(
           water => water._id === action.payload.data._id
         );

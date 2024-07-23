@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { handleError } from '../../utils/handleError';
 import instance from '../../services/instance';
 import toast from 'react-hot-toast';
+import { dateToMonthYear } from '../../utils/sliceHelper';
 
 export const getWaterDataDay = createAsyncThunk(
   'water/fetchDailyWater',
@@ -79,6 +80,17 @@ export const updateWater = createAsyncThunk(
         volume,
       });
       toast.success('Water edited successfully');
+      /*       const { month, year } = dateToMonthYear(
+        thunkAPI.getState().water.selectedDate
+      );
+      console.log(thunkAPI.getState().water.selectedDate); */
+      /*  await thunkAPI.dispatch(
+        getWaterDataMonthly({
+          month,
+          year,
+          dailyNorma: thunkAPI.getState().users.user.waterDrink,
+        })
+      ); */
       res.data.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
