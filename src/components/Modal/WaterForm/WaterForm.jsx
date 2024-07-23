@@ -6,6 +6,8 @@ import css from './WaterForm.module.css';
 // import { useEffect } from 'react';
 import Button from '../../shared/Button/Button';
 import Icon from '../../shared/Icon/Icon';
+import { useTranslation } from 'react-i18next';
+
 const schema = yup.object().shape({
   time: yup.string().required('Please, enter the recorded time!'),
   amount: yup
@@ -16,6 +18,7 @@ const schema = yup.object().shape({
     .required('Please, enter the amount of water drunk!'),
 });
 const WaterForm = ({ onSubmit, defaultValues }) => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -57,7 +60,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <div className={css.amountSection}>
-        <p className={css.amountText}>Amount of water</p>
+        <p className={css.amountText}>{t('modals.amount')}</p>
         <div className={css.buttonBox}>
           <button
             className={css.amountBtn}
@@ -67,7 +70,9 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
           >
             <Icon className={css.icon} width="28" height="28" id="icon-minus" />
           </button>
-          <span className={css.amount}>{`${watch('amount')} ml`}</span>
+          <span className={css.amount}>{`${watch('amount')} ${t(
+            'trackerPage.ml'
+          )}`}</span>
           <button
             className={css.amountBtn}
             type="button"
@@ -85,7 +90,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
       </div>
       <div className={css.inputWrap}>
         <label className={errors.time ? css.labelError : css.amountText}>
-          Recording time:
+          {t('modals.recordingTime')}
           <input
             className={errors.time ? css.inputError : css.input}
             type="time"
@@ -95,7 +100,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
           {errors.time && <p className={css.error}>{errors.time.message}</p>}
         </label>
         <label className={errors.amount ? css.labelError : css.text}>
-          Enter the value of the water used:
+          {t('modals.enterValue')}
           <input
             className={errors.amount ? css.inputError : css.input}
             type="number"
@@ -110,7 +115,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
         </label>
       </div>
       <Button className={css.saveBtn} variant="primary" type="submit">
-        Save
+        {t('modals.save')}
       </Button>
     </form>
   );

@@ -1,8 +1,10 @@
 import WaterForm from '../WaterForm/WaterForm.jsx';
 import css from './WaterModal.module.css';
 import Icon from '../../shared/Icon/Icon.jsx';
+import { useTranslation } from 'react-i18next';
 
 const WaterModal = ({ onClose, onSubmit, operationType, defaultValues }) => {
+  const { t } = useTranslation();
   return (
     <div className={css.waterModal}>
       <button className={css.btn} onClick={onClose}>
@@ -15,13 +17,13 @@ const WaterModal = ({ onClose, onSubmit, operationType, defaultValues }) => {
       </button>
       <h2 className={css.waterModalTitle}>
         {operationType === 'add'
-          ? 'Add Water'
-          : 'Edit the entered amount of water'}
+          ? t('modals.addHeader')
+          : t('modals.editHeader')}
       </h2>
       {operationType === 'add' ? (
-        <p className={css.text}>Choose a value:</p>
+        <p className={css.text}>{t('modals.addText')}</p>
       ) : (
-        <p className={css.text}>Correct entered data:</p>
+        <p className={css.text}>{t('modals.editText')}</p>
       )}
       <WaterForm onSubmit={onSubmit} defaultValues={defaultValues} />
     </div>
