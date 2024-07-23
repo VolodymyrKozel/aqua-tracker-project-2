@@ -10,8 +10,10 @@ import { selectUser } from '../../../redux/users/selectors';
 import { useSelector } from 'react-redux';
 import { IconChevronUp } from '../../UserBar/IconChevronUp';
 import UserSettingsModal from '../../UserSettingsModal/UserSettingsModal';
+import { useTranslation } from 'react-i18next';
 
 const PopoverModal = () => {
+  const { t } = useTranslation();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
@@ -69,7 +71,7 @@ const PopoverModal = () => {
                 height="16"
                 id={'icon-settings'}
               />
-              <p className={css.popoverText}>Setting</p>
+              <p className={css.popoverText}>{t('trackerPage.settings')}</p>
             </button>
             <button
               onClick={openLogOutModal}
@@ -84,7 +86,7 @@ const PopoverModal = () => {
                 height="16"
                 id={'icon-log-out'}
               />
-              <p className={css.popoverText}>Log out</p>
+              <p className={css.popoverText}>{t('trackerPage.logout')}</p>
             </button>
           </div>
         }
