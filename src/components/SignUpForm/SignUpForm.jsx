@@ -48,7 +48,7 @@ const SignUpForm = () => {
     const { repeatPassword, ...rest } = data;
     dispatch(signUp(rest));
     reset();
-    Navigate('/signin');
+    /*  Navigate('/signin'); */
   };
   return (
     <div className={css.container}>
