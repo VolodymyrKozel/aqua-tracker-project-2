@@ -26,6 +26,9 @@
 .btnNotEnough {
   background-color: rgba(50, 63, 71, 0.2);
 }
+.btnToday {
+  background-color: var(--accent-color);
+}
 .btn:focus {
   background-color: var(--main-color);
   color: var(--accent-color);

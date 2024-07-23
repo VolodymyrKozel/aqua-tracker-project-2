@@ -36,7 +36,7 @@ const WaterList = () => {
         {arrDailyWater.map(item => (
           <motion.li
             variants={itemVariants}
-            key={item._id + item.volume}
+            key={item._id}
             className={css.waterItem}
           >
             <WaterItem item={item} />
