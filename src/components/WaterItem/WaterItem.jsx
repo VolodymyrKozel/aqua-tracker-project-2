@@ -60,7 +60,7 @@ const WaterItem = ({ item }) => {
         <p className={css.waterItemData}>
           {item.time && !item.date
             ? formatTime(item.time)
-            : format(item.date, 'HH:mm')}
+            : formatTime(format(item.date, 'HH:mm'))}
         </p>
       </div>
       <div className={css.waterItemBtnWrap}>

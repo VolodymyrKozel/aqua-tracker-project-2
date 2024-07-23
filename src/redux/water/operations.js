@@ -79,6 +79,7 @@ export const updateWater = createAsyncThunk(
         volume,
       });
       toast.success('Water edited successfully');
+      res.data.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);

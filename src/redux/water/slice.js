@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { formatTime } from '../../utils/dateFunctions';
 import {
   addWater,
   deleteWater,
@@ -57,6 +58,7 @@ const waterSlice = createSlice({
         const newValue = addPercentage(state, payload.data);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
           newValue;
+        state.waterDataDay.percentage = newValue;
       })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
@@ -76,8 +78,10 @@ const waterSlice = createSlice({
         console.log(state);
         state.isLoading = false;
         state.error = null;
+        const newValue = deletePercentage(state, payload);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
-          deletePercentage(state, payload);
+          newValue;
+        state.waterDataDay.percentage = newValue;
         state.waterDataDay.arrDailyWater =
           state.waterDataDay.arrDailyWater.filter(
             water => water._id !== meta.arg._id // Remove the deleted water entry
