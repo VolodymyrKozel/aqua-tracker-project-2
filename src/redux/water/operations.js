@@ -42,6 +42,7 @@ export const addWater = createAsyncThunk(
     try {
       const res = await instance.post('water/add-water', waterData);
       toast.success('Water added successfully');
+      res.data.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -56,6 +57,9 @@ export const deleteWater = createAsyncThunk(
     try {
       const res = await instance.delete(`water/delete/${item._id}`);
       toast.success('Water deleted successfully');
+      res.data = {};
+      res.data.volume = item.volume;
+      res.data.dailyNorma = thunkAPI.getState().users.user.waterDrink;
       return res.data;
     } catch (error) {
       const errorMessage = handleError(error);

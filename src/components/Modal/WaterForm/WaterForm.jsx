@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import css from './WaterForm.module.css';
-// import { useEffect } from 'react';
 import Button from '../../shared/Button/Button';
 import Icon from '../../shared/Icon/Icon';
 import { useTranslation } from 'react-i18next';
@@ -34,15 +33,6 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
   useEffect(() => {
     reset(defaultValues);
   }, [defaultValues, reset]);
-
-  const [currentTime, setCurrentTime] = useState('');
-
-  useEffect(() => {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    setCurrentTime(`${hours}:${minutes}`);
-  }, []);
 
   const handleDecrementWaterAmount = () => {
     const currentValue = parseInt(getValues('amount'));
@@ -94,8 +84,7 @@ const WaterForm = ({ onSubmit, defaultValues }) => {
           <input
             className={errors.time ? css.inputError : css.input}
             type="time"
-            value={currentTime}
-            onChange={e => setCurrentTime(e.target.value)}
+            {...register('time')}
           />
           {errors.time && <p className={css.error}>{errors.time.message}</p>}
         </label>
