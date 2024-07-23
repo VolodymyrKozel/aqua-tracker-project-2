@@ -7,7 +7,7 @@ import {
   updateWater,
 } from './operations';
 import { format } from 'date-fns';
-import { addPercentage } from '../../utils/sliceHelper';
+import { addPercentage, deletePercentage } from '../../utils/sliceHelper';
 
 const handlingPending = state => {
   state.isLoading = true;
@@ -54,8 +54,9 @@ const waterSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.waterDataDay.arrDailyWater.push(payload.data); // Update the state with the new water entry
+        const newValue = addPercentage(state, payload.data);
         state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
-          addPercentage(state, payload.data);
+          newValue;
       })
       .addCase(addWater.rejected, handlingRejected)
       .addCase(updateWater.pending, handlingPending)
@@ -71,12 +72,15 @@ const waterSlice = createSlice({
       })
       .addCase(updateWater.rejected, handlingRejected)
       .addCase(deleteWater.pending, handlingPending)
-      .addCase(deleteWater.fulfilled, (state, action) => {
+      .addCase(deleteWater.fulfilled, (state, { meta, payload }) => {
+        console.log(state);
         state.isLoading = false;
         state.error = null;
+        state.waterDataMonth[state.waterDataMonth.length - 1].percentage =
+          deletePercentage(state, payload);
         state.waterDataDay.arrDailyWater =
           state.waterDataDay.arrDailyWater.filter(
-            water => water._id !== action.meta.arg._id // Remove the deleted water entry
+            water => water._id !== meta.arg._id // Remove the deleted water entry
           );
       })
       .addCase(deleteWater.rejected, handlingRejected);

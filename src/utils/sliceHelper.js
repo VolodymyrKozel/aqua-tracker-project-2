@@ -1,11 +1,18 @@
-export function addPercentage(state, data) {
-  console.log('sate', state);
+function currentPercentage(state, data) {
   const currentPercentage =
     state.waterDataMonth[state.waterDataMonth.length - 1].percentage;
-  const dailyNorma = 1800;
-  const addWater = data.volume;
-  const newPercentage =
-    Math.round(addWater / (dailyNorma / 100)) + currentPercentage;
 
-  return newPercentage;
+  const addWater = data.volume;
+  const newPercentage = Math.round(addWater / (data.dailyNorma / 100));
+  return { newPercentage, currentPercentage };
+}
+
+export function addPercentage(state, data) {
+  const percentage = currentPercentage(state, data);
+  return percentage.currentPercentage + percentage.newPercentage;
+}
+
+export function deletePercentage(state, data) {
+  const percentage = currentPercentage(state, data);
+  return percentage.currentPercentage - percentage.newPercentage;
 }

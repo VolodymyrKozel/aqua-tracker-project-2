@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 
 import ModalWrapper from '../shared/Modal/ModalWrapper.jsx';
 
-
 const AddWaterBtn = ({
   buttonClassName,
   iconClassName,
@@ -22,6 +21,10 @@ const AddWaterBtn = ({
   operationType = 'add',
   defaultValues = { time: '07:00', amount: 250 },
 }) => {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  defaultValues.time = `${hours}:${minutes}`;
   const { t } = useTranslation();
   const { isOpen, openModal, closeModal: onClose } = useModal();
   const dispatch = useDispatch();
