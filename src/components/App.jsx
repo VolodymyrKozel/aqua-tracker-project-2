@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Toaster } from 'react-hot-toast';
@@ -30,15 +30,19 @@ export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const location = useLocation();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
+  const showGuideButton = location.pathname === '/tracker';
 
   return isRefreshing || isLoading ? (
     <Loader variant="fullScreen" />
   ) : (
     <>
-      <Header />
+      <Header showGuideButton={showGuideButton} />
       <Suspense fallback={<Loader variant="fullScreen" />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>

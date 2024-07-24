@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import css from './Header.module.css';
 import { useTour } from '@reactour/tour'; 
 
-export const Header = () => {
+export const Header = ({ showGuideButton }) => {
   const { i18n, t } = useTranslation();
   const { setIsOpen } = useTour();
 
@@ -30,14 +30,16 @@ export const Header = () => {
           })}
           onClick={() => changeLanguage('ua')}
         >
-        УКР
+          УКР
         </button>
-        <button
+        {showGuideButton && (
+          <button
             className={`first-step ${css.tour}`}
             onClick={() => setIsOpen(true)}
           >
             {t('header.guide')}
           </button>
+        )}
       </div>
     </header>
   );

@@ -4,6 +4,7 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo.jsx';
 import css from './TrackerPage.module.css';
 import { motion } from 'framer-motion';
 
+
 const TrackerPage = () => {
   return (
     <div className={css.trackerPageContainer}>
