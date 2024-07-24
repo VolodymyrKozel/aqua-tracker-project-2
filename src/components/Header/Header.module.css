@@ -44,5 +44,20 @@
         display: flex;
         justify-content: flex-end;
     }
+    .tour {
+      background-color: var(--accent-color);
+      padding: 10px;
+      border-radius: 30px;
+      border: 1px solid #87d28d;
+      transition-property: background-color;
+      transition-duration: 250ms;
+      transition-timing-function: ease;
+    }
+    
+    .tour:hover {
+      color: var(--main-white);
+      background-color: #87d28d;
+      border: 1px solid green;
+    }
   }
 

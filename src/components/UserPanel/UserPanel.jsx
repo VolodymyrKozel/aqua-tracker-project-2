@@ -9,6 +9,7 @@ export const UserPanel = () => {
   const user = useSelector(selectUser);
 
   return (
+    <div className="reactour__userPanelBtn">
     <div className={css.userPanel}>
       <h2 className={css.userPanelName}>
         {t('trackerPage.greeting')}
@@ -19,7 +20,12 @@ export const UserPanel = () => {
             : user.name}
         </span>
       </h2>
-      <UserBar user={user} />
+    
+      <div className="reactour__userPanelInfo">
+        <UserBar user={user} />
+      </div>
+      </div>
+      
     </div>
   );
 };

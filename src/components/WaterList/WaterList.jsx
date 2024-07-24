@@ -21,28 +21,32 @@ const WaterList = () => {
   return isLoading ? (
     <Loader variant="center" className={css.loader} />
   ) : !Array.isArray(arrDailyWater) || !arrDailyWater.length ? (
-    <div className={css.noWaterAdded}>{t('trackerPage.noWater')}</div>
+    <div className="reactour__waterCardList">
+      <div className={css.noWaterAdded}>{t('trackerPage.noWater')}</div>
+    </div>
   ) : (
-    <div className={css.waterListWrap}>
-      <motion.ul
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={{
-          visible: { transition: { staggerChildren: 0.3 } }, // Stagger children animations
-        }}
-        className={css.waterList}
-      >
-        {arrDailyWater.map(item => (
-          <motion.li
-            variants={itemVariants}
-            key={item._id}
-            className={css.waterItem}
-          >
-            <WaterItem item={item} />
-          </motion.li>
-        ))}
-      </motion.ul>
+    <div className="reactour__waterCardList">
+      <div className={css.waterListWrap}>
+        <motion.ul
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={{
+            visible: { transition: { staggerChildren: 0.3 } }, // Stagger children animations
+          }}
+          className={css.waterList}
+        >
+          {arrDailyWater.map(item => (
+            <motion.li
+              variants={itemVariants}
+              key={item._id}
+              className={css.waterItem}
+            >
+              <WaterItem item={item} />
+            </motion.li>
+          ))}
+        </motion.ul>
+      </div>
     </div>
   );
 };

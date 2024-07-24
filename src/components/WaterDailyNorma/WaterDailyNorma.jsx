@@ -10,10 +10,12 @@ const WaterDailyNorma = () => {
 
   return (
     <div className={css.containerDailyNorma}>
-      <p className={css.volume}>{`${dailyNorma / 1000} ${t(
-        'trackerPage.liter'
-      )}`}</p>
-      <p className={css.text}>{t('trackerPage.dailyNorma')}</p>
+      <div className="reactour__waterDailyNorma">
+        <p className={css.volume}>{`${dailyNorma / 1000} ${t(
+          'trackerPage.liter'
+        )}`}</p>
+        <p className={css.text}>{t('trackerPage.dailyNorma')}</p>
+      </div>
     </div>
   );
 };

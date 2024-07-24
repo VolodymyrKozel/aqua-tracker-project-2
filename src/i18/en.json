@@ -9,7 +9,8 @@
 
   "header": {
     "en": "En",
-    "ua": "Ua"
+    "ua": "Ua",
+    "guide": "App Guide"
   },
 
   "logo": {
@@ -88,6 +89,20 @@
     "October": "October",
     "November": "November",
     "December": "December"
+  },
+
+  "guide": {
+    "start": "Ok, let's start",
+    "userSettings": "This is a block of user settings",
+    "userPanelInfo": "Click here to set/change your avatar, gender, name, email, weight, water drink norm",
+    "addWaterRecord": "You can log your water intake here.",
+    "addWaterRecordHere": "... and here",
+    "waterRecordList": "This section logs your daily water consumption. You can also modify or delete entries here",
+    "monthlyInfo": "This section provides a monthly overview of your water consumption. You can track your daily intake percentages in a calendar format",
+    "viewStats": "Select this option to see your daily intake percentages displayed in a graphic format.",
+    "dailyNorma": "This represents your recommended daily intake",
+    "progressBar": "Progress indicator showing the proportion of daily targets achieved",
+    "thanks": "Thanks for your attention and good luck!"
   },
 
   "modals": {

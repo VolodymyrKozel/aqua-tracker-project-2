@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "@reactour/tour": "^3.7.0",
     "@reduxjs/toolkit": "^2.2.6",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
